@@ -13,18 +13,9 @@ import {
 } from "@material-tailwind/react";
 import React, { useState } from "react";
 
-export default function Register() {
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({});
-
-  const handleNext = (data) => {
+export default function Login() {
+  const onSubmit = (data) => {
     console.log(data);
-    setFormData({ ...formData, ...data });
-    setStep(2);
-  };
-  const handleSubmit = (data) => {
-    const combinedData = { ...formData, ...data };
-    console.log("Combined Data:", combinedData);
     // Perform any further actions with the combined data
   };
   return (
@@ -37,11 +28,6 @@ export default function Register() {
             alt="Sample image"
           />
         </div>
-        {step === 1 ? (
-          <FirstForm onNext={handleNext} />
-        ) : step === 2 ? (
-          <SecondForm onSubmit={handleSubmit} />
-        ) : null}
       </div>
     </div>
   );

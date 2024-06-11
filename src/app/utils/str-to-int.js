@@ -1,5 +1,5 @@
 function toNumber(data) {
-  const convertedData = data.map((value) => Number(value));
+  const convertedData = data?.map((value) => Number(value));
   return convertedData;
 }
 
