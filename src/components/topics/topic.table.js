@@ -2,7 +2,7 @@ import React from "react";
 
 export const TopicTable = () => {
   return (
-    <div class="relative flex flex-col w-full h-full  text-gray-700 bg-white shadow-md  bg-clip-border px-5">
+    <>
       <table class="w-full text-left table-auto min-w-max">
         <thead>
           <tr>
@@ -64,6 +64,6 @@ export const TopicTable = () => {
           </tr>
         </tbody>
       </table>
-    </div>
+    </>
   );
 };

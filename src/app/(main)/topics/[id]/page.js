@@ -21,8 +21,8 @@ export default function Topics() {
           </Button>
         </div>
         <div className="relative w-full  max-w-4xl  z-40">
-          <Card className="mt-1 w-full rounded-none border border-gray-500 ">
-            <CardBody>
+          <Card className="mt-1 w-full rounded-none border border-gray-500 !p-0">
+            <CardBody className="p-0">
               <TopicTable />
             </CardBody>
           </Card>
