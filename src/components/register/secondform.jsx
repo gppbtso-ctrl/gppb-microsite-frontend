@@ -1,4 +1,4 @@
-import toNumber from "@/app/utils/str-to-int";
+import toNumber from "@/utils/str-to-int";
 import { Alert, Button, Card, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";

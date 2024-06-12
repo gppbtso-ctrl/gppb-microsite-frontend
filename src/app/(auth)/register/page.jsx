@@ -1,6 +1,8 @@
 "use client";
-import FirstForm from "@/app/components/register/firstform";
-import SecondForm from "@/app/components/register/secondform";
+
+import FirstForm from "@/components/register/firstform";
+import SecondForm from "@/components/register/secondform";
+import AuthService from "@/services/auth";
 import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,11 +24,21 @@ export default function Register() {
     setFormData({ ...formData, ...data });
     setStep(2);
   };
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
     const combinedData = { ...formData, ...data };
-    console.log("Combined Data:", combinedData);
-    // Perform any further actions with the combined data
+    delete combinedData.confirm_password;
+
+    try {
+      const response = await AuthService.register(combinedData);
+    } catch (error) {
+      console.log(error?.response);
+      if (error?.response?.status === 429) setStatusAdd("limitRequest");
+      // if (error?.response?.data?)
+    }
   };
+
+  // Perform any further actions with the combined data
+
   return (
     <div class="h-full">
       <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[8rem] ">
