@@ -60,7 +60,7 @@ export const MainNavbar = () => {
     </ul>
   );
   return (
-    <Navbar className="sticky top-0 z-50 h-max max-w-full rounded-none px-4   lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
+    <Navbar className="sticky top-0 z-50 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
         <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
           <Typography
