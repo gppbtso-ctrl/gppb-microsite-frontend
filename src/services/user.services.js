@@ -1,8 +1,15 @@
 import api from "./api";
 const baseURL = process.env.BASE_URL;
-import { useQuery } from "react-query";
 const apiPrefix = "/gppb-microsite-backend";
 
-const UserService = {};
+
+const getCommittees =  () => {
+    const response =  api.get(`${apiPrefix}/committee`);
+    return response;
+  };
+
+const UserService = {
+    getCommittees,
+};
 
 export default UserService;

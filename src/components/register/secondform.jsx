@@ -64,7 +64,7 @@ function SecondForm({ onSubmit }) {
   };
 
   return (
-    <Card className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[40rem] w-full">
+    <div className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[40rem] w-full">
       <Typography variant="h6" className="font-montserrat">
         Select 3 Committee to Participate:
       </Typography>
@@ -110,7 +110,7 @@ function SecondForm({ onSubmit }) {
           Proceed
         </Button>
       </form>
-    </Card>
+    </div>
   );
 }
 

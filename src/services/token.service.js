@@ -19,12 +19,16 @@ const getUser = () => {
 };
 
 const setUser = (user) => {
-  console.log(JSON.stringify(user));
-  localStorage.setItem("user", JSON.stringify(user));
+  if(typeof window !== 'undefined'){
+    localStorage.setItem("user", JSON.stringify(user));
+  } 
+
 };
 
 const removeUser = () => {
+  if(typeof window !== 'undefined'){
   localStorage.removeItem("user");
+  }
 };
 
 const TokenService = {

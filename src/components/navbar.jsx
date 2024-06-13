@@ -1,13 +1,24 @@
+"use client";
+
+import AuthService from "@/services/auth";
+import useAuthStore from "@/store/authStore";
 import {
   Button,
+  Collapse,
   IconButton,
   MobileNav,
   Navbar,
   Typography,
 } from "@material-tailwind/react";
-import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState, useTransition } from "react";
 
 export const MainNavbar = () => {
+  const [isPending, startTransition] = useTransition();
+  const { token, decodedToken, setToken, removeToken } = useAuthStore();
+  const [loaded, setLoaded] = useState(false);
+  const router = useRouter();
   const [openNav, setOpenNav] = useState(false);
   useEffect(() => {
     window.addEventListener(
@@ -15,6 +26,23 @@ export const MainNavbar = () => {
       () => window.innerWidth >= 960 && setOpenNav(false)
     );
   }, []);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, [decodedToken]);
+
+  const handleLogout = () => {
+    startTransition(() => {
+      AuthService.logout();
+      router.push("/login")
+      setTimeout(() => {
+        removeToken();
+      }, 200);
+  
+    });
+ 
+  
+  };
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       {/* <Typography
@@ -75,23 +103,72 @@ export const MainNavbar = () => {
             </span>
           </Typography>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="mr-4 hidden lg:block">{navList}</div>
-          <div className="flex items-center gap-x-1">
-            <Button
-              variant="text"
-              size="sm"
-              className="hidden lg:inline-block rounded-none"
-            >
-              <span className="font-montserrat">Log In</span>
-            </Button>
-            <Button
-              variant="gradient"
-              size="sm"
-              className="hidden lg:inline-block rounded-none"
-            >
-              <span className="font-montserrat">Sign in</span>
-            </Button>
+        <div className="flex items-center gap-1">
+        <Button
+                    variant="text"
+                    size="sm"
+                    className="hidden lg:inline-block rounded-none "
+                    onClick={() => router.push("/committee")}
+                  >
+                    <span className="font-montserrat">Committees</span>
+                  </Button>
+          {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
+          <div className="flex items-center gap-x-3">
+                   
+                  
+            {loaded ? (
+              !decodedToken ? (
+                <>
+                  {" "}
+                  <Button
+                    variant="text"
+                    size="sm"
+                    className="hidden lg:inline-block rounded-none"
+                    onClick={() => router.push("/login")}
+                  >
+                    <span className="font-montserrat">Log In</span>
+                  </Button>
+                  <Button
+                    variant="gradient"
+                    size="sm"
+                    className="hidden lg:inline-block rounded-none"
+                    onClick={() => router.push("/register")}
+                  >
+                    <span className="font-montserrat">Sign in</span>
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="gradient"
+                    size="sm"
+                    className="hidden lg:inline-block rounded-none"
+                    onClick={handleLogout}
+                  >
+                    <span className="font-montserrat">Logout</span>
+                  </Button>
+                </>
+              )
+            ) : (
+              
+              <>
+                {" "}
+                <Button
+                  variant="text"
+                  size="sm"
+                  className="hidden lg:inline-block rounded-none  pointer-events-none cursor-none"
+                >
+                  <span className="font-montserrat">Log In</span>
+                </Button>
+                <Button
+                  variant="gradient"
+                  size="sm"
+                  className="hidden lg:inline-block rounded-none pointer-events-none cursor-none" 
+                >
+                  <span className="font-montserrat">Sign in</span>
+                </Button>
+              </>
+            )}
           </div>
           <IconButton
             variant="text"
@@ -132,7 +209,7 @@ export const MainNavbar = () => {
           </IconButton>
         </div>
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="flex justify-center items-center gap-2 mt-1">
           <Button fullWidth variant="text" size="sm" className="rounded-none">
             <span>Log In</span>
@@ -146,7 +223,7 @@ export const MainNavbar = () => {
             <span>Sign in</span>
           </Button>
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 };

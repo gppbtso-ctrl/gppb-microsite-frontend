@@ -14,7 +14,7 @@ function FirstForm({ onNext }) {
     onNext(data);
   };
   return (
-    <Card class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[30rem] w-full">
+    <div class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[30rem] w-full">
       <Typography variant="h4" className="font-montserrat">
         Register
       </Typography>
@@ -83,7 +83,7 @@ function FirstForm({ onNext }) {
           </Button>
         </div>
       </form>
-    </Card>
+    </div>
   );
 }
 

@@ -34,7 +34,7 @@ export const TopicTable = () => {
           </tr>
           <tr>
             <td class="p-4 border-b border-blue-gray-50">
-              <div className="   w-[30rem] max-w-[40rem]">John Michael</div>
+              <div className="w-[30rem] max-w-[40rem]">John Michael</div>
             </td>
             <td class="p-4 border-b border-blue-gray-50">
               <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">

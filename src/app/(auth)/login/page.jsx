@@ -1,20 +1,30 @@
 "use client";
 
+import LoadingScreen from "@/components/loading/loading";
 import AuthService from "@/services/auth";
+import useLoading from "@/utils/use-loading";
 import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Alert,
   Button,
   Card,
   CardBody,
   CardFooter,
   Input,
+  Spinner,
   Typography,
 } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
+
 export default function Login() {
+  const router = useRouter();
+  const loading = useLoading(1200)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
   const {
     register,
     handleSubmit,
@@ -23,26 +33,28 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     const params = data;
-
+    setSubmitStatus('loading')
     try {
       const response = await AuthService.login(params);
-      var token_decode = decode_jwt(response?.data?.data);
-      console.log(response.data);
-      // if (token_decode.active && token_decode.staff) {
-      //   setStatusSubmit("success");
-
-      // } else {
-      //   setStatusSubmit(null);
-      //   AuthService.logout();
-      //   setErr(true);
-      // }
+      setSubmitStatus('success')
+      router.push('/committee')
     } catch (error) {
-      console.log(error);
+      console.log(error)
+      if (error?.response?.status === 401  && error?.response?.statusText === "Unauthorized")
+        {
+        setSubmitStatus('unauthorized')
+        }
+      else{
+        setSubmitStatus('unknown')
+      }
     }
     // Perform any further actions with the combined data
   };
+
+
   return (
     <div class="h-full">
+      {loading ? <LoadingScreen/> : null}
       <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[8rem] lg:mt-[5rem] ">
         <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-5/12">
           <img
@@ -51,10 +63,13 @@ export default function Login() {
             alt="Sample image"
           />
         </div>
-        <Card class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-2 rounded-md">
+        
+        <div class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-[0.3px] border-gray-300 rounded-sm">
           <Typography variant="h4" className="font-montserrat">
             Login
           </Typography>
+          {submitStatus === "unauthorized" ?  <Alert color="red" className="rounded-none max-h-10 flex items-center">Invalid Credentials / Unauthorized</Alert> : null}
+         
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-4">
               <div class="relative w-full min-w-[200px] h-10">
@@ -81,12 +96,12 @@ export default function Login() {
                   Password
                 </label>
               </div>
-              <Button type="submit" className="rounded-none" color="blue">
-                Proceed
+              <Button type="submit" className="rounded-none flex justify-center max-h-11" color="blue">
+                {submitStatus === "loading" ?  <Spinner className="h-[1.32rem] w-[1.32rem " /> : submitStatus === "success" ? <Typography variant="small">Success</Typography>:<Typography variant="small">Proceed</Typography>}
               </Button>
             </div>
           </form>
-        </Card>
+        </div>
       </div>
     </div>
   );
