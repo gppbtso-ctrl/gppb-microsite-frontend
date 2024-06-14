@@ -3,6 +3,7 @@
 import FirstForm from "@/components/register/firstform";
 import SecondForm from "@/components/register/secondform";
 import AuthService from "@/services/auth";
+import useAuthStore from "@/store/authStore";
 import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,12 +14,15 @@ import {
   Input,
   Typography,
 } from "@material-tailwind/react";
-import React, { useState } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+
 
 export default function Register() {
+  const router = useRouter()
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
+  const { token, decodedToken, setToken, removeToken } = useAuthStore();
 
   const handleNext = (data) => {
     console.log(data);
@@ -37,6 +41,14 @@ export default function Register() {
       // if (error?.response?.data?)
     }
   };
+
+
+
+
+useEffect(() => {
+  if(decodedToken) return router.push('/committee') 
+}, [decodedToken])
+
 
   // Perform any further actions with the combined data
 

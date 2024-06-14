@@ -24,6 +24,7 @@ const CommitteeMain = () => {
 
   const getCommittees = async () => {
     const response = await UserService.getCommittees();
+    console.log(response?.data)
     return response.data;
   };
 
@@ -32,7 +33,7 @@ const CommitteeMain = () => {
     getCommittees
   );
 
-  console.log(isLoading, "from main committee");
+  console.log(data, "from main committee");
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
       <div>

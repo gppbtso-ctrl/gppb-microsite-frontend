@@ -108,7 +108,7 @@ export const MainNavbar = () => {
                     variant="text"
                     size="sm"
                     className="hidden lg:inline-block rounded-none "
-                    onClick={() => router.push("/committee")}
+                    onClick={() => router.push("/committees")}
                   >
                     <span className="font-montserrat">Committees</span>
                   </Button>

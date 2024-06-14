@@ -33,11 +33,12 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     const params = data;
+    
     setSubmitStatus('loading')
     try {
       const response = await AuthService.login(params);
       setSubmitStatus('success')
-      router.push('/committee')
+      router.back()
     } catch (error) {
       console.log(error)
       if (error?.response?.status === 401  && error?.response?.statusText === "Unauthorized")
