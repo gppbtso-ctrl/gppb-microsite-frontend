@@ -24,7 +24,7 @@ const CommitteeMain = () => {
 
   const getCommittees = async () => {
     const response = await UserService.getCommittees();
-    console.log(response?.data)
+    console.log(response?.data);
     return response.data;
   };
 
@@ -61,22 +61,22 @@ const CommitteeMain = () => {
                 </CardHeader>
                 <CardBody className="pt-4 flex flex-col gap-1">
                   <div className="flex justify-between">
-                    <Link href={`/topics/${committee.id}`}>
-                    <Typography
-                      variant="h6"
-                      color="blue-gray"
-                      className=" text-lg font-monserrat hover:text-blue-400 transition-all duration-300 cursor-pointer"
-                    >
-                      {committee.title}
-                    </Typography>
+                    <Link href={`/committee/${committee.id}`}>
+                      <Typography
+                        variant="h6"
+                        color="blue-gray"
+                        className=" text-lg font-monserrat hover:text-blue-400 transition-all duration-300 cursor-pointer"
+                      >
+                        {committee.title}
+                      </Typography>
                     </Link>
-                    <Typography
+                    {/* <Typography
                       variant="lead"
                       color="blue-gray"
                       className=" text-md font-monserrat"
                     >
                       Follow
-                    </Typography>
+                    </Typography> */}
                   </div>
                   <div className="mb-2 flex flex-row gap-3">
                     <Typography className="text-sm">
@@ -92,15 +92,14 @@ const CommitteeMain = () => {
                     </Typography>
                   </div>
                   <div className="min-h-10">
-                  <Typography
-                    variant="lead"
-                    className="text-sm font-montserrat h-fit break-words"
-                  >
-                    {committee.description}
-                  </Typography>
+                    <Typography
+                      variant="lead"
+                      className="text-sm font-montserrat h-fit break-words"
+                    >
+                      {committee.description}
+                    </Typography>
                   </div>
                 </CardBody>
-              
               </Card>
             ))
           )}

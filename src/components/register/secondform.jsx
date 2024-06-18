@@ -1,7 +1,9 @@
+import UserService from "@/services/user.services";
 import toNumber from "@/utils/str-to-int";
 import { Alert, Button, Card, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import useSWR from "swr";
 
 const committee = [
   {
@@ -47,6 +49,20 @@ function SecondForm({ onSubmit }) {
     formState: { errors },
   } = useForm();
 
+  const getCommittees = async () => {
+    const response = await UserService.getCommittees();
+    console.log(response?.data);
+    return response.data;
+  };
+
+  const {
+    data,
+    isLoading,
+    error: dataError,
+    mutate,
+    isValidating,
+  } = useSWR("committees", getCommittees);
+
   const handleCheckBoxSubmit = (data) => {
     const committee_list = data.committee_list;
     console.log(committee_list);
@@ -62,6 +78,7 @@ function SecondForm({ onSubmit }) {
       console.log(data);
     }
   };
+  console.log(data);
 
   return (
     <div className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[40rem] w-full">
@@ -86,7 +103,7 @@ function SecondForm({ onSubmit }) {
         ) : null}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {committee.map((item) => (
+          {data?.map((item) => (
             <div key={item.id} className="flex items-center">
               <input
                 id={`committee-${item.id}`}

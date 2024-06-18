@@ -34,14 +34,11 @@ export const MainNavbar = () => {
   const handleLogout = () => {
     startTransition(() => {
       AuthService.logout();
-      router.push("/login")
+      router.push("/login");
       setTimeout(() => {
         removeToken();
       }, 200);
-  
     });
- 
-  
   };
   const navList = (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -88,7 +85,7 @@ export const MainNavbar = () => {
     </ul>
   );
   return (
-    <Navbar className="sticky top-0 z-50 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
+    <Navbar className="sticky top-0 z-[9999] h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
         <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
           <Typography
@@ -104,18 +101,16 @@ export const MainNavbar = () => {
           </Typography>
         </div>
         <div className="flex items-center gap-1">
-        <Button
-                    variant="text"
-                    size="sm"
-                    className="hidden lg:inline-block rounded-none "
-                    onClick={() => router.push("/committees")}
-                  >
-                    <span className="font-montserrat">Committees</span>
-                  </Button>
+          <Button
+            variant="text"
+            size="sm"
+            className="hidden lg:inline-block rounded-none "
+            onClick={() => router.push("/committees")}
+          >
+            <span className="font-montserrat">Committees</span>
+          </Button>
           {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
           <div className="flex items-center gap-x-3">
-                   
-                  
             {loaded ? (
               !decodedToken ? (
                 <>
@@ -150,7 +145,6 @@ export const MainNavbar = () => {
                 </>
               )
             ) : (
-              
               <>
                 {" "}
                 <Button
@@ -163,7 +157,7 @@ export const MainNavbar = () => {
                 <Button
                   variant="gradient"
                   size="sm"
-                  className="hidden lg:inline-block rounded-none pointer-events-none cursor-none" 
+                  className="hidden lg:inline-block rounded-none pointer-events-none cursor-none"
                 >
                   <span className="font-montserrat">Sign in</span>
                 </Button>

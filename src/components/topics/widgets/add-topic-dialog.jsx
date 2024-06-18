@@ -17,7 +17,7 @@ import useSWR, { useSWRConfig } from "swr";
 import AuthService from "@/services/auth";
 
 const AddTopicDialog = ({ open, handleOpen }) => {
-const [submitStatus, setSubmitStatus] = useState(null)
+  const [submitStatus, setSubmitStatus] = useState(null);
   const { mutate } = useSWRConfig();
   const { id } = useParams();
   const {
@@ -29,18 +29,18 @@ const [submitStatus, setSubmitStatus] = useState(null)
 
   const onSubmit = async (data) => {
     data.committee = parseInt(id);
-    setSubmitStatus('loading')
+    setSubmitStatus("loading");
     try {
       const response = await UserService.postTopic(data);
-      setSubmitStatus('success')
-      mutate('comTopics')
+      setSubmitStatus("success");
+      mutate("comTopics");
       setTimeout(() => {
-        handleOpen()
-        setSubmitStatus(null)
-        reset()
+        handleOpen();
+        setSubmitStatus(null);
+        reset();
       }, 500);
     } catch (error) {
-      setSubmitStatus('error')
+      setSubmitStatus("error");
     }
     console.log(data);
   };
@@ -97,11 +97,14 @@ const [submitStatus, setSubmitStatus] = useState(null)
           type="submit"
           form="topicForm"
           className="rounded-none max-h-10 flex items-center"
-
         >
-            
-           {submitStatus === "loading" ?   <Spinner color="white" className=" w-12 h-5"></Spinner> : submitStatus === "success" ?  <span className="font-montserrat">Success</span> : <span className="font-montserrat">Submit</span>}
-       
+          {submitStatus === "loading" ? (
+            <Spinner color="white" className=" w-12 h-5"></Spinner>
+          ) : submitStatus === "success" ? (
+            <span className="font-montserrat">Success</span>
+          ) : (
+            <span className="font-montserrat">Submit</span>
+          )}
         </Button>
       </DialogFooter>
     </Dialog>

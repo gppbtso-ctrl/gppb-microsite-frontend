@@ -46,7 +46,7 @@ export default function Topics() {
   ) {
     router.push("/404");
   }
-
+  console.log(decodedToken);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3">
@@ -71,7 +71,8 @@ export default function Topics() {
                 {/* <Typography>Example Topic</Typography> */}
                 <div className="flex justify-end grow">
                   {loaded ? (
-                    decodedToken ? (
+                    decodedToken?.role === "TWG" ||
+                    decodedToken?.role === "ADMIN" ? (
                       <Button
                         onClick={handleOpen}
                         size="sm"

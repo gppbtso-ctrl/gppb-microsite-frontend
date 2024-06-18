@@ -17,9 +17,8 @@ import {
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-
 export default function Register() {
-  const router = useRouter()
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
@@ -42,13 +41,9 @@ export default function Register() {
     }
   };
 
-
-
-
-useEffect(() => {
-  if(decodedToken) return router.push('/committee') 
-}, [decodedToken])
-
+  useEffect(() => {
+    if (decodedToken) return router.push("/committees");
+  }, [decodedToken]);
 
   // Perform any further actions with the combined data
 
