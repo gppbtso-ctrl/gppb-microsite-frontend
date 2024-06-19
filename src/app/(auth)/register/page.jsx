@@ -22,21 +22,33 @@ export default function Register() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
+  const [emailExist, setEmailExist] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
-  const handleNext = (data) => {
-    console.log(data);
-    setFormData({ ...formData, ...data });
-    setStep(2);
+  const handleNext = async (data) => {
+    const params = { email: data.email };
+    try {
+      const response = await AuthService.validateEmail(params);
+      setFormData({ ...formData, ...data });
+      setStep(2);
+    } catch (error) {
+      console.log(error?.response);
+      setEmailExist(true);
+      // if (error?.response?.data?)
+    }
   };
+
   const handleSubmit = async (data) => {
     const combinedData = { ...formData, ...data };
     delete combinedData.confirm_password;
-
+    setSubmitStatus("loading");
     try {
       const response = await AuthService.register(combinedData);
+      setSubmitStatus("success");
+      setStep(3);
     } catch (error) {
       console.log(error?.response);
-      if (error?.response?.status === 429) setStatusAdd("limitRequest");
+      setSubmitStatus(null);
       // if (error?.response?.data?)
     }
   };
@@ -58,9 +70,16 @@ export default function Register() {
           />
         </div>
         {step === 1 ? (
-          <FirstForm onNext={handleNext} />
+          <FirstForm onNext={handleNext} emailExist={emailExist} />
         ) : step === 2 ? (
-          <SecondForm onSubmit={handleSubmit} />
+          <SecondForm onSubmit={handleSubmit} submitStatus={submitStatus} />
+        ) : step === 3 ? (
+          <div className="p-5 flex items-center border-2 shadow-md max-w-[30rem] mx-3">
+            <Typography variant="lead" className="text-center">
+              Initial Registration Success! Please check your Email Inbox or
+              Spam.
+            </Typography>
+          </div>
         ) : null}
       </div>
     </div>

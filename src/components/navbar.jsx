@@ -84,6 +84,7 @@ export const MainNavbar = () => {
       </Typography> */}
     </ul>
   );
+
   return (
     <Navbar className="sticky top-0 z-[9999] h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
@@ -124,7 +125,7 @@ export const MainNavbar = () => {
                     <span className="font-montserrat">Log In</span>
                   </Button>
                   <Button
-                    variant="gradient"
+                    variant="text"
                     size="sm"
                     className="hidden lg:inline-block rounded-none"
                     onClick={() => router.push("/register")}
@@ -134,6 +135,17 @@ export const MainNavbar = () => {
                 </>
               ) : (
                 <>
+                  {decodedToken.role === "ADMIN" ? (
+                    <Button
+                      variant="text"
+                      size="sm"
+                      className="hidden lg:inline-block rounded-none"
+                    >
+                      <span className="font-montserrat text-blue-700">
+                        Users
+                      </span>
+                    </Button>
+                  ) : null}
                   <Button
                     variant="gradient"
                     size="sm"
@@ -155,7 +167,7 @@ export const MainNavbar = () => {
                   <span className="font-montserrat">Log In</span>
                 </Button>
                 <Button
-                  variant="gradient"
+                  variant="text"
                   size="sm"
                   className="hidden lg:inline-block rounded-none pointer-events-none cursor-none"
                 >

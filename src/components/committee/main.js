@@ -79,10 +79,10 @@ const CommitteeMain = () => {
                     </Typography> */}
                   </div>
                   <div className="mb-2 flex flex-row gap-3">
-                    <Typography className="text-sm">
+                    {/* <Typography className="text-sm">
                       <FontAwesomeIcon icon={faEye} className=" font-thin " />
                       <span className=" font-montserrat"> 0 </span>
-                    </Typography>
+                    </Typography> */}
                     <Typography className="text-sm ">
                       <FontAwesomeIcon icon={faComment} />
                       <span className="font-montserrat">

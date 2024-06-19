@@ -3,9 +3,18 @@ import api from "./api";
 import TokenService from "./token.service";
 const apiPrefix = "/gppb-microsite-backend";
 
-
 const register = (params) => {
   return api.post(`${apiPrefix}/user/register`, params);
+};
+
+const validateEmail = (params) => {
+  const response = api.post(`${apiPrefix}/validate-email`, params);
+  return response;
+};
+
+const verifyEmail = (params) => {
+  const response = api.post(`${apiPrefix}/verify-email/${params}`);
+  return response;
 };
 
 const login = async (params) => {
@@ -31,6 +40,8 @@ const AuthService = {
   login,
   logout,
   getCurrentUser,
+  validateEmail,
+  verifyEmail,
 };
 
 export default AuthService;

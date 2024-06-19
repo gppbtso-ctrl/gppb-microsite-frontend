@@ -1,0 +1,137 @@
+"use client";
+import { TopicTable } from "@/components/topics/topic.table";
+import AddTopicDialog from "@/components/topics/widgets/add-topic-dialog";
+import UserService from "@/services/user.services";
+import useAuthStore from "@/store/authStore";
+import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Typography,
+} from "@material-tailwind/react";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import useSWR from "swr";
+
+export default function Topics() {
+  const router = useRouter();
+  const { token, decodedToken, setToken, removeToken } = useAuthStore();
+  const [loaded, setLoaded] = useState(false);
+  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
+  useEffect(() => {
+    setLoaded(true);
+  }, [decodedToken]);
+
+  const getUsers = async () => {
+    const response = await UserService.getUsers();
+    return response.data;
+  };
+  const { data, isLoading, error, mutate, isValidating } = useSWR(
+    "users",
+    getUsers
+  );
+
+  console.log(data);
+
+  console.log(decodedToken);
+  return (
+    <div className=" relative w-full h-full flex justify-center items-center z-30">
+      <Card className="mt-10 rounded-none">
+        {" "}
+        <table className="w-full min-w-max table-auto text-left">
+          <thead>
+            <tr>
+              {TABLE_HEAD.map((head) => (
+                <th
+                  key={head}
+                  className="border-b border-blue-gray-100 bg-blue-300 p-4"
+                >
+                  <Typography
+                    variant="small"
+                    color="white"
+                    className="font-normal leading-none "
+                  >
+                    {head}
+                  </Typography>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data?.map((item, index) => {
+              const classes = "p-4 border-b border-blue-gray-50";
+
+              return (
+                <tr key={index}>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {item.email}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {item.first_name}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      variant="small"
+                      color="blue-gray"
+                      className="font-normal"
+                    >
+                      {item.last_name}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+                      as="a"
+                      href="#"
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      {item.date_joined}
+                    </Typography>
+                  </td>
+                  <td className={`${classes} flex gap-2`}>
+                    <Typography
+                      as="a"
+                      href="#"
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      Edit
+                    </Typography>
+                    <Typography
+                      as="a"
+                      href="#"
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      Edit
+                    </Typography>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
+    </div>
+  );
+}

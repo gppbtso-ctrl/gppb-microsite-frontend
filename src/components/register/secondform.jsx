@@ -41,7 +41,7 @@ const committee = [
   // Add more items as needed
 ];
 
-function SecondForm({ onSubmit }) {
+function SecondForm({ onSubmit, submitStatus }) {
   const [error, setError] = useState(null);
   const {
     register,
@@ -124,7 +124,11 @@ function SecondForm({ onSubmit }) {
           ))}
         </div>
         <Button type="submit" className="rounded-none mt-2" color="blue">
-          Proceed
+          {submitStatus === "loading"
+            ? "Submitting..."
+            : submitStatus === "success"
+            ? "Success"
+            : "Submit"}
         </Button>
       </form>
     </div>

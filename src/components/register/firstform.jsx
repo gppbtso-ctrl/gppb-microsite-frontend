@@ -2,7 +2,7 @@ import { Alert, Button, Card, Typography } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function FirstForm({ onNext }) {
+function FirstForm({ onNext, emailExist }) {
   const [alert, setAlert] = useState(null);
   const {
     register,
@@ -27,6 +27,10 @@ function FirstForm({ onNext }) {
       {alert === "passwordNotMatched" ? (
         <Alert color="red" className="rounded-none">
           Password Not Matched
+        </Alert>
+      ) : emailExist ? (
+        <Alert color="red" className="rounded-none">
+          Email Already Exists
         </Alert>
       ) : null}
 
