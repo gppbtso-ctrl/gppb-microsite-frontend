@@ -14,7 +14,7 @@ const nextConfig = {
     // BASE_URL: "http://172.16.200.122:8000/",
     // BASE_URL: "https://onlineblacklistingportal.gppb.gov.ph",
     // BASE_URL: "http://172.16.207.89",
-    BASE_URL: "http://localhost",
+    BASE_URL: "https://ngpa.gppb.gov.ph",
   },
   reactStrictMode: false,
   output: "standalone",
