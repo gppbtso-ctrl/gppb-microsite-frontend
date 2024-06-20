@@ -57,6 +57,14 @@ export const MainNavbar = () => {
           >
             <span className="font-montserrat">Committees</span>
           </Button>
+          <Button
+            variant="text"
+            size="sm"
+            className="hidden lg:inline-block rounded-none hover:text-blue-400 "
+            onClick={() => router.push("/aboutus")}
+          >
+            <span className="font-montserrat">About NGPA</span>
+          </Button>
           {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
 
           <IconButton

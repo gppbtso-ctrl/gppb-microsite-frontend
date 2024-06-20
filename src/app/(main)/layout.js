@@ -6,10 +6,10 @@ import { MainNavbar } from "@/components/navbar";
 export default function CommitteeLayout({ children }) {
   return (
     <div className=" relative  w-full h-screen">
-      <MainNavbar />
       <div className="grid grid-rows-[max-content,max-content,min-content]">
+        <MainNavbar />
         <div className="">{children}</div>
-        <div className=" z-10 -mt-10 bg-blue-500 h-80 w-full -bottom-1/4 flex justify-center items-center mb-[5rem]">
+        <div className=" z-0 -mt-10 bg-blue-500 h-80 w-full -bottom-1/4 flex justify-center items-center mb-[5rem]">
           <Typography
             variant="h1"
             className="font-montserrat font-bold text-white"

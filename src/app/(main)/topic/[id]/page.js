@@ -83,7 +83,7 @@ export default function Topic() {
   return (
     <>
       {loading ? <LoadingScreen /> : null}
-      <div className=" relative h-full flex flex-col justify-center items-center z-50">
+      <div className=" relative h-full flex flex-col justify-center items-center z-10">
         <Card className="mt-10 mx-3 w-full max-w-[60rem] h-full rounded-none border flex flex-row justify-center items-center gap-5 border-gray-500 !p-0 ">
           <div className="h-full p-7 flex flex-col gap-3 flex-1">
             <div>
