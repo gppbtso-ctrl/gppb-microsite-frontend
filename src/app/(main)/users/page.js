@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
 import useSWR from "swr";
 
 export default function Topics() {
@@ -25,6 +26,9 @@ export default function Topics() {
   const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
   useEffect(() => {
     setLoaded(true);
+    if (!decodedToken || decodedToken?.role !== "ADMIN") {
+      router.push("/committees");
+    }
   }, [decodedToken]);
 
   const getUsers = async () => {
@@ -97,34 +101,21 @@ export default function Topics() {
                   </td>
                   <td className={classes}>
                     <Typography
-                      as="a"
-                      href="#"
                       variant="small"
                       color="blue-gray"
                       className="font-medium"
                     >
-                      {item.date_joined}
+                      <Moment date={item.date_joined} format="MMM DD, YYYY" />
                     </Typography>
                   </td>
                   <td className={`${classes} flex gap-2`}>
-                    <Typography
-                      as="a"
-                      href="#"
-                      variant="small"
-                      color="blue-gray"
-                      className="font-medium"
+                    <Button
+                      variant="text"
+                      size="sm"
+                      className="rounded-none bg-blue-500 text-white hover:text-black"
                     >
-                      Edit
-                    </Typography>
-                    <Typography
-                      as="a"
-                      href="#"
-                      variant="small"
-                      color="blue-gray"
-                      className="font-medium"
-                    >
-                      Edit
-                    </Typography>
+                      Accept
+                    </Button>
                   </td>
                 </tr>
               );

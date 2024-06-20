@@ -8,9 +8,9 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    setTimeout(() => {
-      router.push("/committees");
-    }, 2000);
+    // setTimeout(() => {
+    //   router.push("/committees");
+    // }, 2000);
   }, []);
 
   return (

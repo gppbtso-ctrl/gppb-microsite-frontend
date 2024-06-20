@@ -35,7 +35,7 @@ const CommitteeMain = () => {
 
   console.log(data, "from main committee");
   return (
-    <div className=" relative w-full h-full flex flex-col justify-center items-center">
+    <div className=" relative w-full h-full flex flex-col justify-center items-center z-10">
       <div>
         {/* <div className="max-w-4xl w-full flex justify-end ">
         {loaded ? decodedToken ? <Button size="sm" className="mb-2 rounded-none">
