@@ -164,10 +164,10 @@ export default function Topic() {
                       className="flex flex-col gap-0 p-3 border-[1.5px] border-black mt-1 shadow-md antialiased"
                     >
                       <div className="flex flex-col gap-0 mb-7">
-                        <Typography className="font-montserrat font-normal">
-                          {post?.created_by?.first_name}
+                        <Typography className="font-montserrat font-normal text-sm">
+                          {post?.created_by?.first_name +' '+ post?.created_by?.first_name}
                         </Typography>
-                        <Typography className="font-montserrat text-sm font-normal">
+                        <Typography className="font-montserrat text-xs font-normal">
                           <Moment fromNow>{post?.created_date}</Moment>
                         </Typography>
                       </div>

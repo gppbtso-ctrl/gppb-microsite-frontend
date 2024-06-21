@@ -10,13 +10,13 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       router.push("/committees");
-    }, 2000);
+    }, 2500);
   }, []);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 gap-5">
-      <div className="z-10 max-w-5xl w-full items-center justify-center font-mono text-sm lg:flex">
-        <Typography variant="lead" className="flex justify-center p-3 bg-blue-400 w-fit text-white shadow-sm">
+      <div className="z-10 max-w-6xl  w-full items-center justify-center font-mono text-sm lg:flex">
+        <Typography variant="lead" className="flex justify-center p-3 bg-blue-400 w-[49.5rem] text-white shadow-sm">
          Government Procurement Policy Board - Technical Support Office
         </Typography>
        
