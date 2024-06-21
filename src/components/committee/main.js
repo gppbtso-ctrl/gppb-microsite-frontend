@@ -47,8 +47,8 @@ const CommitteeMain = () => {
           {isLoading ? (
             <CardsLoading />
           ) : (
-            data?.map((committee) => (
-              <Card className="mt-1 w-[28rem] md:w-[28rem] lg:w-[30rem] rounded-none border border-gray-300 ">
+            data?.map((committee,index) => (
+              <Card key={index} className="mt-1 w-[28rem] md:w-[28rem] lg:w-[30rem] rounded-none border border-gray-300 ">
                 <CardHeader
                   color="blue-gray"
                   className=" h-[17rem]   max-w-full mx-0 rounded-none mt-0 shadow-md "
