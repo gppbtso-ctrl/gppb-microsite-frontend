@@ -36,7 +36,7 @@ export default function Topics() {
   };
 
   const { data, isLoading, error, mutate, isValidating } = useSWR(
-    "comTopics",
+    id ?  "comTopics" : null,
     getComTopics
   );
 

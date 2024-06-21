@@ -48,6 +48,9 @@ instance.interceptors.response.use(
         // Optionally redirect to login page or perform any other necessary action
         window.location.href = "/committees";
       }
+      else{
+        await AuthService.logout();
+      }
     }
 
     console.log(error, "from api");

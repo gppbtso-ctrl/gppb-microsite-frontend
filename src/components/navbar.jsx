@@ -123,22 +123,12 @@ export const MainNavbar = () => {
                     className="hidden lg:inline-block rounded-none hover:text-blue-400"
                     onClick={() => router.push("/register")}
                   >
-                    <span className="font-montserrat">Sign in</span>
+                    <span className="font-montserrat">Sign Up</span>
                   </Button>
                 </>
               ) : (
                 <>
-                  {decodedToken.role === "ADMIN" ? (
-                    <Button
-                      variant="text"
-                      size="sm"
-                      className="hidden lg:inline-block rounded-none"
-                    >
-                      <span className="font-montserrat text-blue-700">
-                        Users
-                      </span>
-                    </Button>
-                  ) : null}
+                
 
                   {/* <Button
                     variant="gradient"

@@ -11,6 +11,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Spinner,
   Typography,
 } from "@material-tailwind/react";
 import Image from "next/image";
@@ -22,8 +23,10 @@ import useSWR from "swr";
 export default function Topics() {
   const router = useRouter();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
-  const [loaded, setLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null);
   const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
+
   useEffect(() => {
     setLoaded(true);
     if (!decodedToken || decodedToken?.role !== "ADMIN") {
@@ -33,12 +36,30 @@ export default function Topics() {
 
   const getUsers = async () => {
     const response = await UserService.getUsers();
-    return response.data;
+    return response?.data;
   };
   const { data, isLoading, error, mutate, isValidating } = useSWR(
     "users",
     getUsers
   );
+
+  const handleAction = async (id) => {
+    const action = "accept";
+    setSubmitStatus("loading");
+    try {
+      const response = await UserService.postUserAction(id, action);
+      setSubmitStatus("success");
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 1000);
+      mutate('users')
+    } catch (error) {
+      console.log(error?.response);
+      setSubmitStatus(null);
+      // if (error?.response?.data?)
+    }
+    return response.data;
+  };
 
   console.log(data);
 
@@ -108,15 +129,24 @@ export default function Topics() {
                       <Moment date={item.date_joined} format="MMM DD, YYYY" />
                     </Typography>
                   </td>
-                  <td className={`${classes} flex gap-2`}>
-                    <Button
-                      variant="text"
-                      size="sm"
-                      className="rounded-none bg-blue-500 text-white hover:text-black"
-                    >
-                      Accept
-                    </Button>
-                  </td>
+                  {item.is_active == false ? (
+                    <td className={`${classes} flex gap-2`}>
+                      <Button
+                        variant="text"
+                        size="sm"
+                        className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                        onClick={() => handleAction(item.id)}
+                      >
+                        {submitStatus === "loading" ? (
+                          <Spinner color="white" />
+                        ) : submitStatus === "success" ? (
+                          "Success"
+                        ) : (
+                          "Accept"
+                        )}
+                      </Button>
+                    </td>
+                  ) : null}
                 </tr>
               );
             })}

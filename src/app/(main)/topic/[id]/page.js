@@ -47,11 +47,12 @@ export default function Topic() {
   };
 
   const { data, isLoading, error, mutate, isValidating } = useSWR(
-    "TopicsComments",
+   
+    id ?  "TopicsComments": null,
     getTopicComments
   );
 
-  console.log(data);
+
 
   if (
     error?.response?.status == 404 &&
@@ -146,7 +147,7 @@ export default function Topic() {
                             ? "Adding..."
                             : submitStatus === "success"
                             ? "Success"
-                            : "Publish"}
+                            : "Add Comment"}
                         </Button>{" "}
                       </div>
                     </form>

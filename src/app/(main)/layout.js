@@ -9,7 +9,7 @@ export default function CommitteeLayout({ children }) {
       <div className="grid grid-rows-[max-content,max-content,min-content]">
         <MainNavbar />
         <div className="">{children}</div>
-        <div className=" z-0 -mt-10 bg-blue-500 h-80 w-full -bottom-1/4 flex justify-center items-center mb-[5rem]">
+        <div className=" z-0 -mt-10 bg-blue-500 h-80 w-full -bottom-1/4 flex justify-center items-center mb-2">
           <Typography
             variant="h1"
             className="font-montserrat font-bold text-white"

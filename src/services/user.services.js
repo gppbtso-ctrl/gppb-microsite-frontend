@@ -27,10 +27,18 @@ const postComment = (params) => {
   return response;
 };
 
+
 const getUsers = () => {
   const response = api.get(`${apiPrefix}/users?for_activation=${"false"}`);
   return response;
 };
+
+const postUserAction = (id, action) => {
+  const response = api.post(`${apiPrefix}/user-action?id=${id}&action=${action}`);
+
+  return response;
+};
+
 
 const UserService = {
   getCommittees,
@@ -39,6 +47,7 @@ const UserService = {
   postTopic,
   postComment,
   getUsers,
+  postUserAction
 };
 
 export default UserService;
