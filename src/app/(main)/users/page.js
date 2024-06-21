@@ -58,7 +58,7 @@ export default function Topics() {
       setSubmitStatus(null);
       // if (error?.response?.data?)
     }
-    return response.data;
+    return response?.data;
   };
 
   console.log(data);
