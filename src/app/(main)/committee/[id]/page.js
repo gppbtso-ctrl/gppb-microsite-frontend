@@ -16,10 +16,11 @@ import {
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 
 export default function Topics() {
   const { id } = useParams();
+  const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
@@ -35,8 +36,8 @@ export default function Topics() {
     return response.data;
   };
 
-  const { data, isLoading, error, mutate, isValidating } = useSWR(
-    id ?  "comTopics" : null,
+  const { data, isLoading, error, isValidating } = useSWR(
+    id ? "comTopics" : null,
     getComTopics
   );
 

@@ -17,7 +17,7 @@ export default function AboutUs() {
       <Card className="relative p-5 m-3 max-w-5xl rounded-none">
         <div className="flex gap-2 ">
           <div className="pt-5 h-full">
-            <Typography>
+            <Typography className=" text-justify">
               Development of the New Government Procurement Act Pursuant to
               Section 63 of Republic Act No. 9184 (RA 9184), the Government
               Procurement Policy Board (GPPB) is mandated to conduct an annual
@@ -39,7 +39,7 @@ export default function AboutUs() {
             alt="nature image"
           />
         </div>
-        <Typography>
+        <Typography className=" text-justify">
           Recognizing the critical need to assess and ensure a more robust and
           effective procurement framework, the GPPB initiated a comprehensive
           assessment of the current procurement system. To facilitate this, the
@@ -83,7 +83,7 @@ export default function AboutUs() {
           Substitute Bill. <br />
           <br />
         </Typography>
-        <Typography>
+        <Typography className=" text-justify">
           While attending Congressional hearings on the amendment of RA No.
           9184, the GPPB-TSO had simultaneously worked on several studies to be
           included in the proposed amendments covering the study on (i)
@@ -118,11 +118,11 @@ export default function AboutUs() {
         <div className="flex gap-2 ">
           <img
             className=" w-3/5 rounded-lg object-cover object-center  self-stretch mt-1 mb-7 shadow-md"
-            src={'/about2.png'}
+            src={"/about2.png"}
             alt="nature image"
           />
           <div>
-            <Typography>
+            <Typography className=" text-justify">
               The Committee on Revision of Laws harmonized the Substitute Bill
               and the Administrative Bill to come up with House Bill (HB) No.
               9648. This was approved by the Sub-Committee on Revision of Laws
@@ -138,7 +138,7 @@ export default function AboutUs() {
             </Typography>
           </div>
         </div>
-        <Typography>
+        <Typography className=" text-justify">
           Meanwhile, the Administrative Bill is incorporated in Senate Bill (SB)
           No. 2466, introduced by Sen. Sonny Angara, and was read for the first
           reading on 06 November 2023. This was subsequently referred to the
@@ -151,11 +151,11 @@ export default function AboutUs() {
             style={{
               listStyleType: "lower-latin",
             }}
-            className=" list-inside ml-5 flex flex-col gap-2 font-sans"
+            className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
           >
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Embed the principles of open government in the procurement
                 system to enhance transparency and accountability in all
                 government procurement transactions;
@@ -164,7 +164,7 @@ export default function AboutUs() {
 
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Streamline the procurement process through digitalization and
                 the adoption of innovative solutions to enhance operational
                 efficiency and effectiveness of the procurement process;
@@ -173,7 +173,7 @@ export default function AboutUs() {
 
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Institutionalize strategic procurement planning, and the tools
                 and approaches that may be adopted by procuring entities to
                 increase the success rates of procurement transactions and
@@ -187,7 +187,7 @@ export default function AboutUs() {
 
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Incorporate sustainable public procurement principles beginning
                 with the adoption of green procurement strategies, use of life
                 cycle assessment, and inclusion of social considerations in the
@@ -199,7 +199,7 @@ export default function AboutUs() {
 
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Improve the modalities of procurement by providing Procuring
                 Entities flexibility to select the most appropriate and
                 efficient method based on their specific needs, in line with the
@@ -212,7 +212,7 @@ export default function AboutUs() {
 
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Enhance participatory procurement by enabling active Civil
                 Society Organization (CSO) participation in public monitoring
                 through the Observers Portal to address the waning involvement
@@ -221,7 +221,7 @@ export default function AboutUs() {
             </li>
             <li>
               {" "}
-              <span className="ml-2">
+              <span className="ml-2 text-justify">
                 Professionalization of public procurement through the
                 development of specialized qualification standards for
                 procurement positions; a competency and certification framework
@@ -237,7 +237,7 @@ export default function AboutUs() {
           </ol>
         </div>
         <br />
-        <Typography>
+        <Typography className=" text-justify">
           These proposed principles were both incorporated in HB No. 9648 and SB
           No. 2466. Here are the other provisions introduced by the GPPB and its
           TSO and was adopted in the HoR Substitute Bill:
@@ -246,25 +246,25 @@ export default function AboutUs() {
           style={{
             listStyleType: "lower-latin",
           }}
-          className=" list-inside ml-5 flex flex-col gap-2 font-sans"
+          className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
         >
           <li>
             {" "}
-            <span className="ml-2">
+            <span className="ml-2 text-justify">
               Includes qualitative criteria in evaluating
               bids using a predetermined quality-price ratio.​
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
+            <span className="ml-2 text-justify">
               Institutionalizes strategic procurement planning prior to the
               actual procurement by incorporating various mechanisms or
               tools, such as:
               <ol className="list-inside ml-7 flex flex-col gap-2 font-sans">
                 <li className="before:content-['-'] ">
                   {" "}
-                  <span className="ml-2">Market Scoping​</span>
+                  <span className="ml-2 ">Market Scoping​</span>
                 </li>
                 <li className="before:content-['-'] ">
                   {" "}
@@ -309,116 +309,164 @@ export default function AboutUs() {
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Provides for the adoption of a simpler mechanism for price escalation. 
+            <span className="ml-2 text-justify">
+              Provides for the adoption of a simpler mechanism for
+              price escalation.
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Adds the use of Life-Cycle Assessment (LCA) and LCC Analysis as procurement strategies that may be used in designing procurement projects. 
-
+            <span className="ml-2 text-justify">
+              Adds the use of Life-Cycle Assessment (LCA)
+              and LCC Analysis as procurement strategies that may be used
+              in designing procurement projects. 
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Adds sustainable procurement as a principle to align with economic, environmental, and social objectives and promote responsible business practices that benefit organizations and society as a whole. ​ 
+            <span className="ml-2 text-justify">
+              Adds sustainable procurement as a principle to align
+              with economic, environmental, and social objectives and promote
+              responsible business practices that benefit
+              organizations and society as a whole. ​
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Adopts inclusive procurement program.​ 
+            <span className="ml-2">Adopts inclusive procurement program.​</span>
+          </li>
+          <li>
+            {" "}
+            <span className="ml-2 text-justify">
+              Introduces Green Public Procurement in procuring goods,
+              infrastructure projects and consulting services with reduced
+              environmental impact throughout their lifecycle.
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Introduces Green Public Procurement in procuring goods, infrastructure projects and consulting services with reduced environmental impact throughout their lifecycle. 
+            <span className="ml-2 text-justify">
+              Taps into developing Green Local Market through the Department of
+              Trade and industry.
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Taps into developing Green Local Market through the Department of Trade and industry. 
+            <span className="ml-2 text-justify">
+              Amplifies the 3 major roles of the GPPB, to wit: (i) Formulation
+              of the IRR, issuances, and manuals; (ii) Establishment of a
+              Professionalization Program; and (iii) Establishment and
+              implementation of a Strategic Procurement Monitoring Program.
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Amplifies the 3 major roles of the GPPB, to wit: (i) Formulation of the IRR, issuances, and manuals; (ii) Establishment of a Professionalization Program; and (iii) Establishment and implementation of a Strategic Procurement Monitoring Program. 
+            <span className="ml-2 text-justify">
+              Highlights the establishment and institutionalization of the
+              Inter-Agency Technical Working Group (IATWG). The IATWG will
+              provide subject matter expertise to the GPPB in the formulation
+              and review of policies, rules, and regulations related to
+              government procurement.{" "}
             </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Highlights the establishment and institutionalization of the Inter-Agency Technical Working Group (IATWG). The IATWG will provide subject matter expertise to the GPPB in the formulation and review of policies, rules, and regulations related to government procurement.             </span>
+            <span className="ml-2 text-justify">
+              Provides for the establishment of an Integrated System to cover
+              procurement planning until payment of procurement contracts.{" "}
+            </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Provides for the establishment of an Integrated System to cover procurement planning until payment of procurement contracts.             </span>
+            <span className="ml-2 text-justify">
+              Mandates the GPPB to analyze data from PhilGEPS and submitted
+              reports to assist PEs in their strategic procurement planning,
+              formulate procurement policies, detect trends or pattern to
+              prevent fraud and corruptive practices, and promote public
+              awareness on procurement.{" "}
+            </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Mandates the GPPB to analyze data from PhilGEPS and submitted reports to assist PEs in their strategic procurement planning, formulate procurement policies, detect trends or pattern to prevent fraud and corruptive practices, and promote public awareness on procurement.              </span>
+            <span className="ml-2 text-justify">
+              Authorizes the GPPB to establish a single portal that would enable
+              Procuring Entities to have a seamless interconnected database of
+              ongoing projects, licenses, permits and other relevant information
+              that would help them in determining the qualification of a certain
+              bidder.{" "}
+            </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Authorizes the GPPB to establish a single portal that would enable Procuring Entities to have a seamless interconnected database of ongoing projects, licenses, permits and other relevant information that would help them in determining the qualification of a certain bidder.              </span>
+            <span className="ml-2 text-justify">
+              Introduces a new method of procurement for infrastructure
+              projects, i.e. Design and Build Procurement, which leverages on
+              emerging technologies and innovative solutions in engineering and
+              construction.{" "}
+            </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Introduces a new method of procurement for infrastructure projects, i.e. Design and Build Procurement, which leverages on emerging technologies and innovative solutions in engineering and construction.             </span>
+            <span className="ml-2 text-justify">
+              Mandates that all bidders disclose their beneficial ownership (BO)
+              information to participate in government procurement, and for SEC
+              to share the said BO information of corporations.{" "}
+            </span>
           </li>
           <li>
             {" "}
-            <span className="ml-2">
-            Mandates that all bidders disclose their beneficial ownership (BO) information to participate in government procurement, and for SEC to share the said BO information of corporations.              </span>
-          </li>
-          <li>
-            {" "}
-            <span className="ml-2">
-            Clarifies the prioritization and preference to domestic bids that are substantially grown, produced, and manufactured in the Philippines with DTI Domestic Bid Certificate while allowing the participation of foreign bids. 
+            <span className="ml-2 text-justify">
+              Clarifies the prioritization and preference to domestic bids that
+              are substantially grown, produced, and manufactured in the
+              Philippines with DTI Domestic Bid Certificate while allowing the
+              participation of foreign bids.
             </span>
           </li>
         </ol>
-        <br/>
-       
-        <br/>
-     <div className="flex gap-2">
+        <br />
 
-        <Typography>
-        In February 2024, the Senate Committee on Finance held TWG hearings to discuss proposed amendments to RA No. 9184. Following this, on March 2024, SB No. 2593, also known as the New Government Procurement Reform Act, was filed by several committees including Finance, Sustainable Development Goals, Innovation and Futures Thinking, National Defense and Security, Pease, Unification and Reconciliation, Local Government, Civil Services, Government Reorganization, and Professional regulation. 
-
-  <br/>
-
-Upon the Sponsorship of the Chairperson of Senate Committee on Finance of SB No. 2593, several Plenary Hearing was conducted by the Senate from March to May 2024, within which period, the GPPB-TSO has been actively coordinating with the Office of Sen. Angara and supporting the Sponsor. This includes discussion on procurement timelines and different procurement modalities with the objective of simplifying the processes. 
-
- 
-
-        </Typography>
-        <img
+        <br />
+        <div className="flex gap-2">
+          <Typography className=" text-justify">
+            In February 2024, the Senate Committee on Finance held TWG hearings
+            to discuss proposed amendments to RA No. 9184. Following this, on
+            March 2024, SB No. 2593, also known as the New Government
+            Procurement Reform Act, was filed by several committees including
+            Finance, Sustainable Development Goals, Innovation and Futures
+            Thinking, National Defense and Security, Pease, Unification and
+            Reconciliation, Local Government, Civil Services, Government
+            Reorganization, and Professional regulation.
+            <br />
+            Upon the Sponsorship of the Chairperson of Senate Committee on
+            Finance of SB No. 2593, several Plenary Hearing was conducted by the
+            Senate from March to May 2024, within which period, the GPPB-TSO has
+            been actively coordinating with the Office of Sen. Angara and
+            supporting the Sponsor. This includes discussion on procurement
+            timelines and different procurement modalities with the objective of
+            simplifying the processes.
+          </Typography>
+          <img
             className=" w-3/5 rounded-lg object-cover object-center  self-stretch mt-1 mb-7 shadow-md"
-            src={'/about3.png'}
+            src={"/about3.png"}
             alt="nature image"
           />
-
-     </div>
-     <br/>
-     <Typography>
-     After the period of interpellation and amendments, the Senate approved on third reading SB No. 2593 on 21 May 2024, with unanimous support from all Senators. 
-
-      <br/><br/>
-      The legislative journey of the proposed amendments to RA No. 9184 culminated in the ratification of the Bicameral Conference Committee Report on SB No. 2593 and HB No. 9648 on 22 May 2024. 
-<br/><br/>
- 
-
-The ratified Bill is tentatively expected to be enacted into law in June 2024. Thereafter, the GPPB has 180 calendar days to develop the IRR for the newly enacted Government Procurement Law. </Typography>
+        </div>
+        <br />
+        <Typography className=" text-justify">
+          After the period of interpellation and amendments, the Senate approved
+          on third reading SB No. 2593 on 21 May 2024, with unanimous support
+          from all Senators.
+          <br />
+          <br />
+          The legislative journey of the proposed amendments to RA No. 9184
+          culminated in the ratification of the Bicameral Conference Committee
+          Report on SB No. 2593 and HB No. 9648 on 22 May 2024.
+          <br />
+          <br />
+          The ratified Bill is tentatively expected to be enacted into law in
+          June 2024. Thereafter, the GPPB has 180 calendar days to develop the
+          IRR for the newly enacted Government Procurement Law.{" "}
+        </Typography>
       </Card>
     </div>
   );

@@ -3,10 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '',
-        pathname: '/gppb-microsite-backend/media/committee_images/**',
+        protocol: "http",
+        hostname: "localhost",
+        port: "",
+        pathname: "/gppb-microsite-backend/media/committee_images/**",
       },
     ],
   },

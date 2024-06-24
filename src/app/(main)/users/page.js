@@ -18,12 +18,13 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 
 export default function Topics() {
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
 
@@ -36,12 +37,9 @@ export default function Topics() {
 
   const getUsers = async () => {
     const response = await UserService.getUsers();
-    return response?.data;
+    return response.data;
   };
-  const { data, isLoading, error, mutate, isValidating } = useSWR(
-    "users",
-    getUsers
-  );
+  const { data, isLoading, error, isValidating } = useSWR("users", getUsers);
 
   const handleAction = async (id) => {
     const action = "accept";
@@ -52,18 +50,14 @@ export default function Topics() {
       setTimeout(() => {
         setSubmitStatus(null);
       }, 1000);
-      mutate('users')
+      mutate("users");
     } catch (error) {
       console.log(error?.response);
       setSubmitStatus(null);
       // if (error?.response?.data?)
     }
-    return response?.data;
   };
 
-  console.log(data);
-
-  console.log(decodedToken);
   return (
     <div className=" relative w-full h-full flex justify-center items-center z-30">
       <Card className="mt-10 rounded-none">
@@ -88,68 +82,76 @@ export default function Topics() {
             </tr>
           </thead>
           <tbody>
-            {data?.map((item, index) => {
-              const classes = "p-4 border-b border-blue-gray-50";
+            {data ? (
+              data.map((item, index) => {
+                const classes = "p-4 border-b border-blue-gray-50";
 
-              return (
-                <tr key={index}>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {item.email}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {item.first_name}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-normal"
-                    >
-                      {item.last_name}
-                    </Typography>
-                  </td>
-                  <td className={classes}>
-                    <Typography
-                      variant="small"
-                      color="blue-gray"
-                      className="font-medium"
-                    >
-                      <Moment date={item.date_joined} format="MMM DD, YYYY" />
-                    </Typography>
-                  </td>
-                  {item.is_active == false ? (
-                    <td className={`${classes} flex gap-2`}>
-                      <Button
-                        variant="text"
-                        size="sm"
-                        className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                        onClick={() => handleAction(item.id)}
+                return (
+                  <tr key={index}>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
                       >
-                        {submitStatus === "loading" ? (
-                          <Spinner color="white" />
-                        ) : submitStatus === "success" ? (
-                          "Success"
-                        ) : (
-                          "Accept"
-                        )}
-                      </Button>
+                        {item.email}
+                      </Typography>
                     </td>
-                  ) : null}
-                </tr>
-              );
-            })}
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {item.first_name}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-normal"
+                      >
+                        {item.last_name}
+                      </Typography>
+                    </td>
+                    <td className={classes}>
+                      <Typography
+                        variant="small"
+                        color="blue-gray"
+                        className="font-medium"
+                      >
+                        <Moment date={item.date_joined} format="MMM DD, YYYY" />
+                      </Typography>
+                    </td>
+                    {item.is_active == false ? (
+                      <td className={`${classes} flex gap-2`}>
+                        <Button
+                          variant="text"
+                          size="sm"
+                          className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                          onClick={() => handleAction(item.id)}
+                        >
+                          {submitStatus === "loading" ? (
+                            <Spinner color="white" />
+                          ) : submitStatus === "success" ? (
+                            "Success"
+                          ) : (
+                            "Accept"
+                          )}
+                        </Button>
+                      </td>
+                    ) : null}
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td colSpan={4} className="text-center">
+                  Loading Data
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </Card>
