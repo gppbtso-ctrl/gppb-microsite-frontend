@@ -7,7 +7,7 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
-import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faEye, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAuthStore from "@/store/authStore";
 import useSWR from "swr";
@@ -33,7 +33,7 @@ const CommitteeMain = () => {
     getCommittees
   );
 
-  console.log(data, "from main committee");
+  console.log(decodedToken, "from main committee");
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center z-10">
       <div>
@@ -47,8 +47,11 @@ const CommitteeMain = () => {
           {isLoading ? (
             <CardsLoading />
           ) : (
-            data?.map((committee,index) => (
-              <Card key={index} className="mt-1 w-[28rem] md:w-[28rem] lg:w-[30rem] rounded-none border border-gray-300 ">
+            data?.map((committee, index) => (
+              <Card
+                key={index}
+                className="mt-1 w-[28rem] md:w-[28rem] lg:w-[30rem] rounded-none border border-gray-300 "
+              >
                 <CardHeader
                   color="blue-gray"
                   className=" h-[17rem]   max-w-full mx-0 rounded-none mt-0 shadow-md "
@@ -60,7 +63,7 @@ const CommitteeMain = () => {
                   />
                 </CardHeader>
                 <CardBody className="pt-4 flex flex-col gap-1">
-                  <div className="flex justify-between">
+                  <div className="flex  items-center gap-2">
                     <Link href={`/committee/${committee.id}`}>
                       <Typography
                         variant="h6"
@@ -70,6 +73,13 @@ const CommitteeMain = () => {
                         {committee.title}
                       </Typography>
                     </Link>
+                    {loaded ? (
+                      decodedToken?.committee_list?.includes(committee.id) ? (
+                        <Typography className="text-sm text-yellow-400">
+                          <FontAwesomeIcon icon={faStar} />
+                        </Typography>
+                      ) : null
+                    ) : null}
                     {/* <Typography
                       variant="lead"
                       color="blue-gray"
@@ -83,6 +93,7 @@ const CommitteeMain = () => {
                       <FontAwesomeIcon icon={faEye} className=" font-thin " />
                       <span className=" font-montserrat"> 0 </span>
                     </Typography> */}
+
                     <Typography className="text-sm ">
                       <FontAwesomeIcon icon={faComment} />
                       <span className="font-montserrat">
