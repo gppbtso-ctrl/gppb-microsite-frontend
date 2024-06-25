@@ -55,7 +55,10 @@ export default function Topics() {
           src={data?.photo_id}
           className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
         />
-        <Typography className="absolute" color="white" variant="h2">
+        <Typography
+          className="absolute font-montserrat text-6xl font-lead"
+          color="white"
+        >
           {" "}
           {data?.title}
         </Typography>

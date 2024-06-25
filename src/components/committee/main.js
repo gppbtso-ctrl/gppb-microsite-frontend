@@ -57,19 +57,33 @@ const CommitteeMain = () => {
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/50" />
                   <img src={committee.photo_id ?? "/default-com.webp"} />{" "}
                 </CardHeader>
-                <CardBody className="flex flex-col h-[15rem] justify-end z-10  p-6">
-                  <Typography
-                    variant="h3"
-                    color="white"
-                    className=" text-blue-50 font-montserrat font-medium leading-[1.5]"
-                  >
-                    {committee.title}
-                  </Typography>
+                <CardBody className="flex flex-col h-[15rem] justify-end z-10  p-6 pl-1">
+                  <Link href={`/committee/${committee.id}`}>
+                    <Typography
+                      variant="h3"
+                      color="white"
+                      className=" text-blue-50 font-montserrat font-medium leading-[1.5] hover:text-blue-500 transition-all duration-150"
+                    >
+                      {committee.title}
+                    </Typography>
+                  </Link>
                   <Typography className=" text-white self-start">
-                    <span className="flex gap-1 items-center">
-                      <FontAwesomeIcon icon={faComment} />
-                      {committee.topic_count}
-                    </span>
+                    <div className="flex gap-2 items-center">
+                      {loaded ? (
+                        decodedToken?.committee_list?.includes(committee.id) ? (
+                          <Typography className="text-sm text-yellow-400">
+                            <FontAwesomeIcon icon={faStar} />
+                          </Typography>
+                        ) : null
+                      ) : null}
+                      <span>
+                        <FontAwesomeIcon
+                          icon={faComment}
+                          className=" text-blue-400 mr-1"
+                        />
+                        {committee.topic_count}
+                      </span>
+                    </div>
                   </Typography>
                 </CardBody>
               </Card>
