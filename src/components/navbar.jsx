@@ -128,8 +128,6 @@ export const MainNavbar = () => {
                 </>
               ) : (
                 <>
-                
-
                   {/* <Button
                     variant="gradient"
                     size="sm"
@@ -173,20 +171,20 @@ export const MainNavbar = () => {
               as="li"
               variant="small"
               color="blue-gray"
-              className="p-1 font-normal"
+              className="p-1 font-semibold"
             >
-              <a href="#" className="flex items-center">
-                Pages
+              <a href="/committees" className="flex items-center">
+                COMMITEES
               </a>
             </Typography>
             <Typography
               as="li"
               variant="small"
               color="blue-gray"
-              className="p-1 font-normal"
+              className="p-1 font-semibold"
             >
-              <a href="#" className="flex items-center">
-                Pages
+              <a href="/aboutus" className="flex items-center">
+                ABOUT NGPA
               </a>
             </Typography>
           </ul>
@@ -195,12 +193,7 @@ export const MainNavbar = () => {
           <Button fullWidth variant="text" size="sm" className="rounded-none">
             <span>Log In</span>
           </Button>
-          <Button
-            fullWidth
-            variant="gradient"
-            size="sm"
-            className=" rounded-none"
-          >
+          <Button fullWidth variant="text" size="sm" className=" rounded-none">
             <span>Sign in</span>
           </Button>
         </div>
