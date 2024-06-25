@@ -47,9 +47,11 @@ const CommitteeMain = () => {
             <CardsLoading />
           ) : (
             data?.map((committee, index) => (
-              <Card className="relative shadow-lg grid h-full w-full max-w-[28rem] items-end justify-center overflow-hidden text-center">
+              <Card
+                className="relative shadow-lg grid h-full w-full max-w-[28rem] items-end justify-center overflow-hidden text-center"
+                key={committee.id}
+              >
                 <CardHeader
-                  key={index}
                   floated={false}
                   shadow={false}
                   color="transparent"
