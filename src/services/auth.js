@@ -27,6 +27,11 @@ const login = async (params) => {
   return response;
 };
 
+const changePassword = (params) => {
+  const response = api.put(`${apiPrefix}/change-password`, params);
+  return response;
+};
+
 const logout = async () => {
   TokenService.removeUser();
 };
@@ -42,6 +47,7 @@ const AuthService = {
   getCurrentUser,
   validateEmail,
   verifyEmail,
+  changePassword,
 };
 
 export default AuthService;

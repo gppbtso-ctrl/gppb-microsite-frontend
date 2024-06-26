@@ -24,6 +24,7 @@ import {
   PowerIcon,
   RocketLaunchIcon,
   Bars2Icon,
+  KeyIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import AuthService from "@/services/auth";
@@ -32,6 +33,10 @@ const profileMenuItems = [
   {
     label: "Users",
     icon: UserCircleIcon,
+  },
+  {
+    label: "Change Password",
+    icon: KeyIcon,
   },
   {
     label: "Sign Out",
@@ -90,6 +95,8 @@ function ProfileMenu({ decodedToken, removeToken }) {
                   ? handleLogout
                   : label === "Users"
                   ? () => router.push("/users")
+                  : label === "Change Password"
+                  ? () => router.push("/change-password")
                   : closeMenu
               }
               className={`flex items-center gap-2 rounded ${

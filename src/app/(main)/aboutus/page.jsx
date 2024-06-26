@@ -34,7 +34,7 @@ export default function AboutUs() {
             </Typography>
           </div>
           <img
-            className=" w-3/5 rounded-lg object-cover object-center  self-strech my-[1.6rem] shadow-md"
+            className=" w-3/5 rounded-lg object-fit self-strech my-[1.6rem] shadow-md"
             src={"/about1.png"}
             alt="nature image"
           />
@@ -446,7 +446,7 @@ export default function AboutUs() {
             simplifying the processes.
           </Typography>
           <img
-            className=" w-3/5 rounded-lg object-cover object-center  self-stretch mt-1 mb-7 shadow-md"
+            className=" w-3/5 rounded-lg object-cover object-left self-stretch mt-1 mb-7 shadow-md"
             src={"/about3.png"}
             alt="nature image"
           />

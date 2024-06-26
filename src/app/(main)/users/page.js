@@ -25,7 +25,7 @@ export default function Topics() {
   const { mutate } = useSWRConfig();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState({});
   const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
 
   useEffect(() => {
@@ -43,17 +43,25 @@ export default function Topics() {
 
   const handleAction = async (id) => {
     const action = "accept";
-    setSubmitStatus("loading");
+    setSubmitStatus((prevState) => ({ ...prevState, [id]: "loading" }));
     try {
       const response = await UserService.postUserAction(id, action);
-      setSubmitStatus("success");
+      setSubmitStatus((prevState) => ({ ...prevState, [id]: "success" }));
       setTimeout(() => {
-        setSubmitStatus(null);
-      }, 1000);
+        setSubmitStatus((prevState) => {
+          const newItems = { ...prevState };
+          delete newItems[id];
+          return newItems;
+        });
+      }, 1500);
       mutate("users");
     } catch (error) {
       console.log(error?.response);
-      setSubmitStatus(null);
+      setSubmitStatus((prevState) => {
+        const newItems = { ...prevState };
+        delete newItems[id];
+        return newItems;
+      });
       // if (error?.response?.data?)
     }
   };
@@ -131,11 +139,13 @@ export default function Topics() {
                           size="sm"
                           className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
                           onClick={() => handleAction(item.id)}
+                          disabled={item?.id in submitStatus}
                         >
-                          {submitStatus === "loading" ? (
-                            <Spinner color="white" />
+                          {item?.id in submitStatus &&
+                          submitStatus[item.id] === "loading" ? (
+                            <Spinner className="w-10 h-4" color="white" />
                           ) : submitStatus === "success" ? (
-                            "Success"
+                            "success"
                           ) : (
                             "Accept"
                           )}

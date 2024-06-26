@@ -38,7 +38,7 @@ export const MainNavbar = () => {
         <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
           <Typography
             as="a"
-            href="#"
+            href="https://www.gppb.gov.ph/"
             variant="h6"
             className=" cursor-pointer  px-3 text-white group-hover:text-blue-gray-50 font-semibold font-montserrat transition-all  duration-300 "
           >
@@ -189,14 +189,28 @@ export const MainNavbar = () => {
             </Typography>
           </ul>
         </div>
-        <div className="flex justify-center items-center gap-2 mt-1">
-          <Button fullWidth variant="text" size="sm" className="rounded-none">
-            <span>Log In</span>
-          </Button>
-          <Button fullWidth variant="text" size="sm" className=" rounded-none">
-            <span>Sign in</span>
-          </Button>
-        </div>
+        {loaded ? (
+          !decodedToken ? (
+            <div className="flex justify-center items-center gap-2 mt-1">
+              <Button
+                fullWidth
+                variant="text"
+                size="sm"
+                className="rounded-none"
+              >
+                <span>Log In</span>
+              </Button>
+              <Button
+                fullWidth
+                variant="text"
+                size="sm"
+                className=" rounded-none"
+              >
+                <span>Sign in</span>
+              </Button>
+            </div>
+          ) : null
+        ) : null}
       </Collapse>
     </Navbar>
   );
