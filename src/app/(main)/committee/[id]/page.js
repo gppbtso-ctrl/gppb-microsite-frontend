@@ -50,13 +50,13 @@ export default function Topics() {
   console.log(decodedToken);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
-      <div className="w-full h-full max-w-full flex items-center justify-center mb-3">
+      <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
           src={data?.photo_id}
           className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
         />
         <Typography
-          className="absolute font-montserrat text-6xl font-lead"
+          className="absolute font-montserrat text-[calc(1vw+2rem)] font-lead max-w-[50rem] mx-auto p-3"
           color="white"
         >
           {" "}
@@ -70,7 +70,7 @@ export default function Topics() {
             <CardBody className="p-0">
               <div className="flex h-15 w-full gap-5 p-5 py-3 justify-center items-center ">
                 <Typography className="font-montserrat text-black font-semibold max-w-24 ">
-                  Topics
+                  Provisions
                 </Typography>
                 {/* <Typography>Example Topic</Typography> */}
                 <div className="flex justify-end grow">
@@ -82,7 +82,7 @@ export default function Topics() {
                         size="sm"
                         className="rounded-none "
                       >
-                        Add Topic
+                        Add Provision
                       </Button>
                     ) : null
                   ) : null}

@@ -60,12 +60,12 @@ const CommitteeMain = () => {
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/50" />
                   <img src={committee.photo_id ?? "/default-com.webp"} />{" "}
                 </CardHeader>
-                <CardBody className="flex flex-col h-[15rem] w-full justify-end z-10  p-6">
+                <CardBody className="flex flex-col h-[15rem]  min-w-[28rem]  justify-end z-10  p-6">
                   <Link href={`/committee/${committee.id}`}>
                     <Typography
-                      variant="h3"
+                      variant="h4"
                       color="white"
-                      className="  text-left text-blue-50 min-w-[20rem] font-montserrat font-medium leading-[1.5] hover:text-blue-500 transition-all duration-150"
+                      className="  text-left text-blue-50 text-[1.7rem]  font-montserrat font-medium leading-[1.5] hover:text-blue-500 transition-all duration-150"
                     >
                       {committee.title}
                     </Typography>

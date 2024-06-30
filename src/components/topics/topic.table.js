@@ -40,7 +40,7 @@ export const TopicTable = ({ data }) => {
               <tr key={item.id}>
                 <td class="p-3 px-4 border-b border-blue-gray-50">
                   <div className=" lg:w-[32rem] max-w-[12rem]  lg:max-w-[40rem] break-words">
-                    <Link href={`/topic/${item.id}`}>
+                    <Link href={`/provision/${item.id}`}>
                       <Typography className="font-semibold font-montserrat hover:text-blue-400 transition-all duration-150">
                         {item.subject}
                       </Typography>
