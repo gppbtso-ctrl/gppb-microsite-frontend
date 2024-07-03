@@ -17,6 +17,20 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+
+const myEventsList = [
+  {
+    id: 1,
+    title: "sadasdsadsadsadsadshajkhkjh",
+    description: "dsadsad",
+    start: new Date("2024-07-03T14:17:16+08:00"),
+    end: new Date("2024-07-03T14:17:16+08:00"),
+  },
+];
+const localizer = momentLocalizer(moment);
 
 export default function Topics() {
   const { id } = useParams();
@@ -62,6 +76,16 @@ export default function Topics() {
           {" "}
           {data?.title}
         </Typography>
+      </div>
+      <div>
+        <Calendar
+          localizer={localizer}
+          events={myEventsList}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 500 }}
+          defaultDate={moment().toDate()}
+        />
       </div>
       <div>
         <div className="max-w-4xl w-full flex justify-end"></div>
