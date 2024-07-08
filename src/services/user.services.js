@@ -40,6 +40,18 @@ const postUserAction = (id, action) => {
   return response;
 };
 
+const calendarActDelete = (id) => {
+  const response = api.delete(`${apiPrefix}/calendar-activity/${id}`);
+
+  return response;
+};
+
+const addCalendarAct = (id, data) => {
+  const response = api.post(`${apiPrefix}/calendar-activities/${id}`, data);
+
+  return response;
+};
+
 const getComCalendarActivities = (id, year) => {
   const response = api.get(`${apiPrefix}/calendar-activities/${id}/${year}`);
   return response;
@@ -54,6 +66,8 @@ const UserService = {
   getUsers,
   postUserAction,
   getComCalendarActivities,
+  calendarActDelete,
+  addCalendarAct,
 };
 
 export default UserService;
