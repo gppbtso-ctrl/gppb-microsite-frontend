@@ -53,10 +53,14 @@ const addCalendarAct = (id, data) => {
 };
 
 const getComCalendarActivities = (id, year) => {
-  const response = api.get(`${apiPrefix}/calendar-activities/${id}/${year}`);
+  const response = api.get(`${apiPrefix}/get-calendar-activities/${id}?year=${year}`);
   return response;
 };
 
+const getComListOfMembers = (id) => {
+  const response = api.get(`${apiPrefix}/instance-committee-users?id=${id}`);
+  return response;
+};
 const UserService = {
   getCommittees,
   getComTopics,
@@ -68,6 +72,7 @@ const UserService = {
   getComCalendarActivities,
   calendarActDelete,
   addCalendarAct,
+  getComListOfMembers
 };
 
 export default UserService;

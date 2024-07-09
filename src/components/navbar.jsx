@@ -6,6 +6,7 @@ import {
   Button,
   Collapse,
   IconButton,
+  Input,
   MobileNav,
   Navbar,
   Typography,
@@ -14,13 +15,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import ProfileMenu from "./navbar-profilemenu";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const MainNavbar = () => {
   const [isPending, startTransition] = useTransition();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
+
   const [openNav, setOpenNav] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -32,8 +37,15 @@ export const MainNavbar = () => {
     setLoaded(true);
   }, [decodedToken]);
 
+
+  const handleSearch =  () => {
+    router.push(`/search?value=${searchValue}`);
+  };
+
+
+console.log(searchValue)
   return (
-    <Navbar className="sticky top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none" color="transparent">
+    <Navbar className="sticky top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
         <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
           <Typography
@@ -49,6 +61,28 @@ export const MainNavbar = () => {
           </Typography>
         </div>
         <div className="flex items-center gap-1">
+          <div className="hidden lg:inline-block">
+            <div className=" relative flex w-full max-w-[30rem]">
+              
+              <Input
+                type="Search"
+                label="Search"
+                value={searchValue}
+                onChange={(e)=>setSearchValue(e.target.value)}
+                className="pr-[3.5rem]"
+                containerProps={{
+                  className: "min-w-0",
+                }}
+              />
+              <Button
+                onClick={handleSearch}
+                size="sm"
+                className="!absolute right-1 top-1 rounded"
+              >
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </Button>
+            </div>
+          </div>
           <Button
             variant="text"
             size="sm"
@@ -166,6 +200,19 @@ export const MainNavbar = () => {
       </div>
       <Collapse open={openNav}>
         <div className="py-2 px-3">
+          <div className=" relative flex w-full max-w-full">
+            <Input
+              type="Search"
+              label="Search"
+              className="pr-[3.5rem]"
+              containerProps={{
+                className: "min-w-0",
+              }}
+            />
+            <Button size="sm" className="!absolute right-1 top-1 rounded"  >
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Button>
+          </div>
           <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
               as="li"

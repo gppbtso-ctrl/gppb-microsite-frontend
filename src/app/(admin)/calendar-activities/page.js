@@ -236,6 +236,7 @@ export default function CalendarActivities() {
                               className="rounded-sm bg-blue-500 text-white hover:text-black  "
                               onClick={() => handleDelete(item.id)}
                               disabled={item?.id in submitStatus}
+                              color="red"
                             >
                               {item?.id in submitStatus &&
                               submitStatus[item.id] === "loading" ? (

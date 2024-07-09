@@ -48,7 +48,7 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
     <Dialog open={open} handler={handleOpen} className="rounded-none">
       <DialogHeader>
         <Typography variant="h5" className="font-montserrat">
-          Add Topic
+          Add Activity
         </Typography>
       </DialogHeader>
       <DialogBody>
@@ -80,7 +80,7 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
             </div>
             <div className="w-full">
               <div class="relative w-full min-w-[200px]">
-                <Typography>Start Date</Typography>
+                <Typography>End Date</Typography>
                 <input
                   type="datetime-local"
                   {...register("end", { required: true })}

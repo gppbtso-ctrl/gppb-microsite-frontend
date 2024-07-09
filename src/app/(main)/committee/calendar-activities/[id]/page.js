@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Image from "next/image";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter, usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -24,16 +24,15 @@ import useLoading from "@/utils/use-loading";
 import LoadingScreen from "@/components/loading/loading";
 
 const localizer = momentLocalizer(moment);
-
 export default function Topics() {
-  const loading = useLoading(1200)
-  const pathname = usePathname()
+  const loading = useLoading(1200);
   const { id } = useParams();
   const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
+  const pathname = usePathname();
   useEffect(() => {
     setLoaded(true);
   }, [decodedToken]);
@@ -56,10 +55,30 @@ export default function Topics() {
   ) {
     router.push("/404");
   }
-  console.log(decodedToken);
+
+  const getComCalendarActivities = async () => {
+    const response = await UserService.getComCalendarActivities(id);
+    return response.data;
+  };
+
+  const {
+    data: calActivities,
+    isLoading: calIsLoading,
+    error: calError,
+    isValidating: CalIsValidating,
+  } = useSWR(id ? "comCalendarActivities" : null, getComCalendarActivities);
+
+  const convertedActivities = calActivities?.map((activity) => ({
+    ...activity,
+    start: new Date(activity.start),
+    end: new Date(activity.end),
+  }));
+
+  console.log(data, convertedActivities);
+  console.log(pathname);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
-      {loading ? <LoadingScreen/> : null}
+      {loading ? <LoadingScreen /> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
           src={data?.photo_id}
@@ -78,12 +97,10 @@ export default function Topics() {
         <Button
           variant="text"
           size="sm"
-          className="relative inline-block rounded-none hover:text-blue-400"
+          className=":inline-block rounded-none hover:text-blue-400 "
           onClick={() => router.push(`/committee/${id}`)}
         >
-         <span className={`font-sans text-[1.2em] ${pathname === `/committee/${id}` ? 'text-blue-700' : ''}`}>Provisions</span>
-         {pathname === `/committee/${id}` ? <div className="w-full relative h-[3px] top-2 bg-blue-700"/> : null}
-         
+          <span className="font-sans text-[1.2em]">Provisions</span>
         </Button>{" "}
         <Button
           variant="text"
@@ -96,44 +113,38 @@ export default function Topics() {
         <Button
           variant="text"
           size="sm"
-          className="inline-block rounded-none hover:text-blue-400"
+          className={`relative rounded-none hover:text-blue-400 ${
+            pathname === `/committee/calendar-activities/${id}`
+              ? "pointer-events-none"
+              : ""
+          }` }
           onClick={() => router.push(`/committee/calendar-activities/${id}`)}
         >
-<span className={`font-sans text-[1.2em] ${pathname === `/committee/calendar-activities/${id}` ? 'text-blue-500' : ''}`}>
-Calendar Activities
-</span>        </Button>
+          <span
+            className={`font-sans text-[1.2em] ${
+              pathname === `/committee/calendar-activities/${id}`
+                ? "text-blue-500"
+                : ""
+            }`}
+          >
+            Calendar Activities
+          </span>{" "}
+          { pathname === `/committee/calendar-activities/${id}` ? <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700"/> : null}
+        </Button>
       </div>
-      <div>
-        <div className=" w-full flex justify-end"></div>
-        <div className="relative w-full z-40">
-          <Card className="mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-none border border-gray-500 !p-0">
-            <CardBody className="p-0 w-full max-w-[60rem]">
-              <div className="flex h-15 w-full gap-5 p-5 py-3 justify-center items-center ">
-                <Typography className="font-montserrat text-black font-semibold max-w-24 ">
-                  Provisions
-                </Typography>
-                {/* <Typography>Example Topic</Typography> */}
-                <div className="flex justify-end grow">
-                  {loaded ? (
-                    decodedToken?.role === "TWG" ||
-                    decodedToken?.role === "ADMIN" ? (
-                      <Button
-                        onClick={handleOpen}
-                        size="sm"
-                        className="rounded-none "
-                      >
-                        Add Provision
-                      </Button>
-                    ) : null
-                  ) : null}
-                </div>
-              </div>
-              <div className="bg-blue-gray-300 h-[1px]"></div>
-              <TopicTable data={data} />
-            </CardBody>
-          </Card>
-        </div>
-      </div>
+      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] p-2 shadow-lg">
+        {calActivities ? (
+          <Calendar
+            localizer={localizer}
+            events={convertedActivities}
+            startAccessor="start"
+            endAccessor="end"
+            style={{ height: 500, width: "100%" }}
+            defaultDate={moment().toDate()}
+          />
+        ) : null}
+      </Card>
+
       <AddTopicDialog open={open} handleOpen={handleOpen} id={data?.id} />
     </div>
   );
