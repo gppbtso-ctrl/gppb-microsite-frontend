@@ -61,6 +61,12 @@ const getComListOfMembers = (id) => {
   const response = api.get(`${apiPrefix}/instance-committee-users?id=${id}`);
   return response;
 };
+
+const search = (value) => {
+  const response = api.get(`${apiPrefix}/search?search=${value}`);
+  return response;
+};
+
 const UserService = {
   getCommittees,
   getComTopics,
@@ -72,7 +78,8 @@ const UserService = {
   getComCalendarActivities,
   calendarActDelete,
   addCalendarAct,
-  getComListOfMembers
+  getComListOfMembers,
+  search
 };
 
 export default UserService;

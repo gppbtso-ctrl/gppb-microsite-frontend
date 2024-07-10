@@ -67,8 +67,8 @@ export default function Topics() {
   };
 
   return (
-    <div className=" relative w-full h-full flex justify-center items-center z-30">
-      <Card className="mt-10 rounded-none">
+    <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
+      <Card className="mt-10 rounded-none min-w-[50vw]">
         {" "}
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -91,70 +91,78 @@ export default function Topics() {
           </thead>
           <tbody>
             {data ? (
-              data.map((item, index) => {
-                const classes = "p-4 border-b border-blue-gray-50";
-
-                return (
-                  <tr key={index}>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {item.email}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {item.first_name}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {item.last_name}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-medium"
-                      >
-                        <Moment date={item.date_joined} format="MMM DD, YYYY" />
-                      </Typography>
-                    </td>
-                    {item.is_active == false ? (
-                      <td className={`${classes} flex gap-2`}>
-                        <Button
-                          variant="text"
-                          size="sm"
-                          className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                          onClick={() => handleAction(item.id)}
-                          disabled={item?.id in submitStatus}
+              data?.length !== 0 ? (
+                data.map((item, index) => {
+                  const classes = "p-4 border-b border-blue-gray-50";
+                  return (
+                    <tr key={index}>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
                         >
-                          {item?.id in submitStatus &&
-                          submitStatus[item.id] === "loading" ? (
-                            <Spinner className="w-10 h-4" color="white" />
-                          ) : submitStatus === "success" ? (
-                            "success"
-                          ) : (
-                            "Accept"
-                          )}
-                        </Button>
+                          {item.email}
+                        </Typography>
                       </td>
-                    ) : null}
-                  </tr>
-                );
-              })
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {item.first_name}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {item.last_name}
+                        </Typography>
+                      </td>
+                      <td className={classes}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-medium"
+                        >
+                          <Moment
+                            date={item.date_joined}
+                            format="MMM DD, YYYY"
+                          />
+                        </Typography>
+                      </td>
+                      {item.is_active == false ? (
+                        <td className={`${classes} flex gap-2`}>
+                          <Button
+                            variant="text"
+                            size="sm"
+                            className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                            onClick={() => handleAction(item.id)}
+                            disabled={item?.id in submitStatus}
+                          >
+                            {item?.id in submitStatus &&
+                            submitStatus[item.id] === "loading" ? (
+                              <Spinner className="w-10 h-4" color="white" />
+                            ) : submitStatus === "success" ? (
+                              "success"
+                            ) : (
+                              "Accept"
+                            )}
+                          </Button>
+                        </td>
+                      ) : null}
+                    </tr>
+                  );
+                })
+              ) :  <tr>
+              <td colSpan={4} className="text-center">
+                No Data
+              </td>
+            </tr>
             ) : (
               <tr>
                 <td colSpan={4} className="text-center">

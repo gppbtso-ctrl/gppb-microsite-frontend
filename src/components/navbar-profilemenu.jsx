@@ -25,6 +25,7 @@ import {
   RocketLaunchIcon,
   Bars2Icon,
   KeyIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import AuthService from "@/services/auth";
@@ -33,6 +34,10 @@ const profileMenuItems = [
   {
     label: "Users",
     icon: UserCircleIcon,
+  },
+  {
+    label: "Calendar Activities",
+    icon: CalendarDaysIcon,
   },
   {
     label: "Change Password",
@@ -95,6 +100,8 @@ function ProfileMenu({ decodedToken, removeToken }) {
                   ? handleLogout
                   : label === "Users"
                   ? () => router.push("/users")
+                  : label === "Calendar Activities"
+                  ? () => router.push("/calendar-activities")
                   : label === "Change Password"
                   ? () => router.push("/change-password")
                   : closeMenu

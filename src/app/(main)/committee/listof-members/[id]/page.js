@@ -20,10 +20,13 @@ import useSWR, { useSWRConfig } from "swr";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import useLoading from "@/utils/use-loading";
+import LoadingScreen from "@/components/loading/loading";
 
 
 const localizer = momentLocalizer(moment);
 export default function Topics() {
+  const loading = useLoading(1200);
   const { id } = useParams();
   const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
@@ -67,9 +70,10 @@ export default function Topics() {
     isValidating: clomIsValidating,
   } = useSWR(id ? "comListOfMembers" : null, getComListOfMembers);
 
-console.log(clomData)
+
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
+          {loading ? <LoadingScreen/> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
           src={data?.photo_id}
@@ -88,28 +92,66 @@ console.log(clomData)
         <Button
           variant="text"
           size="sm"
-          className=":inline-block rounded-none hover:text-blue-400"
+          className={`relative rounded-none hover:text-blue-400 ${
+            pathname === `/committee/${id}`
+              ? "pointer-events-none"
+              : ""
+          }` }
           onClick={() => router.push(`/committee/${id}`)}
         >
-          <span className="font-sans text-[1.2em]">Provisions</span>
+
+          <span
+            className={`font-sans text-[1.2em] ${
+              pathname === `/committee/${id}`
+                ? "text-blue-500"
+                : ""
+            }`}
+          >Provisions</span>
+          { pathname === `/committee/${id}` ? <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700"/> : null}
+         
         </Button>{" "}
         <Button
           variant="text"
           size="sm"
-          className="inline-block rounded-none hover:text-blue-400"
+          className={`relative rounded-none hover:text-blue-400 ${
+            pathname === `/committee/listof-members/${id}`
+              ? "pointer-events-none"
+              : ""
+          }` }
           onClick={() => router.push(`/committee/listof-members/${id}`)}
         >
-         <span className={`font-sans text-[1.2em] ${pathname === `/committee/listof-members/${id}` ? 'text-blue-500' : ''}`}>List Of Members</span>
+
+          <span
+            className={`font-sans text-[1.2em] ${
+              pathname === `/committee/listof-members/${id}`
+                ? "text-blue-500"
+                : ""
+            }`}
+          >List Of Members</span>
+          { pathname === `/committee/listof-members/${id}` ? <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700"/> : null}
+         
         </Button>{" "}
         <Button
           variant="text"
           size="sm"
-          className="inline-block rounded-none hover:text-blue-400"
+          className={`relative rounded-none hover:text-blue-400 ${
+            pathname === `/committee/calendar-activities/${id}`
+              ? "pointer-events-none"
+              : ""
+          }` }
           onClick={() => router.push(`/committee/calendar-activities/${id}`)}
         >
-<span className={`font-sans text-[1.2em] ${pathname === `/committee/calendar-activities/${id}` ? 'text-blue-500' : ''}`}>
-Calendar Activities
-</span>        </Button>
+          <span
+            className={`font-sans text-[1.2em] ${
+              pathname === `/committee/calendar-activities/${id}`
+                ? "text-blue-500"
+                : ""
+            }`}
+          >
+            Calendar Activities
+          </span>{" "}
+        
+        </Button>
       </div>
       <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] shadow-lg">
       <table className="w-full min-w-max table-auto text-left border border-gray-500">
@@ -129,7 +171,7 @@ Calendar Activities
           </tr>
         </thead>
         <tbody>
-          {clomData?.map((item, index) => (
+          {clomData?.length !== 0 ? clomData?.map((item, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
                     <td className="p-4 w-8">
                 <Typography variant="small" color="blue-gray" className="font-normal text-left">
@@ -148,7 +190,15 @@ Calendar Activities
               </td>
              
             </tr>
-          ))}
+          )):  <tr className="even:bg-blue-gray-50/50">
+          <td className="p-4 w-8" colSpan={3}>
+      <Typography variant="small" color="blue-gray" className="font-normal text-center">
+        No Data!
+      </Typography>
+    </td>
+
+   
+  </tr>}
         </tbody>
       </table>
       </Card>

@@ -176,7 +176,7 @@ export default function CalendarActivities() {
                   </tr>
                 </thead>
                 <tbody>
-                  {calActDetails ? (
+                  {calActDetails ? calActDetails?.length !== 0 ? (
                     calActDetails.map((item, index) => {
                       const classes = "p-4 border-b border-blue-gray-50";
 
@@ -250,10 +250,14 @@ export default function CalendarActivities() {
                           </td>
                         </tr>
                       );
-                    })
-                  ) : (
+                    }) 
+                  ) : <tr>
+                  <td colSpan={4} className="text-center p-5">
+                   No Data
+                  </td>
+                </tr>  : (
                     <tr>
-                      <td colSpan={4} className="text-center">
+                      <td colSpan={4} className="text-center p-5">
                         Loading Data
                       </td>
                     </tr>
