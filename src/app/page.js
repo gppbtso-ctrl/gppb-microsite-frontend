@@ -31,7 +31,7 @@ export default function CommitteeLayout({ children }) {
             start: "top center",
             end: "bottom 55%",
             toggleActions: "play reverse play play",
-            markers: true,
+      
           },
         })
         .from(".animText", {
@@ -58,7 +58,7 @@ export default function CommitteeLayout({ children }) {
         trigger: containerAbout.current,
         start: "top top",
         end: "bottom 85%",
-        markers: true,
+   
         pin: true,
       });
     },
@@ -90,13 +90,7 @@ export default function CommitteeLayout({ children }) {
             start: "top top",
             bottom: "bottom",
             toggleActions: "restart play resume reset",
-            markers: {
-              startColor: "white",
-              endColor: "white",
-              fontSize: "18px",
-              fontWeight: "bold",
-              indent: 20,
-            },
+           
           },
         })
         .from(".animText", {
