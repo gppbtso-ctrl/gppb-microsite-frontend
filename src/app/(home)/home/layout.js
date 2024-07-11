@@ -6,6 +6,9 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import ScrollToTop from "react-scroll-to-top";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronCircleUp, faUpDown } from "@fortawesome/free-solid-svg-icons";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CommitteeLayout({ children }) {
@@ -67,7 +70,7 @@ export default function CommitteeLayout({ children }) {
             trigger: aboutSection.current,
             start: "top top",
             bottom: "bottom",
-            scrub: true,
+            toggleActions: "restart play resume reset",
             markers: {
               startColor: "white",
               endColor: "white",
@@ -79,16 +82,17 @@ export default function CommitteeLayout({ children }) {
         })
         .from(".animText", {
           yPercent: 150,
-          duration: 2,
+          duration: 0.9,
+          skewy: 6,
           ease: "power4.out",
-          stagger: 1,
+          stagger: 0.3,
         })
         .from(".descriptionText", {
           yPercent: 100,
           opacity: 0,
-          duration: 1.5,
+          duration: 0.5,
           ease: "power3.out",
-          stagger: 1,
+          stagger: 0.2,
         });
     },
     { scope: aboutSection }
@@ -96,6 +100,7 @@ export default function CommitteeLayout({ children }) {
 
   return (
     <div className="relative min-h-screen">
+   
       <section class="relative flex flex-col min-h-screen bg-slate-800 text-white  bg-blend-overlay  bg-cover  bg-[url('/Home.png')] z-10">
         <div class="flex-1  flex items-center">
           <div
@@ -104,7 +109,7 @@ export default function CommitteeLayout({ children }) {
           >
             <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
               <Typography className="absolute text-4xl lg:text-7xl text-left font-normal uppercase animText">
-                Welcome
+                Welcome To
               </Typography>
             </div>
 
@@ -133,10 +138,10 @@ export default function CommitteeLayout({ children }) {
       <div className="absolute w-full  h-full top-10 z-0">
         <section
           ref={containerAbout}
-          class=" flex flex-row justify-center  min-h-[200vh] bg-slate-800 text-white bg-light-blue-900 bg-blend-overlay "
+          class=" flex flex-row justify-center  shadow-lg min-h-[200vh]  text-white  bg-gradient-to-b from-light-blue-900 to-[#0C2D48] bg-blend-overlay "
         >
           <div
-            class="grow flex flex-col gap-2 max-w-[65rem] justify-start m-10 mt-[30rem] mx- w-full"
+            class="grow flex flex-col gap-2 max-w-[65rem] justify-start m-10 mt-[25rem] mx- w-full"
             ref={aboutSection}
           >
             <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
@@ -221,11 +226,12 @@ export default function CommitteeLayout({ children }) {
                 analytics, and new evaluation criteria.
               </Typography>
               <Typography className="text-lg  tracking-wide antialiased font-sans mt-5  text-justify descriptionText ">
-              For easy reference, the GPPB Resolution No. 04-2024 can be found here: XXX 
+                For easy reference, the GPPB Resolution No. 04-2024 can be found
+                here: XXX
               </Typography>
-              
-              <Typography className="text-lg tracking-wide antialiased font-sans mt-5  text-justify descriptionText underline ">
-              Main Features of the Microsite 
+
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
+                Main Features of the Microsite
               </Typography>
               <ul
                 style={{
@@ -234,30 +240,135 @@ export default function CommitteeLayout({ children }) {
                 className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
               >
                 <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
-                <b>Committee Information:</b> Learn about the various committees formed to draft the rules and regulations for the NGPA. 
+                  <b>Committee Information:</b> Learn about the various
+                  committees formed to draft the rules and regulations for the
+                  NGPA.
                 </li>
                 <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
-                <b>Resource Library:</b> Access the matrix of provisions, associated issuances, and other relevant documents related to NGPA. {" "}
+                  <b>Resource Library:</b> Access the matrix of provisions,
+                  associated issuances, and other relevant documents related to
+                  NGPA.{" "}
                 </li>
                 <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
-                <b>Activity Calendar:</b> Keep track of upcoming committee meetings, stakeholder consultations, and other events related to the NGPA. 
+                  <b>Activity Calendar:</b> Keep track of upcoming committee
+                  meetings, stakeholder consultations, and other events related
+                  to the NGPA.
                 </li>
                 <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
-                <b>Feedback Portal:</b> Provide your inputs and suggestions to help in the formulation of the necessary rules and regulations of the NGPA in order to shape the future of government procurement in the Philippines. 
+                  <b>Feedback Portal:</b> Provide your inputs and suggestions to
+                  help in the formulation of the necessary rules and regulations
+                  of the NGPA in order to shape the future of government
+                  procurement in the Philippines.
                 </li>
                 <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
-                <b>Latest News and Updates:</b> Stay informed about the newest developments in the NGPA implementation process as they unfold.                 </li>
+                  <b>Latest News and Updates:</b> Stay informed about the newest
+                  developments in the NGPA implementation process as they
+                  unfold.{" "}
+                </li>
               </ul>
-   
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
+                Registration Procedures
+              </Typography>
 
- 
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-5.5  text-justify descriptionText">
+                To participate in the discussions and contribute to the NGPA
+                implementation, please follow these registration steps:
+              </Typography>
 
-
-        
+              <ol
+                style={{
+                  listStyleType: "decimal",
+                }}
+                className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
+              >
+                <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <b>Create an Account:</b> Click on the "Register" button at
+                  the top right corner of the homepage and fill in the required
+                  information, including your name, email address, and
+                  organization.{" "}
+                </li>
+                <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <b>Verify Your Email:</b> After registration, you will receive
+                  a verification email. Click on the link provided to verify
+                  your email address.{" "}
+                </li>
+                <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <b> Complete Your Profile:</b> Once your email is verified,
+                  log in to your account and complete your profile by providing
+                  additional details such as your expertise and areas of
+                  interest.{" "}
+                </li>
+                <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <b>Join Committees:</b> Browse through each Committee and
+                  select a maximum of three (3) Committees that you are
+                  interested in joining. You can apply to become a member by
+                  providing a brief statement of your qualifications and
+                  contributions you can offer.
+                </li>
+                <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <b>Join Committees:</b> Browse through each Committee and
+                  select a maximum of three (3) Committees that you are
+                  interested in joining. You can apply to become a member by
+                  providing a brief statement of your qualifications and
+                  contributions you can offer.
+                </li>
+              </ol>
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
+                For any questions or assistance during the registration process,
+                please contact our support team at ngpa@gppb.gov.ph or call (02)
+                XXXX-XXXX.
+              </Typography>
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-6  mb-3 text-justify descriptionText">
+                Thank you for visiting the NGPA Microsite. Your participation
+                and input are crucial to the success of the New Government
+                Procurement Act and the continuous improvement of our nation's
+                procurement system.
+              </Typography>
             </div>
           </div>
         </section>
+        <section class="relative flex flex-col min-h-[40vh]  bg-gradient-to-b  from-[#0C2D48] to-[#003B73] bg-blend-overlay text-white    z-10">
+          <div className=" mt-[3rem] mb-5 mx-10 rounded-lg flex flex-col gap-1 border border-blue-800/15 p-10 px-14 shadow-lg backdrop-blur-md bg-gradient-to-b  from-[#0C2D48]/10 to-[#003B73]">
+          <Typography className="text-3xl tracking-wide antialiased font-sans uppercase">
+            Government
+          </Typography>
+          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          Procurement Policy
+          </Typography>
+          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          Board - Technical 
+          </Typography>
+          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          Support Office
+          </Typography>
+
+          <Typography className="text-lg mt-5 tracking-wide  antialiased font-sans uppercase">
+         GPPB-TSO Building, Commonwealth Ave, <br/>UP Diliman Campus, Quezon City
+          </Typography>
+
+          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
+            Phone
+          </Typography>
+          <Typography className="text-lg tracking-wide  antialiased font-sans uppercase">
+           (02) 5322-6222
+          </Typography>
+
+          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
+            Email
+          </Typography>
+          <Typography className="text-lg  tracking-wide  antialiased font-sans uppercase">
+           gppb@gppb.gov.ph
+          </Typography>
+          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
+            Social
+          </Typography>
+          </div>
+
+         
+        </section>
       </div>
+      <ScrollToTop smooth className=" !bg-transparent !shadow-none ml-[10rem]" component={<p className="text-[2rem] ml-5 mt-5 lg:ml-0 lg:mt-0 text-white"><FontAwesomeIcon icon={faChevronCircleUp}/></p>} />
     </div>
+    
   );
 }

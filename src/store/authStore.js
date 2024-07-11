@@ -11,8 +11,6 @@ const getAccessToken = () => {
 
 const useAuthStore = create((set) => {
   // Retrieve token from localStorage
-
-  
   const token = getAccessToken()
   let decodedToken = null;
 
