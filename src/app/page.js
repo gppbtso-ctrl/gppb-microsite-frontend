@@ -232,13 +232,13 @@ export default function CommitteeLayout({ children }) {
                   Following extensive consultations and legislative processes,
                   House Bill No. 9648 and Senate Bill No. 2593, known as the New
                   Government Procurement Act (NGPA), were approved and are now
-                  awaiting the President's signature.
+                  awaiting the President&apos;s signature.
                 </li>
               </ul>
               <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
-                The GPPB's 2nd Regular Meeting on June 7, 2024, approved the
+                The GPPB&apos;s 2nd Regular Meeting on June 7, 2024, approved the
                 creation of specific committees to draft the rules and
-                regulations necessary for the NGPA's implementation.
+                regulations necessary for the NGPA&apos;s implementation.
               </Typography>
 
               <Typography className="text-lg  tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
@@ -344,7 +344,7 @@ export default function CommitteeLayout({ children }) {
               <Typography className="text-lg tracking-wide antialiased font-sans mt-6  mb-3 text-justify descriptionText">
                 Thank you for visiting the NGPA Microsite. Your participation
                 and input are crucial to the success of the New Government
-                Procurement Act and the continuous improvement of our nation's
+                Procurement Act and the continuous improvement of our nation&apos;s
                 procurement system.
               </Typography>
             </div>
