@@ -48,7 +48,7 @@ console.log(searchValue)
     <Navbar className="sticky top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
         <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
-          <Typography
+          {/* <Typography
             as="a"
             href="https://www.gppb.gov.ph/"
             variant="h6"
@@ -58,7 +58,7 @@ console.log(searchValue)
             <span className="text-black text-2xl group-hover:text-blue-600 transition-all  duration-300">
               .
             </span>
-          </Typography>
+          </Typography> */}
         </div>
         <div className="flex items-center gap-1">
           <div className="hidden lg:inline-block">
