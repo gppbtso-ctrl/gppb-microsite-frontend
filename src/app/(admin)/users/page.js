@@ -26,7 +26,7 @@ export default function Topics() {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({});
-  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Date Joined", ""];
+  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Statement", "Date Joined", ""];
 
   useEffect(() => {
     setLoaded(true);
@@ -68,7 +68,7 @@ export default function Topics() {
 
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
-      <Card className="mt-10 rounded-none min-w-[50vw]">
+      <Card className="mt-10 rounded-none max-w-[80vw] overflow-auto">
         {" "}
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -123,6 +123,15 @@ export default function Topics() {
                           {item.last_name}
                         </Typography>
                       </td>
+                      <td className={`${classes} max-w-[20rem]`}>
+                        <Typography
+                          variant="small"
+                          color="blue-gray"
+                          className="font-normal"
+                        >
+                          {item.brief_statement}
+                        </Typography>
+                      </td>
                       <td className={classes}>
                         <Typography
                           variant="small"
@@ -136,7 +145,7 @@ export default function Topics() {
                         </Typography>
                       </td>
                       {item.is_active == false ? (
-                        <td className={`${classes} flex gap-2`}>
+                        <td className={`${classes} max-w-10`}>
                           <Button
                             variant="text"
                             size="sm"

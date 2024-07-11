@@ -42,7 +42,7 @@ export default function SearchComponent() {
 
   return (
     <Suspense>
-    <div className="relative flex flex-col justify-start items-center z-10 min-h-[52vh] ">
+    <div className="relative flex flex-col justify-start items-center z-10 min-h-[58vh] ">
       <Card className="relative m-3 py-2  rounded-none min-w-[90vw] lg:min-w-[55vw] flex flex-col justify-start">
         <div className="flex gap-2">
           <Typography className="text-2xl py-2 px-4">

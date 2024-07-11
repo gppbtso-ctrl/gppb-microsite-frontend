@@ -61,7 +61,7 @@ console.log(searchValue)
           </Typography> */}
         </div>
         <div className="flex items-center gap-1">
-          <div className="hidden lg:inline-block">
+          <div className="hidden lg:inline-block mr-1">
             <div className=" relative flex w-full max-w-[30rem]">
               
               <Input
@@ -77,12 +77,20 @@ console.log(searchValue)
               <Button
                 onClick={handleSearch}
                 size="sm"
-                className="!absolute right-1 top-1 rounded"
+                className="!absolute right-1  top-1 rounded"
               >
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
               </Button>
             </div>
           </div>
+          <Button
+            variant="text"
+            size="sm"
+            className="hidden lg:inline-block rounded-none hover:text-blue-400"
+            onClick={() => router.push("/")}
+          >
+            <span className="font-montserrat">Home</span>
+          </Button>
           <Button
             variant="text"
             size="sm"
@@ -214,6 +222,16 @@ console.log(searchValue)
             </Button>
           </div>
           <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+          <Typography
+              as="li"
+              variant="small"
+              color="blue-gray"
+              className="p-1 font-semibold"
+            >
+              <a href="/" className="flex items-center">
+                HOME
+              </a>
+            </Typography>
             <Typography
               as="li"
               variant="small"

@@ -174,18 +174,18 @@ export default function Topics() {
           {clomData?.length !== 0 ? clomData?.map((item, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
                     <td className="p-4 w-8">
-                <Typography variant="small" color="blue-gray" className="font-normal text-left">
+                <Typography variant="small" color="blue-gray" className="font-semibold text-left">
                 {index+1}
                 </Typography>
               </td>
               <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal text-left">
+                <Typography  color="blue-gray" className="font-semibold text-left text-sm">
                   {item.first_name}
                 </Typography>
               </td>
               <td className="p-4">
-                <Typography variant="small" color="blue-gray" className="font-normal text-left">
-                {item.first_name}
+                <Typography  color="blue-gray" className="font-semibold text-left text-sm">
+                {item.agency_name}
                 </Typography>
               </td>
              

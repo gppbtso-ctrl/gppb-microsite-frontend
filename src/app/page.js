@@ -67,9 +67,8 @@ export default function CommitteeLayout({ children }) {
   );
 
   useGSAP(
-    
     () => {
-      tl.current = gsap
+      arrowTl.current = gsap
       .timeline({repeat:-1})
       .to('.animateScrollButton',{ y: '12', ease: 'power1', duration:0.4 })
       .to('.animateScrollButton',{ y: '0', ease: 'power1.out', duration:0.2 })
@@ -142,7 +141,7 @@ export default function CommitteeLayout({ children }) {
                 class="px-5 py-2 absolute left-0 w-full lg:w-full inline-block bg-cyan-500  hover:bg-cyan-400 transition-colors  animButton"
                 href="/committees"
               >
-                <Typography className=" text-blue-gray-800 font-semibold uppercase">Enter Site</Typography>
+                <Typography variant="h6" className="font-semibold antialiased tracking-wide  text-blue-gray-900  uppercase">Enter Site</Typography>
 
               </Link>
             </div>
@@ -191,9 +190,9 @@ export default function CommitteeLayout({ children }) {
                 the effective implementation of the provisions of the NGPA upon
                 its enactment.
               </Typography>
-              <span className="text-lg tracking-wide antialiased font-sans mt-6 text-justify descriptionText ">
+              <Typography className="text-lg tracking-wide antialiased font-sans mt-7 text-justify descriptionText ">
                 Key highlights from the Resolution include:
-              </span>
+              </Typography>
               <ul
                 style={{
                   listStyleType: "disc",
@@ -323,11 +322,7 @@ export default function CommitteeLayout({ children }) {
                   contributions you can offer.
                 </li>
                 <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                  <b>Join Committees:</b> Browse through each Committee and
-                  select a maximum of three (3) Committees that you are
-                  interested in joining. You can apply to become a member by
-                  providing a brief statement of your qualifications and
-                  contributions you can offer.
+                <b>Stay Engaged:</b> After joining, you will receive notifications about committee meetings, discussions, and other relevant activities. Participate actively to contribute to the formulation of the NGPA rules and regulations. 
                 </li>
               </ol>
               <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
@@ -345,40 +340,85 @@ export default function CommitteeLayout({ children }) {
           </div>
         </section>
         <section class="relative flex flex-col min-h-[40vh]  bg-gradient-to-b  from-[#0C2D48] to-[#003B73] bg-blend-overlay text-white    z-10">
-          <div className=" mt-[3rem] mb-5 mx-10 rounded-lg flex flex-col gap-1 border border-blue-800/15 p-10 px-14 shadow-lg backdrop-blur-md bg-gradient-to-b  from-[#0C2D48]/10 to-[#003B73]">
-          <Typography className="text-3xl tracking-wide antialiased font-sans uppercase">
+          <div className=" mt-[3rem] mb-2 mx-2 rounded-lg flex flex-col gap-1 border border-blue-800/15 p-10 px-14 shadow-lg backdrop-blur-md bg-gradient-to-b  from-[#0C2D48]/10 to-[#003B73]">
+          <Typography className="text-xl tracking-wide antialiased font-sans uppercase">
             Government
           </Typography>
-          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-xl tracking-wide  antialiased font-sans uppercase">
           Procurement Policy
           </Typography>
-          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-xl tracking-wide  antialiased font-sans uppercase">
           Board - Technical 
           </Typography>
-          <Typography className="text-2xl tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-xl tracking-wide  antialiased font-sans uppercase">
           Support Office
           </Typography>
 
-          <Typography className="text-lg mt-5 tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-md mt-5 tracking-wide  antialiased font-sans uppercase">
          GPPB-TSO Building, Commonwealth Ave, <br/>UP Diliman Campus, Quezon City
           </Typography>
 
-          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-xl mt-5 tracking-wide  antialiased font-sans uppercase">
             Phone
           </Typography>
-          <Typography className="text-lg tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-md tracking-wide  antialiased font-sans uppercase">
            (02) 5322-6222
           </Typography>
 
           <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
             Email
           </Typography>
-          <Typography className="text-lg  tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-md  tracking-wide  antialiased font-sans uppercase">
            gppb@gppb.gov.ph
           </Typography>
-          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-xl mt-5 tracking-wide  antialiased font-sans uppercase">
             Social
           </Typography>
+
+          <div className="w-fit  p-4 px-2  rounded-xl border border-blue-500/15 flex gap-4 mt-2 text-blue-gray-900 shadow-lg">
+          <Typography
+            as="a"
+            href="https://www.facebook.com/GovtProcurementPH"
+            className="opacity-80 text-white text-xl transition-opacity hover:opacity-100"
+          >
+            <svg
+              className="h-7 w-7"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </Typography>
+
+          <Typography
+            as="a"
+            href="https://www.youtube.com/@governmentprocurementph9010"
+           className="opacity-80 text-white text-xl transition-opacity hover:opacity-100"
+          >
+            <svg
+              className="h-7 w-7"
+              fill="currentColor"
+              viewBox="0 0 96.875 96.875"
+              aria-hidden="true"
+            >
+              <g>
+                <path
+                  d="M95.201,25.538c-1.186-5.152-5.4-8.953-10.473-9.52c-12.013-1.341-24.172-1.348-36.275-1.341
+		c-12.105-0.007-24.266,0-36.279,1.341c-5.07,0.567-9.281,4.368-10.467,9.52C0.019,32.875,0,40.884,0,48.438
+		C0,55.992,0,64,1.688,71.336c1.184,5.151,5.396,8.952,10.469,9.52c12.012,1.342,24.172,1.349,36.277,1.342
+		c12.107,0.007,24.264,0,36.275-1.342c5.07-0.567,9.285-4.368,10.471-9.52c1.689-7.337,1.695-15.345,1.695-22.898
+		C96.875,40.884,96.889,32.875,95.201,25.538z M35.936,63.474c0-10.716,0-21.32,0-32.037c10.267,5.357,20.466,10.678,30.798,16.068
+		C56.434,52.847,46.23,58.136,35.936,63.474z"
+                />
+              </g>
+            </svg>
+          </Typography>
+        </div>
           </div>
 
          
