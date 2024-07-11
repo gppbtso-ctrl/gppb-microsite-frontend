@@ -305,7 +305,7 @@ export default function CommitteeLayout({ children }) {
                 className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
               >
                 <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                  <b>Create an Account:</b> Click on the "Register" button at
+                  <b>Create an Account:</b> Click on the Register button at
                   the top right corner of the homepage and fill in the required
                   information, including your name, email address, and
                   organization.{" "}
