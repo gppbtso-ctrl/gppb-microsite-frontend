@@ -82,35 +82,35 @@ export default function Topic() {
     <>
       {loading ? <LoadingScreen /> : null}
       <div className=" relative h-full flex flex-col justify-center items-center z-10">
-        <Card className="mt-10 mx-3 w-full max-w-[60rem] h-full rounded-none border flex flex-row justify-center items-center gap-5 border-gray-500 !p-0 ">
-          <div className="h-full p-7 flex flex-col gap-3 flex-1">
+        <Card className="mt-10 w-full max-w-[90vw] xl:max-w-[62vw] rounded-sm h-full !shadow-jubilation flex flex-row justify-center items-center gap-5  !p-0 ">
+          <div className="h-full p-7 flex flex-col gap-3 flex-1 ">
             <div>
               <div className="flex flex-col ">
-                <Typography className="font-montserrat">
+                <Typography className=" text-base font-semibold">
                   {data?.starter?.first_name}
                 </Typography>
-                <Typography variant="small" className="font-montserrat">
+                <Typography className="  font-semibold text-sm">
                   <Moment format="MMM DD, YYYY">{data?.created_date}</Moment>
                 </Typography>
               </div>
             </div>
             <div className="flex flex-col w-full ">
-              <Typography className="font-montserrat font-semibold text-2xl">
+              <Typography className=" font-semibold text-2xl">
                 {data?.subject}
               </Typography>
-              <Typography className="font-montserrat font-normal text-md">
+              <Typography className="font-normal text-md">
                 in {data?.committee_title}
               </Typography>
             </div>
             <div className="break-words ">
-              <Typography className="font-montserrat text-lg font-normal">
+              <Typography className="text-lg tracking-wide">
                 {data?.content}
               </Typography>
             </div>
             <div className="h-[1px] bg-gray-500 mt-5 mb-2"></div>
 
             <div className="flex flex-col gap-2">
-              <Typography className="font-montserrat text-sm font-semibold">
+              <Typography variant="lead" className=" font-semibold tracking-wider text-sm ">
                 Comments
               </Typography>
               {submitStatus === "error" && (
@@ -123,7 +123,8 @@ export default function Topic() {
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
                   decodedToken?.committee_list.includes(data?.committee)) ? (
-                  <div className="mb-3">
+                  <div className="mb-1">
+        
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <textarea
                         id="message"
@@ -153,24 +154,24 @@ export default function Topic() {
               ) : null}
 
               {data?.posts &&
-                Object.keys(data?.posts).map((key) => {
+                Object.keys(data?.posts).map((key,i) => {
                   const post = data.posts[key];
                   return (
                     <div
-                      key={key}
-                      className="flex flex-col gap-0 p-3 border-[1.5px] border-black mt-1 shadow-md antialiased"
+                      key={i}
+                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border border-blue-gray-700 antialiased"
                     >
                       <div className="flex flex-col gap-0 mb-7">
-                        <Typography className="font-montserrat font-normal text-sm">
+                        <Typography className=" text-sm text-blue-gray-900 font-semibold">
                           {post?.created_by?.first_name +
                             " " +
                             post?.created_by?.last_name}
                         </Typography>
-                        <Typography className="font-montserrat text-xs font-normal">
-                          <Moment fromNow>{post?.created_date}</Moment>
+                        <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
+                        <Moment format="YYYY MMM DD HH:mm">{post?.created_date}</Moment>
                         </Typography>
                       </div>
-                      <Typography className="font-montserrat font-normal">
+                      <Typography  className="text-blue-gray-900 text-lg whitespace-pre">
                         {post?.message}
                       </Typography>
                     </div>

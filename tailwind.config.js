@@ -16,7 +16,13 @@ module.exports = withMT({
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        'jubilation': '0px 3px 8px rgba(0, 0, 0, 0.24)',
+        'custom': '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',
+      },
+    },
   },
   plugins: [],
 });
+

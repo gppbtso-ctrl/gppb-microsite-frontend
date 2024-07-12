@@ -73,7 +73,7 @@ export default function Topics() {
           {data?.title}
         </Typography>
       </div>
-      <div className="w-full max-w-[60rem] flex  justify-between">
+      <div className="w-full max-w-[60rem] flex  justify-between px-4">
         {" "}
         <Button
           variant="text"
@@ -142,10 +142,10 @@ export default function Topics() {
       <div>
         <div className=" w-full flex justify-end"></div>
         <div className="relative w-full z-40">
-          <Card className="mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-none border border-gray-500 !p-0">
+          <Card className=" !shadow-jubilation mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
             <CardBody className="p-0 w-full max-w-[60rem]">
-              <div className="flex h-15 w-full gap-5 p-5 py-3 justify-center items-center ">
-                <Typography className="font-montserrat text-black font-semibold max-w-24 ">
+              <div className="flex h-15 w-full gap-5 p-5 py-4 justify-center items-center ">
+                <Typography className="text-black font-semibold max-w-24 ">
                   Provisions
                 </Typography>
                 {/* <Typography>Example Topic</Typography> */}

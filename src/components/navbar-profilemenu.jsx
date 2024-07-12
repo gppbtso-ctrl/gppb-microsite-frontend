@@ -87,7 +87,7 @@ function ProfileMenu({ decodedToken, removeToken }) {
       </MenuHandler>
       <MenuList className="p-1 z-50">
         {profileMenuItems.map(({ label, icon }, key) => {
-          if (label === "Users" && decodedToken?.role !== "ADMIN") {
+          if (label === "Users" && decodedToken?.role !== "ADMIN" || label === "Calendar Activities" && decodedToken?.role !== "ADMIN") {
             return null;
           }
 

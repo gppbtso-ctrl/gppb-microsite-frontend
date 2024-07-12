@@ -8,7 +8,7 @@ export default function CommitteeLayout({ children }) {
     <div className=" relative  w-full h-screen">
       <MainNavbar />
 
-      <div>{children}</div>
+      <div className="">{children}</div>
 
       <FooterWithSocialLinks />
     </div>

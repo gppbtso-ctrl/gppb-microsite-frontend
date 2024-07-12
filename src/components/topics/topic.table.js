@@ -15,18 +15,24 @@ export const TopicTable = ({ data }) => {
               </p>
             </th>
             <th class="p-4 ">
-              <p class="block font-montserrat text-sm antialiased font-normal leading-none text-blue-gray-900 ">
+              <Typography
+                variant="lead"
+                className="tracking-wide text-sm font-semibold antialiased ant text-blue-gray-900 "
+              >
                 Comments
-              </p>
+              </Typography>
             </th>
             <th class="p-4 ">
-              <p class="block font-montserra  text-sm antialiased font-normal leading-none text-blue-gray-900 ">
+              <Typography
+                variant="lead"
+                className="tracking-wide text-sm font-semibold antialiased ant text-blue-gray-900 "
+              >
                 Recent Activity
-              </p>
+              </Typography>
             </th>
-            <th class="p-4 ">
+            {/* <th class="p-4 ">
               <p class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"></p>
-            </th>
+            </th> */}
           </tr>
         </thead>
         <tbody className="mx-5">
@@ -36,42 +42,54 @@ export const TopicTable = ({ data }) => {
             </td>
           </tr>
           {data?.topics?.length !== 0 ? (
-            data?.topics?.map((item) => (
-              <tr key={item.id}>
-                <td class="p-3 px-4 border-b border-blue-gray-50">
-                  <div className=" lg:w-[32rem] max-w-[12rem]  lg:max-w-[40rem] break-words">
+            data?.topics?.map((item, i, row) => (
+              <tr key={i}>
+                <td
+                  className={`p-2 px-4 ${
+                    i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
+                  }`}
+                >
+                  <div className="lg:w-[32rem] max-w-[12rem] lg:max-w-[40rem] break-words">
                     <Link href={`/provision/${item.id}`}>
-                      <Typography className="font-semibold font-montserrat hover:text-blue-400 transition-all duration-150">
+                      <Typography className="font-semibold text-blue-gray-900 hover:text-blue-400 transition-all duration-150">
                         {item.subject}
                       </Typography>
                     </Link>
                     <Typography
                       variant="small"
-                      className="font-normal font-montserrat"
+                      className="font-normal tracking-wider text-blue-gray-900"
                     >
                       {item?.starter?.first_name}
                     </Typography>
                   </div>
                 </td>
-                <td class="p-4 border-b border-blue-gray-50">
-                  <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 text-center">
+                <td
+                  className={`p-4 py-2 ${
+                    i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
+                  }`}
+                >
+                  <Typography className="block text-sm antialiased font-semibold leading-normal text-blue-gray-900 text-center">
                     {item.post_count}
-                  </p>
+                  </Typography>
                 </td>
-                <td class="p-4 border-b border-blue-gray-50">
+                <td
+                  className={`p-4 py-2 ${
+                    i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
+                  }`}
+                >
                   <div className="flex flex-col gap-0">
-                    <p class="block font-montserrat text-xs antialiased font-normal leading-normal text-blue-gray-900 text-center">
+                    <Typography className="block text-sm antialiased font-semibold leading-normal text-blue-gray-900 text-left">
                       {item.latest_post_member_info
                         ? item.latest_post_member_info
                         : null}
-                    </p>
-                    <p class="block font-montserrat text-xs antialiased font-normal leading-normal text-blue-gray-900 text-center">
+                    </Typography>
+                    <Typography className="text-xs antialiased font-semibold leading-normal text-blue-gray-900">
                       {item.latest_post_date ? (
                         <Moment format="MMM DD, YYYY">
                           {item.latest_post_date}
                         </Moment>
                       ) : null}
-                    </p>
+                    </Typography>
                   </div>
                 </td>
               </tr>
@@ -80,20 +98,26 @@ export const TopicTable = ({ data }) => {
             <tr>
               <td class="p-4 border-b border-blue-gray-50">
                 <div className=" lg:w-[30rem] max-w-[12rem]  lg:max-w-[40rem] break-words">
-                  <Typography className="font-semibold font-montserrat">
+                  <Typography className="font-semibold text-black">
                     No Data
                   </Typography>
                 </div>
               </td>
               <td class="p-4 border-b border-blue-gray-50">
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 text-center">
+                <Typography
+                  variant="lead"
+                  className=" text-sm font-semibold antialiased ant text-blue-gray-900 text-center"
+                >
                   0
-                </p>
+                </Typography>
               </td>
               <td class="p-4 border-b border-blue-gray-50">
-                <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900 text-center">
+                <Typography
+                  variant="lead"
+                  className=" text-sm font-semibold antialiased ant text-blue-gray-900 text-center"
+                >
                   N/A
-                </p>
+                </Typography>
               </td>
             </tr>
           )}

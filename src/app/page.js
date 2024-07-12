@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import ScrollToTop from "react-scroll-to-top";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronCircleUp, faChevronDown, faUpDown } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar, faChevronCircleUp, faChevronDown, faEnvelope, faPhone, faUpDown } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 gsap.registerPlugin(ScrollTrigger);
@@ -57,8 +57,7 @@ export default function CommitteeLayout({ children }) {
       ScrollTrigger.create({
         trigger: containerAbout.current,
         start: "top top",
-        end: "bottom 85%",
-   
+        end: "bottom bottom",
         pin: true,
       });
     },
@@ -111,8 +110,9 @@ export default function CommitteeLayout({ children }) {
   );
 
   return (
+    <>
+    <MainNavbar/>
     <div className="relative min-h-screen">
-   
       <section class="relative flex flex-col min-h-screen bg-slate-800 text-white  bg-blend-overlay  bg-cover  bg-[url('/Home.png')] z-10">
         <div class="flex-1  flex items-center">
           <div
@@ -121,7 +121,7 @@ export default function CommitteeLayout({ children }) {
           >
             <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
               <Typography className="absolute text-4xl lg:text-7xl text-left font-normal uppercase animText">
-                Welcome To
+                Welcome To The 
               </Typography>
             </div>
 
@@ -136,7 +136,12 @@ export default function CommitteeLayout({ children }) {
                 Procurement Act
               </Typography>
             </div>
-            <div className="relative lg:h-[3rem] overflow-hidden">
+            <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+              <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
+                (NGPA) Microsite
+              </Typography>
+            </div>
+            {/* <div className="relative lg:h-[3rem] overflow-hidden">
               <Link
                 class="px-5 py-2 absolute left-0 w-full lg:w-full inline-block bg-cyan-500  hover:bg-cyan-400 transition-colors  animButton"
                 href="/committees"
@@ -144,7 +149,7 @@ export default function CommitteeLayout({ children }) {
                 <Typography variant="h6" className="font-semibold antialiased tracking-wide  text-blue-gray-900  uppercase">Enter Site</Typography>
 
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="absolute bottom-2 left-[50%] -translate-x-1/2  mx-auto flex flex-col items-center mb-5" ref={scrollDown}>
@@ -162,7 +167,7 @@ export default function CommitteeLayout({ children }) {
           >
             <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
               <Typography className="animText text-3xl  lg:text-5xl text-center font-normal uppercase">
-                The New Governement
+                The New Government
               </Typography>
             </div>
             <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
@@ -170,9 +175,14 @@ export default function CommitteeLayout({ children }) {
                 Procurement Act
               </Typography>
             </div>
+            <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+              <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
+                (NGPA) Microsite
+              </Typography>
+            </div>
             <div className="h-fit w-[100%] mt-5 relative overflow-hidden ">
               <Typography className="text-lg tracking-wide antialiased font-sans mt-5 text-justify descriptionText ">
-                is dedicated to providing comprehensive information and updates
+              The New Government Procurement Act (NGPA) Microsite is dedicated to providing comprehensive information and updates
                 on the implementation of the NGPA, a legislative milestone aimed
                 at modernizing and improving the government procurement process
                 in the Philippines.
@@ -327,8 +337,7 @@ export default function CommitteeLayout({ children }) {
               </ol>
               <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
                 For any questions or assistance during the registration process,
-                please contact our support team at ngpa@gppb.gov.ph or call (02)
-                XXXX-XXXX.
+                please contact our support team at ngpa@gppb.gov.ph or call (02) 5322-6222 (BAC).
               </Typography>
               <Typography className="text-lg tracking-wide antialiased font-sans mt-6  mb-3 text-justify descriptionText">
                 Thank you for visiting the NGPA Microsite. Your participation
@@ -354,28 +363,19 @@ export default function CommitteeLayout({ children }) {
           Support Office
           </Typography>
 
-          <Typography className="text-md mt-5 tracking-wide  antialiased font-sans uppercase">
+          <Typography className="text-sm mt-2 tracking-wide  antialiased font-sans uppercase">
          GPPB-TSO Building, Commonwealth Ave, <br/>UP Diliman Campus, Quezon City
           </Typography>
 
-          <Typography className="text-xl mt-5 tracking-wide  antialiased font-sans uppercase">
-            Phone
-          </Typography>
-          <Typography className="text-md tracking-wide  antialiased font-sans uppercase">
-           (02) 5322-6222
+          <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
+          <FontAwesomeIcon icon={faPhone}/> <span>(02) 5322-6222 (Bac)</span>
           </Typography>
 
-          <Typography className="text-2xl mt-5 tracking-wide  antialiased font-sans uppercase">
-            Email
-          </Typography>
-          <Typography className="text-md  tracking-wide  antialiased font-sans uppercase">
-           gppb@gppb.gov.ph
-          </Typography>
-          <Typography className="text-xl mt-5 tracking-wide  antialiased font-sans uppercase">
-            Social
+          <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 items-center">
+          <FontAwesomeIcon icon={faEnvelope}/>   <span>gppb@gppb.gov.ph</span>
           </Typography>
 
-          <div className="w-fit  p-4 px-2  rounded-xl border border-blue-500/15 flex gap-4 mt-2 text-blue-gray-900 shadow-lg">
+          <div className="w-fit  -ml-2 p-4 px-2  rounded-xl border border-blue-500/15 flex gap-4 mt-2 text-blue-gray-900 shadow-lg">
           <Typography
             as="a"
             href="https://www.facebook.com/GovtProcurementPH"
@@ -427,5 +427,5 @@ export default function CommitteeLayout({ children }) {
       <ScrollToTop smooth className=" !bg-transparent !shadow-none ml-[10rem]" component={<p className="text-[2.5rem] ml-5 mt-5 lg:ml-0 lg:mt-0 text-white"><FontAwesomeIcon icon={faChevronCircleUp}/></p>} />
     </div>
     
-  );
+    </>);
 }

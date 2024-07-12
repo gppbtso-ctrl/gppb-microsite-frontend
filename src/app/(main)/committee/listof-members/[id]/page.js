@@ -153,8 +153,8 @@ export default function Topics() {
         
         </Button>
       </div>
-      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] shadow-lg">
-      <table className="w-full min-w-max table-auto text-left border border-gray-500">
+      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] !shadow-jubilation ">
+      <table className="w-full min-w-max table-auto text-left  border-gray-500">
         <thead>
           <tr>
             {TABLE_HEAD.map((head) => (
@@ -180,7 +180,7 @@ export default function Topics() {
               </td>
               <td className="p-4">
                 <Typography  color="blue-gray" className="font-semibold text-left text-sm">
-                  {item.first_name}
+                  {item.first_name} {item.last_name} 
                 </Typography>
               </td>
               <td className="p-4">
