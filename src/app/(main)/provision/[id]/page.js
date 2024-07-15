@@ -1,11 +1,14 @@
 "use client";
+import TiptapEditor from "@/components/general-widgets/Tiptap";
+import Editor from "@/components/general-widgets/Tiptap";
+import Tiptap from "@/components/general-widgets/Tiptap";
 import LoadingScreen from "@/components/loading/loading";
 import { TopicTable } from "@/components/topics/topic.table";
 import AddTopicDialog from "@/components/topics/widgets/add-topic-dialog";
 import UserService from "@/services/user.services";
 import useAuthStore from "@/store/authStore";
 import useLoading from "@/utils/use-loading";
-import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faComment, faEye, faReply } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Alert,
@@ -18,10 +21,12 @@ import {
 } from "@material-tailwind/react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Moment from "react-moment";
 import useSWR from "swr";
+import parse from "html-react-parser";
+import moment from "moment/moment";
 
 export default function Topic() {
   const router = useRouter();
@@ -29,13 +34,17 @@ export default function Topic() {
   const loading = useLoading(1400);
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
+  const [currentContent, setCurrentContent] = useState('');
   const [submitStatus, setSubmitStatus] = useState(null);
   const {
     register,
     handleSubmit,
     reset,
+    control,
+    setValue,
     formState: { errors },
   } = useForm();
+  const refEditor = useRef(null);
 
   useEffect(() => {
     setLoaded(true);
@@ -60,7 +69,7 @@ export default function Topic() {
 
   const onSubmit = async (formData) => {
     formData.topic = data?.id || null;
-    console.log(formData);
+    console.log(formData, "onsubmit");
 
     setSubmitStatus("loading");
     try {
@@ -77,7 +86,25 @@ export default function Topic() {
     console.log(data);
   };
 
-  console.log(decodedToken);
+  const handleContentChange = (content) => {
+    setValue("message", content);
+  };
+
+  const handleReplyClick = (post) => {
+
+    const reply = `
+    <blockquote>
+    <p>${post.created_by.first_name} ${post.created_by.last_name}</p>
+    <p>${moment(post.created_date).format('YYYY MMM DD HH:mm')}</p>
+    <p/><p/>
+    ${post?.message}
+    `
+    console.log(reply)
+    setCurrentContent(prevContent => reply);
+    refEditor.current.focus();
+    // You can add more logic here to handle the reply action
+  };
+
   return (
     <>
       {loading ? <LoadingScreen /> : null}
@@ -110,7 +137,10 @@ export default function Topic() {
             <div className="h-[1px] bg-gray-500 mt-5 mb-2"></div>
 
             <div className="flex flex-col gap-2">
-              <Typography variant="lead" className=" font-semibold tracking-wider text-sm ">
+              <Typography
+                variant="lead"
+                className=" font-semibold tracking-wider text-sm "
+              >
                 Comments
               </Typography>
               {submitStatus === "error" && (
@@ -124,16 +154,8 @@ export default function Topic() {
                 (decodedToken?.role === "USER" &&
                   decodedToken?.committee_list.includes(data?.committee)) ? (
                   <div className="mb-1">
-        
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <textarea
-                        id="message"
-                        rows="4"
-                        class="block p-2.5 w-full text-sm text-gray-900  rounded-none border-2 border-black focus:rounded-none focus:ring-blue-500 focus:border-blue-500  "
-                        placeholder="Write your comment here..."
-                        {...register("message", { required: true })}
-                        required
-                      ></textarea>
+                      <Tiptap onContentChange={handleContentChange} currentContent={currentContent} setCurrentContent={setCurrentContent} refEditor={refEditor} />
                       <div className="flex justify-end items-center mt-1">
                         <Button
                           type="submit"
@@ -154,26 +176,43 @@ export default function Topic() {
               ) : null}
 
               {data?.posts &&
-                Object.keys(data?.posts).map((key,i) => {
+                Object.keys(data?.posts).map((key, i) => {
                   const post = data.posts[key];
                   return (
                     <div
                       key={i}
                       className="flex flex-col p-3 mt-2 shadow-md rounded-md border border-blue-gray-700 antialiased"
                     >
-                      <div className="flex flex-col gap-0 mb-7">
-                        <Typography className=" text-sm text-blue-gray-900 font-semibold">
-                          {post?.created_by?.first_name +
-                            " " +
-                            post?.created_by?.last_name}
-                        </Typography>
-                        <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
-                        <Moment format="YYYY MMM DD HH:mm">{post?.created_date}</Moment>
+                      <div className="flex flex-col gap-0 ">
+                        <div className="flex w-full justify-between items-start mb-7">
+                          <div className="flex flex-col">
+                            <Typography className=" text-sm text-blue-gray-900 font-semibold">
+                              {post?.created_by?.first_name +
+                                " " +
+                                post?.created_by?.last_name}
+                            </Typography>
+                            <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
+                              <Moment format="YYYY MMM DD HH:mm">
+                                {post?.created_date}
+                              </Moment>
+                            </Typography>
+                          </div>
+                          <Button
+                            size="sm"
+                            variant="outlined"
+                            className="p-1 rounded-none border-none"
+                          >
+                            <FontAwesomeIcon
+                              icon={faReply}
+                              className="text-xs"
+                              onClick={() => handleReplyClick(post)}
+                            />
+                          </Button>
+                        </div>
+                        <Typography className="text-blue-gray-900 text-lg whitespace-pre [&_strong]:font-extrabold [&_blockquote]:pl-4 [&_blockquote]:border-l-2 [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
+                          {parse(post?.message)}
                         </Typography>
                       </div>
-                      <Typography  className="text-blue-gray-900 text-lg whitespace-pre">
-                        {post?.message}
-                      </Typography>
                     </div>
                   );
                 })}
