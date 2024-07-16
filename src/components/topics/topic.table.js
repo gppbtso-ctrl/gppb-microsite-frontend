@@ -77,7 +77,7 @@ export const TopicTable = ({ data }) => {
                     i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
                   }`}
                 >
-                  <div className="flex flex-col gap-0">
+                  {item?.latest_post_member_info ?  <div className="flex flex-col gap-0">
                     <Typography className="block text-sm antialiased font-semibold leading-normal text-blue-gray-900 text-left">
                       {item.latest_post_member_info
                         ? item.latest_post_member_info
@@ -90,7 +90,8 @@ export const TopicTable = ({ data }) => {
                         </Moment>
                       ) : null}
                     </Typography>
-                  </div>
+                  </div>: <Typography  className="text-sm antialiased font-semibold leading-normal text-blue-gray-900">N/A</Typography>}
+                 
                 </td>
               </tr>
             ))

@@ -94,13 +94,15 @@ export default function Topic() {
 
     const reply = `
     <blockquote>
-    <p>${post.created_by.first_name} ${post.created_by.last_name}</p>
-    <p>${moment(post.created_date).format('YYYY MMM DD HH:mm')}</p>
-    <p/><p/>
+    <p><span>${post.created_by.first_name} ${post.created_by.last_name}</span></p>
+    <p><span>${moment(post.created_date).format('YYYY MMM DD HH:mm')}</span></p>
+    <br/>
     ${post?.message}
+    </blockquote>
     `
-    console.log(reply)
-    setCurrentContent(prevContent => reply);
+    const replyFinal = reply.replace(/<span>/g, `<span style="">`)
+    console.log(replyFinal)
+    setCurrentContent(prevContent => replyFinal);
     refEditor.current.focus();
     // You can add more logic here to handle the reply action
   };
@@ -129,12 +131,13 @@ export default function Topic() {
                 in {data?.committee_title}
               </Typography>
             </div>
-            <div className="break-words ">
-              <Typography className="text-lg tracking-wide">
-                {data?.content}
+            <div className="break-words mt-2">
+              <Typography className="text-lg tracking-wide whitespace-pre-wrap">
+            
+              {data?.content}
               </Typography>
             </div>
-            <div className="h-[1px] bg-gray-500 mt-5 mb-2"></div>
+            <div className="h-[1px] bg-gray-500 mt-2 mb-2"></div>
 
             <div className="flex flex-col gap-2">
               <Typography
@@ -181,7 +184,7 @@ export default function Topic() {
                   return (
                     <div
                       key={i}
-                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border border-blue-gray-700 antialiased"
+                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border border-blue-gray-500 antialiased"
                     >
                       <div className="flex flex-col gap-0 ">
                         <div className="flex w-full justify-between items-start mb-7">
@@ -209,7 +212,7 @@ export default function Topic() {
                             />
                           </Button>
                         </div>
-                        <Typography className="text-blue-gray-900 text-lg whitespace-pre [&_strong]:font-extrabold [&_blockquote]:pl-4 [&_blockquote]:border-l-2 [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
+                        <Typography className="text-blue-gray-900 text-lg whitespace-pre [&_strong]:font-extrabold [&_blockquote]:pl-4 [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2 [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
                           {parse(post?.message)}
                         </Typography>
                       </div>

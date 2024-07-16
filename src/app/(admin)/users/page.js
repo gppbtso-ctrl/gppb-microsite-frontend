@@ -26,7 +26,7 @@ export default function Topics() {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({});
-  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Statement", "Date Joined", ""];
+  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Statement", "Date Joined", "Action"];
 
   useEffect(() => {
     setLoaded(true);
@@ -68,7 +68,7 @@ export default function Topics() {
 
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
-      <Card className="mt-10 rounded-none max-w-[80vw] overflow-auto">
+      <Card className="mt-[5rem] rounded-none max-w-[80vw] overflow-auto">
         {" "}
         <table className="w-full min-w-max table-auto text-left">
           <thead>
@@ -145,7 +145,7 @@ export default function Topics() {
                         </Typography>
                       </td>
                       {item.is_active == false ? (
-                        <td className={`${classes} max-w-10`}>
+                        <td className={`${classes} max-w-fit`}>
                           <Button
                             variant="text"
                             size="sm"
@@ -163,7 +163,14 @@ export default function Topics() {
                             )}
                           </Button>
                         </td>
-                      ) : null}
+                            ) :<td className={classes}><Button
+                            variant="text"
+                            size="sm"
+                            className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                            disabled={true}
+                          >
+                            Accepted
+                          </Button></td>}
                     </tr>
                   );
                 })

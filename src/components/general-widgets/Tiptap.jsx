@@ -8,11 +8,12 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import { forwardRef, useEffect } from 'react'
 import Placeholder from '@tiptap/extension-placeholder'
+import TextStyle from '@tiptap/extension-text-style'
 
 const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor}) => {
 
   const editor = useEditor({
-    extensions: [StarterKit, Underline,       
+    extensions: [StarterKit, Underline, TextStyle,       
         Placeholder.configure({
         placeholder: 'Write something …',
       }),],
@@ -20,6 +21,7 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor})
     content: '',
     onUpdate: ({ editor }) => {
         const html = editor.getHTML();
+        console.log(html, 'from editorhtml')
         onContentChange(html)
       },
   })
@@ -27,10 +29,9 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor})
 
   useEffect(() => {
 
-    
-
     console.log('in use effect')
     if (currentContent) {
+      console.log(currentContent, 'fromcurrentcontent')
       editor?.commands?.setContent(currentContent)
       editor?.commands?.focus('end');
       editor?.commands?.keyboardShortcut('Enter');

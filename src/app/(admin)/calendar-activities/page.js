@@ -119,7 +119,7 @@ export default function CalendarActivities() {
 
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 mt-10">
-      <div className="w-full min-h-[67vh] max-w-[70vw] relative mb-10 flex flex-col gap-2 ">
+      <div className="w-full min-h-[67vh] max-w-[70vw] relative mb-10 mt-[5rem] flex flex-col gap-2 ">
         <Typography variant="h2">Calendar Activies</Typography>
         <Select label="Select Committee" onChange={handleSelect}>
           {data ? (
