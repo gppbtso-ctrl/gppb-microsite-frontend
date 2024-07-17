@@ -8,6 +8,7 @@ import useAuthStore from "@/store/authStore";
 import { faComment, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  Alert,
   Button,
   Card,
   CardBody,
@@ -97,27 +98,14 @@ export default function Profile() {
 
 
   return (
- 
     <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[1rem]  ">
-       
        <div class="mb-12 p-4 shadow-jubilation flex flex-col  justify-center gap-3 max-w-[40rem] w-full">
       <Typography variant="h4" className="font-montserrat">
         Edit Profile
       </Typography>
-      {alert === "passwordNotMatched" ? (
-        <Alert color="red" className="rounded-none">
-          Password Not Matched
-        </Alert>
-      ) : emailExist ? (
-        <Alert color="red" className="rounded-none">
-          Email Already Exists
-        </Alert>
-      ) : null}
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4">
- 
-   
 
           <div class="relative w-full min-w-[200px] h-10">
             <input

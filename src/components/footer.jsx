@@ -25,7 +25,7 @@ export function FooterWithSocialLinks() {
       <div className="mx-auto w-full  ">
        
         <section class="relative flex flex-col  w-full z-10">
-          <div className=" border-t shadow-jubilation flex flex-col gap-1 p-10 pb-5 px-14  backdrop-blur-lg  bg-gradient-to-b from-white/85 to-blue-500/85">
+          <div className="  shadow-jubilation flex flex-col gap-1 p-10 pb-5 px-14  backdrop-blur-lg  bg-gradient-to-b from-white/85 to-blue-500/85">
           <Typography className="text-xl tracking-wide antialiased font-sans uppercase">
             Government Procurement Policy
           </Typography>

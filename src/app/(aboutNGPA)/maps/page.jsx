@@ -15,7 +15,7 @@ export default function Maps() {
   return (
     <div className="relative flex justify-center items-center z-10">
       <Card className="relative p-5 m-3 max-w-5xl rounded-none flex flex-col gap-2">
-        <Typography variant="h5" className="font-montserrat">
+        {/* <Typography variant="h5" className="font-montserrat">
           METHODOLOGY FOR ASSESSING PROCUREMENT SYSTEMS (MAPS){" "}
         </Typography>
         <Typography className=" text-justify">
@@ -186,7 +186,7 @@ export default function Maps() {
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </Card>
     </div>
   );
