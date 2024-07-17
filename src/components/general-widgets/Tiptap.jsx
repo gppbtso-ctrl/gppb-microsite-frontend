@@ -50,7 +50,7 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor})
 
   return (
     <>
-    <div className='flex items-center'>
+    <div className='w-full flex items-center'>
     <input ref={refEditor} className='h-0 w-0  flex-none'/>
      <Button
           variant="outlined"
@@ -118,7 +118,7 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor})
         </Button>
         </div>
    
-  <EditorContent editor={editor} className='mt-1 [&_.tiptap]:p-2 [&_.tiptap]:rounded-md  [&_.ProseMirror_blockquote]:pl-4 [&_.ProseMirror_blockquote]:border-l-2 [&_.ProseMirror_blockquote]:border-l-blue-gray-500 [&_.ProseMirror_blockquote]:bg-blue-gray-100 [&_.tiptap]:border-2 [&_.tiptap]:border-black [&_.tiptap]:min-h-28'/>
+  <EditorContent editor={editor} className='mt-1 [&_.tiptap]:p-2 [&_.tiptap]:rounded-md   [&_.ProseMirror_blockquote]:pl-4 [&_.ProseMirror_blockquote]:border-l-2 [&_.ProseMirror_blockquote]:border-l-blue-gray-500 [&_.ProseMirror_blockquote]:bg-blue-gray-100 [&_.tiptap]:border-2 [&_.tiptap]:border-black [&_.tiptap]:min-h-28'/>
   </>
 )
 }

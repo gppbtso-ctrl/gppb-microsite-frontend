@@ -110,9 +110,9 @@ export default function Topic() {
   return (
     <>
       {loading ? <LoadingScreen /> : null}
-      <div className=" relative h-full flex flex-col justify-center items-center z-10">
-        <Card className="mt-10 w-full max-w-[90vw] xl:max-w-[62vw] rounded-sm h-full !shadow-jubilation flex flex-row justify-center items-center gap-5  !p-0 ">
-          <div className="h-full p-7 flex flex-col gap-3 flex-1 ">
+      <div className="  h-full flex flex-col justify-center items-center z-10">
+        <Card className="mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full !shadow-jubilation flex flex-row justify-center items-center gap-5  !p-0 ">
+          <div className="h-full p-7 flex flex-col gap-3 flex-1 w-full">
             <div>
               <div className="flex flex-col ">
                 <Typography className=" text-base font-semibold">
@@ -156,7 +156,7 @@ export default function Topic() {
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
                   decodedToken?.committee_list.includes(data?.committee)) ? (
-                  <div className="mb-1">
+                  <div className="mb-1 ">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Tiptap onContentChange={handleContentChange} currentContent={currentContent} setCurrentContent={setCurrentContent} refEditor={refEditor} />
                       <div className="flex justify-end items-center mt-1">
@@ -204,11 +204,12 @@ export default function Topic() {
                             size="sm"
                             variant="outlined"
                             className="p-1 rounded-none border-none"
+                            onClick={() => handleReplyClick(post)}
                           >
                             <FontAwesomeIcon
                               icon={faReply}
                               className="text-xs"
-                              onClick={() => handleReplyClick(post)}
+                              
                             />
                           </Button>
                         </div>

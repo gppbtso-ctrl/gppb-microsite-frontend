@@ -67,6 +67,19 @@ const search = (value) => {
   return response;
 };
 
+const getProfile = () => {
+  const response = api.get(`${apiPrefix}/edit-profile`);
+  return response;
+};
+
+const editProfile = (data) => {
+  const response = api.patch(`${apiPrefix}/edit-profile`, data);
+  return response;
+};
+
+
+
+
 const UserService = {
   getCommittees,
   getComTopics,
@@ -79,7 +92,9 @@ const UserService = {
   calendarActDelete,
   addCalendarAct,
   getComListOfMembers,
-  search
+  search,
+  getProfile,
+  editProfile
 };
 
 export default UserService;

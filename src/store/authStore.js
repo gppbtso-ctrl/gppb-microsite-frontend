@@ -26,10 +26,14 @@ const useAuthStore = create((set) => {
       // Store token in localStorage
       // Decode the new token and update state
     const accessToken = getAccessToken();
-    console.log(accessToken, 'from authstore')
       set({
         token: accessToken,
         decodedToken: jwtDecode(accessToken),
+      });
+    },
+    setDecodedToken: (newDecodedToken) => {
+      set({
+        decodedToken: newDecodedToken,
       });
     },
     removeToken: () => {

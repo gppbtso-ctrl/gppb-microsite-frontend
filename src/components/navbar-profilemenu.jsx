@@ -26,6 +26,7 @@ import {
   Bars2Icon,
   KeyIcon,
   CalendarDaysIcon,
+  UserIcon,
 } from "@heroicons/react/24/solid";
 import { useRouter } from "next/navigation";
 import AuthService from "@/services/auth";
@@ -38,6 +39,10 @@ const profileMenuItems = [
   {
     label: "Calendar Activities",
     icon: CalendarDaysIcon,
+  },
+  {
+    label: "Profile",
+    icon: UserIcon,
   },
   {
     label: "Change Password",
@@ -87,7 +92,11 @@ function ProfileMenu({ decodedToken, removeToken }) {
       </MenuHandler>
       <MenuList className="p-1 z-50">
         {profileMenuItems.map(({ label, icon }, key) => {
-          if (label === "Users" && decodedToken?.role !== "ADMIN" || label === "Calendar Activities" && decodedToken?.role !== "ADMIN") {
+          if (
+            (label === "Users" && decodedToken?.role !== "ADMIN") ||
+            (label === "Calendar Activities" && decodedToken?.role !== "ADMIN") ||
+            (label === "Profile" && decodedToken?.role == "ADMIN")
+          ) {
             return null;
           }
 
@@ -104,6 +113,8 @@ function ProfileMenu({ decodedToken, removeToken }) {
                   ? () => router.push("/calendar-activities")
                   : label === "Change Password"
                   ? () => router.push("/change-password")
+                  : label === "Profile"
+                  ? () => router.push("/profile")
                   : closeMenu
               }
               className={`flex items-center gap-2 rounded ${

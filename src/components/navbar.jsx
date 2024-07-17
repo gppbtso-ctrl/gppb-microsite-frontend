@@ -17,6 +17,7 @@ import React, { useEffect, useState, useTransition } from "react";
 import ProfileMenu from "./navbar-profilemenu";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AboutNGPANavMenu from "./main/about-ngpa-nav-menu";
 
 export const MainNavbar = () => {
   const [isPending, startTransition] = useTransition();
@@ -99,14 +100,9 @@ console.log(searchValue)
           >
             <span className="font-montserrat">Committees</span>
           </Button>
-          <Button
-            variant="text"
-            size="sm"
-            className="hidden lg:inline-block rounded-none hover:text-blue-400 "
-            onClick={() => router.push("/aboutus")}
-          >
-            <span className="font-montserrat">About NGPA</span>
-          </Button>
+          <div className="hidden lg:inline-block">
+         <AboutNGPANavMenu/>
+          </div>
           {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
 
           <IconButton
@@ -170,14 +166,6 @@ console.log(searchValue)
                 </>
               ) : (
                 <>
-                  {/* <Button
-                    variant="gradient"
-                    size="sm"
-                    className="hidden lg:inline-block rounded-none"
-                    onClick={handleLogout}
-                  >
-                    <span className="font-montserrat">Logout</span>
-                  </Button> */}
                   <ProfileMenu
                     decodedToken={decodedToken}
                     removeToken={removeToken}
@@ -221,37 +209,26 @@ console.log(searchValue)
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Button>
           </div>
-          <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-          <Typography
-              as="li"
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-semibold"
-            >
-              <a href="/" className="flex items-center">
-                HOME
-              </a>
-            </Typography>
-            <Typography
-              as="li"
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-semibold"
-            >
-              <a href="/committees" className="flex items-center">
-                COMMITEES
-              </a>
-            </Typography>
-            <Typography
-              as="li"
-              variant="small"
-              color="blue-gray"
-              className="p-1 font-semibold"
-            >
-              <a href="/aboutus" className="flex items-center">
-                ABOUT NGPA
-              </a>
-            </Typography>
+          <ul className="mt-2 mb-4 flex flex-col gap-1 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+          <Button
+            variant="text"
+            size="sm"
+            className=" rounded-none hover:text-blue-400 px-2 w-fit"
+            onClick={() => router.push("/")}
+          >
+            <span className="font-montserrat">Home</span>
+          </Button>
+  
+          <Button
+            variant="text"
+            size="sm"
+            className="rounded-none hover:text-blue-400 px-2 w-fit"
+            onClick={() => router.push("/committees")}
+          >
+            <span className="font-montserrat">Committees</span>
+          </Button>
+         
+            <AboutNGPANavMenu/>
           </ul>
         </div>
         {loaded ? (
