@@ -28,6 +28,7 @@ import {
   TagIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
+import Link from "next/link";
 
 const navListMenuItems = [
   {
@@ -158,7 +159,7 @@ function NavListMenuAboutNGPA() {
               <Typography className="text-xs font-semibold p-2 w-[12rem] min-h-[3rem] ">
                 Preliminary Activities and Sectoral Consultations{" "}
               </Typography>
-              <a href="#">
+              <Link href="/maps">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -176,8 +177,8 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="/lrd-research-works">
                 <MenuItem className="flex items-center gap-3 rounded-lg  min-h-[4rem]">
                   <div>
                     <Typography
@@ -195,8 +196,8 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="/sectoral-consultations">
                 <MenuItem className="flex items-center gap-3 rounded-lg  min-h-[4rem]">
                   <div>
                     <Typography
@@ -214,8 +215,8 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="/other-key-activities">
                 <MenuItem className="flex items-center gap-3 rounded-lg  min-h-[4rem]">
                   <div>
                     <Typography
@@ -233,13 +234,13 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
+              </Link>
             </ul>
             <ul className="flex flex-col max-w-[12rem]">
               <Typography className="text-xs font-semibold p-2 w-[12rem] min-h-[3rem] flex flex-col justify-center">
                 Legislative Journey
               </Typography>
-              <a href="#">
+              <Link href="/op-meetings">
                 <MenuItem className="flex items-center gap-3 rounded-lg  min-h-[4rem]">
                   <div>
                     <Typography
@@ -257,8 +258,8 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="/different-bill-versions">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -276,8 +277,8 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
-              <a href="#">
+              </Link>
+              <Link href="/hor-hearings">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -295,7 +296,7 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
+              </Link>
               <a href="#">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
