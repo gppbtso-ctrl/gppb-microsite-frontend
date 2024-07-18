@@ -14,7 +14,7 @@ const Tablerows = [
   {
     title: (
       <>
-        <b>House Bill No. 18</b> - “An Act Amending Republic Act No. 9184,
+        <b>House Bill No. 18</b> - An Act Amending Republic Act No. 9184,
         Otherwise Known as the ‘Government Procurement Reform Act’ And for Other
         Purposes”
       </>
@@ -31,7 +31,7 @@ const Tablerows = [
   {
     title: (
       <>
-        <b> House Bill No. 648</b> - “An Act Expediting the Procurement of
+        <b> House Bill No. 648</b> - An Act Expediting the Procurement of
         Science, Engineering, Technology and Research Equipment and Specialized
         Supplies and Materials, Amending for the Purpose Section 4 Of Republic
         Act No. 9184, Otherwise Known as the Government Procurement Reform Act”
@@ -49,7 +49,7 @@ const Tablerows = [
   {
     title: (
       <>
-      <b>House Bill No. 1503</b> - “An Act Prescribing Additional Eligibility Requirements for Bidders and Contractors to Participate in The Procurement Process” 
+      <b>House Bill No. 1503</b> - An Act Prescribing Additional Eligibility Requirements for Bidders and Contractors to Participate in The Procurement Process
       </>
     ),
     link: (
@@ -64,7 +64,7 @@ const Tablerows = [
   {
     title: (
       <>
-       <b>House Bill No. 2682</b> - “An Act Establishing Guidelines for Design Procurement, Amending for the Purpose Certain Provisions of Republic Act No 9184 Otherwise Known as the “Government Procurement Reform Act
+       <b>House Bill No. 2682</b> - An Act Establishing Guidelines for Design Procurement, Amending for the Purpose Certain Provisions of Republic Act No 9184 Otherwise Known as the Government Procurement Reform Act
       </>
     ),
     link: (
@@ -79,7 +79,7 @@ const Tablerows = [
   {
     title: (
       <>
-<b>House Bill No. 3704</b> -” An Act Strengthening Local Infrastructure Industry Players, Amending for the Purpose Section 23 Of Republic Act No. 9184, Otherwise Known as the Government Procurement Reform Act, and for Other Purposes” </>
+<b>House Bill No. 3704</b> - An Act Strengthening Local Infrastructure Industry Players, Amending for the Purpose Section 23 Of Republic Act No. 9184, Otherwise Known as the Government Procurement Reform Act, and for Other Purposes” </>
   ),
     link: (
       <>
@@ -94,7 +94,7 @@ const Tablerows = [
   {
     title: (
       <>
-<b>House Bill No. 4617</b> - “An Act Amending Republic Act No. 9184, Otherwise Known as The "Government Procurement Reform Act”, Providing for the Modernization, Standardization and Regulation of the Government Procurement Process and for Other Purposes” 
+<b>House Bill No. 4617</b> - An Act Amending Republic Act No. 9184, Otherwise Known as The &quot;Government Procurement Reform Act&quot;, Providing for the Modernization, Standardization and Regulation of the Government Procurement Process and for Other Purposes” 
 </>
   ),
     link: (
@@ -109,7 +109,7 @@ const Tablerows = [
   {
     title: (
       <>
-<b>House Bill No. 6280</b> - “An Act Providing for Best Value Procurement, Amending for This Purpose Republic Act No. 9184, Otherwise Known As “Government Procurement Reform Act”, and for Other Purposes” </>
+<b>House Bill No. 6280</b> - An Act Providing for Best Value Procurement, Amending for This Purpose Republic Act No. 9184, Otherwise Known As &quot;Government Procurement Reform Act&quot;, and for Other Purposes</>
   ),
     link: (
       <>
@@ -123,13 +123,13 @@ const Tablerows = [
   {
     title: (
       <>
-<b>House Bill No. 7944</b> - “An Act Prescribing Policies, Guidelines, Rules and Regulations 
+<b>House Bill No. 7944</b> - An Act Prescribing Policies, Guidelines, Rules and Regulations 
 
-for Government Contracts to be known as “Ang Bagong Pilipinas Government Procurement 
+for Government Contracts to be known as &quot;Ang Bagong Pilipinas Government Procurement 
 
-Reform Act”, Repealing for this Purpose Republic Act No. 9184 or the Government 
+Reform Act&quot;, Repealing for this Purpose Republic Act No. 9184 or the Government 
 
-Procurement Reform Act” </>
+Procurement Reform Act </>
   ),
     link: (
       <>
@@ -143,7 +143,7 @@ Procurement Reform Act” </>
   {
     title: (
       <>
-<b>House Bill No. 9648</b> – “An Act Providing for Cost-effective, Transparent, Competitive, Streamlined, Sustainable, Active, and Inclusive Procurement Activities of the Government, Repealing for the Purpose Republic Act No. 9184, Otherwise Known As The Government Procurement Reform Act” 
+<b>House Bill No. 9648</b> – An Act Providing for Cost-effective, Transparent, Competitive, Streamlined, Sustainable, Active, and Inclusive Procurement Activities of the Government, Repealing for the Purpose Republic Act No. 9184, Otherwise Known As The Government Procurement Reform Act” 
 </>
   ),
     link: (
@@ -158,7 +158,7 @@ Procurement Reform Act” </>
   {
     title: (
       <>
-<b>Senate Bill No. 176</b> - “An Act Institutionalizing the Filipino First Policy in the Government Procurement System, amending for the Purpose Republic Act (RA) No. 9184, otherwise known as the ‘Government Procurement Reform Act,’ and for Other Purposes” 
+<b>Senate Bill No. 176</b> - An Act Institutionalizing the Filipino First Policy in the Government Procurement System, amending for the Purpose Republic Act (RA) No. 9184, otherwise known as the ‘Government Procurement Reform Act,’ and for Other Purposes” 
 </>
   ),
     link: (
@@ -173,7 +173,7 @@ Procurement Reform Act” </>
   {
     title: (
       <>
-Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventory System for all Government Procuring Entities, amending for the Purpose RA No. 9184, otherwise known as the ‘Government Procurement Reform Act’” 
+Senate Bill No. 618 - An Act Providing for a Uniform Warehousing and Inventory System for all Government Procuring Entities, amending for the Purpose RA No. 9184, otherwise known as the ‘Government Procurement Reform Act’” 
 </>
   ),
     link: (
@@ -189,7 +189,7 @@ Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventor
   {
     title: (
       <>
-<b>Senate Bill No. 619</b> - “An Act Amending Section 53 of RA No. 9184, otherwise known as the ‘Government Procurement Reform Act’” </>
+<b>Senate Bill No. 619</b> - An Act Amending Section 53 of RA No. 9184, otherwise known as the ‘Government Procurement Reform Act </>
   ),
     link: (
       <>
@@ -204,7 +204,7 @@ Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventor
   {
     title: (
       <>
-      <b>Senate Bill No. 1023</b> - “An Act Amending RA No. 9184, otherwise known as the Government Procurement Reform Act, Withdrawing from Its Application All References to the Local Government Units” 
+      <b>Senate Bill No. 1023</b> - An Act Amending RA No. 9184, otherwise known as the Government Procurement Reform Act, Withdrawing from Its Application All References to the Local Government Units” 
       </>
   ),
     link: (
@@ -220,7 +220,7 @@ Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventor
   {
     title: (
       <>
-<b>Senate Bill No. 1803</b> - “An Act Amending Section 23 of RA No. 9184, otherwise known as the Government Procurement Reform Act, Providing for Eligibility of Bidders in the Procurement of Goods and Infrastructure Projects and for Other Purposes” 
+<b>Senate Bill No. 1803</b> - An Act Amending Section 23 of RA No. 9184, otherwise known as the Government Procurement Reform Act, Providing for Eligibility of Bidders in the Procurement of Goods and Infrastructure Projects and for Other Purposes” 
       </>
   ),
     link: (
@@ -236,7 +236,7 @@ Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventor
   {
     title: (
       <>
-<b>Senate Bill No. 692</b> - “An Act to Pursue the Armed Forces of the Philippines Modernization Program, Amending for this Purpose Republic Act No. 9184, Otherwise Known as the ‘Government Procurement Reform Act’” 
+<b>Senate Bill No. 692</b> - An Act to Pursue the Armed Forces of the Philippines Modernization Program, Amending for this Purpose Republic Act No. 9184, Otherwise Known as the ‘Government Procurement Reform Act’” 
       </>
   ),
     link: (
@@ -251,7 +251,7 @@ Senate Bill No. 618 - “An Act Providing for a Uniform Warehousing and Inventor
   {
     title: (
       <>
-<b>Senate Bill No. 2593</b> – “An Act Revising Republic Act No. 9184 Otherwise Known As The ‘Government Procurement Reform Act’ and For Other Purposes” 
+<b>Senate Bill No. 2593</b> – An Act Revising Republic Act No. 9184 Otherwise Known As The ‘Government Procurement Reform Act’ and For Other Purposes” 
       </>
   ),
     link: (
