@@ -286,7 +286,7 @@ function NavListMenuAboutNGPA() {
                       color="blue-gray"
                       className="flex items-center text-sm font-bold"
                     >
-                      HOR hearings
+                      HOR Hearings
                     </Typography>
                     <Typography
                       variant="paragraph"
@@ -305,7 +305,7 @@ function NavListMenuAboutNGPA() {
                       color="blue-gray"
                       className="flex items-center text-sm font-bold"
                     >
-                      Senate hearings
+                      Senate Hearings
                     </Typography>
                     <Typography
                       variant="paragraph"

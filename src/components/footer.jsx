@@ -40,7 +40,7 @@ export function FooterWithSocialLinks() {
 
             <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
               <FontAwesomeIcon icon={faPhone} />{" "}
-              <span>(02) 5322-6222 (Bac)</span>
+              <span>(02) 5322-6222 (BAC)</span>
             </Typography>
 
             <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 items-center">
@@ -48,7 +48,7 @@ export function FooterWithSocialLinks() {
               <span>gppb@gppb.gov.ph</span>
             </Typography>
 
-            <div className="w-fit  -ml-2 py-2 px-2  rounded-xl backdrop-blur-lg bg-white/30 border border-blue-500/15 flex gap-3 items-center mt-2 text-blue-gray-900 shadow-lg">
+            <div className="w-fit  -ml-0.5 py-2 px-2  rounded-xl backdrop-blur-lg bg-white/30 border border-blue-500/15 flex gap-3 items-center mt-2 text-blue-gray-900 shadow-lg">
               <Typography
               as="a"
                 className="opacity-75 text-black text-xl transition-opacity hover:opacity-100"
@@ -113,7 +113,7 @@ export function FooterWithSocialLinks() {
             <div className="mt-0 flex w-full flex-col items-center justify-center pt-2.5 md:flex-row md:justify-between">
               <Typography
                 variant="small"
-                className="mb-4 text-center font-normal text-blue-gray-900 md:mb-0"
+                className="mb-4 text-center font-[500] text-blue-gray-900 md:mb-0"
               >
                 &copy; {currentYear}{" "}
                 <a href="https://www.gppb.gov.ph/" className="text-blue-700">

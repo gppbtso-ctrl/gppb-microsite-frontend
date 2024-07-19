@@ -152,11 +152,60 @@ export default function Topic() {
                 </Alert>
               )}
 
-              {loaded && decodedToken && data ? (
+          
+
+              {data?.posts &&
+                Object.keys(data?.posts).map((key, i) => {
+                  const post = data.posts[key];
+                  return (
+                    <div
+                      key={i}
+                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border   border-blue-gray-500 antialiased"
+                    >
+                      <div className="flex flex-col gap-0 w-full break-words">
+                        <div className="flex w-full justify-between items-start mb-7">
+                          <div className="flex flex-col">
+                            <Typography className=" text-sm text-blue-gray-900 font-semibold">
+                              {post?.created_by?.first_name +
+                                " " +
+                                post?.created_by?.last_name}
+                            </Typography>
+                            <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
+                              <Moment format="YYYY MMM DD HH:mm">
+                                {post?.created_date}
+                              </Moment>
+                            </Typography>
+                          </div>
+                          {loaded && decodedToken ? <Button
+                            size="sm"
+                            variant="outlined"
+                            className="p-1 rounded-none border-none"
+                            onClick={() => handleReplyClick(post)}
+                          >
+                            <FontAwesomeIcon
+                              icon={faReply}
+                              className="text-xs"
+                              
+                            />
+                          </Button>: null}
+                          
+                        </div>
+                        <Typography className="w-full text-blue-gray-900 text-lg 
+                        [&_strong]:font-extrabold [&_blockquote]:pl-4 
+                        [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2
+                         [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
+                          {parse(post?.message)}
+                        </Typography>
+                      </div>
+                    </div>
+                  );
+                })}
+                {/* comment section */}
+                {loaded && decodedToken && data ? (
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
                   decodedToken?.committee_list.includes(data?.committee)) ? (
-                  <div className="mb-1 ">
+                  <div className="mt-1">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Tiptap onContentChange={handleContentChange} currentContent={currentContent} setCurrentContent={setCurrentContent} refEditor={refEditor} />
                       <div className="flex justify-end items-center mt-1">
@@ -177,49 +226,6 @@ export default function Topic() {
                   </div>
                 ) : null
               ) : null}
-
-              {data?.posts &&
-                Object.keys(data?.posts).map((key, i) => {
-                  const post = data.posts[key];
-                  return (
-                    <div
-                      key={i}
-                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border border-blue-gray-500 antialiased"
-                    >
-                      <div className="flex flex-col gap-0 ">
-                        <div className="flex w-full justify-between items-start mb-7">
-                          <div className="flex flex-col">
-                            <Typography className=" text-sm text-blue-gray-900 font-semibold">
-                              {post?.created_by?.first_name +
-                                " " +
-                                post?.created_by?.last_name}
-                            </Typography>
-                            <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
-                              <Moment format="YYYY MMM DD HH:mm">
-                                {post?.created_date}
-                              </Moment>
-                            </Typography>
-                          </div>
-                          <Button
-                            size="sm"
-                            variant="outlined"
-                            className="p-1 rounded-none border-none"
-                            onClick={() => handleReplyClick(post)}
-                          >
-                            <FontAwesomeIcon
-                              icon={faReply}
-                              className="text-xs"
-                              
-                            />
-                          </Button>
-                        </div>
-                        <Typography className="text-blue-gray-900 text-lg whitespace-pre [&_strong]:font-extrabold [&_blockquote]:pl-4 [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2 [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
-                          {parse(post?.message)}
-                        </Typography>
-                      </div>
-                    </div>
-                  );
-                })}
             </div>
           </div>
         </Card>

@@ -120,7 +120,7 @@ export default function CommitteeLayout({ children }) {
             class="text-center justify-start w-full max-w-[45.5rem] mx-5 lg:mx-[5vw] flex flex-col space-y-5"
           >
             <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
-              <Typography className="absolute text-4xl lg:text-7xl text-left font-normal uppercase animText">
+              <Typography className="absolute text-4xl lg:text-7xl text-left font-sans uppercase animText">
                 Welcome To The 
               </Typography>
             </div>

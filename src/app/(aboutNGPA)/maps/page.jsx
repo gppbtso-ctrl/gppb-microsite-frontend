@@ -14,8 +14,8 @@ export default function Maps() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none flex flex-col gap-3">
-        <Typography variant="h5" className="font-sans">
+      <Card className="relative p-7 m-3 max-w-5xl rounded-none flex flex-col gap-3">
+        <Typography variant="h5" className="font-sans text-center ">
           METHODOLOGY FOR ASSESSING PROCUREMENT SYSTEMS (MAPS){" "}
         </Typography>
         <Typography className=" text-justify ">
@@ -136,7 +136,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                  <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                  <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (a) <u><b>Rules on Participation</b></u>
                   <ol className="list-[lower-roman] ml-10 ">
                     <li>
@@ -216,7 +216,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                 <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                 <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (b){" "}
                   <b>
                     <u>Procurement Methods</u>
@@ -280,7 +280,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-             <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+             <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (c){" "}
                   <b>
                     <u>Support to Value for Money</u>
@@ -420,7 +420,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                 <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                 <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (d){" "}
                   <b>
                     <u>Complaints Review Mechanism</u>
@@ -470,7 +470,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (e){" "}
                   <b>
                     <u>Sustainable Public Procurement </u>
@@ -537,7 +537,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-            <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+            <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (f){" "}
                   <b>
                     <u>
@@ -619,7 +619,7 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-           <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+           <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
                   (g){" "}
                   <b>
                     <u>E-procurement system</u>
