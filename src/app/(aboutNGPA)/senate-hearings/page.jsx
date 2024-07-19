@@ -31,7 +31,7 @@ const starpbar = [
       <>
         <Typography className="inline">B.</Typography>
         <Typography className="text-justify inline ml-2.5">
-        A Research Study on Other Countries' Procurement Laws, Agencies and their Functions was prepared to show that other countries have an independent organic office that looks after government procurement. This was made as part of preparatory materials for the special meeting of the GPPB. 
+        A Research Study on Other Countries&apos; Procurement Laws, Agencies and their Functions was prepared to show that other countries have an independent organic office that looks after government procurement. This was made as part of preparatory materials for the special meeting of the GPPB. 
         </Typography>
       </>
     ),

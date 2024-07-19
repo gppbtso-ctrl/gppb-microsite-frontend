@@ -25,8 +25,9 @@ export default function Maps() {
           className="rounded-xl  h-full flex-none shadow-lg mb-2"
         >
     
-          {Array.from({ length: 8 }, (_, i) => i + 1).map((number) => (
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((number,index) => (
           <Image
+          key={index}
           src={`/maps-pic${number}.jpg`}
           alt="image 1"
           className="max-h-[33rem] w-full object-fill"
@@ -35,8 +36,9 @@ export default function Maps() {
         />
           ))}
 
-{Array.from({ length: 8 }, (_, i) => i + 1).map((number) => (
+{Array.from({ length: 8 }, (_, i) => i + 1).map((number,index) => (
           <Image
+          key={index}
           src={`/maps2-pic${number}-min.jpg`}
           alt="image 1"
           className="max-h-[33rem] w-full object-fill "
