@@ -42,7 +42,7 @@ const CommitteeMain = () => {
         </Button>:null : null}
         
       </div> */}
-        <div className="relative grid grid-cols-1 lg:grid-cols-2  max-w-[30rem] lg:max-w-[70rem] gap-10 z-40 mt-3">
+        <div className="relative grid grid-cols-1  lg:grid-cols-2  max-w-[30rem] lg:max-w-[70rem] gap-10 z-40 mt-3">
           {isLoading ? (
             <CardsLoading />
           ) : (

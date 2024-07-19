@@ -4,17 +4,48 @@ import useLoading from "@/utils/use-loading";
 import {
   Card,
   CardHeader,
+  Carousel,
   IconButton,
   Typography,
 } from "@material-tailwind/react";
+import Image from "next/image";
+import Link from "next/link";
 
 import React, { useEffect, useState } from "react";
 
 export default function Maps() {
   const loading = useLoading(1200);
+
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-5xl rounded-none flex flex-col gap-3">
+      <Card className="relative p-7 m-3 max-w-[67rem] rounded-none flex flex-col gap-3">
+      <Carousel
+          autoplay={true}
+          loop={true}
+          className="rounded-xl  h-full flex-none shadow-lg mb-2"
+        >
+    
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((number) => (
+          <Image
+          src={`/maps-pic${number}.jpg`}
+          alt="image 1"
+          className="max-h-[33rem] w-full object-fill"
+          width={500}
+          height={500}
+        />
+          ))}
+
+{Array.from({ length: 8 }, (_, i) => i + 1).map((number) => (
+          <Image
+          src={`/maps2-pic${number}-min.jpg`}
+          alt="image 1"
+          className="max-h-[33rem] w-full object-fill "
+          width={500}
+          height={500}
+        />
+          ))}
+
+        </Carousel>
         <Typography variant="h5" className="font-sans text-center ">
           METHODOLOGY FOR ASSESSING PROCUREMENT SYSTEMS (MAPS){" "}
         </Typography>
@@ -709,12 +740,18 @@ export default function Maps() {
           evolving needs.
         </Typography>
 
-        <Typography className="text-justify mt-3 mb-5">
+        <Typography className="text-justify mt-2 ">
           {" "}
           &nbsp; &nbsp; &nbsp; The recommendations in the MAPS Final Assessment
           Report were used as guidance and adopted in the recommendations of the
-          GPPB and its TSO in the amendments of RA No. 9184.
+          GPPB and its TSO in the amendments of RA No. 9184. 
         </Typography>
+
+        <Typography>
+        <Link href="/MAPS-Assessment-report-philippines-volumeI.pdf" target="__blank" className="ml-1 text-blue-800 underline font-semibold tracking-wide">Referrence Link</Link>
+        </Typography>
+
+       
       </Card>
     </div>
   );

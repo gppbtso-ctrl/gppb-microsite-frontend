@@ -247,148 +247,109 @@ export default function SenateHearings() {
           loop={true}
           className="rounded-xl  flex-none shadow-md mb-2"
         >
-          <img
-            src="/hor-pic2.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-          />
-          <img
-            src="/hor-pic1.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-          />
-
           <div className="relative h-full w-full bg-black">
             <img
-              src="/hor-pic3-hear-19.jpg"
+              src="/sen-hearing-pic1.jpg"
               alt="image 1"
               className="max-h-[30rem] w-full object-cover"
             />
-            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
+            <div className="absolute  bottom-0 h-[18rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
                 color="white"
-                variant="lead"
-                className="font-sans absolute top-[3.5rem] left-5"
+                className="font-sans text-md absolute top-[7.5rem] left-5"
               >
-                HOR Hearing - April 19
+           Briefing with the Senate Legislative Budget Research <br /> and Monitoring Office andCommittee of Finance (03 October 2023)
+           <br />
+           <br /> 
+           Present from Senate were Director General Eireen Palanca of LBRMO, Atty. Fatima Panontongon from the Office of Senator Angara, and Atty. Yolanda Doblon from the Office of Senator Loren Legarda. 
               </Typography>
             </div>
           </div>
 
           <Image
-            src="/hor-pic4-hear-19.jpg"
+            src="/sen-hearing-pic2.jpg"
+            alt="image 1"
+            className="max-h-[30rem] w-full object-cover"
+            width={500}
+            height={500}
+          />
+          
+          <Image
+            src="/sen-hearing-pic3.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
 
+<div className="relative h-full w-full bg-black">
+            <img
+              src="/sen-hearing-feb21-pic1.jpg"
+              alt="image 1"
+              className="max-h-[30rem] w-full object-cover"
+            />
+            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
+              <Typography
+                color="white"
+                variant="lead"
+                className="font-sans absolute top-[3.4rem] left-5"
+              >
+          Second Senate Public Hearing  (21 February 2024) 
+              </Typography>
+            </div>
+          </div>
+
           <Image
-            src="/hor-pic5-hear-19.jpg"
+            src="/sen-hearing-feb21-pic2.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
 
-          <div className="relative h-full w-full bg-black">
+          
+<Image
+            src="/sen-hearing-feb21-pic3.jpg"
+            alt="image 1"
+            className="max-h-[30rem] w-full object-cover"
+            width={500}
+            height={500}
+          />
+
+        <div className="relative h-full w-full bg-black">
             <img
-              src="/hor-pic1-hear-21.jpg"
+              src="/sen-hearing-march12-pic1.jpg"
               alt="image 1"
               className="max-h-[30rem] w-full object-cover"
             />
-            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
+            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
                 color="white"
                 variant="lead"
-                className="font-sans absolute top-[3.5rem] left-5"
+                className="font-sans absolute top-[3.4rem] left-5"
               >
-                HOR Hearing - September 21
-              </Typography>
-            </div>
-          </div>
-          <Image
-            src="/hor-pic2-hear-21.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={500}
-            height={500}
-          />
-          <Image
-            src="/hor-pic3-hear-21.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={500}
-            height={500}
-          />
-          <Image
-            src="/hor-pic4-hear-21.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={500}
-            height={500}
-          />
-          <div className="relative h-full w-full bg-black">
-            <img
-              src="/hor-pic1-oct-26.jpg"
-              alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
-            />
-            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
-              <Typography
-                color="white"
-                variant="lead"
-                className="font-sans absolute top-[3.5rem] left-5"
-              >
-                HOR Hearing - October 26
-              </Typography>
-            </div>
-          </div>
-          <Image
-            src="/hor-pic2-oct-26.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={500}
-            height={500}
-          />
-          <Image
-            src="/hor-pic3-oct-26.jpg"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={300}
-            height={300}
-          />
-          <div className="relative h-full w-full bg-black">
-            <img
-              src="/hor-pic1-dec-5.png"
-              alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
-            />
-            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
-              <Typography
-                color="white"
-                variant="lead"
-                className="font-sans absolute top-[3.5rem] left-5"
-              >
-                HOR Hearing - December 5
+        Senate Interpellations hearing 15 May 2024 
               </Typography>
             </div>
           </div>
 
-          <Image
-            src="/hor-pic3-dec-5.png"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={300}
-            height={300}
-          />
-          <Image
-            src="/hor-pic4-dec-5.png"
-            alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
-            width={300}
-            height={300}
-          />
+          <div className="relative h-full w-full bg-black">
+            <img
+              src="/sen-hearing-may15-pic1.jpg"
+              alt="image 1"
+              className="max-h-[30rem] w-full object-cover"
+            />
+            <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
+              <Typography
+                color="white"
+                variant="lead"
+                className="font-sans absolute top-[3.4rem] left-5"
+              >
+Senate Sponsorship hearing (12 March 2024) 
+              </Typography>
+            </div>
+          </div>
+        
         </Carousel>
         <Typography variant="h5" className="font-sans text-center">
           Legislative Journey regarding RA No. 9184 Amendments (Senate)

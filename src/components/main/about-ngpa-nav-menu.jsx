@@ -297,7 +297,7 @@ function NavListMenuAboutNGPA() {
                   </div>
                 </MenuItem>
               </Link>
-              <a href="#">
+              <Link href="/senate-hearings">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -315,14 +315,14 @@ function NavListMenuAboutNGPA() {
                     </Typography>
                   </div>
                 </MenuItem>
-              </a>
+              </Link>
             </ul>
 
             <ul className="flex flex-col w-[12rem]">
               <Typography className="text-xs font-semibold p-2 w-[12rem] min-h-[3rem] flex flex-col justify-center">
                 Others
               </Typography>
-              <a href="#">
+              <Link href="/proposed-provisions">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -338,7 +338,7 @@ function NavListMenuAboutNGPA() {
                     ></Typography>
                   </div>
                 </MenuItem>
-              </a>
+            </Link>
               <a href="#">
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
@@ -368,7 +368,8 @@ function NavListMenuAboutNGPA() {
             <Typography className="text-xs font-semibold p-2 py-5 text-black -mb-2">
               Preliminary Activities and Sectoral Consultations{" "}
             </Typography>
-            <a href="#">
+            
+            <Link href={'/maps'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -386,8 +387,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/lrd-research-works'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -405,8 +406,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/sectoral-consultations'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -424,8 +425,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/other-key-activities'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -443,13 +444,13 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
+          </Link>
           </ul>
           <ul className="flex flex-col gap-1 max-w-[12rem]">
             <Typography className="text-xs font-semibold p-2 text-black py-5 -mb-2 flex flex-col justify-center">
               Legislative Journey
             </Typography>
-            <a href="#">
+            <Link href={'/op-meetings'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -467,8 +468,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/different-bill-versions'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -486,8 +487,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/hor-hearings'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -505,8 +506,8 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
-            <a href="#">
+            </Link>
+            <Link href={'/senate-hearings'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -524,14 +525,14 @@ function NavListMenuAboutNGPA() {
                   </Typography>
                 </div>
               </MenuItem>
-            </a>
+            </Link>
           </ul>
 
           <ul className="flex flex-col gap-1 w-[12rem]">
           <Typography className="text-xs font-semibold p-2 text-black py-5 -mb-2 flex flex-col justify-center">
               Others
             </Typography>
-            <a href="#">
+            <Link href={'/proposed-provisions'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -547,7 +548,7 @@ function NavListMenuAboutNGPA() {
                   ></Typography>
                 </div>
               </MenuItem>
-            </a>
+            </Link>
             <a href="#">
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>

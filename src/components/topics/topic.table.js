@@ -45,11 +45,11 @@ export const TopicTable = ({ data }) => {
             data?.topics?.map((item, i, row) => (
               <tr key={i}>
                 <td
-                  className={`p-2 px-4 ${
+                  className={`p-2 px-5 ${
                     i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
                   }`}
                 >
-                  <div className="lg:w-[32rem] max-w-[12rem] lg:max-w-[40rem] break-words">
+                  <div className="min-w-full lg:min-w-[30rem] max-w-[12rem] lg:max-w-[40rem] break-words">
                     <Link href={`/provision/${item.id}`}>
                       <Typography className="font-semibold text-blue-gray-900 hover:text-blue-400 transition-all duration-150">
                         {item.subject}
@@ -73,11 +73,11 @@ export const TopicTable = ({ data }) => {
                   </Typography>
                 </td>
                 <td
-                  className={`p-4 py-2 ${
+                  className={`p-4 py-2 max-w-[3rem] md:max-w-[10rem]  md:w-[9rem] ${
                     i !== row.length - 1 ? "border-b border-blue-gray-50" : ""
                   }`}
                 >
-                  {item?.latest_post_member_info ?  <div className="flex flex-col gap-0">
+                  {item?.latest_post_member_info ?  <div className="flex flex-col gap-0 break-words max-w-[6rem]">
                     <Typography className="block text-sm antialiased font-semibold leading-normal text-blue-gray-900 text-left">
                       {item.latest_post_member_info
                         ? item.latest_post_member_info
