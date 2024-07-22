@@ -27,55 +27,50 @@ export function FooterWithSocialLinks() {
       <div className="mx-auto w-full  ">
         <section class="relative flex flex-col  w-full z-10  shadow-md gap-0.5 pt-[3rem] pb-4 px-16 backdrop-blur-3xl bg-gradient-to-b from-white/95 to-blue-500/95">
           <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
-            <div className="drop-shadow-xl">
-              <Typography className="text-xl tracking-wide antialiased font-sans uppercase drop-shadow-xl text-center md:text-left">
+            <div className="">
+              <Typography className="text-xl tracking-wide antialiased font-sans uppercase drop-shadow-md text-center md:text-left">
                 Government Procurement Policy
               </Typography>
 
-              <Typography className="text-xl tracking-wide  antialiased font-sans uppercase drop-shadow-xl text-center md:text-left">
+              <Typography className="text-xl tracking-wide  antialiased font-sans uppercase drop-shadow-md text-center md:text-left">
                 Board - Technical Support Office
               </Typography>
 
-              <Typography className="text-sm mt-2 tracking-wide  antialiased font-sans uppercase drop-shadow-lg text-center md:text-left">
+              <Typography className="text-sm mt-2 tracking-wide  antialiased font-sans uppercase drop-shadow-md text-center md:text-left">
                 GPPB-TSO Building, Commonwealth Ave, <br />
                 UP Diliman Campus, Quezon City
               </Typography>
 
-
-              <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 justify-center md:justify-start items-center drop-shadow-xl ">
+              <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 justify-center md:justify-start items-center drop-shadow-md ">
                 <FontAwesomeIcon icon={faPhone} />{" "}
                 <span>(02) 5322-6222 (BAC)</span>
               </Typography>
 
-              <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 justify-center md:justify-start items-center drop-shadow-xl  ">
+              <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 justify-center md:justify-start items-center drop-shadow-md  ">
                 <FontAwesomeIcon icon={faEnvelope} />{" "}
                 <span>gppb@gppb.gov.ph</span>
               </Typography>
 
-             
-              <Typography className="text-center md:text-left text-lg mt-2 tracking-wide font-light hover:text-blue-50 antialiased text-blue-900 underline  drop-shadow-xl">
-              <Link href="#">
-                <span>Legal Notice Disclaimer</span>
+              <Typography className="text-center md:text-left md:w-fit  text-lg mt-2 tracking-wide font-light hover:text-blue-50 antialiased text-black underline  drop-shadow-md transition-all duration-200">
+                <Link href="/legal-notice">
+                  <span>Legal Notice Disclaimer</span>
                 </Link>
               </Typography>
-            
-            
             </div>
 
-            <div className="flex flex-col gap-1 justify-end mb-3 md:mb-1 items-center drop-shadow-lg">
+            <div className="flex flex-col gap-1 justify-end mb-3 md:mb-1 items-center drop-shadow-md">
               <Image
                 src={"/Logo Watermark 2024 - NGPA.png"}
                 width={300}
                 height={500}
-              
               />
             </div>
           </div>
 
-          <div className="mb-1 flex w-full drop-shadow-lg border-0 border-t-[1px] border-blue-gray-800 flex-col items-center justify-center pt-3 md:flex-row md:justify-between">
+          <div className="mb-1 flex w-full drop-shadow-md border-0 border-t-[1px] border-blue-gray-800 flex-col items-center justify-center pt-3 md:flex-row md:justify-between">
             <Typography
               variant="small"
-              className=" text-center font-[500] text-black antialiased drop-shadow-lg mb-1 md:mb-0"
+              className=" text-center font-[500] text-black antialiased drop-shadow-md mb-1 md:mb-0"
             >
               &copy; {currentYear}{" "}
               <a href="https://www.gppb.gov.ph/" className="">
@@ -87,7 +82,7 @@ export function FooterWithSocialLinks() {
             <div className="flex gap-4 items-center  text-blue-gray-900 sm:justify-center">
               <Typography
                 as="a"
-                className="opacity-75 antialiased text-black drop-shadow-lg transition-opacity hover:opacity-100 hover:text-blue-gray-100"
+                className="opacity-75 antialiased text-black drop-shadow-md transition-opacity hover:opacity-100 hover:text-blue-gray-100"
                 href="https://www.gppb.gov.ph/"
               >
                 <svg
@@ -105,7 +100,7 @@ export function FooterWithSocialLinks() {
               <Typography
                 as="a"
                 href="https://www.facebook.com/GovtProcurementPH"
-                className="opacity-75 text-black antialiased drop-shadow-lg text-xl transition-opacity hover:opacity-100 hover:text-blue-gray-100"
+                className="opacity-75 text-black antialiased drop-shadow-md text-xl transition-opacity hover:opacity-100 hover:text-blue-gray-100"
               >
                 <svg
                   className="h-6 w-6"
@@ -124,7 +119,7 @@ export function FooterWithSocialLinks() {
               <Typography
                 as="a"
                 href="https://www.youtube.com/@governmentprocurementph9010"
-                className="opacity-75 text-black antialiased drop-shadow-lg text-xl transition-opacity hover:opacity-100 hover:text-blue-gray-100"
+                className="opacity-75 text-black antialiased drop-shadow-md text-xl transition-opacity hover:opacity-100 hover:text-blue-gray-100"
               >
                 <svg
                   className="h-6 w-6"

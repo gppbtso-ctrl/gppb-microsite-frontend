@@ -26,8 +26,8 @@ import LoadingScreen from "@/components/loading/loading";
 const localizer = momentLocalizer(moment);
 
 export default function Topics() {
-  const loading = useLoading(1200)
-  const pathname = usePathname()
+  const loading = useLoading(1200);
+  const pathname = usePathname();
   const { id } = useParams();
   const { mutate } = useSWRConfig();
   const [open, setOpen] = useState(false);
@@ -59,7 +59,7 @@ export default function Topics() {
   console.log(decodedToken);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
-      {loading ? <LoadingScreen/> : null}
+      {loading ? <LoadingScreen /> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
           src={data?.photo_id}
@@ -79,22 +79,20 @@ export default function Topics() {
           variant="text"
           size="sm"
           className={`relative rounded-none hover:text-blue-400 ${
-            pathname === `/committee/${id}`
-              ? "pointer-events-none"
-              : ""
-          }` }
+            pathname === `/committee/${id}` ? "pointer-events-none" : ""
+          }`}
           onClick={() => router.push(`/committee/${id}`)}
         >
-
           <span
             className={`font-sans text-[1.2em] ${
-              pathname === `/committee/${id}`
-                ? "text-blue-500"
-                : ""
+              pathname === `/committee/${id}` ? "text-blue-500" : ""
             }`}
-          >Provisions</span>
-          { pathname === `/committee/${id}` ? <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700"/> : null}
-         
+          >
+            Provisions
+          </span>
+          {pathname === `/committee/${id}` ? (
+            <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700" />
+          ) : null}
         </Button>{" "}
         <Button
           variant="text"
@@ -103,19 +101,21 @@ export default function Topics() {
             pathname === `/committee/listof-members/${id}`
               ? "pointer-events-none"
               : ""
-          }` }
+          }`}
           onClick={() => router.push(`/committee/listof-members/${id}`)}
         >
-
           <span
             className={`font-sans text-[1.2em] ${
               pathname === `/committee/listof-members/${id}`
                 ? "text-blue-500"
                 : ""
             }`}
-          >List Of Members</span>
-          { pathname === `/committee/listof-members/${id}` ? <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700"/> : null}
-         
+          >
+            List Of Members
+          </span>
+          {pathname === `/committee/listof-members/${id}` ? (
+            <div className="w-full p-0 absolute h-[3px] left-0 -bottom-[0.20rem] bg-blue-700" />
+          ) : null}
         </Button>{" "}
         <Button
           variant="text"
@@ -124,7 +124,7 @@ export default function Topics() {
             pathname === `/committee/calendar-activities/${id}`
               ? "pointer-events-none"
               : ""
-          }` }
+          }`}
           onClick={() => router.push(`/committee/calendar-activities/${id}`)}
         >
           <span
@@ -136,13 +136,12 @@ export default function Topics() {
           >
             Calendar Activities
           </span>{" "}
-        
         </Button>
       </div>
       <div>
         <div className=" w-full flex justify-end"></div>
         <div className="relative w-full z-40">
-          <Card className=" !shadow-jubilation mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
+          <Card className="border-[1px] border-black  drop-shadow-md mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
             <CardBody className="p-0 w-full max-w-[60rem]">
               <div className="flex h-15 w-full gap-5 p-5 py-4 justify-center items-center ">
                 <Typography className="text-black font-semibold max-w-24 ">

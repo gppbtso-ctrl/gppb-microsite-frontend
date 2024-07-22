@@ -34,7 +34,7 @@ export default function Topic() {
   const loading = useLoading(1400);
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
-  const [currentContent, setCurrentContent] = useState('');
+  const [currentContent, setCurrentContent] = useState("");
   const [submitStatus, setSubmitStatus] = useState(null);
   const {
     register,
@@ -91,18 +91,19 @@ export default function Topic() {
   };
 
   const handleReplyClick = (post) => {
-
     const reply = `
     <blockquote>
-    <p><span>${post.created_by.first_name} ${post.created_by.last_name}</span></p>
-    <p><span>${moment(post.created_date).format('YYYY MMM DD HH:mm')}</span></p>
+    <p><span>${post.created_by.first_name} ${
+      post.created_by.last_name
+    }</span></p>
+    <p><span>${moment(post.created_date).format("YYYY MMM DD HH:mm")}</span></p>
     <br/>
     ${post?.message}
     </blockquote>
-    `
-    const replyFinal = reply.replace(/<span>/g, `<span style="">`)
-    console.log(replyFinal)
-    setCurrentContent(prevContent => replyFinal);
+    `;
+    const replyFinal = reply.replace(/<span>/g, `<span style="">`);
+    console.log(replyFinal);
+    setCurrentContent((prevContent) => replyFinal);
     refEditor.current.focus();
     // You can add more logic here to handle the reply action
   };
@@ -111,7 +112,7 @@ export default function Topic() {
     <>
       {loading ? <LoadingScreen /> : null}
       <div className="  h-full flex flex-col justify-center items-center z-10">
-        <Card className="mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full !shadow-jubilation flex flex-row justify-center items-center gap-5  !p-0 ">
+        <Card className="border-[1px] border-blue-gray-700 mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
           <div className="h-full p-7 flex flex-col gap-3 flex-1 w-full">
             <div>
               <div className="flex flex-col ">
@@ -133,8 +134,7 @@ export default function Topic() {
             </div>
             <div className="break-words mt-2">
               <Typography className="text-lg tracking-wide whitespace-pre-wrap">
-            
-              {data?.content}
+                {data?.content}
               </Typography>
             </div>
             <div className="h-[1px] bg-gray-500 mt-2 mb-2"></div>
@@ -151,8 +151,6 @@ export default function Topic() {
                   <Typography>Something Went Wrong!</Typography>
                 </Alert>
               )}
-
-          
 
               {data?.posts &&
                 Object.keys(data?.posts).map((key, i) => {
@@ -176,38 +174,45 @@ export default function Topic() {
                               </Moment>
                             </Typography>
                           </div>
-                          {loaded && decodedToken ? <Button
-                            size="sm"
-                            variant="outlined"
-                            className="p-1 rounded-none border-none"
-                            onClick={() => handleReplyClick(post)}
-                          >
-                            <FontAwesomeIcon
-                              icon={faReply}
-                              className="text-xs"
-                              
-                            />
-                          </Button>: null}
-                          
+                          {loaded && decodedToken ? (
+                            <Button
+                              size="sm"
+                              variant="outlined"
+                              className="p-1 rounded-none border-none"
+                              onClick={() => handleReplyClick(post)}
+                            >
+                              <FontAwesomeIcon
+                                icon={faReply}
+                                className="text-xs"
+                              />
+                            </Button>
+                          ) : null}
                         </div>
-                        <Typography className="w-full text-blue-gray-900 text-lg 
+                        <Typography
+                          className="w-full text-blue-gray-900 text-lg 
                         [&_strong]:font-extrabold [&_blockquote]:pl-4 
                         [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2
-                         [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1">
+                         [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1"
+                        >
                           {parse(post?.message)}
                         </Typography>
                       </div>
                     </div>
                   );
                 })}
-                {/* comment section */}
-                {loaded && decodedToken && data ? (
+              {/* comment section */}
+              {loaded && decodedToken && data ? (
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
                   decodedToken?.committee_list.includes(data?.committee)) ? (
                   <div className="mt-1">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      <Tiptap onContentChange={handleContentChange} currentContent={currentContent} setCurrentContent={setCurrentContent} refEditor={refEditor} />
+                      <Tiptap
+                        onContentChange={handleContentChange}
+                        currentContent={currentContent}
+                        setCurrentContent={setCurrentContent}
+                        refEditor={refEditor}
+                      />
                       <div className="flex justify-end items-center mt-1">
                         <Button
                           type="submit"

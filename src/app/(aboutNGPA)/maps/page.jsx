@@ -18,35 +18,33 @@ export default function Maps() {
 
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-[67rem] rounded-none flex flex-col gap-3">
-      <Carousel
+      <Card className="relative shadow-none p-7 m-3 max-w-[67rem] rounded-none flex flex-col gap-3">
+        <Carousel
           autoplay={true}
           loop={true}
-          className="rounded-xl  h-full flex-none shadow-lg mb-2"
+          className="rounded-xl  h-full  flex-none shadow-lg "
         >
-    
-          {Array.from({ length: 8 }, (_, i) => i + 1).map((number,index) => (
-          <Image
-          key={index}
-          src={`/maps-pic${number}.jpg`}
-          alt="image 1"
-          className="max-h-[33rem] w-full object-fill"
-          width={500}
-          height={500}
-        />
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((number, index) => (
+            <Image
+              key={index}
+              src={`/maps-pic${number}.jpg`}
+              alt="image 1"
+              className="max-h-[33rem] w-full object-fill"
+              width={500}
+              height={500}
+            />
           ))}
 
-{Array.from({ length: 8 }, (_, i) => i + 1).map((number,index) => (
-          <Image
-          key={index}
-          src={`/maps2-pic${number}-min.jpg`}
-          alt="image 1"
-          className="max-h-[33rem] w-full object-fill "
-          width={500}
-          height={500}
-        />
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((number, index) => (
+            <Image
+              key={index}
+              src={`/maps2-pic${number}-min.jpg`}
+              alt="image 1"
+              className="max-h-[33rem] w-full object-fill "
+              width={500}
+              height={500}
+            />
           ))}
-
         </Carousel>
         <Typography variant="h5" className="font-sans text-center ">
           METHODOLOGY FOR ASSESSING PROCUREMENT SYSTEMS (MAPS){" "}
@@ -63,12 +61,12 @@ export default function Maps() {
         <Typography className=" text-justify">
           &nbsp; &nbsp; &nbsp; At the outset, the MAPS is a tool for evaluating
           the government procurement performance of a country. Using the MAPS,
-          opportunities for, and challenges to, the country&apos;s procurement system
-          are identified to serve as a guide to the government in enhancing its
-          current public procurement framework and processes to make it more
-          responsive to the needs of its people. The MAPS final assessment
-          findings shall be officially released as Country Procurement
-          Assessment Report (CPAR) to the requesting country.
+          opportunities for, and challenges to, the country&apos;s procurement
+          system are identified to serve as a guide to the government in
+          enhancing its current public procurement framework and processes to
+          make it more responsive to the needs of its people. The MAPS final
+          assessment findings shall be officially released as Country
+          Procurement Assessment Report (CPAR) to the requesting country.
         </Typography>
         <Typography className=" text-justify">
           &nbsp; &nbsp; &nbsp; In 2008 and 2012, using the 2006 MAPS, CPARs were
@@ -126,11 +124,11 @@ export default function Maps() {
           &nbsp; &nbsp; &nbsp; The preliminary MAPS report with the above key
           priority areas would need to go through a very stringent two-tier
           process of validation and quality assurance – first by the MAPS
-          Secretariat, then second, the MAPS Assessment&apos;s Technical Advisory
-          Group (ATAG) considering that it will be published as a CPAR. Before
-          they can publish the CPAR, the WB wanted to make sure that the data by
-          which the report was based were sufficient and reliable, hence,
-          another meeting with the WB was held in October 2022.
+          Secretariat, then second, the MAPS Assessment&apos;s Technical
+          Advisory Group (ATAG) considering that it will be published as a CPAR.
+          Before they can publish the CPAR, the WB wanted to make sure that the
+          data by which the report was based were sufficient and reliable,
+          hence, another meeting with the WB was held in October 2022.
         </Typography>
         <Typography className=" text-justify">
           &nbsp; &nbsp; &nbsp; Last 16 May 2023, given the non-objection of the
@@ -169,8 +167,14 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                  <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
-                  (a) <u><b>Rules on Participation</b></u>
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
+                  (a){" "}
+                  <u>
+                    <b>Rules on Participation</b>
+                  </u>
                   <ol className="list-[lower-roman] ml-10 ">
                     <li>
                       Assess whether the restrictive eligibility requirements
@@ -183,7 +187,10 @@ export default function Maps() {
                 </span>
               </td>
               <td className={`p-4 break-words max-w-[7vw] border border-black`}>
-              <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-5 text-justify"
+                >
                   <ol className="list-[decimal] flex flex-col gap-2">
                     <li>
                       The <u>registration or licensing of  Foreign Bidders</u>{" "}
@@ -198,8 +205,8 @@ export default function Maps() {
                       No. 09-2022 which requested the SEC to create a special
                       basket (fast lane) for winning foreign bidders for
                       purposes of registration and award of contract. To date,
-                      the GPPB-TSO is awaiting the SEC&apos;s comments and updates
-                      regarding this matter. .{" "}
+                      the GPPB-TSO is awaiting the SEC&apos;s comments and
+                      updates regarding this matter. .{" "}
                     </li>
                     <li>
                       On the other hand, the IRR of the amended Foreign
@@ -249,7 +256,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                 <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (b){" "}
                   <b>
                     <u>Procurement Methods</u>
@@ -266,7 +276,10 @@ export default function Maps() {
                 </span>
               </td>
               <td className={`p-4 break-words max-w-[7vw] border border-black`}>
-              <span color="blue-gray" className="font-normal font-sans block ml-5 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-5 text-justify"
+                >
                   <ol className="list-[decimal] flex flex-col gap-2">
                     <li>
                       The concept of “pre-qualification” has already been
@@ -313,7 +326,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-             <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (c){" "}
                   <b>
                     <u>Support to Value for Money</u>
@@ -453,7 +469,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                 <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (d){" "}
                   <b>
                     <u>Complaints Review Mechanism</u>
@@ -473,7 +492,10 @@ export default function Maps() {
               <td
                 className={`p-4 break-words max-w-[7vw] border border-black align-top`}
               >
-                 <span color="blue-gray" className="font-normal block ml-5 font-sans text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal block ml-5 font-sans text-justify"
+                >
                   <ol className="list-[decimal] flex flex-col gap-2">
                     <li>
                       To ensure efficiency and fairness in resolving
@@ -503,7 +525,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-                <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (e){" "}
                   <b>
                     <u>Sustainable Public Procurement </u>
@@ -523,7 +548,7 @@ export default function Maps() {
               <td
                 className={`p-4 break-words max-w-[7vw] border border-black align-top`}
               >
-                    <span
+                <span
                   color="blue-gray"
                   className="font-normal block ml-5 text-justify font-sans "
                 >
@@ -570,7 +595,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-            <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (f){" "}
                   <b>
                     <u>
@@ -592,7 +620,7 @@ export default function Maps() {
               <td
                 className={`p-4 break-words max-w-[7vw] border border-black align-top`}
               >
-               <span
+                <span
                   color="blue-gray"
                   className="font-normal block ml-5 text-justify font-sans"
                 >
@@ -652,7 +680,10 @@ export default function Maps() {
               <td
                 className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
               >
-           <span color="blue-gray" className="font-normal font-sans block ml-3 text-justify">
+                <span
+                  color="blue-gray"
+                  className="font-normal font-sans block ml-3 text-justify"
+                >
                   (g){" "}
                   <b>
                     <u>E-procurement system</u>
@@ -686,7 +717,7 @@ export default function Maps() {
               <td
                 className={`p-4 break-words max-w-[7vw] border border-black align-top`}
               >
-                    <span
+                <span
                   color="blue-gray"
                   className="font-normal block ml-5 text-justify font-sans"
                 >
@@ -738,22 +769,26 @@ export default function Maps() {
           stakeholders from various stakeholders and development partners had
           the opportunity to offer valuable comments and insights that may serve
           as a guide to the GPPB in formulating strategies and policies to
-          enhance the country&apos;s procurement system and meet the government&apos;s
-          evolving needs.
+          enhance the country&apos;s procurement system and meet the
+          government&apos;s evolving needs.
         </Typography>
 
         <Typography className="text-justify mt-2 ">
           {" "}
           &nbsp; &nbsp; &nbsp; The recommendations in the MAPS Final Assessment
           Report were used as guidance and adopted in the recommendations of the
-          GPPB and its TSO in the amendments of RA No. 9184. 
+          GPPB and its TSO in the amendments of RA No. 9184.
         </Typography>
 
         <Typography>
-        <Link href="/MAPS-Assessment-report-philippines-volumeI.pdf" target="__blank" className="ml-1 text-blue-800 underline font-semibold tracking-wide">Referrence Link</Link>
+          <Link
+            href="/MAPS-Assessment-report-philippines-volumeI.pdf"
+            target="__blank"
+            className="ml-1 text-blue-800 underline font-semibold tracking-wide"
+          >
+            Referrence Link
+          </Link>
         </Typography>
-
-       
       </Card>
     </div>
   );
