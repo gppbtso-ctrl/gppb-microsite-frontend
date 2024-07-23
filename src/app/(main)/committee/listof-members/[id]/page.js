@@ -22,6 +22,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import useLoading from "@/utils/use-loading";
 import LoadingScreen from "@/components/loading/loading";
+import Pagination from "@/components/general-widgets/paginator";
 
 
 const localizer = momentLocalizer(moment);
@@ -34,10 +35,19 @@ export default function Topics() {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const pathname = usePathname()
+  const TABLE_HEAD = ["No.","Name", "Agency"];
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (newPage) => {
+    // Custom logic before updating the page
+    console.log("Changing to page:", newPage);
+    setPage(newPage);
+  };
+  
   useEffect(() => {
     setLoaded(true);
   }, [decodedToken]);
-  const TABLE_HEAD = ["No.","Name", "Agency"];
+  
 
   const handleOpen = () => setOpen(!open);
 
@@ -51,17 +61,18 @@ export default function Topics() {
     getComTopics
   );
 
-  if (
-    error?.response?.status == 404 &&
-    error?.response?.statusText == "Not Found"
-  ) {
-    router.push("/404");
-  }
+  // if (
+  //   error?.response?.status == 404 &&
+  //   error?.response?.statusText == "Not Found"
+  // ) {
+  //   router.push("/404");
+  // }
 
   const getComListOfMembers = async () => {
     const response = await UserService.getComListOfMembers(id);
     return response.data;
   };
+
 
   const {
     data: clomData,
@@ -71,12 +82,17 @@ export default function Topics() {
   } = useSWR(id ? "comListOfMembers" : null, getComListOfMembers);
 
 
+  useEffect(() => {
+    // Manually trigger a re-fetch when perPage or searchTerm changes
+    mutate("comListOfMembers");
+  }, [page, mutate]);
+
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
           {loading ? <LoadingScreen/> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
-          src={data?.photo_id}
+          src={data?.committee_data?.photo_id}
           className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
         />
         <Typography
@@ -84,7 +100,7 @@ export default function Topics() {
           color="white"
         >
           {" "}
-          {data?.title}
+          {data?.committee_data?.title}
         </Typography>
       </div>
       <div className="w-full max-w-[60rem] flex  justify-between">
@@ -153,7 +169,7 @@ export default function Topics() {
         
         </Button>
       </div>
-      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] !shadow-jubilation ">
+      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] drop-shadow-md border-[1px] border-black/65 ">
       <table className="w-full min-w-max table-auto text-left  border-gray-500">
         <thead>
           <tr>
@@ -171,7 +187,7 @@ export default function Topics() {
           </tr>
         </thead>
         <tbody>
-          {clomData?.length !== 0 ? clomData?.map((item, index) => (
+          {clomData?.list_members_data?.length !== 0 ? clomData?.list_members_data?.map((item, index) => (
             <tr key={index} className="even:bg-blue-gray-50/50">
                     <td className="p-4 w-8">
                 <Typography variant="small" color="blue-gray" className="font-semibold text-left">
@@ -196,14 +212,20 @@ export default function Topics() {
         No Data!
       </Typography>
     </td>
-
-   
   </tr>}
         </tbody>
       </table>
       </Card>
+      <div className="relative w-full max-w-[60rem]">
+      <Pagination
+                page={page}
+                totalPages={clomData?.detail == "Invalid page." ? 1 : clomData?.total_pages}
+                onPageChange={handlePageChange}
+                totalEntries={clomData?.count}
+              />
 
       <AddTopicDialog open={open} handleOpen={handleOpen} id={data?.id} />
+      </div>
     </div>
   );
 }

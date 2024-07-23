@@ -27,6 +27,8 @@ import Moment from "react-moment";
 import useSWR from "swr";
 import parse from "html-react-parser";
 import moment from "moment/moment";
+import Link from "next/link";
+import Pagination from "@/components/general-widgets/paginator";
 
 export default function Topic() {
   const router = useRouter();
@@ -36,6 +38,7 @@ export default function Topic() {
   const [loaded, setLoaded] = useState(false);
   const [currentContent, setCurrentContent] = useState("");
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [clear, setClear] = useState(false);
   const {
     register,
     handleSubmit,
@@ -45,13 +48,21 @@ export default function Topic() {
     formState: { errors },
   } = useForm();
   const refEditor = useRef(null);
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (newPage) => {
+    // Custom logic before updating the page
+    console.log("Changing to page:", newPage);
+    setPage(newPage);
+  }
 
   useEffect(() => {
     setLoaded(true);
   }, [decodedToken]);
 
+  
   const getTopicComments = async () => {
-    const response = await UserService.getTopicComments(id);
+    const response = await UserService.getTopicComments(id, page);
     return response.data;
   };
 
@@ -67,8 +78,14 @@ export default function Topic() {
     router.push("/404");
   }
 
+  useEffect(() => {
+    // Manually trigger a re-fetch when perPage or searchTerm changes
+    mutate("TopicsComments");
+  }, [page, mutate]);
+
+
   const onSubmit = async (formData) => {
-    formData.topic = data?.id || null;
+    formData.topic = data?.topic_data?.id || null;
     console.log(formData, "onsubmit");
 
     setSubmitStatus("loading");
@@ -76,10 +93,16 @@ export default function Topic() {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
       mutate("TopicsComments");
+      setClear(true)
       setTimeout(() => {
         setSubmitStatus(null);
-        reset();
+        refEditor.current.focus();
+        setPage(data?.total_pages)
+        setClear(false)
       }, 1000);
+    
+   
+
     } catch (error) {
       setSubmitStatus("error");
     }
@@ -117,10 +140,10 @@ export default function Topic() {
             <div>
               <div className="flex flex-col ">
                 <Typography className=" text-base font-semibold">
-                  {data?.starter?.first_name}
+                  {data?.topic_data?.starter?.first_name}
                 </Typography>
                 <Typography className="  font-semibold text-sm">
-                  <Moment format="MMM DD, YYYY">{data?.created_date}</Moment>
+                  <Moment format="MMM DD, YYYY">{data?.topic_data?.created_date}</Moment>
                 </Typography>
               </div>
             </div>
@@ -129,12 +152,12 @@ export default function Topic() {
                 {data?.subject}
               </Typography>
               <Typography className="font-normal text-md">
-                in {data?.committee_title}
+                in <Link href={`/committee/${data?.topic_data?.committee}`} className="text-blue-600 hover:text-blue-900 underline"> {data?.topic_data?.committee_title} </Link>
               </Typography>
             </div>
             <div className="break-words mt-2">
               <Typography className="text-lg tracking-wide whitespace-pre-wrap">
-                {data?.content}
+                {data?.topic_data?.content}
               </Typography>
             </div>
             <div className="h-[1px] bg-gray-500 mt-2 mb-2"></div>
@@ -152,9 +175,9 @@ export default function Topic() {
                 </Alert>
               )}
 
-              {data?.posts &&
-                Object.keys(data?.posts).map((key, i) => {
-                  const post = data.posts[key];
+              {data?.post_data &&
+                Object.keys(data?.post_data).map((key, i) => {
+                  const post = data?.post_data[key];
                   return (
                     <div
                       key={i}
@@ -201,17 +224,29 @@ export default function Topic() {
                   );
                 })}
               {/* comment section */}
-              {loaded && decodedToken && data ? (
+     
+            </div>
+          </div>
+        </Card>
+        <div className="w-full max-w-[90vw] xl:max-w-[65vw]">
+        <Pagination
+                page={page}
+                totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
+                onPageChange={handlePageChange}
+                totalEntries={data?.count}
+              />
+        {loaded && decodedToken && data ? (
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
-                  decodedToken?.committee_list.includes(data?.committee)) ? (
-                  <div className="mt-1">
+                  decodedToken?.committee_list.includes(data?.topic_data?.committee)) ? (
+                  <div className="mt-2 ">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Tiptap
                         onContentChange={handleContentChange}
                         currentContent={currentContent}
                         setCurrentContent={setCurrentContent}
                         refEditor={refEditor}
+                        clear={clear}
                       />
                       <div className="flex justify-end items-center mt-1">
                         <Button
@@ -231,9 +266,7 @@ export default function Topic() {
                   </div>
                 ) : null
               ) : null}
-            </div>
-          </div>
-        </Card>
+              </div>
       </div>
     </>
   );

@@ -4,6 +4,7 @@ import React from "react";
 import Moment from "react-moment";
 
 export const TopicTable = ({ data }) => {
+  console.log(data?.topic_data)
   return (
     <>
       <table class="w-full text-left table-auto min-w-max">
@@ -41,8 +42,8 @@ export const TopicTable = ({ data }) => {
               <div className="absolute left-0 right-0 h-[1px] bg-blue-gray-300"></div>
             </td>
           </tr>
-          {data?.topics?.length !== 0 ? (
-            data?.topics?.map((item, i, row) => (
+          {data?.topic_data?.length !== 0 ? (
+            data?.topic_data?.map((item, i, row) => (
               <tr key={i}>
                 <td
                   className={`p-2 px-5 ${

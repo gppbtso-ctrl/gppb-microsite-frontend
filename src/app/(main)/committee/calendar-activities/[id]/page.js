@@ -81,7 +81,7 @@ export default function Topics() {
       {loading ? <LoadingScreen /> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
-          src={data?.photo_id}
+          src={data?.committee_data?.photo_id}
           className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
         />
         <Typography
@@ -89,7 +89,7 @@ export default function Topics() {
           color="white"
         >
           {" "}
-          {data?.title}
+          {data?.committee_data?.title}
         </Typography>
       </div>
       <div className="w-full max-w-[60rem] flex  justify-between">

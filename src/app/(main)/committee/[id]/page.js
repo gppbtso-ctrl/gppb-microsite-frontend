@@ -22,6 +22,7 @@ import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import useLoading from "@/utils/use-loading";
 import LoadingScreen from "@/components/loading/loading";
+import Pagination from "@/components/general-widgets/paginator";
 
 const localizer = momentLocalizer(moment);
 
@@ -34,14 +35,24 @@ export default function Topics() {
   const router = useRouter();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (newPage) => {
+    // Custom logic before updating the page
+    console.log("Changing to page:", newPage);
+    setPage(newPage);
+  };
+
   useEffect(() => {
     setLoaded(true);
   }, [decodedToken]);
 
+
+
   const handleOpen = () => setOpen(!open);
 
   const getComTopics = async () => {
-    const response = await UserService.getComTopics(id);
+    const response = await UserService.getComTopics(id, page);
     return response.data;
   };
 
@@ -49,6 +60,11 @@ export default function Topics() {
     id ? "comTopics" : null,
     getComTopics
   );
+
+  useEffect(() => {
+    // Manually trigger a re-fetch when perPage or searchTerm changes
+    mutate("comTopics");
+  }, [page, mutate]);
 
   if (
     error?.response?.status == 404 &&
@@ -62,7 +78,7 @@ export default function Topics() {
       {loading ? <LoadingScreen /> : null}
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <img
-          src={data?.photo_id}
+          src={data?.committee_data?.photo_id}
           className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
         />
         <Typography
@@ -70,7 +86,7 @@ export default function Topics() {
           color="white"
         >
           {" "}
-          {data?.title}
+          {data?.committee_data?.title}
         </Typography>
       </div>
       <div className="w-full max-w-[60rem] flex  justify-between px-4">
@@ -140,8 +156,8 @@ export default function Topics() {
       </div>
       <div>
         <div className=" w-full flex justify-end"></div>
-        <div className="relative w-full z-40">
-          <Card className="border-[1px] border-black  drop-shadow-md mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
+        <div className="relative w-full ">
+          <Card className="border-[1px] border-black/65  drop-shadow-md mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
             <CardBody className="p-0 w-full max-w-[60rem]">
               <div className="flex h-15 w-full gap-5 p-5 py-4 justify-center items-center ">
                 <Typography className="text-black font-semibold max-w-24 ">
@@ -165,8 +181,15 @@ export default function Topics() {
               </div>
               <div className="bg-blue-gray-300 h-[1px]"></div>
               <TopicTable data={data} />
+              
             </CardBody>
           </Card>
+          <Pagination
+                page={page}
+                totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
+                onPageChange={handlePageChange}
+                totalEntries={data?.count}
+              />
         </div>
       </div>
       <AddTopicDialog open={open} handleOpen={handleOpen} id={data?.id} />

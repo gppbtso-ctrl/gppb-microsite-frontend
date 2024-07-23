@@ -7,13 +7,13 @@ const getCommittees = () => {
   return response;
 };
 
-const getComTopics = (id) => {
-  const response = api.get(`${apiPrefix}/committee/${id}`);
+const getComTopics = (id,page=1) => {
+  const response = api.get(`${apiPrefix}/committee/${id}?page=${page}`);
   return response;
 };
 
-const getTopicComments = (id) => {
-  const response = api.get(`${apiPrefix}/topic/${id}`);
+const getTopicComments = (id, page) => {
+  const response = api.get(`${apiPrefix}/topic/${id}?page=${page}`);
   return response;
 };
 
@@ -57,13 +57,13 @@ const getComCalendarActivities = (id, year) => {
   return response;
 };
 
-const getComListOfMembers = (id) => {
+const getComListOfMembers = (id, page=1) => {
   const response = api.get(`${apiPrefix}/instance-committee-users?id=${id}`);
   return response;
 };
 
-const search = (value) => {
-  const response = api.get(`${apiPrefix}/search?search=${value}`);
+const search = (value, page) => {
+  const response = api.get(`${apiPrefix}/search?search=${value}&page=${page}`);
   return response;
 };
 

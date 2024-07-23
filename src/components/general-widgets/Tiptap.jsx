@@ -10,7 +10,7 @@ import { forwardRef, useEffect } from 'react'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextStyle from '@tiptap/extension-text-style'
 
-const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor}) => {
+const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refEditor}) => {
 
   const editor = useEditor({
     extensions: [StarterKit, Underline, TextStyle,       
@@ -28,21 +28,22 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, refEditor})
 
 
   useEffect(() => {
-
-    console.log('in use effect')
+    console.log('in use effect', currentContent)
     if (currentContent) {
       console.log(currentContent, 'fromcurrentcontent')
       editor?.commands?.setContent(currentContent)
       editor?.commands?.focus('end');
       editor?.commands?.keyboardShortcut('Enter');
       editor?.commands?.keyboardShortcut('Enter');
-      setCurrentContent(null)
-
      // Move the cursor to the end of the content
- 
     }
-  }, [currentContent])
+  }, [currentContent, editor])
   
+  useEffect(() => {
+    console.log(clear)
+    if (clear)
+      editor.commands.clearContent()
+  }, [clear, editor])
 
   if (!editor) {
     return null;

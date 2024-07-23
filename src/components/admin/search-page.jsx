@@ -14,6 +14,7 @@ import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
 import Moment from "react-moment";
 import useSWR, { useSWRConfig } from "swr";
+import Pagination from "../general-widgets/paginator";
 
 
 
@@ -22,9 +23,16 @@ export default function SearchComponent() {
   const loading = useLoading(1200);
   const searchValue = searchParams.get("value");
   const { mutate } = useSWRConfig();
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (newPage) => {
+    // Custom logic before updating the page
+    console.log("Changing to page:", newPage);
+    setPage(newPage);
+  };
 
   const getSearch = async () => {
-    const response = await UserService.search(searchValue);
+    const response = await UserService.search(searchValue, page);
     return response.data;
   };
 
@@ -37,20 +45,25 @@ export default function SearchComponent() {
   useEffect(() => {
  mutate('search')
   }, [searchValue])
-  
 
 
+    useEffect(() => {
+    // Manually trigger a re-fetch when perPage or searchTerm changes
+    mutate("search");
+  }, [page, mutate]);
+
+console.log(data, 'datadata')
   return (
     <Suspense>
     <div className="relative flex flex-col justify-start items-center z-10 min-h-[58vh] ">
-      <Card className="relative m-3 py-2  rounded-none min-w-[90vw] lg:min-w-[55vw] flex flex-col justify-start">
+      <Card className="relative m-3   rounded-none min-w-[90vw] lg:min-w-[55vw] lg:max-w-[65vw] flex flex-col justify-start">
         <div className="flex gap-2">
           <Typography className="text-2xl py-2 px-4">
             Search Results: {searchValue}
           </Typography>
         </div>
 
-        {data && data?.length != 0  ? (
+        {data && data?.search_data?.length != 0  ? (
           <table class="w-full text-left table-auto min-w-max">
             <thead>
               <tr>
@@ -77,7 +90,7 @@ export default function SearchComponent() {
                   <div className="absolute left-0 right-0 h-[1px] bg-blue-gray-100"></div>
                 </td>
               </tr>
-              {data?.map((item, index) => (
+              {data?.search_data?.map((item, index) => (
                 <tr key={index}>
                   <td class="p-3 px-4 border-b border-blue-gray-50">
                     <div className=" lg:w-[32rem] max-w-[12rem]  lg:max-w-[40rem] break-words">
@@ -121,6 +134,13 @@ export default function SearchComponent() {
           </table>
         ) : <div className="p-5"><Typography variant="h6">No Results!</Typography></div>}
       </Card>
+      { data ?   <div className="w-full min-w-[55vw] lg:min-w-[50vw] lg:max-w-[55vw]"><Pagination
+                page={page}
+                totalPages={data ? data?.total_pages : 1  }
+                onPageChange={handlePageChange}
+                totalEntries={data?.count}
+              /> </div>: null}
+        
     </div>
     </Suspense>
   );
