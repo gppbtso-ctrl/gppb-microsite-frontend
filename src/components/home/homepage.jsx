@@ -374,19 +374,19 @@ export default function HomePageComponent() {
             </div>
           </section>
           <section class="relative flex flex-col h-fit  bg-gradient-to-b  from-[#0C2D48] to-[#003B73] bg-blend-overlay text-white  -mt-1  z-0">
-            <div className="w-full mt-[3rem]  rounded-lg flex flex-col md:flex-row gap-1 justify-between   p-2 px-[4rem]  backdrop-blur-md bg-gradient-to-b  from-[#0C2D48]/10 to-[#003B73]">
+            <div className="w-full mt-[3rem]  rounded-lg flex flex-col sm:flex-col md:flex-row gap-1 justify-between   p-2 px-[4rem]  backdrop-blur-md bg-gradient-to-b  from-[#0C2D48]/10 to-[#003B73]">
               <div className="flex flex-col justify-center items-center md:justify-start md:items-start">
-                <Typography className="text-xl tracking-wide antialiased font-sans uppercase">
+                <Typography className="text-xl tracking-wide text-center antialiased font-sans uppercase">
                   Government Procurement
                 </Typography>
-                <Typography className="text-xl tracking-wide  antialiased font-sans uppercase">
+                <Typography className="text-xl tracking-wide text-center antialiased font-sans uppercase">
                   Policy Board - Technical
                 </Typography>
-                <Typography className="text-xl tracking-wide  antialiased font-sans uppercase">
+                <Typography className="text-xl tracking-wide text-center antialiased font-sans uppercase">
                   Support Office
                 </Typography>
 
-                <Typography className="text-sm mt-2 tracking-wide  antialiased font-sans uppercase">
+                <Typography className="text-sm mt-2 text-center lg:text-left tracking-wide  antialiased font-sans uppercase">
                   GPPB-TSO Building, Commonwealth Ave, <br />
                   UP Diliman Campus, Quezon City
                 </Typography>
