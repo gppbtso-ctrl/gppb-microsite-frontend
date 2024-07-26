@@ -190,12 +190,12 @@ export default function HomePageComponent() {
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
-                  Procurement Act
+                  Procurement Act or 
                 </Typography>
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
-                  (NGPA) Microsite
+                REPUBLIC ACT 12009
                 </Typography>
               </div>
               <div className="h-fit w-[100%] mt-5 relative overflow-hidden ">
