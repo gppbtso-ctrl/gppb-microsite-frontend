@@ -117,7 +117,7 @@ function NavListMenuAboutNGPA() {
       <Menu
         open={isMenuOpen}
         handler={setIsMenuOpen}
-        offset={{ mainAxis:15 }}
+        offset={{ mainAxis:12.3 }}
         placement="bottom"
     
       >
@@ -347,7 +347,7 @@ function NavListMenuAboutNGPA() {
                       color="blue-gray"
                       className="flex items-center text-sm font-bold w-full"
                     >
-                      GPPB-TSO Press Releases
+                  NGPA Related News
                     </Typography>
                     <Typography
                       variant="paragraph"
@@ -557,7 +557,7 @@ function NavListMenuAboutNGPA() {
                     color="blue-gray"
                     className="flex items-center text-sm font-bold w-full"
                   >
-                    GPPB-TSO Press Releases
+                   NGPA Related News
                   </Typography>
                   <Typography
                     variant="paragraph"

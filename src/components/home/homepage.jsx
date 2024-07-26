@@ -43,27 +43,27 @@ export default function HomePageComponent() {
         stagger: {
           amount: 0.3,
         },
-      })
+      });
 
       let getRatio = (el) =>
         window.innerHeight / (window.innerHeight + el.offsetHeight);
       gsap.fromTo(
         ".bgAnimate",
-        { backgroundPosition: `50% 0px`, },
+        { backgroundPosition: `50% 0px` },
         {
-          backgroundPosition: `50% ${-window.innerHeight * getRatio(container.current)}px`,
+          backgroundPosition: `50% ${
+            -window.innerHeight * getRatio(container.current)
+          }px`,
           ease: "none",
           scrollTrigger: {
             trigger: container.current,
-            start:  "top top", 
+            start: "top top",
             end: "bottom top",
             scrub: true,
-           invalidateOnRefresh:true,
-          }
+            invalidateOnRefresh: true,
+          },
         }
       );
-
-     
     },
     { scope: container }
   ); // <-- magic
@@ -118,17 +118,17 @@ export default function HomePageComponent() {
     { scope: aboutSection }
   );
 
-
-
   return (
     <>
-    <MainNavbar/>
+      <MainNavbar />
       <div className="relative min-h-screen">
         <section
           class="relative flex flex-col min-h-screen bg-slate-800 text-white  bg-blend-overlay"
           ref={container}
         >
-          <div class={`absolute top-0 left-0 flex-1  flex items-center bg-[50%_0px] bg-no-repeat bg-cover bg-fixed bg-[url('/Home.png')] z-10 w-full h-full bgAnimate`}>
+          <div
+            class={`absolute top-0 left-0 flex-1  flex items-center bg-[50%_0px] bg-no-repeat bg-cover bg-fixed bg-[url('/Home.png')] z-10 w-full h-full bgAnimate`}
+          >
             <div class="text-center justify-start w-full max-w-[55.5rem] mx-5 lg:mx-[5vw] flex flex-col space-y-5 ">
               <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
                 <Typography className="absolute text-4xl lg:text-7xl font-normal text-left font-sans uppercase animText drop-shadow-sm">
@@ -141,16 +141,16 @@ export default function HomePageComponent() {
                   New Government
                 </Typography>
               </div>
-       
+
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
                   Procurement Act
                 </Typography>
               </div>
-              
+
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
-                or Republic Act 12009
+                  or Republic Act 12009
                 </Typography>
               </div>
               {/* <div className="relative lg:h-[3rem] overflow-hidden">
@@ -213,12 +213,12 @@ export default function HomePageComponent() {
                   public.
                 </Typography>
                 <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
-                  The NGPA Microsite is established in accordance with
-                  Government Procurement Policy Board (GPPB) Resolution No.
-                  04-2024, dated 7 June 2024. This Resolution approves the
-                  creation of specific committees to formulate the necessary
-                  rules and regulations for the effective implementation of the
-                  provisions of the NGPA upon its enactment.
+                  The NGPA Microsite was developed pursuant to Government
+                  Procurement Policy Board (GPPB) Resolution No. 04-2024, dated
+                  7 June 2024. This Resolution approves the creation of specific
+                  committees to formulate the necessary rules and regulations
+                  for the effective implementation of the provisions of the NGPA
+                  upon its enactment.
                 </Typography>
                 <Typography className="text-lg tracking-wide antialiased font-sans mt-7 text-justify descriptionText ">
                   Key highlights from the Resolution include:
@@ -328,35 +328,31 @@ export default function HomePageComponent() {
                   className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
                 >
                   <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                    <b>Create an Account:</b> Click on the Register button at
+                    <b>Create an Account:</b> Click on the "Register" button at
                     the top right corner of the homepage and fill in the
                     required information, including your name, email address,
-                    and organization.{" "}
+                    and organization.
                   </li>
                   <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                    <b>Verify Your Email:</b> After registration, you will
-                    receive a verification email. Click on the link provided to
-                    verify your email address.{" "}
-                  </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                    <b> Complete Your Profile:</b> Once your email is verified,
-                    log in to your account and complete your profile by
-                    providing additional details such as your expertise and
-                    areas of interest.{" "}
-                  </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                    <b>Join Committees:</b> Browse through each Committee and
+                    <b>Select Committees:</b> Browse through each Committee and
                     select a maximum of three (3) Committees that you are
                     interested in joining. You can apply to become a member by
                     providing a brief statement of your qualifications and
                     contributions you can offer.
                   </li>
                   <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                    <b> Verify Your Email:</b> After registration, you will
+                    receive a verification email. Click on the link provided to
+                    verify your registered email address.
+                  </li>
+
+                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b>Stay Engaged:</b> After joining, you will receive
                     notifications about committee meetings, discussions, and
                     other relevant activities. Participate actively to
                     contribute to the formulation of the NGPA rules and
-                    regulations.
+                    regulations by posting comments on the posted provisions
+                    under your selected committees.
                   </li>
                 </ol>
                 <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
