@@ -116,7 +116,7 @@ export default function Maps() {
 
         <Typography className="text-justify ml-3 ">
           {" "}
-          <span className="mr-1">5.</span> Angara: New gov't procurement act to
+          <span className="mr-1">5.</span> Angara: New gov&apos;t procurement act to
           curb wastage, boost efficiency (PIA)
           <br />
           <span className="inline-block mr-1">Link:</span>
