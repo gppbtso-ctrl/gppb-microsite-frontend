@@ -60,7 +60,7 @@ const CommitteeMain = () => {
                   className="absolute inset-0 m-0 h-full w-full rounded-none"
                 >
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/50" />
-                  <Image width={500} height={500} src={committee.photo_id ?? "/default-com.webp"} className="h-full w-full object-cover" />{" "}
+                  <img src={committee.photo_id ?? "/default-com.webp"} className="h-full w-full object-cover" />{" "}
                 </CardHeader>
                 <CardBody className="flex flex-col min-h-[25rem]  min-w-full md:min-w-[30rem]  justify-end z-10  gap-1 p-6">
                   <Link href={`/committee/${committee.id}`}>
