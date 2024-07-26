@@ -1,4 +1,5 @@
 "use client";
+import Pagination from "@/components/general-widgets/paginator";
 import { TopicTable } from "@/components/topics/topic.table";
 import AddTopicDialog from "@/components/topics/widgets/add-topic-dialog";
 import UserService from "@/services/user.services";
@@ -11,6 +12,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Input,
   Spinner,
   Typography,
 } from "@material-tailwind/react";
@@ -26,7 +28,16 @@ export default function Topics() {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({});
-  const TABLE_HEAD = ["Email", "First Name", "Last Name", "Statement", "Date Joined", "Action"];
+  const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = useState(1);
+  const TABLE_HEAD = [
+    "Email",
+    "First Name",
+    "Last Name",
+    "Statement",
+    "Date Joined",
+    "Action",
+  ];
 
   useEffect(() => {
     setLoaded(true);
@@ -36,7 +47,7 @@ export default function Topics() {
   }, [decodedToken]);
 
   const getUsers = async () => {
-    const response = await UserService.getUsers();
+    const response = await UserService.getUsers(page, searchTerm);
     return response.data;
   };
   const { data, isLoading, error, isValidating } = useSWR("users", getUsers);
@@ -66,11 +77,33 @@ export default function Topics() {
     }
   };
 
+  const handlePageChange = (newPage) => {
+    // Custom logic before updating the page
+    console.log("Changing to page:", newPage);
+    setPage(newPage);
+  };
+
+  useEffect(() => {
+    mutate('users')
+  }, [searchTerm])
+  
+
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
-      <Card className="mt-[5rem] rounded-none max-w-[80vw] overflow-auto">
-        {" "}
-        <table className="w-full min-w-max table-auto text-left">
+      <div className="max-w-[80vw] ">
+      <div className="flex flex-row justify-end w-full mt-[8rem]">
+          <div className="w-[13rem]">
+            <Input
+              type="text"
+              label="Search"
+              className="w-full"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+        </div>
+      <Card className="mt-2  rounded-none shadow-none overflow-auto">
+        <table className="w-full min-w-max table-auto text-left ">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
@@ -91,8 +124,8 @@ export default function Topics() {
           </thead>
           <tbody>
             {data ? (
-              data?.length !== 0 ? (
-                data.map((item, index) => {
+              data?.search_data?.length !== 0 ? (
+                data?.search_data?.map((item, index) => {
                   const classes = "p-4 border-b border-blue-gray-50";
                   return (
                     <tr key={index}>
@@ -163,22 +196,28 @@ export default function Topics() {
                             )}
                           </Button>
                         </td>
-                            ) :<td className={classes}><Button
+                      ) : (
+                        <td className={classes}>
+                          <Button
                             variant="text"
                             size="sm"
                             className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
                             disabled={true}
                           >
                             Accepted
-                          </Button></td>}
+                          </Button>
+                        </td>
+                      )}
                     </tr>
                   );
                 })
-              ) :  <tr>
-              <td colSpan={4} className="text-center">
-                No Data
-              </td>
-            </tr>
+              ) : (
+                <tr>
+                  <td colSpan={6} className="text-center">
+                    No Data
+                  </td>
+                </tr>
+              )
             ) : (
               <tr>
                 <td colSpan={4} className="text-center">
@@ -189,6 +228,13 @@ export default function Topics() {
           </tbody>
         </table>
       </Card>
+      <Pagination
+                page={page}
+                totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
+                onPageChange={handlePageChange}
+                totalEntries={data?.count}
+              />
+      </div>
     </div>
   );
 }

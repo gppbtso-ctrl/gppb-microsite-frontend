@@ -14,6 +14,8 @@ import useSWR from "swr";
 import UserService from "@/services/user.services";
 import CardsLoading from "../loading/cards-loading";
 import Link from "next/link";
+import Image from "next/image";
+import truncateString from "@/utils/truncate_string";
 
 const CommitteeMain = () => {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
@@ -42,13 +44,13 @@ const CommitteeMain = () => {
         </Button>:null : null}
         
       </div> */}
-        <div className="relative grid grid-cols-1  lg:grid-cols-2  max-w-[30rem] lg:max-w-[70rem] gap-10 z-40 mt-3">
+        <div className="relative grid grid-cols-1  lg:grid-cols-2  max-w-[30rem] lg:max-w-[67rem] mx-1 gap-9 z-40 mt-3">
           {isLoading ? (
             <CardsLoading />
           ) : (
             data?.map((committee, index) => (
               <Card
-                className="relative shadow-lg grid h-full w-full max-w-[28rem] items-end justify-center overflow-hidden text-center"
+                className="relative drop-shadow-md  grid h-full w-full max-w-[30rem] items-end justify-center rounded-sm overflow-hidden text-center"
                 key={committee.id}
               >
                 <CardHeader
@@ -58,19 +60,20 @@ const CommitteeMain = () => {
                   className="absolute inset-0 m-0 h-full w-full rounded-none"
                 >
                   <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/50" />
-                  <img src={committee.photo_id ?? "/default-com.webp"} />{" "}
+                  <Image width={500} height={500} src={committee.photo_id ?? "/default-com.webp"} className="h-full w-full object-cover" />{" "}
                 </CardHeader>
-                <CardBody className="flex flex-col h-[15rem]  min-w-[28rem]  justify-end z-10  p-6">
+                <CardBody className="flex flex-col min-h-[25rem]  min-w-full md:min-w-[30rem]  justify-end z-10  gap-1 p-6">
                   <Link href={`/committee/${committee.id}`}>
                     <Typography
                       variant="h4"
                       color="white"
-                      className="  text-left text-blue-50 text-[1.7rem]  font-montserrat font-medium leading-[1.5] hover:text-blue-500 transition-all duration-150"
+                      className="  text-left text-blue-50 text-[1.7rem]  drop-shadow-md font-montserrat font-medium leading-[1.5] hover:text-blue-500 transition-all duration-150"
                     >
                       {committee.title}
                     </Typography>
                   </Link>
-                  <Typography className=" text-white self-start">
+                  <Typography variant="small" color="white" className="text-justify">{truncateString(committee.description, 125)}</Typography>
+                  <Typography className=" text-white self-start mt-1">
                     <div className="flex gap-2 items-center">
                       {loaded ? (
                         decodedToken?.committee_list?.includes(committee.id) ? (

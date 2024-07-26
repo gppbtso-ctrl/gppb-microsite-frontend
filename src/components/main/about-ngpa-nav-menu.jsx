@@ -339,7 +339,7 @@ function NavListMenuAboutNGPA() {
                   </div>
                 </MenuItem>
             </Link>
-              <a href="#">
+              <Link href={'/ngpa-related-news'}>
                 <MenuItem className="flex items-center gap-3 rounded-lg min-h-[4rem]">
                   <div>
                     <Typography
@@ -355,7 +355,7 @@ function NavListMenuAboutNGPA() {
                     ></Typography>
                   </div>
                 </MenuItem>
-              </a>
+              </Link>
             </ul>
           </div>
         </MenuList>
@@ -549,7 +549,7 @@ function NavListMenuAboutNGPA() {
                 </div>
               </MenuItem>
             </Link>
-            <a href="#">
+            <Link href={'/ngpa-related-news'}>
               <MenuItem className="flex items-center gap-3 rounded-lg">
                 <div>
                   <Typography
@@ -565,7 +565,7 @@ function NavListMenuAboutNGPA() {
                   ></Typography>
                 </div>
               </MenuItem>
-            </a>
+            </Link>
           </ul>
           </div>
         </Collapse>
