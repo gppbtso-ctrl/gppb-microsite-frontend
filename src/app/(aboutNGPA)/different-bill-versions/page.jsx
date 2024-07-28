@@ -173,7 +173,7 @@ Procurement Reform Act </>
   {
     title: (
       <>
-Senate Bill No. 618 - An Act Providing for a Uniform Warehousing and Inventory System for all Government Procuring Entities, amending for the Purpose RA No. 9184, otherwise known as the ‘Government Procurement Reform Act’” 
+<b>Senate Bill No. 618</b> - An Act Providing for a Uniform Warehousing and Inventory System for all Government Procuring Entities, amending for the Purpose RA No. 9184, otherwise known as the ‘Government Procurement Reform Act’” 
 </>
   ),
     link: (

@@ -18,7 +18,7 @@ export default function Maps() {
 
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative shadow-none p-7 m-3 max-w-[67rem] rounded-none flex flex-col gap-3">
+      <Card className="relative shadow-none p-7 m-3 max-w-[65rem] rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -786,7 +786,7 @@ export default function Maps() {
             target="__blank"
             className="ml-1 text-blue-800 underline font-semibold tracking-wide"
           >
-            Referrence Link
+            Download MAPS Final Assessment Report
           </Link>
         </Typography>
       </Card>

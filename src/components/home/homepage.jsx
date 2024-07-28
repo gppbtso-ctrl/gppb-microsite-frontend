@@ -150,7 +150,7 @@ export default function HomePageComponent() {
 
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
-                  or Republic Act 12009
+                  <span className=" lowercase">or</span> Republic Act 12009
                 </Typography>
               </div>
               {/* <div className="relative lg:h-[3rem] overflow-hidden">
@@ -190,7 +190,7 @@ export default function HomePageComponent() {
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
-                  Procurement Act or 
+                  Procurement Act  <span className=" lowercase">or</span>
                 </Typography>
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
