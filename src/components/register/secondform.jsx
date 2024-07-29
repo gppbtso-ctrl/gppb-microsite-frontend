@@ -81,7 +81,7 @@ function SecondForm({ onSubmit, submitStatus }) {
   console.log(data);
 
   return (
-    <div className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 max-w-[40rem] w-full">
+    <div className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 w-[min(100%,40rem)] ">
       <Typography variant="h6" className="font-montserrat">
         Select 3 Committee to Participate:
       </Typography>
@@ -123,6 +123,7 @@ function SecondForm({ onSubmit, submitStatus }) {
             </div>
           ))}
         </div>
+        
   <div class="w-full mt-2">
     <Typography variant="normal" className=" font-lead font-semibold antialiased">Please provide a brief statement of your qualifications and contributions you can offer.</Typography>
   <div class="relative w-full mt-1">

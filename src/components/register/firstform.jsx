@@ -20,7 +20,7 @@ function FirstForm({ onNext, emailExist }) {
     onNext(data);
   };
   return (
-    <div class="mb-12 p-4 shadow-lg flex flex-col  justify-center gap-3 max-w-[30rem] w-full">
+    <div class="mb-5 p-4 shadow-lg flex flex-col  justify-center gap-3 w-[min(100%,30rem)] ">
       <Typography variant="h4" className="font-montserrat">
         Register
       </Typography>

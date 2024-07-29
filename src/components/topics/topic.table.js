@@ -18,7 +18,7 @@ export const TopicTable = ({ data }) => {
             <th class="p-4 ">
               <Typography
                 variant="lead"
-                className="tracking-wide text-sm font-semibold antialiased ant text-blue-gray-900 "
+                className="tracking-wide text-sm font-semibold antialiased font-sans text-blue-gray-900 "
               >
                 Comments
               </Typography>
@@ -26,7 +26,7 @@ export const TopicTable = ({ data }) => {
             <th class="p-4 ">
               <Typography
                 variant="lead"
-                className="tracking-wide text-sm font-semibold antialiased ant text-blue-gray-900 "
+                className="tracking-wide text-sm font-semibold antialiased  text-blue-gray-900 "
               >
                 Recent Activity
               </Typography>

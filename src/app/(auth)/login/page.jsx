@@ -15,6 +15,7 @@ import {
   Spinner,
   Typography,
 } from "@material-tailwind/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -55,12 +56,12 @@ export default function Login() {
   return (
     <div class="h-full">
       {loading ? <LoadingScreen /> : null}
-      <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[3rem]  ">
-        <div class="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-5/12">
-          <img src={`/draw2.webp`} class="w-full" alt="Sample image" />
+      <div class="flex  gap-3 h-full h-max-[40rem] flex-col lg:flex-row items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[3rem]  ">
+        <div class="shrink-1 mb-1 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-5/12">
+          <Image width={500} height={500} src={`/regloginpicture.webp`} class="w-full shadow-lg rounded-lg" alt="Sample image" />
         </div>
 
-        <div class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-[0.3px] border-gray-300 rounded-sm">
+        <div class="mb-12 lg:mb-0 p-4 py-5 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-[0.3px] border-gray-300 rounded-sm">
           <Typography variant="h4" className="font-montserrat">
             Login
           </Typography>

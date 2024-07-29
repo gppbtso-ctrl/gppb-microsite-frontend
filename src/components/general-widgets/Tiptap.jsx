@@ -42,7 +42,7 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refE
   useEffect(() => {
     console.log(clear)
     if (clear)
-      editor.commands.clearContent()
+      editor?.commands?.clearContent()
   }, [clear, editor])
 
   if (!editor) {
