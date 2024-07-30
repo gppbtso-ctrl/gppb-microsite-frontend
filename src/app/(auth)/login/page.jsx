@@ -66,8 +66,8 @@ export default function Login() {
         <Typography className="text-3xl md:text-4xl lg:text-5xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-anonymous-pro ">Republic Act No. 12009</Typography>
         </div>
 
-        <div class="mx-1 bg-white/95 backdrop-filter backdrop-blur-md mb-12 lg:mb-0 p-6 shadow-lg flex flex-col justify-center gap-3  w-full max-w-[29rem] rounded-md">
-          <Typography  className=" drop-shadow-md font-semibold text-2xl">
+        <div class="mx-1 bg-white/95 backdrop-filter backdrop-blur-md mb-12 lg:mb-0 p-6 shadow-lg flex flex-col justify-center gap-3  w-full max-w-[29rem] rounded-sm">
+          <Typography  className=" drop-shadow-md font-semibold text-2xl uppercase">
             Login
           </Typography>
           {submitStatus === "unauthorized" ? (

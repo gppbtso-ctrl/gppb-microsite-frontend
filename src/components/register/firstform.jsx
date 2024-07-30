@@ -20,8 +20,8 @@ function FirstForm({ onNext, emailExist }) {
     onNext(data);
   };
   return (
-    <div class="mb-5 p-4 bg-white/95 rounded-md backdrop-filter shadow-lg flex flex-col  justify-center gap-3 w-[min(97%,30rem)] ">
-      <Typography variant="h4" className="font-sans drop-shadow-md">
+    <div class="mb-5 p-4 bg-white/95 rounded-sm backdrop-filter shadow-lg flex flex-col  justify-center gap-3 w-[min(97%,30rem)] ">
+      <Typography variant="h4" className="font-sans uppercase drop-shadow-md">
         Register
       </Typography>
       {alert === "passwordNotMatched" ? (

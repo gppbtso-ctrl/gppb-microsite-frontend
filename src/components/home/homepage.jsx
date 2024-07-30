@@ -149,7 +149,7 @@ export default function HomePageComponent() {
               </div>
 
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro uppercase animText">
+                <Typography className="absolute text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro  animText">
                   Republic Act No.12009
                 </Typography>
               </div>
@@ -194,8 +194,8 @@ export default function HomePageComponent() {
                 </Typography>
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl   lg:text-4xl text-center font-normal font-anonymous-pro uppercase">
-                REPUBLIC ACT 12009
+                <Typography className="animText text-3xl   lg:text-4xl text-center font-normal font-anonymous-pro ">
+                Republic Act No. 12009
                 </Typography>
               </div>
               <div className="h-fit w-[100%] mt-5 relative overflow-hidden ">
