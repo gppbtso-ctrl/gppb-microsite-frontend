@@ -118,7 +118,7 @@ export default function HomePageComponent() {
     { scope: aboutSection }
   );
 
-  console.log(window.scrollY);
+
   return (
     <>
       <MainNavbar  isHomePage={true}/>

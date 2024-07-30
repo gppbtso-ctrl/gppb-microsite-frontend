@@ -58,7 +58,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-console.log(isScrolled)
+
   return (
     <Navbar
       className={`fixed ${
