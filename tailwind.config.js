@@ -4,10 +4,7 @@ module.exports = withMT({
   variants: {
     extend: {
       width: ["responsive"],
-      fontFamily: {
-        montserrat: ["var(--font-montserrat)"],
-        playfair: ["var(--font-playfair)"],
-      }, // Add responsive variant to the 'width' utility
+   // Add responsive variant to the 'width' utility
     },
   },
   content: [
@@ -17,6 +14,12 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
+        'anonymous-pro': ["var(--font-anonymous-pro)"],
+        'hanken-grotesk': ["var(--font-hanken-grotesk)"],
+        'monument': ["var(--font-monument)"],
+      },
       boxShadow: {
         'jubilation': '0px 3px 8px rgba(0, 0, 0, 0.24)',
         'custom': '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)',

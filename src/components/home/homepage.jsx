@@ -131,26 +131,26 @@ export default function HomePageComponent() {
           >
             <div class="text-center justify-start w-full max-w-[55.5rem] mx-5 lg:mx-[5vw] flex flex-col space-y-5 ">
               <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl font-normal text-left font-sans uppercase animText drop-shadow-sm">
+                <Typography className="absolute text-4xl lg:text-7xl text-left font-hanken-grotesk font-medium uppercase animText drop-shadow-sm">
                   Welcome To The
                 </Typography>
               </div>
 
               <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
+                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
                   New Government
                 </Typography>
               </div>
 
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
+                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
                   Procurement Act
                 </Typography>
               </div>
 
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-normal uppercase animText">
-                  <span className=" lowercase">or</span> Republic Act 12009
+                <Typography className="absolute text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro uppercase animText">
+                  Republic Act No.12009
                 </Typography>
               </div>
               {/* <div className="relative lg:h-[3rem] overflow-hidden">
@@ -180,7 +180,7 @@ export default function HomePageComponent() {
             class=" flex flex-row justify-center  shadow-lg h-full  text-white  bg-gradient-to-b from-light-blue-900 to-[#0C2D48] bg-blend-overlay "
           >
             <div
-              class="grow flex flex-col gap-2 max-w-[65rem] justify-start m-10 mt-[10rem] mx- w-full"
+              class="grow flex flex-col gap-1 max-w-[65rem] justify-start m-10 mt-[10rem] mx- w-full"
               ref={aboutSection}
             >
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
@@ -190,11 +190,11 @@ export default function HomePageComponent() {
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
-                  Procurement Act  <span className=" lowercase">or</span>
+                  Procurement Act 
                 </Typography>
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
+                <Typography className="animText text-3xl   lg:text-4xl text-center font-normal font-anonymous-pro uppercase">
                 REPUBLIC ACT 12009
                 </Typography>
               </div>
@@ -387,13 +387,6 @@ export default function HomePageComponent() {
                   UP Diliman Campus, Quezon City
                 </Typography>
 
-                <Typography
-                  as={"a"}
-                  href="/legal-notice"
-                  className=" text-lg mt-2 tracking-wide font-light hover:text-blue-400 antialiased text-white underline cursor-pointer text-center md:text-left drop-shadow-xl"
-                >
-                  <span>Legal Notice Disclaimer</span>
-                </Typography>
 
                 <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
                   <FontAwesomeIcon icon={faPhone} />{" "}
@@ -403,6 +396,15 @@ export default function HomePageComponent() {
                 <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 items-center">
                   <FontAwesomeIcon icon={faEnvelope} />{" "}
                   <span>gppb@gppb.gov.ph</span>
+                </Typography>
+
+                
+                <Typography
+                  as={"a"}
+                  href="/legal-notice"
+                  className=" text-md mt-2 tracking-wide font-light hover:text-blue-400 antialiased text-white underline cursor-pointer text-center md:text-left drop-shadow-xl"
+                >
+                  <span>Legal Notice Disclaimer</span>
                 </Typography>
               </div>
 

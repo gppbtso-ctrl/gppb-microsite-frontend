@@ -90,7 +90,7 @@ console.log(searchValue)
             className="hidden lg:inline-block rounded-none hover:text-blue-400"
             onClick={() => router.push("/")}
           >
-            <span className="font-montserrat">Home</span>
+            <span className="font-sans">Home</span>
           </Button>
           <Button
             variant="text"
@@ -98,7 +98,7 @@ console.log(searchValue)
             className="hidden lg:inline-block rounded-none hover:text-blue-400"
             onClick={() => router.push("/committees")}
           >
-            <span className="font-montserrat">Committees</span>
+            <span className="font-sans">Committees</span>
           </Button>
           <div className="hidden lg:inline-block">
          <AboutNGPANavMenu/>
@@ -153,7 +153,7 @@ console.log(searchValue)
                     className="hidden lg:inline-block rounded-none hover:text-blue-400"
                     onClick={() => router.push("/login")}
                   >
-                    <span className="font-montserrat">Log In</span>
+                    <span className="font-sans">Log In</span>
                   </Button>
                   <Button
                     variant="text"
@@ -161,7 +161,7 @@ console.log(searchValue)
                     className="hidden lg:inline-block rounded-none hover:text-blue-400"
                     onClick={() => router.push("/register")}
                   >
-                    <span className="font-montserrat">Register</span>
+                    <span className="font-sans">Register</span>
                   </Button>
                 </>
               ) : (
@@ -216,7 +216,7 @@ console.log(searchValue)
             className=" rounded-none hover:text-blue-400 px-2 w-fit"
             onClick={() => router.push("/")}
           >
-            <span className="font-montserrat">Home</span>
+            <span className="font-sans">Home</span>
           </Button>
   
           <Button
@@ -225,7 +225,7 @@ console.log(searchValue)
             className="rounded-none hover:text-blue-400 px-2 w-fit"
             onClick={() => router.push("/committees")}
           >
-            <span className="font-montserrat">Committees</span>
+            <span className="font-sans">Committees</span>
           </Button>
          
             <AboutNGPANavMenu/>

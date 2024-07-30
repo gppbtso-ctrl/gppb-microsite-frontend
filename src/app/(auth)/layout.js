@@ -6,13 +6,13 @@ import { MainNavbar } from "@/components/navbar";
 export default function CommitteeLayout({ children }) {
   return (
     <div className=" relative  w-full h-screen">
-       <div className="h-full grid grid-rows-[1fr,min-content]">
+       <div className="">
       <MainNavbar />
-      <div className="">{children}</div>
-     
-      <FooterWithSocialLinks />
-    
+      <div className="">{children}
       </div>
+      </div>
+      <FooterWithSocialLinks  className={'!pt-2'}/>
+
     </div>
   );
 }

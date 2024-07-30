@@ -56,13 +56,18 @@ export default function Login() {
   return (
     <div class="h-full">
       {loading ? <LoadingScreen /> : null}
-      <div class="flex  gap-3 h-full h-max-[40rem] flex-col lg:flex-row items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[3rem]  ">
-        <div class="shrink-1 mb-1 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-5/12">
-          <Image width={500} height={500} src={`/regloginpicture.webp`} class="w-full shadow-lg rounded-lg" alt="Sample image" />
+      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[75vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/regloginpicture.png')] bg-cover bg-opacity-10 py-5 mt-[3.5rem]  ">
+      <div className="absolute bg-gradient-to-b from-transparent   to-white  w-full bottom-0 h-[2.5rem]"></div>
+
+        <div className="flex flex-col justify-center md:justify-start md:items-start items-center gap-1 mb-2">
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl  antialiased tracking-wide font-hanken-grotesk font-medium">WELCOME TO THE </Typography>
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">NEW GOVERNMENT</Typography>
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">PROCUREMENT ACT</Typography>
+        <Typography className="text-3xl md:text-4xl lg:text-5xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-anonymous-pro ">Republic Act No. 12009</Typography>
         </div>
 
-        <div class="mb-12 lg:mb-0 p-4 py-5 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-[0.3px] border-gray-300 rounded-sm">
-          <Typography variant="h4" className="font-montserrat">
+        <div class="mx-1 bg-white/95 backdrop-filter backdrop-blur-md mb-12 lg:mb-0 p-6 shadow-lg flex flex-col justify-center gap-3  w-full max-w-[29rem] rounded-md">
+          <Typography  className=" drop-shadow-md font-semibold text-2xl">
             Login
           </Typography>
           {submitStatus === "unauthorized" ? (
@@ -76,7 +81,7 @@ export default function Login() {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-4">
-              <div class="relative w-full min-w-[200px] h-10">
+              <div class="relative w-full min-w-[200px] drop-shadow-md h-10">
                 <input
                   class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
                   placeholder=" "
@@ -89,7 +94,7 @@ export default function Login() {
                 </label>
               </div>
 
-              <div class="relative w-full min-w-[200px] h-10">
+              <div class="relative w-full min-w-[200px] h-10 drop-shadow-md">
                 <input
                   class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900"
                   placeholder=" "
@@ -103,7 +108,7 @@ export default function Login() {
               </div>
               <Button
                 type="submit"
-                className="rounded-none flex justify-center max-h-11"
+                className="rounded-none drop-shadow-md flex justify-center max-h-11"
                 color="blue"
               >
                 {submitStatus === "loading" ? (

@@ -81,7 +81,7 @@ function SecondForm({ onSubmit, submitStatus }) {
   console.log(data);
 
   return (
-    <div className="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 w-[min(100%,40rem)] ">
+    <div class="mb-5 p-4 bg-white/95 rounded-md backdrop-filter shadow-lg flex flex-col  justify-center gap-3 w-[min(97%,30rem)] ">
       <Typography variant="h6" className="font-montserrat">
         Select 3 Committee to Participate:
       </Typography>
@@ -102,7 +102,7 @@ function SecondForm({ onSubmit, submitStatus }) {
           </Alert>
         ) : null}
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
           {data?.map((item) => (
             <div key={item.id} className="flex items-center">
               <input
@@ -112,7 +112,7 @@ function SecondForm({ onSubmit, submitStatus }) {
                 {...register("committee_list", {
                   onChange: () => setError(null),
                 })}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                className="w-4 h-4 shrink-0 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
               <label
                 htmlFor={`committee-${item.id}`}

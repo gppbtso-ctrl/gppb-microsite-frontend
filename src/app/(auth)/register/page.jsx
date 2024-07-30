@@ -62,18 +62,16 @@ export default function Register() {
 
   return (
     <div class="h-full">
-      <div class="flex  h-full h-max-[40rem] flex-col lg:flex-row  items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[3rem] ">
-        <div class="shrink-1 mb-2 grow-0 basis-auto md:mb-3.5 md:w-[40rem] md:shrink-0 lg:w-6/12 xl:w-5/12">
-          <Image
-            src={`/regloginpicture.webp`}
-            class="w-full h-[28rem] object-fit shadow-lg rounded-lg"
-            alt="Sample image"
-            width={450}
-            height={500}
-            priority={true}
-          
-          />
+      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[75vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/regloginpicture.png')] bg-cover bg-opacity-10 py-5 mt-[3.5rem]  ">
+      <div className="absolute bg-gradient-to-b from-transparent   to-white  w-full bottom-0 h-[2.5rem]"></div>
+
+        <div className="flex flex-col justify-center md:justify-start md:items-start items-center gap-1 mb-2">
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl  antialiased tracking-wide font-hanken-grotesk font-medium">WELCOME TO THE </Typography>
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">NEW GOVERNMENT</Typography>
+        <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">PROCUREMENT ACT</Typography>
+        <Typography className="text-3xl md:text-4xl lg:text-5xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-anonymous-pro ">Republic Act No. 12009</Typography>
         </div>
+        
         {step === 1 ? (
           <FirstForm onNext={handleNext} emailExist={emailExist} />
         ) : step === 2 ? (

@@ -21,11 +21,11 @@ const LINKS = [
 
 const currentYear = new Date().getFullYear();
 
-export function FooterWithSocialLinks() {
+export function FooterWithSocialLinks({className}) {
   return (
-    <footer className="relative w-full">
+    <footer className=" w-full">
       <div className="mx-auto w-full  ">
-        <section class="relative flex flex-col  w-full z-10  shadow-md gap-0.5 pt-[3rem] pb-4 px-16 backdrop-blur-3xl bg-gradient-to-b from-white/95 to-blue-500/95">
+        <section class={`${className} relative flex flex-col  w-full z-10  shadow-md gap-0.5 pt-[3rem] pb-4 px-16 backdrop-blur-3xl bg-gradient-to-b from-white/95 to-blue-500/95`}>
           <div className="flex flex-col md:flex-row justify-between mb-0 md:mb-3">
             <div className="">
               <Typography className="text-xl tracking-wide antialiased font-sans uppercase drop-shadow-md text-center md:text-left">
@@ -51,7 +51,7 @@ export function FooterWithSocialLinks() {
                 <span>gppb@gppb.gov.ph</span>
               </Typography>
 
-              <Typography className="text-center md:text-left md:w-fit  text-lg mt-2 tracking-wide font-light hover:text-blue-50 antialiased text-black underline  drop-shadow-md transition-all duration-200">
+              <Typography className="text-center md:text-left md:w-fit  text-md mt-2 tracking-wide font-light hover:text-blue-50 antialiased text-black underline  drop-shadow-md transition-all duration-200">
                 <Link href="/legal-notice">
                   <span>Legal Notice Disclaimer</span>
                 </Link>
