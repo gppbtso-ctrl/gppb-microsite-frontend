@@ -118,9 +118,10 @@ export default function HomePageComponent() {
     { scope: aboutSection }
   );
 
+  console.log(window.scrollY);
   return (
     <>
-      <MainNavbar />
+      <MainNavbar  isHomePage={true}/>
       <div className="relative min-h-screen">
         <section
           class="relative flex flex-col min-h-screen bg-slate-800 text-white  bg-blend-overlay"

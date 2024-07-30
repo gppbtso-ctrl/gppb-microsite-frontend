@@ -18,15 +18,16 @@ import ProfileMenu from "./navbar-profilemenu";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutNGPANavMenu from "./main/about-ngpa-nav-menu";
+import Image from "next/image";
 
-export const MainNavbar = () => {
+export const MainNavbar = ({ isHomePage = false }) => {
   const [isPending, startTransition] = useTransition();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
-
+  const [isScrolled, setIsScrolled] = useState(null)
   const [openNav, setOpenNav] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -38,56 +39,75 @@ export const MainNavbar = () => {
     setLoaded(true);
   }, [decodedToken]);
 
-
-  const handleSearch =  () => {
+  const handleSearch = () => {
     router.push(`/search?value=${searchValue}`);
   };
 
-
-console.log(searchValue)
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = 50;
+   
+      const scrollTop = window.scrollY;
+     
+     setIsScrolled(scrollTop>offset)
+    };
+    // Attach the scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+console.log(isScrolled)
   return (
-    <Navbar className="fixed top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none">
+    <Navbar
+      className={`fixed ${
+        isHomePage
+          ? `${openNav ? '!bg-white/90 [&_button]:!text-black' :''} ${isScrolled ? '!bg-white/20 !backdrop-blur-lg' :'bg-transparent'} transition-all ease-out duration-700  backdrop-filter backdrop-contrast-100 backdrop-saturate-100 backdrop-blur-sm  bg-opacity-0 [&_button]:text-white [&_button]:text-xs [&_p]:text-blue-gray-900 `
+          : null
+      } top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none`}
+    >
       <div className="flex items-center justify-between text-blue-gray-900 font-montserrat ">
-        <div className=" bg-blue-600  h-14 flex items-center justify-center group hover:bg-black transition-all  duration-300 ">
-          {/* <Typography
-            as="a"
-            href="https://www.gppb.gov.ph/"
-            variant="h6"
-            className=" cursor-pointer  px-3 text-white group-hover:text-blue-gray-50 font-semibold font-montserrat transition-all  duration-300 "
-          >
-            GPPB-TSO
-            <span className="text-black text-2xl group-hover:text-blue-600 transition-all  duration-300">
-              .
-            </span>
-          </Typography> */}
+        <div className=" flex items-center justify-center duration-300 ">
+          <Image
+            width={500}
+            height={500}
+            priority
+            src={"/bp_logo.png"}
+            className="h-[4rem] w-[4.5rem] my-[0.4rem] ml-[0.6rem] drop-shadow-md"
+            alt={'Next Picture'}
+          />
         </div>
         <div className="flex items-center gap-1">
           <div className="hidden lg:inline-block mr-1">
             <div className=" relative flex w-full max-w-[30rem]">
-              
-              <Input
-                type="Search"
-                label="Search"
-                value={searchValue}
-                onChange={(e)=>setSearchValue(e.target.value)}
-                className="pr-[3.5rem]"
-                containerProps={{
-                  className: "min-w-0",
-                }}
-              />
-              <Button
-                onClick={handleSearch}
-                size="sm"
-                className="!absolute right-1  top-1 rounded"
-              >
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-              </Button>
+              {!isHomePage && (
+                <>
+                  <Input
+                    type="Search"
+                    label="Search"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    className="pr-[3.5rem]"
+                    containerProps={{
+                      className: "min-w-0",
+                    }}
+                  />
+                  <Button
+                    onClick={handleSearch}
+                    size="sm"
+                    className="!absolute right-1  top-1 rounded"
+                  >
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </Button>
+                </>
+              )}
             </div>
           </div>
           <Button
             variant="text"
             size="sm"
-            className="hidden lg:inline-block rounded-none hover:text-blue-400"
+            className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-md"
             onClick={() => router.push("/")}
           >
             <span className="font-sans">Home</span>
@@ -95,13 +115,13 @@ console.log(searchValue)
           <Button
             variant="text"
             size="sm"
-            className="hidden lg:inline-block rounded-none hover:text-blue-400"
+            className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-md"
             onClick={() => router.push("/committees")}
           >
             <span className="font-sans">Committees</span>
           </Button>
           <div className="hidden lg:inline-block">
-         <AboutNGPANavMenu/>
+            <AboutNGPANavMenu />
           </div>
           {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
 
@@ -197,38 +217,39 @@ console.log(searchValue)
       <Collapse open={openNav}>
         <div className="py-2 px-3">
           <div className=" relative flex w-full max-w-full">
-            <Input
+          
+            {!isHomePage &&<><Input
               type="Search"
               label="Search"
               className="pr-[3.5rem]"
               containerProps={{
                 className: "min-w-0",
               }}
-            />
-            <Button size="sm" className="!absolute right-1 top-1 rounded"  >
+            /><Button size="sm" className="!absolute right-1 top-1 rounded">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </Button>
+            </Button></>}
+       
           </div>
           <ul className="mt-2 mb-4 flex flex-col gap-1 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-          <Button
-            variant="text"
-            size="sm"
-            className=" rounded-none hover:text-blue-400 px-2 w-fit"
-            onClick={() => router.push("/")}
-          >
-            <span className="font-sans">Home</span>
-          </Button>
-  
-          <Button
-            variant="text"
-            size="sm"
-            className="rounded-none hover:text-blue-400 px-2 w-fit"
-            onClick={() => router.push("/committees")}
-          >
-            <span className="font-sans">Committees</span>
-          </Button>
-         
-            <AboutNGPANavMenu/>
+            <Button
+              variant="text"
+              size="sm"
+              className=" rounded-none hover:text-blue-400 px-2 w-fit"
+              onClick={() => router.push("/")}
+            >
+              <span className="font-sans">Home</span>
+            </Button>
+
+            <Button
+              variant="text"
+              size="sm"
+              className="rounded-none hover:text-blue-400 px-2 w-fit"
+              onClick={() => router.push("/committees")}
+            >
+              <span className="font-sans">Committees</span>
+            </Button>
+
+            <AboutNGPANavMenu />
           </ul>
         </div>
         {loaded ? (
