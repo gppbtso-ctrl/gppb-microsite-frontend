@@ -59,11 +59,11 @@ export function FooterWithSocialLinks({className}) {
             </div>
 
             <div className="flex flex-col gap-1 justify-end mb-3 md:mb-1 items-center drop-shadow-md">
-              <Image
+              {/* <Image
                 src={"/Logo Watermark 2024 - NGPA.png"}
                 width={300}
                 height={500}
-              />
+              /> */}
             </div>
           </div>
 

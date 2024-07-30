@@ -73,8 +73,8 @@ export const MainNavbar = ({ isHomePage = false }) => {
             width={500}
             height={500}
             priority
-            src={"/bp_logo.png"}
-            className="h-[4rem] w-[4.5rem] my-[0.4rem] ml-[0.6rem] drop-shadow-md"
+            src={"/Logo Watermark 2024 - NGPA.png"}
+            className="h-[4rem] w-fit my-[0.5rem] pl-8 drop-shadow-md"
             alt={'Next Picture'}
           />
         </div>

@@ -411,11 +411,11 @@ export default function HomePageComponent() {
 
               <div className=" flex  border-black flex-col  justify-end items-center pt-1 md:pt-3 mt-0 md:mt-[4rem] ">
                 <div className=" mb-2 items-center drop-shadow-lg mr-5">
-                  <Image
+                  {/* <Image
                     src={"/Logo Watermark 2024 - NGPA.png"}
                     width={300}
                     height={500}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
