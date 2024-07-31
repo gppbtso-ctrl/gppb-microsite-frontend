@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Register() {
   const router = useRouter();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
   const [formData, setFormData] = useState({});
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [emailExist, setEmailExist] = useState(false);
@@ -77,9 +77,9 @@ export default function Register() {
         ) : step === 2 ? (
           <SecondForm onSubmit={handleSubmit} submitStatus={submitStatus} />
         ) : step === 3 ? (
-          <div className="p-5 flex items-center border-2 shadow-md max-w-[30rem] mx-3">
-            <Typography variant="lead" className="text-center">
-              Initial Registration Success! Please check your Email Inbox or
+          <div className="p-5 flex items-center rounded-sm shadow-md max-w-[30rem] mx-3 bg-white">
+            <Typography variant="lead" className="text-center"> 
+              Initial Registration Success! <br />Please check your Email Inbox or
               Spam.
             </Typography>
           </div>

@@ -116,7 +116,7 @@ export default function Login() {
                 ) : submitStatus === "success" ? (
                   <Typography variant="small">Success</Typography>
                 ) : (
-                  <Typography variant="small">Proceed</Typography>
+                  <Typography variant="small">Submit</Typography>
                 )}
               </Button>
             </div>
