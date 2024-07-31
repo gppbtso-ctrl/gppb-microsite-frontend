@@ -74,7 +74,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
             height={500}
             priority
             src={"/Logo Watermark 2024 - NGPA.png"}
-            className="h-[4rem] w-fit my-[0.5rem] pl-8 drop-shadow-md"
+            className={`h-[2.7rem] ${isScrolled ? 'md:h-[3rem] ': 'md:h-[3.5rem] '} transition-all duration-500 w-fit my-[0.5rem] pl-2 md:pl-8 drop-shadow-md`}
             alt={'Next Picture'}
           />
         </div>
