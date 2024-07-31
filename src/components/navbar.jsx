@@ -19,6 +19,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AboutNGPANavMenu from "./main/about-ngpa-nav-menu";
 import Image from "next/image";
+import { useWindowScroll } from "@uidotdev/usehooks";
 
 export const MainNavbar = ({ isHomePage = false }) => {
   const [isPending, startTransition] = useTransition();
@@ -28,6 +29,8 @@ export const MainNavbar = ({ isHomePage = false }) => {
   const [isScrolled, setIsScrolled] = useState(null)
   const [openNav, setOpenNav] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const [{ x, y }, scrollTo] = useWindowScroll();
+  
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -44,20 +47,14 @@ export const MainNavbar = ({ isHomePage = false }) => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const offset = 50;
-   
-      const scrollTop = window.scrollY;
-     
-     setIsScrolled(scrollTop>offset)
-    };
-    // Attach the scroll event listener when the component mounts
-    window.addEventListener("scroll", handleScroll);
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if(y>100){
+      setIsScrolled(true)
+    }
+    else{
+      setIsScrolled(false)
+    }
+  }, [y]);
+
 
   return (
     <Navbar
@@ -74,7 +71,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
             height={500}
             priority
             src={"/Logo Watermark 2024 - NGPA.png"}
-            className={`h-[2.7rem] ${isScrolled ? 'md:h-[3rem] ': 'md:h-[3.5rem] '} transition-all duration-500 w-fit my-[0.5rem] pl-2 md:pl-8 drop-shadow-md`}
+            className={`h-[2.7rem] ${isScrolled ? 'md:h-[3rem] ': 'md:h-[3.5rem] '} transition-all duration-[710ms] w-fit my-[0.5rem] pl-2 md:pl-8 drop-shadow-md`}
             alt={'Next Picture'}
           />
         </div>
