@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Register() {
   const router = useRouter();
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [emailExist, setEmailExist] = useState(false);
