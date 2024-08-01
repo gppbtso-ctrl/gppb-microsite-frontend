@@ -29,7 +29,7 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refE
 
   useEffect(() => {
     console.log('in use effect', currentContent)
-    if (currentContent) {
+    if (currentContent && editor) {
       console.log(currentContent, 'fromcurrentcontent')
       editor?.commands?.setContent(currentContent)
       editor?.commands?.focus('end');
@@ -40,9 +40,9 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refE
   }, [currentContent, editor])
   
   useEffect(() => {
-    console.log(clear)
-    if (clear)
+  if (clear && editor){
       editor?.commands?.clearContent()
+  }
   }, [clear, editor])
 
   if (!editor) {

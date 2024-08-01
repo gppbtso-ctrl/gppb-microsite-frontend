@@ -97,12 +97,13 @@ export default function Topic() {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
       mutate("TopicsComments");
-      setClear(true);
+      // setClear(true);
+      setCurrentContent(null)
       setTimeout(() => {
         setSubmitStatus(null);
         refEditor.current.focus();
         setPage(data?.total_pages);
-        setClear(false);
+        // setClear(false);
       }, 1000);
     } catch (error) {
       setSubmitStatus("error");
@@ -141,7 +142,8 @@ export default function Topic() {
     }
   };
 
-  console.log(decodedToken);
+  
+  console.log(currentContent)
   return (
     <>
       {loading ? <LoadingScreen /> : null}
@@ -232,6 +234,7 @@ export default function Topic() {
                                       className="text-xs"
                                     />
                                   </Button>
+
                                   {decodedToken?.role === "ADMIN" ||
                                   (decodedToken?.role === "USER" &&
                                     decodedToken?.user_id ===
