@@ -28,7 +28,7 @@ import {
   CalendarDaysIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import AuthService from "@/services/auth";
 
 const profileMenuItems = [
@@ -58,6 +58,7 @@ function ProfileMenu({ decodedToken, removeToken }) {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
+  const pathname = usePathname()
 
   const handleLogout = () => {
     startTransition(() => {
@@ -79,7 +80,7 @@ function ProfileMenu({ decodedToken, removeToken }) {
           size="sm"
           className="flex items-center gap-1 rounded-none lg:ml-auto"
         >
-          <span className="font-montserrat font-semibold text-black">
+          <span className={`font-sans font-semibold ${pathname == '/' ? 'text-white': 'text-blue-gray-900'} `}>
             {decodedToken.first_name}
           </span>
           <ChevronDownIcon

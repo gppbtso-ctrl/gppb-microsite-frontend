@@ -10,7 +10,7 @@ export default function CommitteeLayout({ children }) {
     <div className=" relative  w-full h-screen">
       <div className="grid grid-rows-[max-content,max-content,min-content]">
         <MainNavbar />
-        <div className="mt-[5rem]">{children}</div>
+        <div className="mt-[6rem]">{children}</div>
 
         <FooterWithSocialLinks />
       </div>

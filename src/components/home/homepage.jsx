@@ -95,7 +95,6 @@ export default function HomePageComponent() {
         .timeline({
           scrollTrigger: {
             trigger: aboutSection.current,
-
             start: "top 55%",
             bottom: "bottom ",
           },
@@ -148,6 +147,11 @@ export default function HomePageComponent() {
                   Procurement Act
                 </Typography>
               </div>
+              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
+                  (NGPA) Microsite
+                </Typography>
+              </div>
 
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="absolute text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro  animText">
@@ -160,7 +164,6 @@ export default function HomePageComponent() {
                 href="/committees"
               >
                 <Typography variant="h6" className="font-semibold antialiased tracking-wide  text-blue-gray-900  uppercase">Enter Site</Typography>
-
               </Link>
             </div> */}
             </div>
@@ -181,7 +184,7 @@ export default function HomePageComponent() {
             class=" flex flex-row justify-center  shadow-lg h-full  text-white  bg-gradient-to-b from-light-blue-900 to-[#0C2D48] bg-blend-overlay "
           >
             <div
-              class="grow flex flex-col gap-1 max-w-[65rem] justify-start m-10 mt-[10rem] mx- w-full"
+              class="grow flex flex-col gap-1 max-w-[65rem] justify-start m-10 mt-[8rem] mx- w-full"
               ref={aboutSection}
             >
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
@@ -192,6 +195,11 @@ export default function HomePageComponent() {
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
                   Procurement Act 
+                </Typography>
+              </div>
+              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
+                 (NGPA) Microsite
                 </Typography>
               </div>
               <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
@@ -419,7 +427,7 @@ export default function HomePageComponent() {
                 </div>
               </div>
             </div>
-            <div className=" flex ml-[3.8rem] mr-[5.2rem] drop-shadow-md border-0 border-t-[1px] border-white flex-col items-center justify-center py-3 md:flex-row md:justify-between">
+            <div className=" flex ml-[3.8rem] mr-[3.7rem] md:mr-[5.2rem] drop-shadow-md border-0 border-t-[1px] border-white flex-col items-center justify-center py-3 md:flex-row md:justify-between">
               <Typography
                 variant="small"
                 className=" text-center font-[500] text-white antialiased drop-shadow-md mb-1 md:mb-0"

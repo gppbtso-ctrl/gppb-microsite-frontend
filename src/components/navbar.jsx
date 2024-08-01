@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import ProfileMenu from "./navbar-profilemenu";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +30,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
   const [openNav, setOpenNav] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [{ x, y }, scrollTo] = useWindowScroll();
-  
+  const pathname = usePathname()
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -55,6 +55,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
     }
   }, [y]);
 
+  console.log(pathname)
 
   return (
     <Navbar

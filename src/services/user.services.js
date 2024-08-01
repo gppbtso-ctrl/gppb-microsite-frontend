@@ -77,10 +77,15 @@ const editProfile = (data) => {
   return response;
 };
 
+const postDelete = (id) => {
+  const response = api.delete(`${apiPrefix}/post/${id}`);
+  return response;
+};
 
 
 
 const UserService = {
+  postDelete,
   getCommittees,
   getComTopics,
   getTopicComments,

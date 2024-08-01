@@ -8,7 +8,12 @@ import AddTopicDialog from "@/components/topics/widgets/add-topic-dialog";
 import UserService from "@/services/user.services";
 import useAuthStore from "@/store/authStore";
 import useLoading from "@/utils/use-loading";
-import { faComment, faEye, faReply } from "@fortawesome/free-solid-svg-icons";
+import {
+  faComment,
+  faEye,
+  faReply,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Alert,
@@ -29,6 +34,7 @@ import parse from "html-react-parser";
 import moment from "moment/moment";
 import Link from "next/link";
 import Pagination from "@/components/general-widgets/paginator";
+import CommentsLoader from "@/components/loading/comments-loader";
 
 export default function Topic() {
   const router = useRouter();
@@ -54,13 +60,12 @@ export default function Topic() {
     // Custom logic before updating the page
     console.log("Changing to page:", newPage);
     setPage(newPage);
-  }
+  };
 
   useEffect(() => {
     setLoaded(true);
   }, [decodedToken]);
 
-  
   const getTopicComments = async () => {
     const response = await UserService.getTopicComments(id, page);
     return response.data;
@@ -83,7 +88,6 @@ export default function Topic() {
     mutate("TopicsComments");
   }, [page, mutate]);
 
-
   const onSubmit = async (formData) => {
     formData.topic = data?.topic_data?.id || null;
     console.log(formData, "onsubmit");
@@ -93,16 +97,13 @@ export default function Topic() {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
       mutate("TopicsComments");
-      setClear(true)
+      setClear(true);
       setTimeout(() => {
         setSubmitStatus(null);
         refEditor.current.focus();
-        setPage(data?.total_pages)
-        setClear(false)
+        setPage(data?.total_pages);
+        setClear(false);
       }, 1000);
-    
-   
-
     } catch (error) {
       setSubmitStatus("error");
     }
@@ -131,114 +132,157 @@ export default function Topic() {
     // You can add more logic here to handle the reply action
   };
 
+  const handleDelete = async (id) => {
+    try {
+      const response = await UserService.postDelete(id);
+      mutate("TopicsComments");
+    } catch (error) {
+      console.log(error?.response);
+    }
+  };
+
+  console.log(decodedToken);
   return (
     <>
       {loading ? <LoadingScreen /> : null}
       <div className="  h-full flex flex-col justify-center items-center z-10">
-        <Card className="border-[1px] border-blue-gray-700 mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
-          <div className="h-full p-7 flex flex-col gap-3 flex-1 w-full">
-            <div>
-              <div className="flex flex-col ">
-                <Typography className=" text-base font-semibold">
-                  {data?.topic_data?.starter?.first_name}
-                </Typography>
-                <Typography className="  font-semibold text-sm">
-                  <Moment format="MMM DD, YYYY">{data?.topic_data?.created_date}</Moment>
-                </Typography>
-              </div>
-            </div>
-            <div className="flex flex-col w-full ">
-              <Typography className=" font-semibold text-2xl">
-                {data?.subject}
-              </Typography>
-              <Typography className="font-normal text-md">
-                in <Link href={`/committee/${data?.topic_data?.committee}`} className="text-blue-600 hover:text-blue-900 underline"> {data?.topic_data?.committee_title} </Link>
-              </Typography>
-            </div>
-            <div className="break-words mt-2">
-              <Typography className="text-lg tracking-wide whitespace-pre-wrap">
-                {data?.topic_data?.content}
-              </Typography>
-            </div>
-            <div className="h-[1px] bg-gray-500 mt-2 mb-2"></div>
-
-            <div className="flex flex-col gap-2">
-              <Typography
-                variant="lead"
-                className=" font-semibold tracking-wider text-sm "
-              >
-                Comments
-              </Typography>
-              {submitStatus === "error" && (
-                <Alert color="red" className="rounded-none">
-                  <Typography>Something Went Wrong!</Typography>
-                </Alert>
-              )}
-
-              {data?.post_data &&
-                Object.keys(data?.post_data).map((key, i) => {
-                  const post = data?.post_data[key];
-                  return (
-                    <div
-                      key={i}
-                      className="flex flex-col p-3 mt-2 shadow-md rounded-md border   border-blue-gray-500 antialiased"
+        {data && data?.topic_data ? (
+          <>
+            <Card className="border-[1px] border-blue-gray-700 mt-5 md:mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
+              <div className="h-full p-3 md:p-6 flex flex-col gap-3 flex-1 w-full">
+                <div>
+                  <div className="flex flex-col ">
+                    <Typography className=" text-base font-semibold">
+                      {data?.topic_data?.starter?.first_name}
+                    </Typography>
+                    <Typography className="  font-semibold text-sm">
+                      <Moment format="MMM DD, YYYY">
+                        {data?.topic_data?.created_date}
+                      </Moment>
+                    </Typography>
+                  </div>
+                </div>
+                <div className="flex flex-col w-full ">
+                  <Typography className=" font-semibold text-2xl">
+                    {data?.subject}
+                  </Typography>
+                  <Typography className="font-normal text-md">
+                    in{" "}
+                    <Link
+                      href={`/committee/${data?.topic_data?.committee}`}
+                      className="text-blue-600 hover:text-blue-900 underline"
                     >
-                      <div className="flex flex-col gap-0 w-full break-words">
-                        <div className="flex w-full justify-between items-start mb-7">
-                          <div className="flex flex-col">
-                            <Typography className=" text-sm text-blue-gray-900 font-semibold">
-                              {post?.created_by?.first_name +
-                                " " +
-                                post?.created_by?.last_name}
-                            </Typography>
-                            <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
-                              <Moment format="YYYY MMM DD HH:mm">
-                                {post?.created_date}
-                              </Moment>
-                            </Typography>
-                          </div>
-                          {loaded && decodedToken ? (
-                            <Button
-                              size="sm"
-                              variant="outlined"
-                              className="p-1 rounded-none border-none"
-                              onClick={() => handleReplyClick(post)}
-                            >
-                              <FontAwesomeIcon
-                                icon={faReply}
-                                className="text-xs"
-                              />
-                            </Button>
-                          ) : null}
-                        </div>
-                        <Typography
-                          className="w-full text-blue-gray-900 text-lg 
+                      {" "}
+                      {data?.topic_data?.committee_title}{" "}
+                    </Link>
+                  </Typography>
+                </div>
+                <div className="break-words mt-2">
+                  <Typography className="text-lg tracking-wide whitespace-pre-wrap">
+                    {data?.topic_data?.content}
+                  </Typography>
+                </div>
+                <div className="h-[1px] bg-gray-500 mt-2 mb-2"></div>
+
+                <div className="flex flex-col gap-2">
+                  <Typography
+                    variant="lead"
+                    className=" font-semibold tracking-wider text-sm "
+                  >
+                    Comments
+                  </Typography>
+                  {submitStatus === "error" && (
+                    <Alert color="red" className="rounded-none">
+                      <Typography>Something Went Wrong!</Typography>
+                    </Alert>
+                  )}
+
+                  {data?.post_data &&
+                    Object.keys(data?.post_data).map((key, i) => {
+                      const post = data?.post_data[key];
+                      return (
+                        <div
+                          key={i}
+                          className="flex flex-col p-3 mt-2 shadow-md rounded-md border   border-blue-gray-500 antialiased"
+                        >
+                          <div className="flex flex-col gap-0 w-full break-words">
+                            <div className="flex w-full justify-between items-start mb-7">
+                              <div className="flex flex-col">
+                                <Typography className=" text-sm text-blue-gray-900 font-semibold">
+                                  {post?.created_by?.first_name +
+                                    " " +
+                                    post?.created_by?.last_name}
+                                </Typography>
+                                <Typography className=" tracking-wide text-xs font-semibold text-blue-gray-900">
+                                  <Moment format="YYYY MMM DD HH:mm">
+                                    {post?.created_date}
+                                  </Moment>
+                                </Typography>
+                              </div>
+                              {loaded && decodedToken ? (
+                                <div className="flex gap-2">
+                                  <Button
+                                    size="sm"
+                                    variant="outlined"
+                                    className="p-1 rounded-none border-none"
+                                    onClick={() => handleReplyClick(post)}
+                                  >
+                                    <FontAwesomeIcon
+                                      icon={faReply}
+                                      className="text-xs"
+                                    />
+                                  </Button>
+                                  {decodedToken?.role === "ADMIN" ||
+                                  (decodedToken?.role === "USER" &&
+                                    decodedToken?.user_id ===
+                                      post?.created_by?.id) ? (
+                                    <Button
+                                      size="sm"
+                                      variant="outlined"
+                                      className="p-1 rounded-none border-none"
+                                      onClick={() => handleDelete(post?.id)}
+                                    >
+                                      <FontAwesomeIcon
+                                        icon={faTrash}
+                                        className="text-xs"
+                                        
+                                      />
+                                    </Button>
+                                  ) : null}
+                                </div>
+                              ) : null}
+                            </div>
+                            <Typography
+                              className="w-full text-blue-gray-900 text-lg 
                         [&_strong]:font-extrabold [&_blockquote]:pl-4 
                         [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2
                          [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1"
-                        >
-                          {parse(post?.message)}
-                        </Typography>
-                      </div>
-                    </div>
-                  );
-                })}
-              {/* comment section */}
-     
-            </div>
-          </div>
-        </Card>
-        <div className="w-full max-w-[90vw] xl:max-w-[65vw]">
-        <Pagination
+                            >
+                              {parse(post?.message)}
+                            </Typography>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  {/* comment section */}
+                </div>
+              </div>
+            </Card>
+            <div className="w-full max-w-[90vw] xl:max-w-[65vw]">
+              <Pagination
                 page={page}
-                totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
+                totalPages={
+                  data?.detail == "Invalid page." ? 1 : data?.total_pages
+                }
                 onPageChange={handlePageChange}
                 totalEntries={data?.count}
               />
-        {loaded && decodedToken && data ? (
+              {loaded && decodedToken && data ? (
                 ["TWG", "ADMIN"].includes(decodedToken?.role) ||
                 (decodedToken?.role === "USER" &&
-                  decodedToken?.committee_list.includes(data?.topic_data?.committee)) ? (
+                  decodedToken?.committee_list.includes(
+                    data?.topic_data?.committee
+                  )) ? (
                   <div className="mt-2 ">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Tiptap
@@ -266,7 +310,11 @@ export default function Topic() {
                   </div>
                 ) : null
               ) : null}
-              </div>
+            </div>
+          </>
+        ) : (
+          <CommentsLoader />
+        )}
       </div>
     </>
   );
