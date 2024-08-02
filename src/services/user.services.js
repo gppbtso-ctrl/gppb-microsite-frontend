@@ -82,9 +82,15 @@ const postDelete = (id) => {
   return response;
 };
 
+const postEdit = (formData, id) => {
+  const response = api.patch(`${apiPrefix}/post/${id}`, formData);
+  return response;
+};
+
 
 
 const UserService = {
+  postEdit,
   postDelete,
   getCommittees,
   getComTopics,

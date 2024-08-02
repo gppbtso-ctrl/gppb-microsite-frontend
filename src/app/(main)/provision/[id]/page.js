@@ -11,6 +11,7 @@ import useLoading from "@/utils/use-loading";
 import {
   faComment,
   faEye,
+  faPencil,
   faReply,
   faTrash,
 } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +23,7 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Spinner,
   Typography,
 } from "@material-tailwind/react";
 import Image from "next/image";
@@ -35,6 +37,7 @@ import moment from "moment/moment";
 import Link from "next/link";
 import Pagination from "@/components/general-widgets/paginator";
 import CommentsLoader from "@/components/loading/comments-loader";
+import isNonEmptyPTag from "@/utils/checkEmptyTag";
 
 export default function Topic() {
   const router = useRouter();
@@ -43,14 +46,19 @@ export default function Topic() {
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
   const [loaded, setLoaded] = useState(false);
   const [currentContent, setCurrentContent] = useState("");
+  const [currentContentEdit, setCurrentContentEdit] = useState(null);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [clear, setClear] = useState(false);
+  const [submitStatusEdit, setSubmitStatusEdit] = useState({});
+  // use for tiptap textfield, pass 'postSubmit' for the adding of comment, pass id for edits 
+  const [required, setRequired] = useState(null)
+  
   const {
     register,
     handleSubmit,
     reset,
     control,
     setValue,
+    getValues,
     formState: { errors },
   } = useForm();
   const refEditor = useRef(null);
@@ -88,32 +96,71 @@ export default function Topic() {
     mutate("TopicsComments");
   }, [page, mutate]);
 
-  const onSubmit = async (formData) => {
-    formData.topic = data?.topic_data?.id || null;
-    console.log(formData, "onsubmit");
 
+
+  const onSubmit = async (formData) => {
+    console.log(formData,'asdasdsad')
+    if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
+      setRequired('postSubmit')
+      setTimeout(() => {
+        setRequired(null)
+      }, 2000);
+    
+      return;
+    } else {
+      setRequired(null)
+    formData.topic = data?.topic_data?.id || null;
     setSubmitStatus("loading");
     try {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
       mutate("TopicsComments");
-      // setClear(true);
-      setCurrentContent(null)
+      setCurrentContent(null);
+      reset();
       setTimeout(() => {
         setSubmitStatus(null);
         refEditor.current.focus();
         setPage(data?.total_pages);
-        // setClear(false);
       }, 1000);
     } catch (error) {
       setSubmitStatus("error");
     }
     console.log(data);
   };
+}
+
+ 
 
   const handleContentChange = (content) => {
-    setValue("message", content);
+    setValue("message", content, { shouldValidate: true });
   };
+
+ const handleEditSubmit = async (id) => {
+ const formData = getValues()
+
+ if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
+  setRequired(id)
+  setTimeout(() => {
+    setRequired(null)
+  }, 2000);
+}else{
+  setRequired(null)
+ setSubmitStatusEdit(prev => ({...prev, [id]:'loading'}));
+ try {
+  const response = await UserService.postEdit(formData, id);
+   setSubmitStatusEdit(prev => ({...prev, [id]:'Success'}));
+   mutate("TopicsComments");
+   setCurrentContentEdit(null)
+   setSubmitStatusEdit({});
+   reset()
+ } catch (error) {
+  setSubmitStatusEdit(prev => ({...prev, [id]:'error'}));
+ }
+ console.log(data);
+//  purpose of the ID to 
+}
+ }
+
 
   const handleReplyClick = (post) => {
     const reply = `
@@ -142,8 +189,17 @@ export default function Topic() {
     }
   };
 
+  const handleEdit = (id, message) => {
+
+    setCurrentContentEdit({ id: id, message: message });
+  };
+  const handleRequired = (content,) => {
+
+  };
+
   
-  console.log(currentContent)
+
+
   return (
     <>
       {loading ? <LoadingScreen /> : null}
@@ -223,46 +279,106 @@ export default function Topic() {
                               </div>
                               {loaded && decodedToken ? (
                                 <div className="flex gap-2">
-                                  <Button
-                                    size="sm"
-                                    variant="outlined"
-                                    className="p-1 rounded-none border-none"
-                                    onClick={() => handleReplyClick(post)}
-                                  >
-                                    <FontAwesomeIcon
-                                      icon={faReply}
-                                      className="text-xs"
-                                    />
-                                  </Button>
-
-                                  {decodedToken?.role === "ADMIN" ||
-                                  (decodedToken?.role === "USER" &&
-                                    decodedToken?.user_id ===
-                                      post?.created_by?.id) ? (
+                                  {decodedToken?.user_id !==
+                                  post?.created_by?.id ? (
                                     <Button
                                       size="sm"
                                       variant="outlined"
                                       className="p-1 rounded-none border-none"
-                                      onClick={() => handleDelete(post?.id)}
+                                      onClick={() => handleReplyClick(post)}
                                     >
                                       <FontAwesomeIcon
-                                        icon={faTrash}
+                                        icon={faReply}
                                         className="text-xs"
-                                        
                                       />
                                     </Button>
+                                  ) : null}
+                                   {decodedToken?.role === "USER" &&
+                                    decodedToken?.user_id ===
+                                      post?.created_by?.id ?
+                                   <Button
+                                        size="sm"
+                                        variant="outlined"
+                                        className={`p-1 rounded-none border-none ${
+                                          currentContentEdit?.id === post?.id
+                                            ? "text-green-700 pointer-events-none opacity-80"
+                                            : "text-black"
+                                        }`}
+                                        onClick={() =>
+                                          handleEdit(post?.id, post?.message)
+                                        }
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faPencil}
+                                          className="text-xs"
+                                        />
+                                      </Button> : null}
+                                  {decodedToken?.role === "ADMIN" ||
+                                  (decodedToken?.role === "USER" &&
+                                    decodedToken?.user_id ===
+                                      post?.created_by?.id) ? (
+                                    <>
+                                      <Button
+                                        size="sm"
+                                        variant="outlined"
+                                        className="p-1 rounded-none border-none"
+                                        onClick={() => handleDelete(post?.id)}
+                                      >
+                                        <FontAwesomeIcon
+                                          icon={faTrash}
+                                          className="text-xs"
+                                        />
+                                      </Button>
+                                    </>
                                   ) : null}
                                 </div>
                               ) : null}
                             </div>
-                            <Typography
-                              className="w-full text-blue-gray-900 text-lg 
+                            {currentContentEdit?.id === post?.id ? (
+                              <div className="-mt-2">
+                                {" "}
+                                <Tiptap
+                                  onContentChange={handleContentChange}
+                                  currentContent={currentContentEdit?.message}
+                                  refEditor={refEditor}
+                             
+                                  isEdit={true}
+                                />
+                                <div className="w-full flex justify-end gap-2 mt-1">
+                                {required === post?.id && <Typography size="sm" color="red" className="font-medium">Please fill out the text field!</Typography>}
+                                  <Button
+                                    color="blue-gray"
+                                    className="py-1 px-1.5 rounded-none text-[0.6rem] md:text-[0.70rem]"
+                                    onClick={() => setCurrentContentEdit(null)}
+                                  >
+                                    Cancel
+                                  </Button>
+                                  <Button
+                                    variant="gradient"
+                                    className="py-1 px-1.5 rounded-none text-[0.60rem] md:text-[0.70rem]"
+                                    onClick={()=>handleEditSubmit(post?.id)}
+                                  >
+                       {post?.id in submitStatusEdit &&
+                            submitStatusEdit[post?.id] === "loading" ? (
+                              <Spinner className="w-10 h-4" color="white" />
+                            ) : submitStatusEdit[post?.id] === "success" ? (
+                              "success"
+                            ) : (
+                              "Submit"
+                            )}
+                                  </Button>
+                                </div>
+                              </div>
+                            ) : (
+                              <Typography
+                                className="w-full text-blue-gray-900 text-lg 
                         [&_strong]:font-extrabold [&_blockquote]:pl-4 
                         [&>blockquote_span]:text-sm [&>blockquote_span]:font-semibold [&_blockquote]:border-l-2
                          [&_blockquote]:border-l-blue-gray-500 [&_blockquote]:bg-blue-gray-100  [&_blockquote]:pr-1"
-                            >
-                              {parse(post?.message)}
-                            </Typography>
+                              >
+                                {parse(post?.message)}
+                              </Typography>
+                            )}
                           </div>
                         </div>
                       );
@@ -286,16 +402,17 @@ export default function Topic() {
                   decodedToken?.committee_list.includes(
                     data?.topic_data?.committee
                   )) ? (
-                  <div className="mt-2 ">
+                 
+                (!currentContentEdit && <div className="mt-2 ">
                     <form onSubmit={handleSubmit(onSubmit)}>
                       <Tiptap
                         onContentChange={handleContentChange}
                         currentContent={currentContent}
-                        setCurrentContent={setCurrentContent}
                         refEditor={refEditor}
-                        clear={clear}
+                      
                       />
-                      <div className="flex justify-end items-center mt-1">
+                      <div className="flex justify-end items-center mt-1 gap-2">
+                        {required === "postSubmit" && <Typography size="sm" color="red" className="font-medium">Please fill out the text field!</Typography>}
                         <Button
                           type="submit"
                           size="sm"
@@ -310,7 +427,7 @@ export default function Topic() {
                         </Button>{" "}
                       </div>
                     </form>
-                  </div>
+                  </div>)
                 ) : null
               ) : null}
             </div>

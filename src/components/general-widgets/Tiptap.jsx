@@ -9,8 +9,9 @@ import Underline from '@tiptap/extension-underline'
 import { forwardRef, useEffect } from 'react'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextStyle from '@tiptap/extension-text-style'
+import { isEmpty } from 'slate'
 
-const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refEditor}) => {
+const Tiptap = ({onContentChange, currentContent,  setCurrentContent, isEdit=false, refEditor}) => {
 
   const editor = useEditor({
     extensions: [StarterKit, Underline, TextStyle,       
@@ -26,24 +27,20 @@ const Tiptap = ({onContentChange, currentContent, setCurrentContent, clear, refE
       },
   })
 
-
   useEffect(() => {
-    console.log('in use effect', currentContent)
     if (currentContent && editor) {
-      console.log(currentContent, 'fromcurrentcontent')
       editor?.commands?.setContent(currentContent)
       editor?.commands?.focus('end');
       editor?.commands?.keyboardShortcut('Enter');
-      editor?.commands?.keyboardShortcut('Enter');
-     // Move the cursor to the end of the content
+      !isEdit && editor?.commands?.keyboardShortcut('Enter')
     }
   }, [currentContent, editor])
   
-  useEffect(() => {
-  if (clear && editor){
-      editor?.commands?.clearContent()
-  }
-  }, [clear, editor])
+  // useEffect(() => {
+  // if (clear && editor){
+  //     editor?.commands?.clearContent()
+  // }
+  // }, [clear, editor])
 
   if (!editor) {
     return null;
