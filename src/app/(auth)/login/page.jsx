@@ -56,7 +56,7 @@ export default function Login() {
   return (
     <div class="h-full">
       {loading ? <LoadingScreen /> : null}
-      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[75vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/home.png')] bg-cover bg-opacity-10 py-5 mt-[3.5rem]  ">
+      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[75vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/Home.png')] bg-cover bg-opacity-10 py-5 mt-[3.5rem]  ">
       <div className="absolute bg-gradient-to-b from-transparent   to-white  w-full bottom-0 h-[2.5rem]"></div>
 
         <div className="flex flex-col justify-center md:justify-start md:items-start items-center gap-1 mb-2">
