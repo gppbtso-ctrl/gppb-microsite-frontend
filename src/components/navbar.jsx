@@ -21,6 +21,7 @@ import AboutNGPANavMenu from "./main/about-ngpa-nav-menu";
 import Image from "next/image";
 import { useWindowScroll } from "@uidotdev/usehooks";
 
+
 export const MainNavbar = ({ isHomePage = false }) => {
   const [isPending, startTransition] = useTransition();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
@@ -193,11 +194,13 @@ export const MainNavbar = ({ isHomePage = false }) => {
             ) : (
               <>
                 {" "}
+                
                 <Button
                   variant="text"
                   size="sm"
                   className="hidden lg:inline-block rounded-none  pointer-events-none cursor-none"
                 >
+                
                   <span className="font-montserrat">Log In</span>
                 </Button>
                 <Button
@@ -253,11 +256,13 @@ export const MainNavbar = ({ isHomePage = false }) => {
         {loaded ? (
           !decodedToken ? (
             <div className="flex justify-center items-center gap-2 mt-1">
+              
               <Button
                 fullWidth
                 variant="text"
                 size="sm"
                 className="rounded-none"
+                onClick={()=>router.push('/login')}
               >
                 <span>Log In</span>
               </Button>
@@ -266,8 +271,9 @@ export const MainNavbar = ({ isHomePage = false }) => {
                 variant="text"
                 size="sm"
                 className=" rounded-none"
+                onClick={()=>router.push('/register')}
               >
-                <span>Sign in</span>
+                <span>Register</span>
               </Button>
             </div>
           ) : null

@@ -98,8 +98,8 @@ export default function Profile() {
 
 
   return (
-    <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[1rem]  ">
-       <div class="mb-12 p-4 shadow-jubilation flex flex-col  justify-center gap-3 max-w-[40rem] w-full">
+    <div class="flex  h-full flex-wrap items-center justify-center lg:gap-5 mx-10  min-h-[69dvh]  ">
+       <div class="mb-12 p-5 shadow-jubilation flex flex-col  justify-center gap-3 max-w-[40rem] w-full ">
       <Typography variant="h4" className="font-montserrat">
         Edit Profile
       </Typography>

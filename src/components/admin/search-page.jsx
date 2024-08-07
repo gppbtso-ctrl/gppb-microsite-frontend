@@ -52,10 +52,10 @@ export default function SearchComponent() {
     mutate("search");
   }, [page, mutate]);
 
-console.log(data, 'datadata')
+
   return (
     <Suspense>
-    <div className="relative flex flex-col justify-start items-center z-10 min-h-[58vh] ">
+   
       <Card className="relative m-3   rounded-none min-w-[90vw] lg:min-w-[55vw] lg:max-w-[65vw] flex flex-col justify-start">
         <div className="flex gap-2">
           <Typography className="text-2xl py-2 px-4">
@@ -140,8 +140,8 @@ console.log(data, 'datadata')
                 onPageChange={handlePageChange}
                 totalEntries={data?.count}
               /> </div>: null}
-        
-    </div>
+    
+
     </Suspense>
   );
 }

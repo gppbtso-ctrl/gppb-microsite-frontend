@@ -19,11 +19,16 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { usePathname, useSearchParams } from 'next/navigation'
+
 
 export default function Login() {
   const router = useRouter();
   const loading = useLoading(1200);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const domain_name = window.location.hostname
+  const pathname = usePathname();
+
 
   const {
     register,
@@ -38,7 +43,8 @@ export default function Login() {
     try {
       const response = await AuthService.login(params);
       setSubmitStatus("success");
-      router.back();
+      router.push('/committees')
+      
     } catch (error) {
       console.log(error);
       if (
@@ -53,11 +59,12 @@ export default function Login() {
     // Perform any further actions with the combined data
   };
 
+
   return (
     <div class="h-full">
       {loading ? <LoadingScreen /> : null}
-      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[75vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/Home.png')] bg-cover bg-opacity-10 py-5 mt-[3.5rem]  ">
-      <div className="absolute bg-gradient-to-b from-transparent   to-white  w-full bottom-0 h-[2.5rem]"></div>
+      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[80vh] [@media(min-width:2300px)]:min-h-[90vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/Home.png')] bg-cover bg-opacity-10  mt-[3.5rem]  ">
+      <div className="absolute bg-gradient-to-b from-transparent from-5%  to-white to-80%  w-full bottom-0 h-[2rem]"></div>
 
         <div className="flex flex-col justify-center md:justify-start md:items-start items-center gap-1 mb-2">
         <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl  antialiased tracking-wide font-hanken-grotesk font-medium">WELCOME TO THE </Typography>

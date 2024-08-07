@@ -65,10 +65,10 @@ export default function ChangePassword() {
   };
 
   return (
-    <div class="h-full">
+    <div className="h-full">
       {loading ? <LoadingScreen /> : null}
-      <div class="flex  h-full h-max-[40rem] flex-wrap items-center justify-center lg:gap-5 mx-10 my-10 lg:my-[1rem]  ">
-        <div class="mb-12 p-4 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem] w-full border-[0.3px] border-gray-300 rounded-sm">
+      <div class="flex  h-full  flex-col items-center justify-center lg:gap-5 mx-10">
+        <div class="my-auto p-4 shadow-lg flex flex-col justify-center gap-3 min-w-[22rem] lg:max-w-[30rem]  w-full border-[0.3px] border-gray-300 rounded-sm">
           <Typography variant="h4" className="font-montserrat">
             Change Password
           </Typography>

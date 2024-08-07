@@ -5,13 +5,13 @@ import { MainNavbar } from "@/components/navbar";
 
 export default function CommitteeLayout({ children }) {
   return (
-    <div className=" relative  w-full h-screen">
-       <div className="">
+    <div className=" relative w-full h-screen flex flex-col">
+       <div className="flex-1">
       <MainNavbar />
-      <div className="">{children}
+      {children}
+      
       </div>
-      </div>
-      <FooterWithSocialLinks  className={'!pt-2'}/>
+      <FooterWithSocialLinks  className={'relative !pt-2'}/>
 
     </div>
   );

@@ -1,11 +1,11 @@
 import SearchComponent from '@/components/admin/search-page'
-import React, { Suspense } from 'react'
 
 const Search = () => {
   return (
-    <Suspense>
+    <div className="relative flex flex-col justify-start items-center z-10 min-h-[58vh] ">
    <SearchComponent/>
-    </Suspense>
+   </div>
+ 
   )
 }
 

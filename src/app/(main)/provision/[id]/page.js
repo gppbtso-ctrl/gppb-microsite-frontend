@@ -81,15 +81,28 @@ export default function Topic() {
 
   const { data, isLoading, error, mutate, isValidating } = useSWR(
     id ? "TopicsComments" : null,
-    getTopicComments
+    getTopicComments, {
+      onError: (error) => {
+        console.log(error)
+        const err_response = error?.response
+        if (
+          err_response?.status == 404 &&
+          err_response?.statusText == "Not Found"
+     
+        ) {
+          if( err_response?.data?.detail == "Invalid page."){
+            setPage(page !== 0 ? page - 1 : 1)
+          }
+          else{
+            router.push('/404')
+          }
+        }
+      }
+    }
   );
 
-  if (
-    error?.response?.status == 404 &&
-    error?.response?.statusText == "Not Found"
-  ) {
-    router.push("/404");
-  }
+
+  console.log(page - 1  )
 
   useEffect(() => {
     // Manually trigger a re-fetch when perPage or searchTerm changes
@@ -119,7 +132,7 @@ export default function Topic() {
       reset();
       setTimeout(() => {
         setSubmitStatus(null);
-        refEditor.current.focus();
+        refEditor?.current?.focus();
         setPage(data?.total_pages);
       }, 1000);
     } catch (error) {
@@ -255,7 +268,7 @@ export default function Topic() {
                     </Alert>
                   )}
 
-                  {data?.post_data &&
+                  {data?.post_data.length !== 0 ?
                     Object.keys(data?.post_data).map((key, i) => {
                       const post = data?.post_data[key];
                       return (
@@ -382,7 +395,7 @@ export default function Topic() {
                           </div>
                         </div>
                       );
-                    })}
+                    }):<Typography className="font-sans text-sm font-semibold">No Comments Yet!</Typography>}
                   {/* comment section */}
                 </div>
               </div>

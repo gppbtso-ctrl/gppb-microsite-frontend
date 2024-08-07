@@ -10,7 +10,7 @@ export default function CommitteeLayout({ children }) {
     <div className=" relative  w-full h-screen">
       <div className="grid grid-rows-[max-content,max-content,min-content]">
         <MainNavbar />
-        <div className="mt-[6rem] mb-[4rem]">{children}</div>
+        <div className="mt-[6rem] mb-[4rem] [@media(min-width:2300px)]:min-h-[90vh] ">{children}</div>
         {/* <div className=" z-0 mt-10 bg-blue-500 h-60 w-full -bottom-1/4 flex justify-center items-center">
           <Typography
             variant="h1"
