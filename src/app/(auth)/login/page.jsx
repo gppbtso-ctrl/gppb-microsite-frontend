@@ -26,7 +26,6 @@ export default function Login() {
   const router = useRouter();
   const loading = useLoading(1200);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const domain_name = window.location.hostname
   const pathname = usePathname();
 
 
