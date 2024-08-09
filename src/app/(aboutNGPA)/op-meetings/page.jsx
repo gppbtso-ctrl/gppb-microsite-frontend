@@ -15,7 +15,7 @@ export default function OPMeetings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none flex flex-col gap-3">
+      <Card className="relative p-5 m-3 max-w-5xl rounded-none  shadow-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -47,7 +47,7 @@ export default function OPMeetings() {
             className="max-h-[35rem] w-full object-cover"
           />
         </Carousel>
-        <Typography variant="h5" className="font-sans uppercase text-center">
+        <Typography variant="h5" className="font-sans uppercase text-center mt-2">
           Legislative Journey regarding RA No. 9184 Amendments (Office of the
           President)
         </Typography>

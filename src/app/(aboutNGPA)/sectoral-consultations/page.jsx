@@ -117,8 +117,8 @@ export default function SectoralConsultations() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none flex flex-col gap-3">
-        <Typography variant="h5" className="font-sans">
+      <Card className="relative p-5 m-3 max-w-5xl rounded-none shadow-none  flex flex-col gap-3">
+        <Typography variant="h5" className="font-sans text-center">
           SECTORAL CONSULTATIONS ON THE REPUBLIC ACT NO. 9184{" "}
         </Typography>
         <Typography className=" text-justify ">

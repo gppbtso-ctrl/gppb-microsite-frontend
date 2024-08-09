@@ -241,7 +241,7 @@ export default function SenateHearings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-[58rem] shadow-md rounded-none flex flex-col gap-3">
+      <Card className="relative p-7 m-3 max-w-[62rem] shadow-none rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}

@@ -271,7 +271,7 @@ export default function DifferentBillVersions() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none flex flex-col gap-3">
+      <Card className="relative p-5 m-3 max-w-6xl rounded-none shadow-none flex flex-col gap-3">
         <Typography variant="h5" className="font-sans">
           Various House and Senate Bills related to the Amendment of the
           Republic Act No. 9184

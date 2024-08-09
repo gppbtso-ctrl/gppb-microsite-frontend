@@ -34,7 +34,7 @@ export default function OtherKeyActivities() {
         className="max-h-[35rem] w-full object-cover"
       />
     </Carousel>
-    <Typography variant="h5" className="font-sans uppercase text-center">
+    <Typography variant="h5" className="font-sans uppercase text-center mt-2">
           Other Key Activities
         </Typography>
         <Typography className=" text-justify ">

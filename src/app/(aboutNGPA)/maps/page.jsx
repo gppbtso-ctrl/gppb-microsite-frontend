@@ -46,7 +46,7 @@ export default function Maps() {
             />
           ))}
         </Carousel>
-        <Typography variant="h5" className="font-sans text-center ">
+        <Typography variant="h5" className="font-sans text-center mt-2">
           METHODOLOGY FOR ASSESSING PROCUREMENT SYSTEMS (MAPS){" "}
         </Typography>
         <Typography className=" text-justify ">

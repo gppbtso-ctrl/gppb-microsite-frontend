@@ -364,7 +364,7 @@ export default function HORHearings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-[58rem] shadow-md rounded-none flex flex-col gap-3">
+      <Card className="relative p-7 m-3 max-w-[58rem] shadow-none rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -406,7 +406,7 @@ export default function HORHearings() {
             height={500}
           />
 
-            <Image
+          <Image
             src="/hor-pic5-hear-19.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
@@ -414,7 +414,7 @@ export default function HORHearings() {
             height={500}
           />
 
-<div className="relative h-full w-full bg-black">
+          <div className="relative h-full w-full bg-black">
             <img
               src="/hor-pic1-hear-21.jpg"
               alt="image 1"
@@ -437,14 +437,14 @@ export default function HORHearings() {
             width={500}
             height={500}
           />
-                <Image
+          <Image
             src="/hor-pic3-hear-21.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
-              <Image
+          <Image
             src="/hor-pic4-hear-21.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
@@ -474,14 +474,14 @@ export default function HORHearings() {
             width={500}
             height={500}
           />
-                 <Image
+          <Image
             src="/hor-pic3-oct-26.jpg"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
             width={300}
             height={300}
           />
-    <div className="relative h-full w-full bg-black">
+          <div className="relative h-full w-full bg-black">
             <img
               src="/hor-pic1-dec-5.png"
               alt="image 1"
@@ -497,15 +497,15 @@ export default function HORHearings() {
               </Typography>
             </div>
           </div>
-    
-           <Image
+
+          <Image
             src="/hor-pic3-dec-5.png"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
             width={300}
             height={300}
           />
-         <Image
+          <Image
             src="/hor-pic4-dec-5.png"
             alt="image 1"
             className="max-h-[30rem] w-full object-cover"
@@ -513,7 +513,7 @@ export default function HORHearings() {
             height={300}
           />
         </Carousel>
-        <Typography variant="h5" className="font-sans text-center">
+        <Typography variant="h5" className="font-sans text-center mt-2">
           Legislative Journey regarding RA No. 9184 Amendments (House of
           Representatives)
         </Typography>
