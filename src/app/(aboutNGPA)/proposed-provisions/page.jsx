@@ -66,12 +66,6 @@ export default function ProposedProvisions() {
                 </li>
                 <li>
                   <span className="font-semibold block">
-                  Mandatory Market Scoping
-                  </span>
-                  The Act requires procuring entities to conduct market scoping as a preliminary step in preparing their Project Procurement Management Plan (PPMP) and gathering relevant market information to inform procurement decisions effectively.
-                </li>
-                <li>
-                  <span className="font-semibold block">
                   Early Procurement Activities 
                   </span>
                   Early Procurement Activities are encouraged to improve planning and execution of procurement projects, allowing for the identification of potential challenges and opportunities.
