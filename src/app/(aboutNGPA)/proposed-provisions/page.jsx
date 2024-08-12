@@ -120,8 +120,8 @@ export default function ProposedProvisions() {
               <p className="font-normal mt-3">A. Streamlining Procurement through Integrated Systems </p>
               <ol className="ml-5 list-[upper-decimal] font-normal mt-2 flex flex-col gap-2">
                 <li>
-                  <span className="font-semibold block">Enhanced Efficiency Principle</span>A
-                  The Act emphasizes efficiency as a key principle, aiming for an organized, uniform, and straightforward procurement process s through innovative solutions
+                  <span className="font-semibold block">Enhanced Efficiency Principle</span>
+                  The Act emphasizes efficiency as a key principle, aiming for an organized, uniform, and straightforward procurement process through innovative solutions and emerging technologies.
                 </li>
                 <li>
                   <span className="font-semibold block">
