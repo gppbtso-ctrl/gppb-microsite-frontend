@@ -49,7 +49,6 @@ export default function Profile() {
   );
 
   const onSubmit = async (data) => {
-    console.log(data)
       setSubmitStatus("loading");
       try {
         const response = await UserService.editProfile(data);
@@ -92,8 +91,6 @@ export default function Profile() {
 //   }, [decodedToken]);
 
   // Perform any further actions with the combined data
-
-  console.log(data, decodedToken)
 
 
 

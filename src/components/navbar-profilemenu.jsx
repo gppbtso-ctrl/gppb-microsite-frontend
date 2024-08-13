@@ -131,7 +131,7 @@ function ProfileMenu({ decodedToken, removeToken }) {
               <Typography
                 as="span"
                 variant="small"
-                className="font-normal"
+                className="font-normal "
                 color={isLastItem ? "red" : "inherit"}
               >
                 {label}

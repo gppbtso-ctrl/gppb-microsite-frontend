@@ -74,8 +74,6 @@ export default function Topics() {
     end: new Date(activity.end),
   }));
 
-  console.log(data, convertedActivities);
-  console.log(pathname);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
       {loading ? <LoadingScreen /> : null}

@@ -56,13 +56,13 @@ export const MainNavbar = ({ isHomePage = false }) => {
     }
   }, [y]);
 
-  console.log(pathname)
+
 
   return (
     <Navbar
       className={`fixed ${
         isHomePage
-          ? `${openNav ? '!bg-white/90 [&_button]:!text-black' :''} ${isScrolled ? '!bg-white/20 !backdrop-blur-lg' :'bg-transparent'} transition-all ease-out duration-700  backdrop-filter backdrop-contrast-100 backdrop-saturate-100 backdrop-blur-sm  bg-opacity-0 [&_button]:text-white [&_button]:text-xs [&_p]:text-blue-gray-900 `
+          ? `${openNav ? '!bg-white/90 [&_button]:!text-black' :''} ${isScrolled && !openNav ? '!bg-white/20 !backdrop-blur-lg' :'bg-transparent'} transition-all ease-out duration-700  backdrop-filter backdrop-contrast-100 backdrop-saturate-100 backdrop-blur-sm  bg-opacity-0 [&_button]:text-white [&_button]:text-xs [&_p]:text-blue-gray-900 `
           : null
       } top-0 z-40 h-max max-w-full rounded-none p-0  lg:px-8 lg:pl-0 lg:py-0 shadow-none border-none`}
     >
@@ -106,18 +106,18 @@ export const MainNavbar = ({ isHomePage = false }) => {
           <Button
             variant="text"
             size="sm"
-            className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-md"
+            className={`hidden lg:inline-block rounded-none  hover:text-blue-400 drop-shadow-sm`}
             onClick={() => router.push("/")}
           >
-            <span className="font-sans">Home</span>
+            <span className={`${pathname === "/" && 'text-blue-400'} font-sans`}>Home</span>
           </Button>
           <Button
             variant="text"
             size="sm"
-            className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-md"
+            className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-sm"
             onClick={() => router.push("/committees")}
           >
-            <span className="font-sans">Committees</span>
+             <span className={`${pathname === "/committees" && 'text-blue-500'} font-sans`}>Committees</span>
           </Button>
           <div className="hidden lg:inline-block">
             <AboutNGPANavMenu />
@@ -169,18 +169,18 @@ export const MainNavbar = ({ isHomePage = false }) => {
                   <Button
                     variant="text"
                     size="sm"
-                    className="hidden lg:inline-block rounded-none hover:text-blue-400"
+                    className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-sm"
                     onClick={() => router.push("/login")}
                   >
-                    <span className="font-sans">Log In</span>
+                   <span className={`${pathname === "/login" && 'text-blue-500'} font-sans`}>Log In</span>
                   </Button>
                   <Button
                     variant="text"
                     size="sm"
-                    className="hidden lg:inline-block rounded-none hover:text-blue-400"
+                    className="hidden lg:inline-block rounded-none hover:text-blue-400 drop-shadow-sm"
                     onClick={() => router.push("/register")}
                   >
-                    <span className="font-sans">Register</span>
+                    <span className={`${pathname === "/register" && 'text-blue-500'} font-sans`}>Register</span>
                   </Button>
                 </>
               ) : (
@@ -235,19 +235,20 @@ export const MainNavbar = ({ isHomePage = false }) => {
             <Button
               variant="text"
               size="sm"
-              className=" rounded-none hover:text-blue-400 px-2 w-fit"
+              className=" rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
               onClick={() => router.push("/")}
             >
-              <span className="font-sans">Home</span>
+              
+              <span className={`${pathname === "/" && 'text-blue-500'} font-sans`}>Home</span>
             </Button>
 
             <Button
               variant="text"
               size="sm"
-              className="rounded-none hover:text-blue-400 px-2 w-fit"
+              className="rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
               onClick={() => router.push("/committees")}
             >
-              <span className="font-sans">Committees</span>
+               <span className={`${pathname === "/committees" && 'text-blue-500'} font-sans`}>Committees</span>
             </Button>
 
             <AboutNGPANavMenu />
@@ -264,7 +265,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
                 className="rounded-none"
                 onClick={()=>router.push('/login')}
               >
-                <span>Log In</span>
+                 <span className={`${pathname === "/login" && 'text-blue-500'} font-sans`}>Log In</span>
               </Button>
               <Button
                 fullWidth
@@ -273,7 +274,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
                 className=" rounded-none"
                 onClick={()=>router.push('/register')}
               >
-                <span>Register</span>
+               <span className={`${pathname === "/register" && 'text-blue-500'} font-sans`}>Register</span>
               </Button>
             </div>
           ) : null

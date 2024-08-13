@@ -51,7 +51,6 @@ function SecondForm({ onSubmit, submitStatus }) {
 
   const getCommittees = async () => {
     const response = await UserService.getCommittees();
-    console.log(response?.data);
     return response.data;
   };
 
@@ -65,7 +64,6 @@ function SecondForm({ onSubmit, submitStatus }) {
 
   const handleCheckBoxSubmit = (data) => {
     const committee_list = data.committee_list;
-    console.log(committee_list);
     if (committee_list.length === 0 || committee_list === false) {
       setError("required");
     } else if (committee_list.length > 3) {
@@ -75,10 +73,10 @@ function SecondForm({ onSubmit, submitStatus }) {
     } else {
       data.committee_list = toNumber(committee_list);
       onSubmit(data);
-      console.log(data);
+
     }
   };
-  console.log(data);
+
 
   return (
     <div class="mb-5 p-4 bg-white/95 rounded-md backdrop-filter shadow-lg flex flex-col  justify-center gap-3 w-[min(97%,30rem)] ">

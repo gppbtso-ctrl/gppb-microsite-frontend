@@ -26,7 +26,6 @@ const CommitteeMain = () => {
 
   const getCommittees = async () => {
     const response = await UserService.getCommittees();
-    console.log(response?.data);
     return response.data;
   };
 

@@ -42,7 +42,6 @@ export default function ChangePassword() {
     const params = data;
 
     delete data.confirm_password;
-    console.log(data);
     setSubmitStatus("loading");
     try {
       const response = await AuthService.changePassword(params);

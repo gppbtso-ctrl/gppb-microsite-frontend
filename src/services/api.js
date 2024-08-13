@@ -53,7 +53,7 @@ instance.interceptors.response.use(
       }
     }
 
-    console.log(error, "from api");
+  
     return Promise.reject(error);
   }
 );

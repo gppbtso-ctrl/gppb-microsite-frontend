@@ -11,7 +11,6 @@ function FirstForm({ onNext, emailExist }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(typeof data.password, typeof data.confirm_password);
     setAlert(null);
     if (data.password !== data.confirm_password) {
       setAlert("passwordNotMatched");

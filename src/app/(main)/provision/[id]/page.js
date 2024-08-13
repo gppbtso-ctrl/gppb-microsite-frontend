@@ -66,7 +66,6 @@ export default function Topic() {
 
   const handlePageChange = (newPage) => {
     // Custom logic before updating the page
-    console.log("Changing to page:", newPage);
     setPage(newPage);
   };
 
@@ -83,7 +82,6 @@ export default function Topic() {
     id ? "TopicsComments" : null,
     getTopicComments, {
       onError: (error) => {
-        console.log(error)
         const err_response = error?.response
         if (
           err_response?.status == 404 &&
@@ -102,17 +100,14 @@ export default function Topic() {
   );
 
 
-  console.log(page - 1  )
-
   useEffect(() => {
     // Manually trigger a re-fetch when perPage or searchTerm changes
     mutate("TopicsComments");
-  }, [page, mutate]);
+  }, [page]);
 
 
 
   const onSubmit = async (formData) => {
-    console.log(formData,'asdasdsad')
     if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
       setRequired('postSubmit')
       setTimeout(() => {
@@ -127,23 +122,26 @@ export default function Topic() {
     try {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
-      mutate("TopicsComments");
+      const updatedData = await getTopicComments(); // Fetch new data
+      mutate(updatedData,false); 
       setCurrentContent(null);
       reset();
-      setTimeout(() => {
-        setSubmitStatus(null);
-        refEditor?.current?.focus();
-        setPage(data?.total_pages);
-      }, 1000);
+     setTimeout(() => {
+      setSubmitStatus(null);
+      setCurrentContent(null)
+      refEditor?.current?.focus();
+      setPage( page === updatedData.total_pages ? page : updatedData.total_pages );
+    }, 500);
     } catch (error) {
       setSubmitStatus("error");
     }
-    console.log(data);
   };
 }
 
- 
 
+
+ 
+console.log(page, data?.total_pages)
   const handleContentChange = (content) => {
     setValue("message", content, { shouldValidate: true });
   };
@@ -169,7 +167,6 @@ export default function Topic() {
  } catch (error) {
   setSubmitStatusEdit(prev => ({...prev, [id]:'error'}));
  }
- console.log(data);
 //  purpose of the ID to 
 }
  }
@@ -187,7 +184,6 @@ export default function Topic() {
     </blockquote>
     `;
     const replyFinal = reply.replace(/<span>/g, `<span style="">`);
-    console.log(replyFinal);
     setCurrentContent((prevContent) => replyFinal);
     refEditor.current.focus();
     // You can add more logic here to handle the reply action
@@ -206,10 +202,7 @@ export default function Topic() {
 
     setCurrentContentEdit({ id: id, message: message });
   };
-  const handleRequired = (content,) => {
-
-  };
-
+  
   
 
 

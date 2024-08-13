@@ -49,7 +49,6 @@ export default function CalendarActivities() {
 
   const getCommittees = async () => {
     const response = await UserService.getCommittees();
-    console.log(response?.data);
     return response.data;
   };
 

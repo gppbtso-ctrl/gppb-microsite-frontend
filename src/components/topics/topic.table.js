@@ -4,7 +4,6 @@ import React from "react";
 import Moment from "react-moment";
 
 export const TopicTable = ({ data }) => {
-  console.log(data?.topic_data)
   return (
     <>
       <table class="w-full text-left table-auto min-w-max">

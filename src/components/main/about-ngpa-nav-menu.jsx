@@ -29,6 +29,7 @@ import {
   UserGroupIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const navListMenuItems = [
   {
@@ -78,9 +79,14 @@ const navListMenuItems = [
   },
 ];
 
+const aboutUrls = ['/maps','/different-bill-versions','/lrd-research-works','/ngpa-related-news','/hor-hearings','/op-meetings','/other-key-activities','/proposed-provisions','/sectoral-consultations','/senate-hearings'] 
+
+
+
 function NavListMenuAboutNGPA() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname()
   const renderItems = navListMenuItems.map(
     ({ icon, title, description }, key) => (
       <a href="#" key={key}>
@@ -112,6 +118,8 @@ function NavListMenuAboutNGPA() {
     )
   );
 
+
+
   return (
     <React.Fragment>
       <Menu
@@ -129,7 +137,7 @@ function NavListMenuAboutNGPA() {
             className="font-semibold font-montserrat uppercase "
           >
             <Button
-              className="flex items-center gap-1 px-2 rounded-none hover:text-blue-400"
+              className={`${pathname === ''} flex items-center gap-1 px-2 rounded-none hover:text-blue-400 ${aboutUrls.includes(pathname) && 'text-blue-500'} `}
               variant="text"
               size="sm"
               selected={isMenuOpen || isMobileMenuOpen}
@@ -165,7 +173,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/maps' && 'text-blue-500'}`}
                     >
                       MAPS
                     </Typography>
@@ -184,7 +192,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/lrd-research-works' && 'text-blue-500'}`}
                     >
                       LRD Research
                     </Typography>
@@ -203,7 +211,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/sectoral-consultations' && 'text-blue-500'}`}
                     >
                       Sectoral Consultations
                     </Typography>
@@ -222,7 +230,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/other-key-activities' && 'text-blue-500'}`}
                     >
                       Other Key Activities
                     </Typography>
@@ -246,7 +254,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/op-meetings' && 'text-blue-500'}`}
                     >
                       OP meetings
                     </Typography>
@@ -265,7 +273,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/different-bill-versions' && 'text-blue-500'}`}
                     >
                       Different Bill Versions
                     </Typography>
@@ -284,7 +292,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/hor-hearings' && 'text-blue-500'}`}
                     >
                       HOR Hearings
                     </Typography>
@@ -303,7 +311,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold"
+                      className={`flex items-center text-sm font-bold ${pathname === '/senate-hearings' && 'text-blue-500'}`}
                     >
                       Senate Hearings
                     </Typography>
@@ -318,7 +326,7 @@ function NavListMenuAboutNGPA() {
               </Link>
             </ul>
 
-            <ul className="flex flex-col w-[12rem]">
+            <ul className="flex flex-col max-w-[12rem]">
               <Typography className="text-xs font-semibold p-2 w-[12rem] min-h-[3rem] flex flex-col justify-center">
                 Others
               </Typography>
@@ -328,7 +336,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold w-full"
+                       className={`flex items-center text-sm font-bold ${pathname === '/proposed-provisions' && 'text-blue-500'}`}
                     >
                       GPPB-TSO Proposed Provisions
                     </Typography>
@@ -345,7 +353,7 @@ function NavListMenuAboutNGPA() {
                     <Typography
                       variant="h6"
                       color="blue-gray"
-                      className="flex items-center text-sm font-bold w-full"
+                      className={`flex items-center text-sm font-bold ${pathname === '/ngpa-related-news' && 'text-blue-500'}`}
                     >
                   NGPA Related News
                     </Typography>
@@ -528,7 +536,7 @@ function NavListMenuAboutNGPA() {
             </Link>
           </ul>
 
-          <ul className="flex flex-col gap-1 w-[12rem]">
+          <ul className="flex flex-col gap-1 max-w-[12rem]">
           <Typography className="text-xs font-semibold p-2 text-black py-5 -mb-2 flex flex-col justify-center">
               Others
             </Typography>

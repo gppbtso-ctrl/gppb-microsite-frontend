@@ -62,7 +62,7 @@ export default function Register() {
 
   return (
     <div class="h-full">
-      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[80vh] [@media(min-width:2300px)]:min-h-[90vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/Home.png')] bg-cover bg-opacity-10  mt-[3.5rem]  ">
+      <div class="relative flex  from-transparent to-white/80 min-h-[35rem] md:min-h-[95vh] [@media(min-width:2300px)]:min-h-[90vh] flex-col lg:flex-row items-center justify-center lg:gap-[2rem] bg-[url('/Home.png')] bg-cover bg-opacity-10  mt-[3.5rem] py-5 md:py-0 ">
       <div className="absolute bg-gradient-to-b from-transparent from-5%  to-white to-80%  w-full bottom-0 h-[2rem]"></div>
 
         <div className="flex flex-col justify-center md:justify-start md:items-start items-center gap-1 mb-2">
@@ -70,7 +70,7 @@ export default function Register() {
         <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">NEW GOVERNMENT</Typography>
         <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">PROCUREMENT ACT</Typography>
         <Typography className="text-3xl md:text-5xl lg:text-6xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-hanken-grotesk font-medium">(NGPA) MICROSITE</Typography>
-        <Typography className="text-3xl md:text-4xl lg:text-5xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-anonymous-pro ">Republic Act No. 12009</Typography>
+        <Typography className="text-3xl text-center md:text-left md:text-4xl lg:text-5xl text-blue-gray-50 drop-shadow-2xl   antialiased tracking-wide font-anonymous-pro ">Republic Act No. 12009</Typography>
         </div>
         
         {step === 1 ? (

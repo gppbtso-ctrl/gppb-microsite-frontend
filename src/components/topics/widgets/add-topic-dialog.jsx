@@ -42,7 +42,7 @@ const AddTopicDialog = ({ open, handleOpen }) => {
     } catch (error) {
       setSubmitStatus("error");
     }
-    console.log(data);
+  
   };
 
   return (

@@ -27,7 +27,6 @@ export default function SearchComponent() {
 
   const handlePageChange = (newPage) => {
     // Custom logic before updating the page
-    console.log("Changing to page:", newPage);
     setPage(newPage);
   };
 

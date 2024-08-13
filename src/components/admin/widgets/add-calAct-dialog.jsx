@@ -41,7 +41,6 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
     } catch (error) {
       setSubmitStatus("error");
     }
-    console.log(id, data);
   };
 
   return (

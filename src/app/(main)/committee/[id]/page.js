@@ -39,7 +39,6 @@ export default function Topics() {
 
   const handlePageChange = (newPage) => {
     // Custom logic before updating the page
-    console.log("Changing to page:", newPage);
     setPage(newPage);
   };
 
@@ -72,7 +71,6 @@ export default function Topics() {
   ) {
     router.push("/404");
   }
-  console.log(decodedToken);
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
       {loading ? <LoadingScreen /> : null}

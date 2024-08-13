@@ -22,7 +22,6 @@ const Tiptap = ({onContentChange, currentContent,  setCurrentContent, isEdit=fal
     content: '',
     onUpdate: ({ editor }) => {
         const html = editor.getHTML();
-        console.log(html, 'from editorhtml')
         onContentChange(html)
       },
   })

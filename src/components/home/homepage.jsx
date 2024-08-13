@@ -37,11 +37,10 @@ export default function HomePageComponent() {
     () => {
       gsap.from(".animText", {
         yPercent: 150,
-        skewY: 6,
-        duration: 0.5,
-        ease: "power4.out",
+        duration: 1,
+        ease: "power4",
         stagger: {
-          amount: 0.3,
+          amount: 0.5,
         },
       });
 
@@ -102,7 +101,6 @@ export default function HomePageComponent() {
         .from(".animText", {
           yPercent: 150,
           duration: 0.5,
-          skewy: 6,
           ease: "power4.out",
           stagger: 0.3,
         })
