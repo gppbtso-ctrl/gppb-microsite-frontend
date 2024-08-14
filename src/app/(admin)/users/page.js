@@ -84,7 +84,7 @@ export default function Topics() {
 
   useEffect(() => {
     mutate('users')
-  }, [searchTerm])
+  }, [searchTerm,page])
   
 
   return (
