@@ -36,6 +36,7 @@ const playfair = Playfair({
 export const metadata = {
   title: "GPPB-NGPA",
   description: "GPPB-TSO-NGPA",
+  icons: [{ rel: "icon", url: "/gppb_favicon.png" }],
 };
 
 export default function RootLayout({ children }) {
