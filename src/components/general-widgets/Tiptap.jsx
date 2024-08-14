@@ -11,8 +11,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import TextStyle from '@tiptap/extension-text-style'
 import { isEmpty } from 'slate'
 
-const Tiptap = ({onContentChange, currentContent,  setCurrentContent, isEdit=false, refEditor}) => {
-
+const Tiptap = ({onContentChange, currentContent, clear, isEdit=false, setCurrentContent, refEditor}) => {
   const editor = useEditor({
     extensions: [StarterKit, Underline, TextStyle,       
         Placeholder.configure({
@@ -28,18 +27,22 @@ const Tiptap = ({onContentChange, currentContent,  setCurrentContent, isEdit=fal
 
   useEffect(() => {
     if (currentContent && editor) {
+      console.log('adsa', currentContent)
       editor?.commands?.setContent(currentContent)
       editor?.commands?.focus('end');
-      editor?.commands?.keyboardShortcut('Enter');
-      !isEdit && editor?.commands?.keyboardShortcut('Enter')
+      if(!isEdit){
+        editor?.commands?.keyboardShortcut('Enter') 
+        editor?.commands?.keyboardShortcut('Enter') 
+      }
     }
   }, [currentContent, editor])
   
-  // useEffect(() => {
-  // if (clear && editor){
-  //     editor?.commands?.clearContent()
-  // }
-  // }, [clear, editor])
+  useEffect(() => {
+  if (clear && editor){
+    console.log(clear)
+      editor?.commands?.clearContent()
+  }
+  }, [clear, editor])
 
   if (!editor) {
     return null;

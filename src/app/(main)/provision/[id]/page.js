@@ -49,6 +49,7 @@ export default function Topic() {
   const [currentContentEdit, setCurrentContentEdit] = useState(null);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitStatusEdit, setSubmitStatusEdit] = useState({});
+  const [clear, setClear] = useState(false)
   // use for tiptap textfield, pass 'postSubmit' for the adding of comment, pass id for edits 
   const [required, setRequired] = useState(null)
   
@@ -99,21 +100,26 @@ export default function Topic() {
     }
   );
 
-
   useEffect(() => {
     // Manually trigger a re-fetch when perPage or searchTerm changes
     mutate("TopicsComments");
   }, [page]);
 
+  const triggerClearWithTimeout = () => {
+    setClear(true)
+    const timeoutId = setTimeout(() => {
+      setClear(false);
+    }, 300); 
+    return () => clearTimeout(timeoutId);
+  };
 
-
+  // POSTING OF COMMENT
   const onSubmit = async (formData) => {
     if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
       setRequired('postSubmit')
       setTimeout(() => {
         setRequired(null)
       }, 2000);
-    
       return;
     } else {
       setRequired(null)
@@ -122,30 +128,29 @@ export default function Topic() {
     try {
       const response = await UserService.postComment(formData);
       setSubmitStatus("success");
-      const updatedData = await getTopicComments(); // Fetch new data
-      mutate(updatedData,false); 
-      setCurrentContent(null);
+      const resp_data = await mutate();
+      // const totalPages = await getTotalPage();
       reset();
-     setTimeout(() => {
       setSubmitStatus(null);
-      setCurrentContent(null)
+      triggerClearWithTimeout();
       refEditor?.current?.focus();
-      setPage( page === updatedData.total_pages ? page : updatedData.total_pages );
-    }, 500);
+      setPage( page === resp_data?.total_pages ? page : resp_data?.total_pages );
     } catch (error) {
       setSubmitStatus("error");
     }
   };
 }
 
-
-
- 
-console.log(page, data?.total_pages)
   const handleContentChange = (content) => {
     setValue("message", content, { shouldValidate: true });
   };
 
+
+  const handleEdit = (id, message) => {
+    setValue("message", message, { shouldValidate: true });
+    setCurrentContentEdit({ id: id, message: message });
+  };
+  
  const handleEditSubmit = async (id) => {
  const formData = getValues()
 
@@ -158,7 +163,7 @@ console.log(page, data?.total_pages)
   setRequired(null)
  setSubmitStatusEdit(prev => ({...prev, [id]:'loading'}));
  try {
-  const response = await UserService.postEdit(formData, id);
+   await UserService.postEdit(formData, id);
    setSubmitStatusEdit(prev => ({...prev, [id]:'Success'}));
    mutate("TopicsComments");
    setCurrentContentEdit(null)
@@ -167,7 +172,6 @@ console.log(page, data?.total_pages)
  } catch (error) {
   setSubmitStatusEdit(prev => ({...prev, [id]:'error'}));
  }
-//  purpose of the ID to 
 }
  }
 
@@ -186,24 +190,17 @@ console.log(page, data?.total_pages)
     const replyFinal = reply.replace(/<span>/g, `<span style="">`);
     setCurrentContent((prevContent) => replyFinal);
     refEditor.current.focus();
-    // You can add more logic here to handle the reply action
   };
 
   const handleDelete = async (id) => {
     try {
-      const response = await UserService.postDelete(id);
-      mutate("TopicsComments");
+      await UserService.postDelete(id);
+      mutate('TopicComments')
     } catch (error) {
       console.log(error?.response);
     }
   };
 
-  const handleEdit = (id, message) => {
-
-    setCurrentContentEdit({ id: id, message: message });
-  };
-  
-  
 
 
   return (
@@ -215,20 +212,20 @@ console.log(page, data?.total_pages)
             <Card className="border-[1px] border-blue-gray-700 mt-5 md:mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
               <div className="h-full p-3 md:p-6 flex flex-col gap-3 flex-1 w-full">
                 <div>
-                  <div className="flex flex-col ">
-                    <Typography className=" text-base font-semibold">
+                  <div className="flex flex-col">
+                    <Typography className=" text-md font-semibold">
                       {data?.topic_data?.starter?.first_name}
                     </Typography>
-                    <Typography className="  font-semibold text-sm">
+                    <Typography className="  font-semibold text-xs">
                       <Moment format="MMM DD, YYYY">
                         {data?.topic_data?.created_date}
                       </Moment>
                     </Typography>
                   </div>
                 </div>
-                <div className="flex flex-col w-full ">
-                  <Typography className=" font-semibold text-2xl">
-                    {data?.subject}
+                <div className="flex flex-col w-full">
+                  <Typography className=" font-semibold text-md md:text-lg break-words w-full">
+                    {data?.topic_data?.subject}
                   </Typography>
                   <Typography className="font-normal text-md">
                     in{" "}
@@ -343,11 +340,11 @@ console.log(page, data?.total_pages)
                             {currentContentEdit?.id === post?.id ? (
                               <div className="-mt-2">
                                 {" "}
+                                {/* TIPTAP FOR EDIT */}
                                 <Tiptap
                                   onContentChange={handleContentChange}
                                   currentContent={currentContentEdit?.message}
                                   refEditor={refEditor}
-                             
                                   isEdit={true}
                                 />
                                 <div className="w-full flex justify-end gap-2 mt-1">
@@ -411,11 +408,12 @@ console.log(page, data?.total_pages)
                  
                 (!currentContentEdit && <div className="mt-2 ">
                     <form onSubmit={handleSubmit(onSubmit)}>
+                      {/* TIPTAP FOR NEW COMMENT POSTING*/}
                       <Tiptap
                         onContentChange={handleContentChange}
                         currentContent={currentContent}
                         refEditor={refEditor}
-                      
+                        clear={clear}
                       />
                       <div className="flex justify-end items-center mt-1 gap-2">
                         {required === "postSubmit" && <Typography size="sm" color="red" className="font-medium">Please fill out the text field!</Typography>}
