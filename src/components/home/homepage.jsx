@@ -35,14 +35,6 @@ export default function HomePageComponent() {
 
   useGSAP(
     () => {
-      gsap.from(".animText", {
-        yPercent: 150,
-        duration: 1,
-        ease: "power4",
-        stagger: {
-          amount: 0.5,
-        },
-      });
 
       let getRatio = (el) =>
         window.innerHeight / (window.innerHeight + el.offsetHeight);
@@ -63,6 +55,17 @@ export default function HomePageComponent() {
           },
         }
       );
+      
+      container.current = gsap.from(".animText", {
+        yPercent: 150,
+        duration: 1,
+        ease: "power4",
+        stagger: {
+          amount: 0.5,
+        },
+      });
+
+
     },
     { scope: container }
   ); // <-- magic
@@ -127,32 +130,32 @@ export default function HomePageComponent() {
           <div
             class={`absolute top-0 left-0 flex-1  flex items-center bg-[50%_0px] bg-no-repeat bg-cover bg-fixed bg-[url('/Home.png')] z-10 w-full h-full bgAnimate`}
           >
-            <div class="text-center justify-start w-full max-w-[55.5rem] mx-5 lg:mx-[5vw] flex flex-col space-y-5 ">
-              <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left font-hanken-grotesk font-medium uppercase animText drop-shadow-sm">
+            <div class="text-center justify-start w-full max-w-[60.5rem] mx-5 lg:mx-[5vw] flex flex-col space-y-5 ">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-3xl md:text-5xl lg:text-7xl text-left font-hanken-grotesk font-medium uppercase animText drop-shadow-sm">
                   Welcome To The
                 </Typography>
               </div>
 
-              <div className="h-[2rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem] w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-3xl md:text-5xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
                   New Government
                 </Typography>
               </div>
 
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-3xl md:text-5xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
                   Procurement Act
                 </Typography>
               </div>
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-3xl md:text-5xl lg:text-7xl text-left  font-hanken-grotesk font-medium uppercase animText">
                   (NGPA) Microsite
                 </Typography>
               </div>
 
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="absolute text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro  animText">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="absolute text-2xl md:text-4xl lg:text-6xl text-left  font-normal font-anonymous-pro  animText">
                   Republic Act No.12009
                 </Typography>
               </div>
@@ -182,26 +185,26 @@ export default function HomePageComponent() {
             class=" flex flex-row justify-center  shadow-lg h-full  text-white  bg-gradient-to-b from-light-blue-900 to-[#0C2D48] bg-blend-overlay "
           >
             <div
-              class="grow flex flex-col gap-1 max-w-[65rem] justify-start m-10 mt-[8rem] mx- w-full"
+              class="grow flex flex-col gap-1 max-w-[66rem] justify-start m-5 md:10 mt-[5rem] md:[8rem] mx- w-full"
               ref={aboutSection}
             >
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl  lg:text-5xl text-center font-normal uppercase">
                   The New Government
                 </Typography>
               </div>
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
                   Procurement Act 
                 </Typography>
               </div>
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
                  (NGPA) Microsite
                 </Typography>
               </div>
-              <div className="h-[2rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl   lg:text-4xl text-center font-normal font-anonymous-pro ">
+              <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
+                <Typography className="animText text-2xl   lg:text-4xl text-center font-normal font-anonymous-pro ">
                 Republic Act No. 12009
                 </Typography>
               </div>
@@ -389,7 +392,7 @@ export default function HomePageComponent() {
                   Support Office
                 </Typography>
 
-                <Typography className="text-sm mt-2 text-center lg:text-left tracking-wide  antialiased font-sans uppercase">
+                <Typography className="text-sm mt-2 text-center md:text-left tracking-wide  antialiased font-sans uppercase">
                   GPPB-TSO Building, Commonwealth Ave, <br />
                   UP Diliman Campus, Quezon City
                 </Typography>
