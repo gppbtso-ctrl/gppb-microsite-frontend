@@ -14,8 +14,8 @@ export default function LRDResearchWorks() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none shadow-none flex flex-col gap-3">
-        <Typography variant="h5" className="font-sans text-center">
+      <Card className="relative p-2 md:p-5 m-3 max-w-5xl rounded-none shadow-none flex flex-col gap-3">
+        <Typography variant="h5" className="font-sans text-center  break-words">
           RESEARCH WORKS BY THE GPPB-TSO{" "}
         </Typography>
         <Typography className=" text-justify ">
@@ -24,8 +24,8 @@ export default function LRDResearchWorks() {
           against the provision of the law, its Implementing Rules and
           Regulations, and Supreme Court decisions relating to procurement. {" "}
         </Typography>
-
-        <table className="w-full min-w-max table-auto text-left mt-2">
+        <div className="max-w-[89vw] md:max-w-[93vw] lg:max-w-full overflow-x-auto">
+        <table className="w-full table-auto text-left mt-2">
           <thead>
             <tr>
               <th className="border border-black  bg-blue-500 p-4 ">
@@ -57,7 +57,7 @@ export default function LRDResearchWorks() {
           <tbody>
             <tr>
               <td
-                className={`p-4 border h-full border-black max-w-[5rem] break-words align-top`}
+                className={`p-4 border h-full border-black min-w-[130px]  break-words align-top`}
                 rowSpan={4}
               >
                 <div className="flex flex-col gap-4">
@@ -74,7 +74,7 @@ export default function LRDResearchWorks() {
                 </div>
               </td>
               <td
-                className={`p-3 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-3 break-words  border border-black align-top min-w-[300px]`}
               >
                 <span className="font-sans block text-justify">
                   Consolidation of all revisions and updates made in the IRR
@@ -83,7 +83,7 @@ export default function LRDResearchWorks() {
                 </span>
               </td>
               <td
-                className={`p-3 break-words w-[12rem] border border-black align-top`}
+                className={`p-3 break-words min-w-[200px] border border-black align-top`}
               >
                 <span className="font-sans block text-justify">
                   16 February – 30 March 2023 
@@ -92,7 +92,7 @@ export default function LRDResearchWorks() {
             </tr>
             <tr>
               <td
-                className={`p-4 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-4 break-words  border border-black align-top`}
               >
                 <span className="font-sans block text-justify">
                   Collation of common issues or gaps in the procurement process
@@ -110,7 +110,7 @@ export default function LRDResearchWorks() {
             </tr>
             <tr>
               <td
-                className={`p-3 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-3 break-words  border border-black align-top`}
               >
                 <span className="font-sans block text-justify">
                   Comparison and pairing of the provisions of RA No. 9184 and
@@ -129,7 +129,7 @@ export default function LRDResearchWorks() {
             </tr>
             <tr>
               <td
-                className={`p-3 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-3 break-words  border border-black align-top`}
               >
                 <span className="font-sans block text-justify">
                   Scoping of the Supreme Court decisions relating to procurement
@@ -323,6 +323,7 @@ export default function LRDResearchWorks() {
             </tr>
           </tbody>
         </table>
+        </div>
       </Card>
     </div>
   );

@@ -21,7 +21,7 @@ export default function Maps() {
   return (
     <div className="relative flex justify-center items-center z-10">
       {loading ? <LoadingScreen /> : null}
-      <Card className="relative shadow-none p-7 m-3 w-full max-w-[67rem] min-h-[120vh] md:min-h-[54vh] rounded-none flex flex-col gap-2">
+      <Card className="relative shadow-none p-2 md:p-7 m-3 w-full max-w-[65rem] min-h-[120vh] md:min-h-[54vh] rounded-none flex flex-col gap-2">
         <Carousel
           autoplay={true}
           loop={true}
@@ -35,7 +35,7 @@ export default function Maps() {
           microsite:
         </Typography>
 
-        <Typography className="text-justify ml-3 mt-1 break-words">
+        <Typography className="text-justify ml-3 mt-1  break-words text-wrap max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">1.</span> Ceremonial Signing of the New
           Government Procurement Act and Anti-Financial Account Scamming Act.{" "}
@@ -55,7 +55,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3  text-wrap max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">2.</span> The New Government Procurement Act:
           Greatest reform to combat graft and corruption in recent history BY
@@ -75,7 +75,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 text-warp break-words max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">3.</span> Pangandaman lauds Congress as New
           Gov’t Procurement Act inches closer to becoming a law <br />
@@ -94,7 +94,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full break-words">
           {" "}
           <span className="mr-1">4.</span> Senate ratifies bill amending
           government procurement reform law
@@ -114,7 +114,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">5.</span> Angara: New gov&apos;t procurement act to
           curb wastage, boost efficiency (PIA)
@@ -129,7 +129,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">6.</span> LEDAC priority bills yet to hurdle
           House, Senate | ANC
@@ -144,7 +144,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full break-words">
           {" "}
           <span className="mr-1">7.</span> 3rd LEDAC Meeting
           <br />
@@ -163,7 +163,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full break-words">
           {" "}
           <span className="mr-1">8.</span> Committee on Finance (17 October 2023)
           <br />
@@ -182,7 +182,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">9.</span>  PCO Press Briefing with DBM, PS-DBM & GPPB 08/22/2023 
           <br />
@@ -202,7 +202,7 @@ export default function Maps() {
         </Typography>
 
         
-        <Typography className="text-justify ml-3 ">
+        <Typography className="text-justify ml-3 max-w-[80vw] md:max-w-full break-words">
           {" "}
           <span className="mr-1">10.</span>  Senate committee on finance holds hearing | ABS-CBN News
           <br />
@@ -221,7 +221,7 @@ export default function Maps() {
           </Link>
         </Typography>
 
-        <Typography className="text-justify ml-3 break-words ">
+        <Typography className="text-justify ml-3 break-words max-w-[80vw] md:max-w-full">
           {" "}
           <span className="mr-1">11.</span>  
           <Link
@@ -240,7 +240,7 @@ export default function Maps() {
         
         
       
-        <Typography className=" text-justify ml-3 mt-5 w-full break-words">
+        <Typography className=" text-justify ml-3 mt-5 max-w-[80vw] md:max-w-full break-words">
           {" "}
           <span className="font-semibold">Senate tackles New Government Procurement Act:</span> Senate President Juan Miguel “Migz” F. Zubiri presides over the plenary session Tuesday, April 30, 2024 as the Senate begins to discuss Senate Bill No. 2593 or the New Government Procurement Act. The measure has been identified by the Senate President as one of the 20 priority bills the Senate hopes to finish before it adjourns sine die in May. The bill seeks to improve and modernize the two- decade old government procurement system in the country. (Bibo Nueva España/Senate PRIB) 
         </Typography>

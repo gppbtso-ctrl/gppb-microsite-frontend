@@ -241,7 +241,7 @@ export default function SenateHearings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-[62rem] shadow-none rounded-none flex flex-col gap-3">
+      <Card className="relative p-2 md:p-5 m-3 max-w-[62rem] shadow-none rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -251,12 +251,12 @@ export default function SenateHearings() {
             <img
               src="/sen-hearing-pic1.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[18rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
                 color="white"
-                className="font-sans text-md absolute top-[7.5rem] left-5"
+                className="font-sans text-xs md:text-md absolute top-[7.5rem] left-5"
               >
            Briefing with the Senate Legislative Budget Research <br /> and Monitoring Office andCommittee of Finance (03 October 2023)
            <br />
@@ -269,7 +269,7 @@ export default function SenateHearings() {
           <Image
             src="/sen-hearing-pic2.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -277,7 +277,7 @@ export default function SenateHearings() {
           <Image
             src="/sen-hearing-pic3.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -286,7 +286,7 @@ export default function SenateHearings() {
             <img
               src="/sen-hearing-feb21-pic1.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
@@ -302,7 +302,7 @@ export default function SenateHearings() {
           <Image
             src="/sen-hearing-feb21-pic2.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -311,7 +311,7 @@ export default function SenateHearings() {
 <Image
             src="/sen-hearing-feb21-pic3.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -320,7 +320,7 @@ export default function SenateHearings() {
             <img
               src="/sen-hearing-march12-pic1.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
@@ -337,7 +337,7 @@ export default function SenateHearings() {
             <img
               src="/sen-hearing-may15-pic1.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[12rem] md:max-h-[25rem] lg:max-h-[33rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/95">
               <Typography
@@ -456,7 +456,7 @@ Senate Sponsorship hearing (12 March 2024)
                         </span>
                       </td>
                       <td
-                        className={`p-3 py-2 break-words  border  max-w-[12rem]  border-black align-center`}
+                        className={`p-3 py-2 break-words  border  max-w-[12rem] md:max-h-[25rem] lg:max-h-[33rem]  border-black align-center`}
                       >
                         <span
                           color="blue-gray"
@@ -495,7 +495,7 @@ Senate Sponsorship hearing (12 March 2024)
                         </span>
                       </td>
                       <td
-                        className={`p-3 py-2 break-words  border  max-w-[12rem]  border-black align-center`}
+                        className={`p-3 py-2 break-words  border  max-w-[12rem] md:max-h-[25rem] lg:max-h-[33rem]  border-black align-center`}
                       >
                         <span
                           color="blue-gray"
@@ -534,7 +534,7 @@ Senate Sponsorship hearing (12 March 2024)
                         </span>
                       </td>
                       <td
-                        className={`p-3 py-2 break-words  border  max-w-[12rem]  border-black align-center`}
+                        className={`p-3 py-2 break-words  border  max-w-[12rem] md:max-h-[25rem] lg:max-h-[33rem]  border-black align-center`}
                       >
                         <span
                           color="blue-gray"

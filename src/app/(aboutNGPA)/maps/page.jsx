@@ -18,7 +18,7 @@ export default function Maps() {
 
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative shadow-none p-7 m-3 max-w-[65rem] rounded-none flex flex-col gap-3">
+      <Card className="relative shadow-none p-2 md:p-7 m-3 max-w-[65rem] rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -29,7 +29,7 @@ export default function Maps() {
               key={index}
               src={`/maps-pic${number}.jpg`}
               alt="image 1"
-              className="max-h-[33rem] w-full object-fill"
+              className="max-h-[12rem] md:max-h-[22rem] lg:max-h-[33rem] w-full object-fill"
               width={500}
               height={500}
             />
@@ -40,7 +40,7 @@ export default function Maps() {
               key={index}
               src={`/maps2-pic${number}-min.jpg`}
               alt="image 1"
-              className="max-h-[33rem] w-full object-fill "
+              className="max-h-[12rem] md:max-h-[22rem] lg:max-h-[33rem] w-full object-fill "
               width={500}
               height={500}
             />
@@ -147,7 +147,8 @@ export default function Maps() {
           progress already when the following key areas of improvement and WB
           recommendations, as indicated below:
         </Typography>
-        <table className="w-full min-w-max table-auto text-left mt-2">
+        <div className="max-w-[89vw] md:w-[93vw] lg:w-full overflow-x-auto">
+        <table className="text-left mt-2">
           <thead>
             <tr>
               <th className="border border-black  bg-blue-500 p-4 ">
@@ -155,7 +156,7 @@ export default function Maps() {
                   Key Areas for Improvement and World Bank Recommendations
                 </Typography>
               </th>
-              <th className="border border-black bg-blue-500  p-4 ">
+              <th className="border border-black bg-blue-500  p-4  ">
                 <Typography color="white" className="font-medium leading-none">
                   GPPB Updates
                 </Typography>
@@ -165,11 +166,11 @@ export default function Maps() {
           <tbody>
             <tr>
               <td
-                className={`p-4 border h-full border-black w-[20vw] break-words align-top`}
+                className={`p-4 border h-full border-black  break-words align-top min-w-[300px]`}
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (a){" "}
                   <u>
@@ -186,7 +187,7 @@ export default function Maps() {
                   </ol>
                 </span>
               </td>
-              <td className={`p-4 break-words max-w-[7vw] border border-black`}>
+              <td className={`p-4 break-words  border border-black min-w-[400px]`}>
                 <span
                   color="blue-gray"
                   className="font-normal font-sans block ml-5 text-justify"
@@ -258,7 +259,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (b){" "}
                   <b>
@@ -275,7 +276,7 @@ export default function Maps() {
                   </ol>
                 </span>
               </td>
-              <td className={`p-4 break-words max-w-[7vw] border border-black`}>
+              <td className={`p-4 break-words  border border-black`}>
                 <span
                   color="blue-gray"
                   className="font-normal font-sans block ml-5 text-justify"
@@ -328,7 +329,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block text-justify"
                 >
                   (c){" "}
                   <b>
@@ -354,7 +355,7 @@ export default function Maps() {
                   </ol>
                 </span>
               </td>
-              <td className={`p-4 break-words max-w-[7vw] border border-black`}>
+              <td className={`p-4 break-words  border border-black`}>
                 <span
                   color="blue-gray"
                   className="font-normal block ml-5 text-justify font-sans"
@@ -471,7 +472,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (d){" "}
                   <b>
@@ -490,7 +491,7 @@ export default function Maps() {
               </td>
               {/* GPPB Updates */}
               <td
-                className={`p-4 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-4 break-words  border border-black align-top`}
               >
                 <span
                   color="blue-gray"
@@ -527,7 +528,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (e){" "}
                   <b>
@@ -546,7 +547,7 @@ export default function Maps() {
               </td>
               {/* GPPB Updates */}
               <td
-                className={`p-4 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-4 break-words  border border-black align-top`}
               >
                 <span
                   color="blue-gray"
@@ -597,7 +598,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (f){" "}
                   <b>
@@ -618,7 +619,7 @@ export default function Maps() {
               </td>
               {/* GPPB Updates */}
               <td
-                className={`p-4 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-4 break-words  border border-black align-top`}
               >
                 <span
                   color="blue-gray"
@@ -682,7 +683,7 @@ export default function Maps() {
               >
                 <span
                   color="blue-gray"
-                  className="font-normal font-sans block ml-3 text-justify"
+                  className="font-normal font-sans block  text-justify"
                 >
                   (g){" "}
                   <b>
@@ -715,7 +716,7 @@ export default function Maps() {
               </td>
               {/* GPPB Updates */}
               <td
-                className={`p-4 break-words max-w-[7vw] border border-black align-top`}
+                className={`p-4 break-words  border border-black align-top`}
               >
                 <span
                   color="blue-gray"
@@ -758,6 +759,7 @@ export default function Maps() {
             </tr>
           </tbody>
         </table>
+        </div>
 
         <Typography className="text-justify mt-5">
           {" "}

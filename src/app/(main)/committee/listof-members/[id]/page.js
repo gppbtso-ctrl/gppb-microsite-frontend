@@ -89,19 +89,30 @@ export default function Topics() {
   return (
     <div className=" relative w-full h-full flex flex-col justify-center items-center">
           {loading ? <LoadingScreen/> : null}
-      <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
-        <img
-          src={data?.committee_data?.photo_id}
-          className="w-[60rem] h-[20rem] object-cover lg:h-[22.5rem] shadow-xl brightness-50 "
-        />
-        <Typography
-          className="absolute font-montserrat text-[calc(1vw+2rem)] font-lead max-w-[50rem] mx-auto p-3"
-          color="white"
-        >
-          {" "}
-          {data?.committee_data?.title}
-        </Typography>
-      </div>
+          <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
+   
+   <div className="relative w-full max-w-[60.2rem] min-h-[22rem] flex flex-col justify-center gap-2 h-fit p-5">
+
+   <Typography
+     className=" z-10 font-montserrat text-[calc(0.9vw+2rem)] font-lead max-w-[50rem] mx-auto px-3"
+     color="white"
+   >
+     {" "}
+     {data?.committee_data?.title}
+   </Typography>
+   <Typography
+     className="z-10 font-montserrat text-sm font-lead max-w-[50rem] mx-auto px-3 whitespace-pre-wrap text-justify"
+     color="white"
+   >
+     {" "}
+     {data?.committee_data?.description}
+   </Typography>
+   <img
+     src={data?.committee_data?.photo_id}
+     className=" absolute top-0 left-0 right-0 z-0 h-full w-full object-cover shadow-xl brightness-50 "
+   />
+   </div>
+ </div>
       <div className="w-full max-w-[60rem] flex  justify-between">
         {" "}
         <Button
@@ -168,7 +179,7 @@ export default function Topics() {
         
         </Button>
       </div>
-      <Card className="z-10 mt-5 rounded-none w-full max-w-[60rem] drop-shadow-md border-[1px] border-black/65 ">
+      <Card className="z-10 mt-5 h-full rounded-none w-full max-w-[99dvw] md:max-w-[60rem] overflow-x-auto drop-shadow-md border-[1px] border-black/65 ">
       <table className="w-full min-w-max table-auto text-left  border-gray-500">
         <thead>
           <tr>
@@ -187,7 +198,7 @@ export default function Topics() {
         </thead>
         <tbody>
           {clomData?.list_members_data?.length !== 0 ? clomData?.list_members_data?.map((item, index) => (
-            <tr key={index} className="even:bg-blue-gray-50/50">
+            <tr key={index}>
                     <td className="p-4 w-8">
                 <Typography variant="small" color="blue-gray" className="font-semibold text-left">
                 {index+1}

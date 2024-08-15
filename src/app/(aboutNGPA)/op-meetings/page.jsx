@@ -15,7 +15,7 @@ export default function OPMeetings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none  shadow-none flex flex-col gap-3">
+      <Card className="relative p-2 md:p-5 m-3 max-w-5xl rounded-none  shadow-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}

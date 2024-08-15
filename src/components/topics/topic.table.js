@@ -6,6 +6,7 @@ import Moment from "react-moment";
 export const TopicTable = ({ data }) => {
   return (
     <>
+      <div className="overflow-x-auto">
       <table class="w-full text-left table-auto min-w-max">
         <thead>
           <tr>
@@ -124,6 +125,7 @@ export const TopicTable = ({ data }) => {
           )}
         </tbody>
       </table>
+      </div>
     </>
   );
 };

@@ -117,7 +117,7 @@ export default function SectoralConsultations() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-5 m-3 max-w-5xl rounded-none shadow-none  flex flex-col gap-3">
+      <Card className="relative p-5 m-3 max-w-5xl rounded-none shadow-none  flex flex-col gap-3 ">
         <Typography variant="h5" className="font-sans text-center">
           SECTORAL CONSULTATIONS ON THE REPUBLIC ACT NO. 9184{" "}
         </Typography>
@@ -129,7 +129,8 @@ export default function SectoralConsultations() {
           stakeholders beginning in 2022 as shown below:  {" "}
         </Typography>
 
-        <table className="w-full min-w-max table-auto text-left mt-2">
+        <div className="w-[85vw] md:w-[93vw] lg:w-full overflow-auto">
+        <table className="w-full text-left mt-2">
           <thead>
             <tr>
               <th className="border border-black  bg-blue-500 p-4 ">
@@ -168,7 +169,7 @@ export default function SectoralConsultations() {
             </tr>
             <tr>
               <td
-                className={`p-3 border h-full border-black max-w-6 break-words align-top`}
+                className={`p-3 border h-full border-black min-w-[10rem] break-words align-top`}
               >
                 <div className="flex flex-col gap-4">
                   <span className="font-sans block text-justify ">
@@ -177,21 +178,20 @@ export default function SectoralConsultations() {
                 </div>
               </td>
               <td
-                className={`p-3 break-words border border-black align-top max-w-10`}
+                className={`p-3 break-words border border-black align-top min-w-[30rem]`}
               >
                 <span className="font-sans block text-justify">
                   Online subscription, software and reference materials
                 </span>
               </td>
               <td
-                className={`p-3 break-words   border border-black align-top max-w-3`}
+                className={`p-3 break-words   border border-black align-top `}
               >
                 <span className="font-sans block text-justify">
                   Commission on Audit (COA)
                 </span>
               </td>
             </tr>
-
             <tr>
               <td
                 className={`p-3 border h-full border-black max-w-5 break-words align-top`}
@@ -459,6 +459,7 @@ export default function SectoralConsultations() {
 
           </tbody>
         </table>
+        </div>
       </Card>
     </div>
   );

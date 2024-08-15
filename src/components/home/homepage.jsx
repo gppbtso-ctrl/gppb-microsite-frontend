@@ -185,44 +185,44 @@ export default function HomePageComponent() {
             class=" flex flex-row justify-center  shadow-lg h-full  text-white  bg-gradient-to-b from-light-blue-900 to-[#0C2D48] bg-blend-overlay "
           >
             <div
-              class="grow flex flex-col gap-1 max-w-[66rem] justify-start m-5 md:10 mt-[5rem] md:[8rem] mx- w-full"
+              class="grow flex flex-col gap-1 max-w-[66rem] justify-start m-5 md:m-10 mt-[4rem] md:mt-[8rem] mx- w-full"
               ref={aboutSection}
             >
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl  lg:text-5xl text-center font-normal uppercase">
+                <Typography className="animText text-2xl md:text-3xl  lg:text-5xl text-center font-normal uppercase">
                   The New Government
                 </Typography>
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
+                <Typography className="animText text-2xl  md:text-3xl lg:text-5xl text-center font-normal uppercase">
                   Procurement Act 
                 </Typography>
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-3xl   lg:text-5xl text-center font-normal uppercase">
+                <Typography className="animText text-2xl  md:text-3xl lg:text-5xl text-center font-normal uppercase">
                  (NGPA) Microsite
                 </Typography>
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
-                <Typography className="animText text-2xl   lg:text-4xl text-center font-normal font-anonymous-pro ">
+                <Typography className="animText text-2xl  md:text-3xl lg:text-4xl text-center font-normal font-anonymous-pro ">
                 Republic Act No. 12009
                 </Typography>
               </div>
               <div className="h-fit w-[100%] mt-5 relative overflow-hidden ">
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-5 text-justify descriptionText ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-5 text-justify descriptionText ">
                   The New Government Procurement Act (NGPA) Microsite is
                   dedicated to providing comprehensive information and updates
                   on the implementation of the NGPA, a legislative milestone
                   aimed at modernizing and improving the government procurement
                   process in the Philippines.
                 </Typography>
-                <Typography className="text-lg tracking-wide antialiased  font-sans mt-6 text-justify descriptionText ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased  font-sans mt-6 text-justify descriptionText ">
                   This platform serves as a central hub for all stakeholders
                   involved in public procurement, including government
                   officials, private sector representatives, and the general
                   public.
                 </Typography>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
                   The NGPA Microsite was developed pursuant to Government
                   Procurement Policy Board (GPPB) Resolution No. 04-2024, dated
                   7 June 2024. This Resolution approves the creation of specific
@@ -230,7 +230,7 @@ export default function HomePageComponent() {
                   for the effective implementation of the provisions of the NGPA
                   upon its enactment.
                 </Typography>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-7 text-justify descriptionText ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-7 text-justify descriptionText ">
                   Key highlights from the Resolution include:
                 </Typography>
                 <ul
@@ -239,21 +239,21 @@ export default function HomePageComponent() {
                   }}
                   className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
                 >
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     The GPPB has been established under Republic Act (RA) No.
                     9184, also known as the Government Procurement Reform Act,
                     which took effect on January 26, 2003, with its revised
                     Implementing Rules and Regulations (IRR) taking effect on
                     October 28, 2016.{" "}
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     The GPPB, assisted by its Technical Support Office (TSO), is
                     mandated to oversee public procurement in the Philippines,
                     particularly formulation of procurement policies,
                     professionalization of public procurement, and performance
                     monitoring of procuring entities.{" "}
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     Recognizing the need to address gaps and challenges in RA
                     No. 9184, the GPPB initiated a comprehensive assessment of
                     the current procurement system from 2019 to 2021, using the
@@ -261,32 +261,32 @@ export default function HomePageComponent() {
                     Procurement Systems which was undertaken with technical
                     assistance from the World Bank and Asian Development Bank.{" "}
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     Following extensive consultations and legislative processes,
                     House Bill No. 9648 and Senate Bill No. 2593, known as the
                     New Government Procurement Act (NGPA), were approved and are
                     now awaiting the President&apos;s signature.
                   </li>
                 </ul>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
                   The GPPB&apos;s 2nd Regular Meeting on June 7, 2024, approved
                   the creation of specific committees to draft the rules and
                   regulations necessary for the NGPA&apos;s implementation.
                 </Typography>
 
-                <Typography className="text-lg  tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
+                <Typography className="text-md md:text-lg  tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
                   The Resolution emphasizes the principles of transparency,
                   competitiveness, efficiency, accountability, and
                   sustainability in government procurement and introduces key
                   enhancements, including electronic procurement systems,
                   procurement data analytics, and new evaluation criteria.
                 </Typography>
-                <Typography className="text-lg  tracking-wide antialiased font-sans mt-5  text-justify descriptionText ">
+                <Typography className="text-md md:text-lg  tracking-wide antialiased font-sans mt-5  text-justify descriptionText ">
                   For easy reference, the GPPB Resolution No. 04-2024 can be
                   found here: XXX
                 </Typography>
 
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
                   Main Features of the Microsite
                 </Typography>
                 <ul
@@ -295,38 +295,38 @@ export default function HomePageComponent() {
                   }}
                   className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
                 >
-                  <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
                     <b>Committee Information:</b> Learn about the various
                     committees formed to draft the rules and regulations for the
                     NGPA.
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
                     <b>Resource Library:</b> Access the matrix of provisions,
                     associated issuances, and other relevant documents related
                     to NGPA.{" "}
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
                     <b>Activity Calendar:</b> Keep track of upcoming committee
                     meetings, stakeholder consultations, and other events
                     related to the NGPA.
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
                     <b>Feedback Portal:</b> Provide your inputs and suggestions
                     to help in the formulation of the necessary rules and
                     regulations of the NGPA in order to shape the future of
                     government procurement in the Philippines.
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans  text-justify descriptionText ">
                     <b>Latest News and Updates:</b> Stay informed about the
                     newest developments in the NGPA implementation process as
                     they unfold.{" "}
                   </li>
                 </ul>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
                   Registration Procedures
                 </Typography>
 
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-5.5  text-justify descriptionText">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-5.5  text-justify descriptionText">
                   To participate in the discussions and contribute to the NGPA
                   implementation, please follow these registration steps:
                 </Typography>
@@ -337,26 +337,26 @@ export default function HomePageComponent() {
                   }}
                   className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
                 >
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b>Create an Account:</b> Click on the &quot;Register&quot; button at
                     the top right corner of the homepage and fill in the
                     required information, including your name, email address,
                     and organization.
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b>Select Committees:</b> Browse through each Committee and
                     select a maximum of three (3) Committees that you are
                     interested in joining. You can apply to become a member by
                     providing a brief statement of your qualifications and
                     contributions you can offer.
                   </li>
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b> Verify Your Email:</b> After registration, you will
                     receive a verification email. Click on the link provided to
                     verify your registered email address.
                   </li>
 
-                  <li className="text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
+                  <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b>Stay Engaged:</b> After joining, you will receive
                     notifications about committee meetings, discussions, and
                     other relevant activities. Participate actively to
@@ -365,12 +365,12 @@ export default function HomePageComponent() {
                     under your selected committees.
                   </li>
                 </ol>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText">
                   For any questions or assistance during the registration
                   process, please contact our support team at ngpa@gppb.gov.ph
                   or call (02) 5322-6222 (BAC).
                 </Typography>
-                <Typography className="text-lg tracking-wide antialiased font-sans mt-6  mb-3 text-justify descriptionText">
+                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  mb-3 text-justify descriptionText">
                   Thank you for visiting the NGPA Microsite. Your participation
                   and input are crucial to the success of the New Government
                   Procurement Act and the continuous improvement of our
@@ -398,12 +398,12 @@ export default function HomePageComponent() {
                 </Typography>
 
 
-                <Typography className="text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
+                <Typography className="text-md md:text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
                   <FontAwesomeIcon icon={faPhone} />{" "}
                   <span>(02) 5322-6222 (Bac)</span>
                 </Typography>
 
-                <Typography className="text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 items-center">
+                <Typography className="text-md md:text-lg mt-1 tracking-wide font-light  antialiased  flex gap-2 items-center">
                   <FontAwesomeIcon icon={faEnvelope} />{" "}
                   <span>gppb@gppb.gov.ph</span>
                 </Typography>

@@ -364,7 +364,7 @@ export default function HORHearings() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-7 m-3 max-w-[58rem] shadow-none rounded-none flex flex-col gap-3">
+      <Card className="relative p-2 md:p-5 m-3 max-w-[58rem] shadow-none rounded-none flex flex-col gap-3">
         <Carousel
           autoplay={true}
           loop={true}
@@ -373,19 +373,19 @@ export default function HORHearings() {
           <img
             src="/hor-pic2.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
           />
           <img
             src="/hor-pic1.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
           />
 
           <div className="relative h-full w-full bg-black">
             <img
               src="/hor-pic3-hear-19.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
               <Typography
@@ -401,7 +401,7 @@ export default function HORHearings() {
           <Image
             src="/hor-pic4-hear-19.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -409,7 +409,7 @@ export default function HORHearings() {
           <Image
             src="/hor-pic5-hear-19.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -418,7 +418,7 @@ export default function HORHearings() {
             <img
               src="/hor-pic1-hear-21.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
               <Typography
@@ -433,21 +433,21 @@ export default function HORHearings() {
           <Image
             src="/hor-pic2-hear-21.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
           <Image
             src="/hor-pic3-hear-21.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
           <Image
             src="/hor-pic4-hear-21.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
@@ -455,7 +455,7 @@ export default function HORHearings() {
             <img
               src="/hor-pic1-oct-26.jpg"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
               <Typography
@@ -470,14 +470,14 @@ export default function HORHearings() {
           <Image
             src="/hor-pic2-oct-26.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={500}
             height={500}
           />
           <Image
             src="/hor-pic3-oct-26.jpg"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={300}
             height={300}
           />
@@ -485,7 +485,7 @@ export default function HORHearings() {
             <img
               src="/hor-pic1-dec-5.png"
               alt="image 1"
-              className="max-h-[30rem] w-full object-cover"
+              className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             />
             <div className="absolute  bottom-0 h-[8rem] w-full place-items-center bg-gradient-to-b from-white/0 to-black/85">
               <Typography
@@ -501,14 +501,14 @@ export default function HORHearings() {
           <Image
             src="/hor-pic3-dec-5.png"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={300}
             height={300}
           />
           <Image
             src="/hor-pic4-dec-5.png"
             alt="image 1"
-            className="max-h-[30rem] w-full object-cover"
+            className="max-h-[11rem] md:max-h-[22rem] lg:max-h-[30rem] w-full object-cover"
             width={300}
             height={300}
           />

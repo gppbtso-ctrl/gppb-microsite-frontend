@@ -39,6 +39,7 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/gppb_favicon.png" }],
 };
 
+ 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

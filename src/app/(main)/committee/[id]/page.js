@@ -98,7 +98,7 @@ export default function Topics() {
         />
         </div>
       </div>
-      <div className="w-full max-w-[60rem] flex  justify-between px-4">
+      <div className="w-full  max-w-[60rem]  flex  justify-between px-1 md:px-4">
         {" "}
         <Button
           variant="text"
@@ -163,13 +163,13 @@ export default function Topics() {
           </span>{" "}
         </Button>
       </div>
-      <div>
-        <div className=" w-full flex justify-end"></div>
-        <div className="relative w-full ">
-          <Card className="border-[1px] border-black/65  drop-shadow-md mt-5 w-full lg:min-w-[60rem] md:min-w-[50rem] min-w-[29rem] rounded-sm !p-0">
-            <CardBody className="p-0 w-full max-w-[60rem]">
+
+       
+        <div className="relative w-full max-w-[98vw] md:max-w-[60rem]">
+          <Card className="border-[1px] border-black/65  drop-shadow-md mt-5  rounded-sm !p-0">
+            <CardBody className="p-0  overflow-x-auto">
               <div className="flex h-15 w-full gap-5 p-5 py-4 justify-center items-center ">
-                <Typography className="text-black font-semibold max-w-24 ">
+                <Typography className="text-black font-semibold  ">
                   Provisions
                 </Typography>
                 {/* <Typography>Example Topic</Typography> */}
@@ -188,7 +188,7 @@ export default function Topics() {
                   ) : null}
                 </div>
               </div>
-              <div className="bg-blue-gray-300 h-[1px]"></div>
+              <div className="bg-blue-gray-300 h-[1px] w-full"></div>
               <TopicTable data={data} />
               
             </CardBody>
@@ -200,7 +200,7 @@ export default function Topics() {
                 totalEntries={data?.count}
               />
         </div>
-      </div>
+      
       <AddTopicDialog open={open} handleOpen={handleOpen} id={data?.id} />
     </div>
   );

@@ -14,7 +14,7 @@ export default function ProposedProvisions() {
   const loading = useLoading(1200);
   return (
     <div className="relative flex justify-center items-center z-10">
-      <Card className="relative p-10 m-3 max-w-[67rem] shadow-none rounded-none flex flex-col gap-3">
+      <Card className="relative p-2 md:p-5 m-3 max-w-[67rem] shadow-none rounded-none flex flex-col gap-3">
         <Typography variant="h5" className="font-sans text-center ">
           Government Procurement Policy Board – Technical Support Office’s
           Proposed Amendments to the Republic Act No. 9184
@@ -22,7 +22,7 @@ export default function ProposedProvisions() {
         <Typography className=" text-justify ml-3 mt-3">
         The following proposals from the GPPB-TSO have been adopted in the NGPA:
         </Typography>
-        <span className=" text-justify font-sans ml-[2.2rem]">
+        <span className=" text-justify font-sans ml-[1.5rem] md:ml-[2.2rem]">
           <ol className="list-[upper-roman] font-bold">
             <li>
               <span className="ml-3 font-semibold">
