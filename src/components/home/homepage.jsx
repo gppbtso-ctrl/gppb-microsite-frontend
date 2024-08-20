@@ -35,7 +35,6 @@ export default function HomePageComponent() {
 
   useGSAP(
     () => {
-
       let getRatio = (el) =>
         window.innerHeight / (window.innerHeight + el.offsetHeight);
       gsap.fromTo(
@@ -55,7 +54,7 @@ export default function HomePageComponent() {
           },
         }
       );
-      
+
       container.current = gsap.from(".animText", {
         yPercent: 150,
         duration: 1,
@@ -64,8 +63,6 @@ export default function HomePageComponent() {
           amount: 0.5,
         },
       });
-
-
     },
     { scope: container }
   ); // <-- magic
@@ -118,10 +115,9 @@ export default function HomePageComponent() {
     { scope: aboutSection }
   );
 
-
   return (
     <>
-      <MainNavbar  isHomePage={true}/>
+      <MainNavbar isHomePage={true} />
       <div className="relative min-h-screen">
         <section
           class="relative flex flex-col min-h-screen bg-slate-800 text-white  bg-blend-overlay"
@@ -195,17 +191,17 @@ export default function HomePageComponent() {
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-2xl  md:text-3xl lg:text-5xl text-center font-normal uppercase">
-                  Procurement Act 
+                  Procurement Act
                 </Typography>
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-2xl  md:text-3xl lg:text-5xl text-center font-normal uppercase">
-                 (NGPA) Microsite
+                  (NGPA) Microsite
                 </Typography>
               </div>
               <div className="h-[2rem] md:h-[3rem] lg:h-[4rem]  w-[100%] relative overflow-hidden">
                 <Typography className="animText text-2xl  md:text-3xl lg:text-4xl text-center font-normal font-anonymous-pro ">
-                Republic Act No. 12009
+                  Republic Act No. 12009
                 </Typography>
               </div>
               <div className="h-fit w-[100%] mt-5 relative overflow-hidden ">
@@ -338,10 +334,10 @@ export default function HomePageComponent() {
                   className=" list-inside ml-5 flex flex-col gap-2 font-sans text-justify"
                 >
                   <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
-                    <b>Create an Account:</b> Click on the &quot;Register&quot; button at
-                    the top right corner of the homepage and fill in the
-                    required information, including your name, email address,
-                    and organization.
+                    <b>Create an Account:</b> Click on the &quot;Register&quot;
+                    button at the top right corner of the homepage and fill in
+                    the required information, including your name, email
+                    address, and organization.
                   </li>
                   <li className="text-md md:text-lg tracking-wide antialiased font-sans mt-1 text-justify descriptionText ">
                     <b>Select Committees:</b> Browse through each Committee and
@@ -376,6 +372,15 @@ export default function HomePageComponent() {
                   Procurement Act and the continuous improvement of our
                   nation&apos;s procurement system.
                 </Typography>
+                <Link
+                  href={"/New-Government-Procurement-Act-RA-12009.pdf"}
+                  target="__blank"
+                >
+                  {" "}
+                  <Typography className="text-md md:text-lg tracking-wider antialiased font-sans mt-6  hover:text-blue-400 mb-3 text-justify descriptionText underline">
+                    Download RA 12009
+                  </Typography>
+                </Link>
               </div>
             </div>
           </section>
@@ -397,7 +402,6 @@ export default function HomePageComponent() {
                   UP Diliman Campus, Quezon City
                 </Typography>
 
-
                 <Typography className="text-md md:text-lg mt-3 tracking-wide font-light  antialiased  flex gap-2 items-center">
                   <FontAwesomeIcon icon={faPhone} />{" "}
                   <span>(02) 5322-6222 (Bac)</span>
@@ -408,7 +412,6 @@ export default function HomePageComponent() {
                   <span>gppb@gppb.gov.ph</span>
                 </Typography>
 
-                
                 <Typography
                   as={"a"}
                   href="/legal-notice"

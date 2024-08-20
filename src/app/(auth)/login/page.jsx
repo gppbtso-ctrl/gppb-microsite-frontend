@@ -29,12 +29,12 @@ export default function Login() {
   const pathname = usePathname();
 
 
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = async (data) => {
     const params = data;
 
