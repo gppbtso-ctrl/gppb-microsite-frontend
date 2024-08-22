@@ -32,8 +32,8 @@ export default function Topics() {
   const [page, setPage] = useState(1);
   const TABLE_HEAD = [
     "Email",
-    "First Name",
-    "Last Name",
+    "Name",
+    "Agency",
     "Statement",
     "Date Joined",
     "Action",
@@ -143,7 +143,7 @@ export default function Topics() {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {item.first_name}
+                          {item.first_name} {item.last_name}
                         </Typography>
                       </td>
                       <td className={classes}>
@@ -152,7 +152,7 @@ export default function Topics() {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {item.last_name}
+                          {item.agency_name}
                         </Typography>
                       </td>
                       <td className={`${classes} max-w-[20rem]`}>

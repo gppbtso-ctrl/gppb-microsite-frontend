@@ -10,6 +10,7 @@ import useAuthStore from "@/store/authStore";
 import useLoading from "@/utils/use-loading";
 import {
   faComment,
+  faEdit,
   faEye,
   faPencil,
   faReply,
@@ -38,6 +39,7 @@ import Link from "next/link";
 import Pagination from "@/components/general-widgets/paginator";
 import CommentsLoader from "@/components/loading/comments-loader";
 import isNonEmptyPTag from "@/utils/checkEmptyTag";
+import EditTopicDialog from "@/components/topics/widgets/edit-topic-dialog";
 
 export default function Topic() {
   const router = useRouter();
@@ -64,7 +66,11 @@ export default function Topic() {
   } = useForm();
   const refEditor = useRef(null);
   const [page, setPage] = useState(1);
+  const [openEdit, setOpenEdit] = useState(false);
 
+  const handleEditTopic = () => setOpenEdit(!openEdit)
+  
+  
   const handlePageChange = (newPage) => {
     // Custom logic before updating the page
     setPage(newPage);
@@ -78,6 +84,8 @@ export default function Topic() {
     const response = await UserService.getTopicComments(id, page);
     return response.data;
   };
+
+
 
   const { data, isLoading, error, mutate, isValidating } = useSWR(
     id ? "TopicsComments" : null,
@@ -103,6 +111,7 @@ export default function Topic() {
   useEffect(() => {
     // Manually trigger a re-fetch when perPage or searchTerm changes
     mutate("TopicsComments");
+    triggerClearWithTimeout()
   }, [page]);
 
   const triggerClearWithTimeout = () => {
@@ -196,6 +205,7 @@ export default function Topic() {
     try {
       await UserService.postDelete(id);
       mutate('TopicComments')
+      triggerClearWithTimeout();
     } catch (error) {
       console.log(error?.response);
     }
@@ -211,7 +221,7 @@ export default function Topic() {
           <>
             <Card className="border-[1px] border-blue-gray-700 mt-5 md:mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
               <div className="h-full p-3 md:p-6 flex flex-col gap-3 flex-1 w-full">
-                <div>
+                <div className="flex justify-between">
                   <div className="flex flex-col">
                     <Typography className=" text-md font-semibold">
                       {data?.topic_data?.starter?.first_name}
@@ -222,6 +232,16 @@ export default function Topic() {
                       </Moment>
                     </Typography>
                   </div>
+                  {decodedToken?.role === "ADMIN" ? 
+                  <Button
+                    variant="text"
+                    size="sm"
+                    color="green"
+                    className={` w-fit rounded-none border-1 text-sm p-2 text-green-700 drop-shadow-sm`}
+                    onClick={handleEditTopic}
+                  >
+                    <FontAwesomeIcon icon={faEdit}/> Edit
+                  </Button>: null}
                 </div>
                 <div className="flex flex-col w-full">
                   <Typography className=" font-semibold text-md md:text-lg break-words w-full">
@@ -258,7 +278,7 @@ export default function Topic() {
                     </Alert>
                   )}
 
-                  {data?.post_data.length !== 0 ?
+                  {data?.post_data.length !== 0 ? (
                     Object.keys(data?.post_data).map((key, i) => {
                       const post = data?.post_data[key];
                       return (
@@ -296,26 +316,27 @@ export default function Topic() {
                                       />
                                     </Button>
                                   ) : null}
-                                   {decodedToken?.role === "USER" &&
-                                    decodedToken?.user_id ===
-                                      post?.created_by?.id ?
-                                   <Button
-                                        size="sm"
-                                        variant="outlined"
-                                        className={`p-1 rounded-none border-none ${
-                                          currentContentEdit?.id === post?.id
-                                            ? "text-green-700 pointer-events-none opacity-80"
-                                            : "text-black"
-                                        }`}
-                                        onClick={() =>
-                                          handleEdit(post?.id, post?.message)
-                                        }
-                                      >
-                                        <FontAwesomeIcon
-                                          icon={faPencil}
-                                          className="text-xs"
-                                        />
-                                      </Button> : null}
+                                  {decodedToken?.role === "USER" &&
+                                  decodedToken?.user_id ===
+                                    post?.created_by?.id ? (
+                                    <Button
+                                      size="sm"
+                                      variant="outlined"
+                                      className={`p-1 rounded-none border-none ${
+                                        currentContentEdit?.id === post?.id
+                                          ? "text-green-700 pointer-events-none opacity-80"
+                                          : "text-black"
+                                      }`}
+                                      onClick={() =>
+                                        handleEdit(post?.id, post?.message)
+                                      }
+                                    >
+                                      <FontAwesomeIcon
+                                        icon={faPencil}
+                                        className="text-xs"
+                                      />
+                                    </Button>
+                                  ) : null}
                                   {decodedToken?.role === "ADMIN" ||
                                   (decodedToken?.role === "USER" &&
                                     decodedToken?.user_id ===
@@ -348,7 +369,15 @@ export default function Topic() {
                                   isEdit={true}
                                 />
                                 <div className="w-full flex justify-end gap-2 mt-1">
-                                {required === post?.id && <Typography size="sm" color="red" className="font-medium">Please fill out the text field!</Typography>}
+                                  {required === post?.id && (
+                                    <Typography
+                                      size="sm"
+                                      color="red"
+                                      className="font-medium"
+                                    >
+                                      Please fill out the text field!
+                                    </Typography>
+                                  )}
                                   <Button
                                     color="blue-gray"
                                     className="py-1 px-1.5 rounded-none text-[0.6rem] md:text-[0.70rem]"
@@ -359,16 +388,20 @@ export default function Topic() {
                                   <Button
                                     variant="gradient"
                                     className="py-1 px-1.5 rounded-none text-[0.60rem] md:text-[0.70rem]"
-                                    onClick={()=>handleEditSubmit(post?.id)}
+                                    onClick={() => handleEditSubmit(post?.id)}
                                   >
-                       {post?.id in submitStatusEdit &&
-                            submitStatusEdit[post?.id] === "loading" ? (
-                              <Spinner className="w-10 h-4" color="white" />
-                            ) : submitStatusEdit[post?.id] === "success" ? (
-                              "success"
-                            ) : (
-                              "Submit"
-                            )}
+                                    {post?.id in submitStatusEdit &&
+                                    submitStatusEdit[post?.id] === "loading" ? (
+                                      <Spinner
+                                        className="w-10 h-4"
+                                        color="white"
+                                      />
+                                    ) : submitStatusEdit[post?.id] ===
+                                      "success" ? (
+                                      "success"
+                                    ) : (
+                                      "Submit"
+                                    )}
                                   </Button>
                                 </div>
                               </div>
@@ -385,7 +418,12 @@ export default function Topic() {
                           </div>
                         </div>
                       );
-                    }):<Typography className="font-sans text-sm font-semibold">No Comments Yet!</Typography>}
+                    })
+                  ) : (
+                    <Typography className="font-sans text-sm font-semibold">
+                      No Comments Yet!
+                    </Typography>
+                  )}
                   {/* comment section */}
                 </div>
               </div>
@@ -399,47 +437,57 @@ export default function Topic() {
                 onPageChange={handlePageChange}
                 totalEntries={data?.count}
               />
-              {loaded && decodedToken && data ? (
-                ["TWG", "ADMIN"].includes(decodedToken?.role) ||
-                (decodedToken?.role === "USER" &&
-                  decodedToken?.committee_list.includes(
-                    data?.topic_data?.committee
-                  )) ? (
-                 
-                (!currentContentEdit && <div className="mt-2 ">
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                      {/* TIPTAP FOR NEW COMMENT POSTING*/}
-                      <Tiptap
-                        onContentChange={handleContentChange}
-                        currentContent={currentContent}
-                        refEditor={refEditor}
-                        clear={clear}
-                      />
-                      <div className="flex justify-end items-center mt-1 gap-2">
-                        {required === "postSubmit" && <Typography size="sm" color="red" className="font-medium">Please fill out the text field!</Typography>}
-                        <Button
-                          type="submit"
-                          size="sm"
-                          variant="outlined"
-                          className="rounded-none"
-                        >
-                          {submitStatus === "loading"
-                            ? "Adding..."
-                            : submitStatus === "success"
-                            ? "Success"
-                            : "Add Comment"}
-                        </Button>{" "}
+              {loaded && decodedToken && data
+                ? ["TWG", "ADMIN"].includes(decodedToken?.role) ||
+                  (decodedToken?.role === "USER" &&
+                    decodedToken?.committee_list.includes(
+                      data?.topic_data?.committee
+                    ))
+                  ? !currentContentEdit && (
+                      <div className="mt-2 ">
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                          {/* TIPTAP FOR NEW COMMENT POSTING*/}
+                          <Tiptap
+                            onContentChange={handleContentChange}
+                            currentContent={currentContent}
+                            refEditor={refEditor}
+                            clear={clear}
+                          />
+                          <div className="flex justify-end items-center mt-1 gap-2">
+                            {required === "postSubmit" && (
+                              <Typography
+                                size="sm"
+                                color="red"
+                                className="font-medium"
+                              >
+                                Please fill out the text field!
+                              </Typography>
+                            )}
+                            <Button
+                              type="submit"
+                              size="sm"
+                              variant="outlined"
+                              className="rounded-none"
+                            >
+                              {submitStatus === "loading"
+                                ? "Adding..."
+                                : submitStatus === "success"
+                                ? "Success"
+                                : "Add Comment"}
+                            </Button>{" "}
+                          </div>
+                        </form>
                       </div>
-                    </form>
-                  </div>)
-                ) : null
-              ) : null}
+                    )
+                  : null
+                : null}
             </div>
           </>
         ) : (
           <CommentsLoader />
         )}
       </div>
+      <EditTopicDialog openEdit={openEdit} handleEditTopic={handleEditTopic} id={data?.topic_data?.id}/>
     </>
   );
 }

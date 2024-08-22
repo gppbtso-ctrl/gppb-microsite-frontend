@@ -5,12 +5,15 @@ import SmoothScrolling from "@/components/home/smoothscrolling";
 
 
 
+
 export default function HomePage() {
   return (
    <>
+ 
    <SmoothScrolling>
 <HomePageComponent/>
 </SmoothScrolling>
+
    </>
   );
 }

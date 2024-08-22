@@ -1,7 +1,14 @@
 import { Inter, Montserrat, Playfair, Anonymous_Pro, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import localFont from 'next/font/local';
+import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
+import dynamic from 'next/dynamic'
+
+const Chatbot = dynamic(() => import('@/components/general-widgets/chatbot'), {
+  ssr: false
+})
+
 const montSerrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -43,7 +50,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-       <body className={`${inter.variable} ${monument.variable} ${anonymous_pro.variable} ${hanken_grotesk.variable} ${montSerrat.variable} ${playfair.variable}`}>{children}</body>
+       <body className={`${inter.variable} ${monument.variable} ${anonymous_pro.variable} ${hanken_grotesk.variable} ${montSerrat.variable} ${playfair.variable}`}>{children} <Chatbot/></body>
+     
     </html>
   );
 }

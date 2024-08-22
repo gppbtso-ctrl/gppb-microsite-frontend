@@ -15,6 +15,7 @@ module.exports = withMT({
   theme: {
     extend: {
       fontFamily: {
+        sans: ["sans-serif"],
         montserrat: ["var(--font-montserrat)"],
         'anonymous-pro': ["var(--font-anonymous-pro)"],
         'hanken-grotesk': ["var(--font-hanken-grotesk)"],

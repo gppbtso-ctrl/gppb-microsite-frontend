@@ -21,6 +21,16 @@ const postTopic = (params) => {
   const response = api.post(`${apiPrefix}/topic`, params);
   return response;
 };
+const editTopic = (data, topic_id) => {
+  const response = api.patch(`${apiPrefix}/topic/${topic_id}`, data);
+  return response;
+};
+
+const getTopic = ( topic_id) => {
+  const response = api.get(`${apiPrefix}/topic/${topic_id}`);
+  return response;
+};
+
 
 const postComment = (params) => {
   const response = api.post(`${apiPrefix}/post`, params);
@@ -46,8 +56,8 @@ const calendarActDelete = (id) => {
   return response;
 };
 
-const addCalendarAct = (id, data) => {
-  const response = api.post(`${apiPrefix}/calendar-activities/${id}`, data);
+const addCalendarAct = (id, data, add_to_all) => {
+  const response = api.post(`${apiPrefix}/calendar-activities/${id}?add_to_all=${add_to_all}`, data);
 
   return response;
 };
@@ -96,6 +106,8 @@ const UserService = {
   getComTopics,
   getTopicComments,
   postTopic,
+  editTopic,
+  getTopic,
   postComment,
   getUsers,
   postUserAction,

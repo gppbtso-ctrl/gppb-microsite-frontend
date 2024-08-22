@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Dialog,
@@ -16,40 +16,70 @@ import UserService from "@/services/user.services";
 import useSWR, { useSWRConfig } from "swr";
 import AuthService from "@/services/auth";
 
-const AddTopicDialog = ({ open, handleOpen }) => {
+const EditTopicDialog = ({ openEdit, handleEditTopic, id }) => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const { mutate } = useSWRConfig();
-  const { id } = useParams();
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data) => {
-    data.committee = parseInt(id);
-    setSubmitStatus("loading");
-    try {
-      const response = await UserService.postTopic(data);
-      setSubmitStatus("success");
-      mutate("comTopics");
-      setTimeout(() => {
-        handleOpen();
-        setSubmitStatus(null);
-        reset();
-      }, 500);
-    } catch (error) {
-      setSubmitStatus("error");
-    }
-  
+  const getTopic = async () => {
+    const response = await UserService.getTopic(id);
+    return response.data;
   };
 
+  const { data, isLoading, error, isValidating } = useSWR(
+     id ? "topic": null,
+    getTopic
+  );
+
+ 
+  const onSubmit = async (data) => {
+    console.log(data)
+      setSubmitStatus("loading");
+      try {
+        const response = await UserService.editTopic(data, id);
+        setSubmitStatus("success");
+        mutate('comTopics')
+        mutate('TopicsComments')
+        setTimeout(() => {
+          setSubmitStatus(null);
+          handleEditTopic()
+        }, 1000);
+      } catch (error) {
+        setSubmitStatus("error");
+      }
+ 
+  };
+
+  useEffect(() => {
+    if (!data) return;
+    console.log(data)
+    const keys = Object.keys(data?.topic_data);
+    // Map over the keys to retrieve the corresponding values
+    console.log(keys)
+    keys.map((key) => {
+      if (
+        [
+          "subject",
+          "content",
+        ].includes(key)
+      ) {
+        // Set the initial value of the react hook form fields.
+        setValue(key, data?.topic_data[key]);
+      }
+    });
+  }, [data]);
+
   return (
-    <Dialog open={open} handler={handleOpen} className="rounded-none">
+    <Dialog open={openEdit} handler={handleEditTopic} className="rounded-none">
       <DialogHeader>
         <Typography variant="h5" className="font-montserrat">
-          Add Provision
+          Edit Provision
         </Typography>
       </DialogHeader>
       <DialogBody>
@@ -87,7 +117,7 @@ const AddTopicDialog = ({ open, handleOpen }) => {
       <DialogFooter className="flex gap-2">
         <Button
           variant="text"
-          onClick={handleOpen}
+          onClick={handleEditTopic}
           className="mr-1 rounded-none"
         >
           <span className="font-montserrat">Cancel</span>
@@ -111,4 +141,4 @@ const AddTopicDialog = ({ open, handleOpen }) => {
   );
 };
 
-export default AddTopicDialog;
+export default EditTopicDialog;

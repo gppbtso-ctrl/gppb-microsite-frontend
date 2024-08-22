@@ -226,7 +226,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
               containerProps={{
                 className: "min-w-0",
               }}
-            /><Button size="sm" className="!absolute right-1 top-1 rounded">
+            /><Button size="sm" className="!absolute w-fit right-1 top-1 rounded">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Button></>}
        

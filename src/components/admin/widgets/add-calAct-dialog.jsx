@@ -9,6 +9,7 @@ import {
   Textarea,
   Input,
   Spinner,
+  Checkbox,
 } from "@material-tailwind/react";
 import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -27,9 +28,11 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data)
+    const add_to_all = data?.add_to_all
     setSubmitStatus("loading");
     try {
-      const response = await UserService.addCalendarAct(id, data);
+      const response = await UserService.addCalendarAct(id, data, add_to_all);
       setSubmitStatus("success");
       mutate("comTopics");
       setTimeout(() => {
@@ -67,7 +70,7 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
               Title
             </label>
           </div>
-          <div className="w-full flex gap-2 justify-between">
+          <div className="w-full flex flex-col md:flex-row gap-2 justify-between">
             <div className="w-full">
               <div class="relative w-full min-w-[200px]">
                 <Typography>Start Date</Typography>
@@ -86,10 +89,17 @@ const AddCalcActDialog = ({ open, handleOpen, id }) => {
                 />
               </div>
             </div>
+           
           </div>
+          <Checkbox   {...register("add_to_all")}
+      label={
+        <Typography  className="flex font-semibold text-sm">
+         Add to other committees?
+        </Typography>
+      }/>
         </form>
       </DialogBody>
-      <DialogFooter className="flex gap-2">
+      <DialogFooter className="flex gap-2 pt-0">
         <Button
           variant="text"
           onClick={handleOpen}
