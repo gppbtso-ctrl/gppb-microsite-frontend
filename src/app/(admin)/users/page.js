@@ -13,6 +13,8 @@ import {
   CardFooter,
   CardHeader,
   Input,
+  Option,
+  Select,
   Spinner,
   Typography,
 } from "@material-tailwind/react";
@@ -21,6 +23,9 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import useSWR, { useSWRConfig } from "swr";
+import { exportToExcel } from 'react-json-to-excel';
+import formatData from "@/utils/formatData";
+import fileNameFormat from "@/utils/filenameFormat";
 
 export default function Topics() {
   const router = useRouter();
@@ -30,6 +35,7 @@ export default function Topics() {
   const [submitStatus, setSubmitStatus] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
+  const [statusList, setStatusList] = useState("ALL");
   const TABLE_HEAD = [
     "Email",
     "Name",
@@ -47,7 +53,7 @@ export default function Topics() {
   }, [decodedToken]);
 
   const getUsers = async () => {
-    const response = await UserService.getUsers(page, searchTerm);
+    const response = await UserService.getUsers(page, searchTerm, statusList);
     return response.data;
   };
   const { data, isLoading, error, isValidating } = useSWR("users", getUsers);
@@ -82,157 +88,190 @@ export default function Topics() {
     setPage(newPage);
   };
 
+  const handleStatusList = (e) => {
+    // Custom logic before updating the page
+    setStatusList(e);
+  };
+
+  const handleExport = async () => {
+    // Custom logic before updating the page
+    console.log('click')
+    const to_csv = "true"
+    try {
+      const response = await UserService.getUsers(page, searchTerm, statusList, to_csv);
+      const data = response?.data?.search_data
+      exportToExcel(formatData(data), fileNameFormat('ngpa_registered_users'))
+    } catch (error) {
+      
+    }
+   
+  };
+
   useEffect(() => {
-    mutate('users')
-  }, [searchTerm,page])
-  
+    mutate("users");
+  }, [searchTerm, page, statusList]);
 
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
       <div className="max-w-[80vw] ">
-      <div className="flex flex-row justify-end w-full mt-[8rem]">
-          <div className="w-[13rem]">
-            <Input
-              type="text"
-              label="Search"
-              className="w-full"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+        <div className="flex flex-col gap-2 w-full mt-[8rem]">
+          <Button size="sm" className="rounded-none self-end max-w-20" onClick={handleExport}>Export</Button>
+          <div className="flex flex-col md:flex-row  gap-2 justify-between">
+            <div className="[&>*]:max-w-full [&>*]md:max-w-[13rem]">
+              <Select
+                size="md"
+                value={statusList}
+                onChange={handleStatusList}
+                label="Select Status"
+              >
+                <Option value={"ALL"}> All</Option>
+                <Option value={"PENDING"}>Pending</Option>
+                <Option value={"ACCEPTED"}>Accepted</Option>
+              </Select>
+            </div>
+            <div className="max-w-full md:max-w-[13rem]">
+              <Input
+                type="text"
+                label="Search"
+                className="w-full"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
           </div>
         </div>
-      <Card className="mt-2  rounded-none shadow-none overflow-auto">
-        <table className="w-full min-w-max table-auto text-left ">
-          <thead>
-            <tr>
-              {TABLE_HEAD.map((head) => (
-                <th
-                  key={head}
-                  className="border-b border-blue-gray-100 bg-blue-300 p-4"
-                >
-                  <Typography
-                    variant="small"
-                    color="white"
-                    className="font-normal leading-none "
+        <Card className="mt-2 rounded-none shadow-none overflow-auto">
+          <table className="min-w-5xl md:min-w-[55rem] max-w-7xl table-auto text-left ">
+            <thead>
+              <tr>
+                {TABLE_HEAD.map((head) => (
+                  <th
+                    key={head}
+                    className="border-b border-blue-gray-100 bg-blue-300 p-4"
                   >
-                    {head}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data ? (
-              data?.search_data?.length !== 0 ? (
-                data?.search_data?.map((item, index) => {
-                  const classes = "p-4 border-b border-blue-gray-50";
-                  return (
-                    <tr key={index}>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {item.email}
-                        </Typography>
-                      </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {item.first_name} {item.last_name}
-                        </Typography>
-                      </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {item.agency_name}
-                        </Typography>
-                      </td>
-                      <td className={`${classes} max-w-[20rem]`}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal"
-                        >
-                          {item.brief_statement}
-                        </Typography>
-                      </td>
-                      <td className={classes}>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-medium"
-                        >
-                          <Moment
-                            date={item.date_joined}
-                            format="MMM DD, YYYY"
-                          />
-                        </Typography>
-                      </td>
-                      {item.is_active == false ? (
-                        <td className={`${classes} max-w-fit`}>
-                          <Button
-                            variant="text"
-                            size="sm"
-                            className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                            onClick={() => handleAction(item.id)}
-                            disabled={item?.id in submitStatus}
-                          >
-                            {item?.id in submitStatus &&
-                            submitStatus[item.id] === "loading" ? (
-                              <Spinner className="w-10 h-4" color="white" />
-                            ) : submitStatus === "success" ? (
-                              "success"
-                            ) : (
-                              "Accept"
-                            )}
-                          </Button>
-                        </td>
-                      ) : (
+                    <Typography
+                      variant="small"
+                      color="white"
+                      className="font-normal leading-none "
+                    >
+                      {head}
+                    </Typography>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data ? (
+                data?.search_data?.length !== 0 ? (
+                  data?.search_data?.map((item, index) => {
+                    const classes = "p-4 border-b border-blue-gray-50";
+                    return (
+                      <tr key={index}>
                         <td className={classes}>
-                          <Button
-                            variant="text"
-                            size="sm"
-                            className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                            disabled={true}
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
                           >
-                            Accepted
-                          </Button>
+                            {item.email}
+                          </Typography>
                         </td>
-                      )}
-                    </tr>
-                  );
-                })
+                        <td className={classes}>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {item.first_name} {item.last_name}
+                          </Typography>
+                        </td>
+                        <td className={classes}>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {item.agency_name}
+                          </Typography>
+                        </td>
+                        <td className={`${classes} max-w-[20rem]`}>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-normal"
+                          >
+                            {item.brief_statement}
+                          </Typography>
+                        </td>
+                        <td className={classes}>
+                          <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="font-medium"
+                          >
+                            <Moment
+                              date={item.date_joined}
+                              format="MMM DD, YYYY"
+                            />
+                          </Typography>
+                        </td>
+                        {item.is_active == false ? (
+                          <td className={`${classes} max-w-fit`}>
+                            <Button
+                              variant="text"
+                              size="sm"
+                              className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                              onClick={() => handleAction(item.id)}
+                              disabled={item?.id in submitStatus}
+                            >
+                              {item?.id in submitStatus &&
+                              submitStatus[item.id] === "loading" ? (
+                                <Spinner className="w-10 h-4" color="white" />
+                              ) : submitStatus === "success" ? (
+                                "success"
+                              ) : (
+                                "Accept"
+                              )}
+                            </Button>
+                          </td>
+                        ) : (
+                          <td className={classes}>
+                            <Button
+                              variant="text"
+                              size="sm"
+                              className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                              disabled={true}
+                            >
+                              Accepted
+                            </Button>
+                          </td>
+                        )}
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan={6} className="text-center">
+                      No Data
+                    </td>
+                  </tr>
+                )
               ) : (
                 <tr>
-                  <td colSpan={6} className="text-center">
-                    No Data
+                  <td colSpan={4} className="text-center">
+                    Loading Data
                   </td>
                 </tr>
-              )
-            ) : (
-              <tr>
-                <td colSpan={4} className="text-center">
-                  Loading Data
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </Card>
-      <Pagination
-                page={page}
-                totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
-                onPageChange={handlePageChange}
-                totalEntries={data?.count}
-              />
+              )}
+            </tbody>
+          </table>
+        </Card>
+        <Pagination
+          page={page}
+          totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
+          onPageChange={handlePageChange}
+          totalEntries={data?.count}
+        />
       </div>
     </div>
   );

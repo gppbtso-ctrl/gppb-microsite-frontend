@@ -61,9 +61,9 @@ export default function SearchComponent() {
             Search Results: {searchValue}
           </Typography>
         </div>
-
-        {data && data?.search_data?.length != 0  ? (
-          <table class="w-full text-left table-auto min-w-max">
+     
+        {data && data?.search_data?.length != 0  ? ( <div className="max-w-[90%] md:max-w-full overflow-auto">
+          <table class="w-full text-left table-auto ">
             <thead>
               <tr>
                 <th class="p-4 ">
@@ -130,7 +130,7 @@ export default function SearchComponent() {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> </div>
         ) : <div className="p-5"><Typography variant="h6">No Results!</Typography></div>}
       </Card>
       { data ?   <div className="w-full min-w-[55vw] lg:min-w-[50vw] lg:max-w-[55vw]"><Pagination

@@ -37,8 +37,8 @@ const postComment = (params) => {
   return response;
 };
 
-const getUsers = (page, searchTerm) => {
-  const response = api.get(`${apiPrefix}/users?for_activation=${"false"}&searchTerm=${searchTerm}&page=${page}`);
+const getUsers = (page, searchTerm, statusList, to_csv) => {
+  const response = api.get(`${apiPrefix}/users?status_list=${statusList}&searchTerm=${searchTerm}&page=${page}&to_csv=${to_csv}`);
   return response;
 };
 

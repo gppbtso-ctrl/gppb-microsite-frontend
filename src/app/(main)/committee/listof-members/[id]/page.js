@@ -102,7 +102,7 @@ export default function Topics() {
      {data?.committee_data?.title}
    </Typography>
    <Typography
-     className="z-10 font-montserrat text-sm font-lead max-w-[50rem] mx-auto px-3 whitespace-pre-wrap text-justify"
+     className="z-10 font-montserrat text-sm font-lead max-w-[50rem] leading-0 mx-auto px-3 whitespace-pre-wrap text-justify"
      color="white"
    >
      {" "}

@@ -223,10 +223,13 @@ export const MainNavbar = ({ isHomePage = false }) => {
               type="Search"
               label="Search"
               className="pr-[3.5rem]"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+
               containerProps={{
                 className: "min-w-0",
               }}
-            /><Button size="sm" className="!absolute w-fit right-1 top-1 rounded">
+            /><Button size="sm" onClick={handleSearch} className="!absolute w-fit right-1 top-1 rounded">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </Button></>}
        
