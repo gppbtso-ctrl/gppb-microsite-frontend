@@ -44,7 +44,8 @@ const CommitteeMain = () => {
         
       </div> */}
         <div className="relative grid grid-cols-1  lg:grid-cols-2  max-w-[30rem] lg:max-w-[67rem] mx-1 gap-9 z-40 mt-3">
-          {isLoading ? (
+          
+          {data ? isLoading ? (
             <CardsLoading />
           ) : (
             data?.map((committee, index) => (
@@ -93,7 +94,7 @@ const CommitteeMain = () => {
                 </CardBody>
               </Card>
             ))
-          )}
+          ):<CardsLoading/>}
         </div>
       </div>
     </div>

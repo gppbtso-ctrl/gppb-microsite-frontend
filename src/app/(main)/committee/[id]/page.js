@@ -23,8 +23,9 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import useLoading from "@/utils/use-loading";
 import LoadingScreen from "@/components/loading/loading";
 import Pagination from "@/components/general-widgets/paginator";
-import CommitteeNavbar from "@/components/committee/committee-navbar";
-
+import dynamic from "next/dynamic";
+const CommitteeNavbar = dynamic(() => import('@/components/committee/committee-navbar'))
+ 
 const localizer = momentLocalizer(moment);
 
 export default function Topics() {

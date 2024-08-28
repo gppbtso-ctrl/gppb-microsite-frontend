@@ -186,7 +186,7 @@ export default function Topics() {
                             {item.first_name} {item.last_name}
                           </Typography>
                         </td>
-                        <td className={classes}>
+                        <td className={`${classes} max-w-[20rem]`}>
                           <Typography
                             variant="small"
                             color="blue-gray"
@@ -195,7 +195,7 @@ export default function Topics() {
                             {item.agency_name}
                           </Typography>
                         </td>
-                        <td className={`${classes} max-w-[20rem]`}>
+                        <td className={`${classes} max-w-[40rem]`}>
                           <Typography
                             variant="small"
                             color="blue-gray"
