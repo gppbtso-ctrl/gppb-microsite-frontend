@@ -8,16 +8,16 @@ import SmoothScrolling from "@/components/home/smoothscrolling";
 export default function CommitteeLayout({ children }) {
   return (
     <Suspense>
+      <div className=" relative  w-full h-screen">
+        <div className="grid grid-rows-[max-content,max-content,min-content]">
+          <MainNavbar />
+          <div className="mt-[6rem] mb-[4rem] min-h-[54vh]  [@media(min-width:2300px)]:min-h-[65dvh] ">
+            {children}
+          </div>
 
-    <div className=" relative  w-full h-screen">
-      <div className="grid grid-rows-[max-content,max-content,min-content]">
-        <MainNavbar />
-        <div className="mt-[6rem] mb-[4rem] [@media(min-width:2300px)]:min-h-[90vh] ">{children}</div>
-        
-        <FooterWithSocialLinks />
+          <FooterWithSocialLinks />
+        </div>
       </div>
-    </div>
- 
     </Suspense>
   );
 }

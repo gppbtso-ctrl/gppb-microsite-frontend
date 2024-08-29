@@ -23,10 +23,9 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import useSWR, { useSWRConfig } from "swr";
-import { exportToExcel } from 'react-json-to-excel';
+import { exportToExcel } from "react-json-to-excel";
 import formatData from "@/utils/formatData";
 import fileNameFormat from "@/utils/fileNameFormat";
-
 
 export default function Topics() {
   const router = useRouter();
@@ -96,16 +95,18 @@ export default function Topics() {
 
   const handleExport = async () => {
     // Custom logic before updating the page
-    console.log('click')
-    const to_csv = "true"
+    console.log("click");
+    const to_csv = "true";
     try {
-      const response = await UserService.getUsers(page, searchTerm, statusList, to_csv);
-      const data = response?.data?.search_data
-      exportToExcel(formatData(data), fileNameFormat('ngpa_registered_users'))
-    } catch (error) {
-      
-    }
-   
+      const response = await UserService.getUsers(
+        page,
+        searchTerm,
+        statusList,
+        to_csv
+      );
+      const data = response?.data?.search_data;
+      exportToExcel(formatData(data), fileNameFormat("ngpa_registered_users"));
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -116,7 +117,13 @@ export default function Topics() {
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
       <div className="max-w-[80vw] ">
         <div className="flex flex-col gap-2 w-full mt-[8rem]">
-          <Button size="sm" className="rounded-none self-end max-w-20" onClick={handleExport}>Export</Button>
+          <Button
+            size="sm"
+            className="rounded-none self-end max-w-20"
+            onClick={handleExport}
+          >
+            Export
+          </Button>
           <div className="flex flex-col md:flex-row  gap-2 justify-between">
             <div className="[&>*]:max-w-full [&>*]md:max-w-[13rem]">
               <Select
@@ -142,7 +149,7 @@ export default function Topics() {
           </div>
         </div>
         <Card className="mt-2 rounded-none shadow-none overflow-auto">
-          <table className="min-w-5xl md:min-w-[55rem] max-w-7xl table-auto text-left ">
+          <table className="min-w-5xl md:min-w-[75rem] max-w-[75rem] table-auto text-left ">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
@@ -217,7 +224,7 @@ export default function Topics() {
                           </Typography>
                         </td>
                         {item.is_active == false ? (
-                          <td className={`${classes} max-w-fit`}>
+                          <td className={`${classes} w-28`}>
                             <Button
                               variant="text"
                               size="sm"
@@ -236,7 +243,7 @@ export default function Topics() {
                             </Button>
                           </td>
                         ) : (
-                          <td className={classes}>
+                          <td className={`${classes} w-28`}>
                             <Button
                               variant="text"
                               size="sm"

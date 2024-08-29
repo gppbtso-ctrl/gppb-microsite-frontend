@@ -51,10 +51,10 @@ export default function Topic() {
   const [currentContentEdit, setCurrentContentEdit] = useState(null);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [submitStatusEdit, setSubmitStatusEdit] = useState({});
-  const [clear, setClear] = useState(false)
-  // use for tiptap textfield, pass 'postSubmit' for the adding of comment, pass id for edits 
-  const [required, setRequired] = useState(null)
-  
+  const [clear, setClear] = useState(false);
+  // use for tiptap textfield, pass 'postSubmit' for the adding of comment, pass id for edits
+  const [required, setRequired] = useState(null);
+
   const {
     register,
     handleSubmit,
@@ -68,9 +68,8 @@ export default function Topic() {
   const [page, setPage] = useState(1);
   const [openEdit, setOpenEdit] = useState(false);
 
-  const handleEditTopic = () => setOpenEdit(!openEdit)
-  
-  
+  const handleEditTopic = () => setOpenEdit(!openEdit);
+
   const handlePageChange = (newPage) => {
     // Custom logic before updating the page
     setPage(newPage);
@@ -85,105 +84,108 @@ export default function Topic() {
     return response.data;
   };
 
-
-
   const { data, isLoading, error, mutate, isValidating } = useSWR(
     id ? "TopicsComments" : null,
-    getTopicComments, {
+    getTopicComments,
+    {
       onError: (error) => {
-        const err_response = error?.response
+        const err_response = error?.response;
         if (
           err_response?.status == 404 &&
           err_response?.statusText == "Not Found"
-     
         ) {
-          if( err_response?.data?.detail == "Invalid page."){
-            setPage(page !== 0 ? page - 1 : 1)
-          }
-          else{
-            router.push('/404')
+          if (err_response?.data?.detail == "Invalid page.") {
+            setPage(page !== 0 ? page - 1 : 1);
+          } else {
+            router.push("/404");
           }
         }
-      }
+      },
     }
   );
 
   useEffect(() => {
     // Manually trigger a re-fetch when perPage or searchTerm changes
     mutate("TopicsComments");
-    triggerClearWithTimeout()
+    triggerClearWithTimeout();
   }, [page]);
 
   const triggerClearWithTimeout = () => {
-    setClear(true)
+    setClear(true);
     const timeoutId = setTimeout(() => {
       setClear(false);
-    }, 300); 
+    }, 300);
     return () => clearTimeout(timeoutId);
   };
 
   // POSTING OF COMMENT
   const onSubmit = async (formData) => {
-    if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
-      setRequired('postSubmit')
+    if (
+      Object.keys(formData).length === 0 ||
+      !isNonEmptyPTag(formData?.message)
+    ) {
+      setRequired("postSubmit");
       setTimeout(() => {
-        setRequired(null)
+        setRequired(null);
       }, 2000);
       return;
     } else {
-      setRequired(null)
-    formData.topic = data?.topic_data?.id || null;
-    setSubmitStatus("loading");
-    try {
-      const response = await UserService.postComment(formData);
-      setSubmitStatus("success");
-      const resp_data = await mutate();
-      // const totalPages = await getTotalPage();
-      reset();
-      setSubmitStatus(null);
-      triggerClearWithTimeout();
-      refEditor?.current?.focus();
-      setPage( page === resp_data?.total_pages ? page : resp_data?.total_pages );
-    } catch (error) {
-      setSubmitStatus("error");
+      setRequired(null);
+      formData.topic = data?.topic_data?.id || null;
+      setSubmitStatus("loading");
+      try {
+        const response = await UserService.postComment(formData);
+        setSubmitStatus("success");
+        const resp_data = await mutate();
+        // const totalPages = await getTotalPage();
+        reset();
+        setSubmitStatus(null);
+        triggerClearWithTimeout();
+        refEditor?.current?.focus();
+        setPage(
+          page === resp_data?.total_pages ? page : resp_data?.total_pages
+        );
+      } catch (error) {
+        setSubmitStatus("error");
+      }
     }
   };
-}
 
   const handleContentChange = (content) => {
     setValue("message", content, { shouldValidate: true });
   };
 
-
   const handleEdit = (id, message) => {
     setValue("message", message, { shouldValidate: true });
     setCurrentContentEdit({ id: id, message: message });
   };
-  
- const handleEditSubmit = async (id) => {
- const formData = getValues()
 
- if (Object.keys(formData).length ===  0 || !isNonEmptyPTag(formData?.message)) {
-  setRequired(id)
-  setTimeout(() => {
-    setRequired(null)
-  }, 2000);
-}else{
-  setRequired(null)
- setSubmitStatusEdit(prev => ({...prev, [id]:'loading'}));
- try {
-   await UserService.postEdit(formData, id);
-   setSubmitStatusEdit(prev => ({...prev, [id]:'Success'}));
-   mutate("TopicsComments");
-   setCurrentContentEdit(null)
-   setSubmitStatusEdit({});
-   reset()
- } catch (error) {
-  setSubmitStatusEdit(prev => ({...prev, [id]:'error'}));
- }
-}
- }
+  const handleEditSubmit = async (id) => {
+    const formData = getValues();
 
+    if (
+      Object.keys(formData).length === 0 ||
+      !isNonEmptyPTag(formData?.message)
+    ) {
+      setRequired(id);
+      setTimeout(() => {
+        setRequired(null);
+      }, 2000);
+    } else {
+      setRequired(null);
+      setSubmitStatusEdit((prev) => ({ ...prev, [id]: "loading" }));
+      try {
+        await UserService.postEdit(formData, id);
+        setSubmitStatusEdit((prev) => ({ ...prev, [id]: "Success" }));
+        mutate("TopicsComments");
+        setCurrentContentEdit(null);
+        setSubmitStatusEdit({});
+        reset();
+      } catch (error) {
+        setSubmitStatusEdit((prev) => ({ ...prev, [id]: "error" }));
+      }
+    }
+  };
 
   const handleReplyClick = (post) => {
     const reply = `
@@ -204,22 +206,24 @@ export default function Topic() {
   const handleDelete = async (id) => {
     try {
       await UserService.postDelete(id);
-      mutate('TopicComments')
+      mutate("TopicComments");
       triggerClearWithTimeout();
     } catch (error) {
       console.log(error?.response);
     }
   };
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <>
+    <div>
       {loading ? <LoadingScreen /> : null}
-      <div className="  h-full flex flex-col justify-center items-center z-10">
+      <div className="flex flex-col justify-center items-center z-10">
         {data && data?.topic_data ? (
           <>
-            <Card className="border-[1px] border-blue-gray-700 mt-5 md:mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-full drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
+            <Card className="border-[1px] border-blue-gray-700 mt-5 md:mt-10 max-w-[90vw] w-full  xl:max-w-[65vw] rounded-sm h-fit drop-shadow-md flex flex-row justify-center items-center gap-5  !p-0 ">
               <div className="h-full p-3 md:p-6 flex flex-col gap-3 flex-1 w-full">
                 <div className="flex justify-between">
                   <div className="flex flex-col">
@@ -232,16 +236,17 @@ export default function Topic() {
                       </Moment>
                     </Typography>
                   </div>
-                  {decodedToken?.role === "ADMIN" ? 
-                  <Button
-                    variant="text"
-                    size="sm"
-                    color="green"
-                    className={` w-fit rounded-none border-1 text-sm p-2 text-green-700 drop-shadow-sm`}
-                    onClick={handleEditTopic}
-                  >
-                    <FontAwesomeIcon icon={faEdit}/> Edit
-                  </Button>: null}
+                  {decodedToken?.role === "ADMIN" ? (
+                    <Button
+                      variant="text"
+                      size="sm"
+                      color="green"
+                      className={` w-fit rounded-none border-1 text-sm p-2 text-green-700 drop-shadow-sm`}
+                      onClick={handleEditTopic}
+                    >
+                      <FontAwesomeIcon icon={faEdit} /> Edit
+                    </Button>
+                  ) : null}
                 </div>
                 <div className="flex flex-col w-full">
                   <Typography className=" font-semibold text-md md:text-lg break-words w-full">
@@ -487,7 +492,11 @@ export default function Topic() {
           <CommentsLoader />
         )}
       </div>
-      <EditTopicDialog openEdit={openEdit} handleEditTopic={handleEditTopic} id={data?.topic_data?.id}/>
-    </>
+      <EditTopicDialog
+        openEdit={openEdit}
+        handleEditTopic={handleEditTopic}
+        id={data?.topic_data?.id}
+      />
+    </div>
   );
 }
