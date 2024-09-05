@@ -26,6 +26,7 @@ import useSWR, { useSWRConfig } from "swr";
 import { exportToExcel } from "react-json-to-excel";
 import formatData from "@/utils/formatData";
 import fileNameFormat from "@/utils/fileNameFormat";
+import DeleteReasonDialog from "@/components/admin/widgets/delete-reason-dialog";
 
 export default function Topics() {
   const router = useRouter();
@@ -36,6 +37,8 @@ export default function Topics() {
   const [searchTerm, setSearchTerm] = useState("");
   const [page, setPage] = useState(1);
   const [statusList, setStatusList] = useState("ALL");
+  const [openReason, setOpenReason] = useState(false);
+  const [userID, setUserID] = useState(false);
   const TABLE_HEAD = [
     "Email",
     "Name",
@@ -44,6 +47,13 @@ export default function Topics() {
     "Date Joined",
     "Action",
   ];
+
+  const handleOpenReasonDialog = (id) => {
+    setOpenReason(!openReason);
+    setUserID(id);
+  };
+
+  console.log(openReason);
 
   useEffect(() => {
     setLoaded(true);
@@ -58,11 +68,11 @@ export default function Topics() {
   };
   const { data, isLoading, error, isValidating } = useSWR("users", getUsers);
 
-  const handleAction = async (id) => {
-    const action = "accept";
+  const handleAction = async (id, action) => {
+    const data = { user_id: id, action: action };
     setSubmitStatus((prevState) => ({ ...prevState, [id]: "loading" }));
     try {
-      const response = await UserService.postUserAction(id, action);
+      const response = await UserService.postUserAction(data);
       setSubmitStatus((prevState) => ({ ...prevState, [id]: "success" }));
       setTimeout(() => {
         setSubmitStatus((prevState) => {
@@ -223,37 +233,46 @@ export default function Topics() {
                             />
                           </Typography>
                         </td>
-                        {item.is_active == false ? (
-                          <td className={`${classes} w-28`}>
-                            <Button
-                              variant="text"
-                              size="sm"
-                              className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                              onClick={() => handleAction(item.id)}
-                              disabled={item?.id in submitStatus}
-                            >
-                              {item?.id in submitStatus &&
-                              submitStatus[item.id] === "loading" ? (
-                                <Spinner className="w-10 h-4" color="white" />
-                              ) : submitStatus === "success" ? (
-                                "success"
-                              ) : (
-                                "Accept"
-                              )}
-                            </Button>
-                          </td>
-                        ) : (
-                          <td className={`${classes} w-28`}>
-                            <Button
-                              variant="text"
-                              size="sm"
-                              className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                              disabled={true}
-                            >
-                              Accepted
-                            </Button>
-                          </td>
-                        )}
+                        <td
+                          className={`${classes} w-fit md:w-20 flex flex-col gap-2`}
+                        >
+                          {
+                            item.is_active == false ? (
+                              <Button
+                                variant="text"
+                                size="sm"
+                                className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                                onClick={() => handleAction(item.id, "accept")}
+                                disabled={item?.id in submitStatus}
+                              >
+                                {item?.id in submitStatus &&
+                                submitStatus[item.id] === "loading" ? (
+                                  <Spinner className="w-10 h-4" color="white" />
+                                ) : submitStatus === "success" ? (
+                                  "success"
+                                ) : (
+                                  "Accept"
+                                )}
+                              </Button>
+                            ) : null
+                            // <Button
+                            //   variant="text"
+                            //   size="sm"
+                            //   className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                            //   disabled={true}
+                            // >
+                            //   Accepted
+                            // </Button>
+                          }
+                          <Button
+                            variant="text"
+                            size="sm"
+                            className="rounded-none bg-red-700 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                            onClick={() => handleOpenReasonDialog(item.id)}
+                          >
+                            {item.is_active ? "Delete" : "Reject"}
+                          </Button>
+                        </td>
                       </tr>
                     );
                   })
@@ -282,6 +301,13 @@ export default function Topics() {
           showTotal={true}
         />
       </div>
+      <DeleteReasonDialog
+        openReason={openReason}
+        handleOpenReasonDialog={handleOpenReasonDialog}
+        user_id={userID}
+        action={"delete"}
+      />
+      ;
     </div>
   );
 }

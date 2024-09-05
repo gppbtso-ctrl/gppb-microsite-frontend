@@ -7,7 +7,7 @@ const getCommittees = () => {
   return response;
 };
 
-const getComTopics = (id,page=1) => {
+const getComTopics = (id, page = 1) => {
   const response = api.get(`${apiPrefix}/committee/${id}?page=${page}`);
   return response;
 };
@@ -26,11 +26,10 @@ const editTopic = (data, topic_id) => {
   return response;
 };
 
-const getTopic = ( topic_id) => {
+const getTopic = (topic_id) => {
   const response = api.get(`${apiPrefix}/topic/${topic_id}`);
   return response;
 };
-
 
 const postComment = (params) => {
   const response = api.post(`${apiPrefix}/post`, params);
@@ -38,14 +37,14 @@ const postComment = (params) => {
 };
 
 const getUsers = (page, searchTerm, statusList, to_csv) => {
-  const response = api.get(`${apiPrefix}/users?status_list=${statusList}&searchTerm=${searchTerm}&page=${page}&to_csv=${to_csv}`);
+  const response = api.get(
+    `${apiPrefix}/users?status_list=${statusList}&searchTerm=${searchTerm}&page=${page}&to_csv=${to_csv}`
+  );
   return response;
 };
 
-const postUserAction = (id, action) => {
-  const response = api.post(
-    `${apiPrefix}/user-action?id=${id}&action=${action}`
-  );
+const postUserAction = (data) => {
+  const response = api.post(`${apiPrefix}/user-action`, data);
 
   return response;
 };
@@ -57,17 +56,22 @@ const calendarActDelete = (id) => {
 };
 
 const addCalendarAct = (id, data, add_to_all) => {
-  const response = api.post(`${apiPrefix}/calendar-activities/${id}?add_to_all=${add_to_all}`, data);
+  const response = api.post(
+    `${apiPrefix}/calendar-activities/${id}?add_to_all=${add_to_all}`,
+    data
+  );
 
   return response;
 };
 
 const getComCalendarActivities = (id, year) => {
-  const response = api.get(`${apiPrefix}/get-calendar-activities/${id}?year=${year}`);
+  const response = api.get(
+    `${apiPrefix}/get-calendar-activities/${id}?year=${year}`
+  );
   return response;
 };
 
-const getComListOfMembers = (id, page=1) => {
+const getComListOfMembers = (id, page = 1) => {
   const response = api.get(`${apiPrefix}/instance-committee-users?id=${id}`);
   return response;
 };
@@ -97,8 +101,6 @@ const postEdit = (formData, id) => {
   return response;
 };
 
-
-
 const UserService = {
   postEdit,
   postDelete,
@@ -117,7 +119,7 @@ const UserService = {
   getComListOfMembers,
   search,
   getProfile,
-  editProfile
+  editProfile,
 };
 
 export default UserService;
