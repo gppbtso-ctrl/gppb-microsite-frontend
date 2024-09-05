@@ -279,6 +279,7 @@ export default function Topics() {
           totalPages={data?.detail == "Invalid page." ? 1 : data?.total_pages}
           onPageChange={handlePageChange}
           totalEntries={data?.count}
+          showTotal={true}
         />
       </div>
     </div>
