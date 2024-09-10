@@ -19,8 +19,7 @@ import useSWR, { useSWRConfig } from "swr";
 export default function DeleteReasonDialog({
   openReason,
   handleOpenReasonDialog,
-  user_id,
-  action,
+  info,
 }) {
   const { mutate } = useSWRConfig();
   const [success, setSuccess] = useState(false);
@@ -34,8 +33,8 @@ export default function DeleteReasonDialog({
 
   const onSubmit = async (data) => {
     setStatus("loading");
-    data.user_id = user_id;
-    data.action = "delete";
+    data.user_id = info.id;
+    data.action = info.type;
     try {
       const response = await UserService.postUserAction(data);
       setStatus("success");
@@ -49,15 +48,18 @@ export default function DeleteReasonDialog({
       setStatus("error");
     }
   };
-  console.log(user_id, action);
-  console.log(openReason);
 
   return (
-    <Dialog open={openReason} handler={handleOpenReasonDialog} size="md">
+    <Dialog
+      open={openReason}
+      handler={handleOpenReasonDialog}
+      size="md"
+      className="rounded-sm"
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <DialogHeader>
           <Typography color="red" variant="h5" className="font-lead">
-            Delete / Reject Information
+            {info.type === "delete" ? "Delete" : "Reject"} Information
           </Typography>
         </DialogHeader>
         <DialogBody className="overflow-y-auto max-h-[33rem] mr-1">
@@ -70,7 +72,7 @@ export default function DeleteReasonDialog({
           <Button
             color="blue-gray"
             size="sm"
-            className="rounded-none"
+            className="rounded-sm"
             onClick={handleOpenReasonDialog}
           >
             <span>Cancel</span>
@@ -85,7 +87,7 @@ export default function DeleteReasonDialog({
               type="submit"
               color="black"
               size="sm"
-              className={`rounded-none ${
+              className={`rounded-sm ${
                 status == "success" || status == "loading"
                   ? "cursor-not-allowed pointer-events-none"
                   : null

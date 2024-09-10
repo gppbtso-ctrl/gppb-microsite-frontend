@@ -38,7 +38,7 @@ export default function Topics() {
   const [page, setPage] = useState(1);
   const [statusList, setStatusList] = useState("ALL");
   const [openReason, setOpenReason] = useState(false);
-  const [userID, setUserID] = useState(false);
+  const [info, setInfo] = useState({});
   const TABLE_HEAD = [
     "Email",
     "Name",
@@ -48,9 +48,9 @@ export default function Topics() {
     "Action",
   ];
 
-  const handleOpenReasonDialog = (id) => {
+  const handleOpenReasonDialog = (id, type) => {
     setOpenReason(!openReason);
-    setUserID(id);
+    setInfo({ id: id, type: type });
   };
 
   console.log(openReason);
@@ -105,11 +105,11 @@ export default function Topics() {
 
   const handleExport = async () => {
     // Custom logic before updating the page
-    console.log("click");
+    const pageNum = 1;
     const to_csv = "true";
     try {
       const response = await UserService.getUsers(
-        page,
+        pageNum,
         searchTerm,
         statusList,
         to_csv
@@ -268,7 +268,12 @@ export default function Topics() {
                             variant="text"
                             size="sm"
                             className="rounded-none bg-red-700 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                            onClick={() => handleOpenReasonDialog(item.id)}
+                            onClick={() =>
+                              handleOpenReasonDialog(
+                                item.id,
+                                item.is_active ? "delete" : "reject"
+                              )
+                            }
                           >
                             {item.is_active ? "Delete" : "Reject"}
                           </Button>
@@ -304,10 +309,8 @@ export default function Topics() {
       <DeleteReasonDialog
         openReason={openReason}
         handleOpenReasonDialog={handleOpenReasonDialog}
-        user_id={userID}
-        action={"delete"}
+        info={info}
       />
-      ;
     </div>
   );
 }
