@@ -125,7 +125,7 @@ export default function Topics() {
 
   return (
     <div className=" relative w-full h-full flex flex-col justify-start items-center z-30 min-h-[83vh]">
-      <div className="max-w-[80vw] ">
+      <div className="max-w-[85vw] ">
         <div className="flex flex-col gap-2 w-full mt-[8rem]">
           <Button
             size="sm"
@@ -158,8 +158,8 @@ export default function Topics() {
             </div>
           </div>
         </div>
-        <Card className="mt-2 rounded-none shadow-none overflow-auto">
-          <table className="min-w-5xl md:min-w-[75rem] max-w-[75rem] table-auto text-left ">
+        <Card className="mt-2 w-full rounded-none shadow-none overflow-auto">
+          <table className="min-w-6xl md:min-w-[75rem] max-w-[80rem] table-auto text-left ">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
@@ -233,50 +233,55 @@ export default function Topics() {
                             />
                           </Typography>
                         </td>
-                        <td
-                          className={`${classes} w-fit md:w-20 flex flex-col gap-2`}
-                        >
-                          {
-                            item.is_active == false ? (
-                              <Button
-                                variant="text"
-                                size="sm"
-                                className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                                onClick={() => handleAction(item.id, "accept")}
-                                disabled={item?.id in submitStatus}
-                              >
-                                {item?.id in submitStatus &&
-                                submitStatus[item.id] === "loading" ? (
-                                  <Spinner className="w-10 h-4" color="white" />
-                                ) : submitStatus === "success" ? (
-                                  "success"
-                                ) : (
-                                  "Accept"
-                                )}
-                              </Button>
-                            ) : null
-                            // <Button
-                            //   variant="text"
-                            //   size="sm"
-                            //   className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                            //   disabled={true}
-                            // >
-                            //   Accepted
-                            // </Button>
-                          }
-                          <Button
-                            variant="text"
-                            size="sm"
-                            className="rounded-none bg-red-700 text-white hover:text-black w-[5rem] flex items-center justify-center"
-                            onClick={() =>
-                              handleOpenReasonDialog(
-                                item.id,
-                                item.is_active ? "delete" : "reject"
-                              )
+                        <td className={`${classes} w-20 md:w-32`}>
+                          <div className=" flex flex-col gap-2">
+                            {
+                              item.is_active == false ? (
+                                <Button
+                                  variant="text"
+                                  size="sm"
+                                  className="rounded-none bg-blue-500 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                                  onClick={() =>
+                                    handleAction(item.id, "accept")
+                                  }
+                                  disabled={item?.id in submitStatus}
+                                >
+                                  {item?.id in submitStatus &&
+                                  submitStatus[item.id] === "loading" ? (
+                                    <Spinner
+                                      className="w-10 h-4"
+                                      color="white"
+                                    />
+                                  ) : submitStatus === "success" ? (
+                                    "success"
+                                  ) : (
+                                    "Accept"
+                                  )}
+                                </Button>
+                              ) : null
+                              // <Button
+                              //   variant="text"
+                              //   size="sm"
+                              //   className="rounded-none bg-blue-gray-400 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                              //   disabled={true}
+                              // >
+                              //   Accepted
+                              // </Button>
                             }
-                          >
-                            {item.is_active ? "Delete" : "Reject"}
-                          </Button>
+                            <Button
+                              variant="text"
+                              size="sm"
+                              className="rounded-none bg-red-700 text-white hover:text-black w-[5rem] flex items-center justify-center"
+                              onClick={() =>
+                                handleOpenReasonDialog(
+                                  item.id,
+                                  item.is_active ? "delete" : "reject"
+                                )
+                              }
+                            >
+                              {item.is_active ? "Delete" : "Reject"}
+                            </Button>
+                          </div>
                         </td>
                       </tr>
                     );
