@@ -218,14 +218,14 @@ export default function HomePageComponent() {
                   officials, private sector representatives, and the general
                   public.
                 </Typography>
-                <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
+                {/* <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-6  text-justify descriptionText ">
                   The NGPA Microsite was developed pursuant to Government
                   Procurement Policy Board (GPPB) Resolution No. 04-2024, dated
                   7 June 2024. This Resolution approves the creation of specific
                   committees to formulate the necessary rules and regulations
                   for the effective implementation of the provisions of the NGPA
                   upon its enactment.
-                </Typography>
+                </Typography> */}
                 <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-7 text-justify descriptionText ">
                   Key highlights from the Resolution include:
                 </Typography>
@@ -277,10 +277,10 @@ export default function HomePageComponent() {
                   enhancements, including electronic procurement systems,
                   procurement data analytics, and new evaluation criteria.
                 </Typography>
-                <Typography className="text-md md:text-lg  tracking-wide antialiased font-sans mt-5  text-justify descriptionText ">
+                {/* <Typography className="text-md md:text-lg  tracking-wide antialiased font-sans mt-5  text-justify descriptionText ">
                   For easy reference, the GPPB Resolution No. 04-2024 can be
                   found here: XXX
-                </Typography>
+                </Typography> */}
 
                 <Typography className="text-md md:text-lg tracking-wide antialiased font-sans mt-5 mb-3 text-justify descriptionText underline ">
                   Main Features of the Microsite

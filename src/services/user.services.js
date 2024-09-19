@@ -72,7 +72,9 @@ const getComCalendarActivities = (id, year) => {
 };
 
 const getComListOfMembers = (id, page = 1) => {
-  const response = api.get(`${apiPrefix}/instance-committee-users?id=${id}`);
+  const response = api.get(
+    `${apiPrefix}/instance-committee-users?id=${id}&page=${page}`
+  );
   return response;
 };
 
