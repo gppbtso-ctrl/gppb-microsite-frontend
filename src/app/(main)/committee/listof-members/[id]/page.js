@@ -89,7 +89,7 @@ export default function Topics() {
       <div className="w-full h-full max-w-full flex items-center justify-center mb-3 ">
         <div className="relative w-full max-w-[60.2rem] min-h-[22rem] flex flex-col justify-center gap-2 h-fit p-5">
           <Typography
-            className=" z-10 font-montserrat text-[calc(0.9vw+2rem)] font-lead max-w-[50rem] mx-auto px-3"
+            className=" z-10 font-montserrat text-[calc(0.9vw+2rem)] leading-[2rem] md:leading-[3rem] font-lead max-w-[50rem] mx-auto px-3"
             color="white"
           >
             {" "}
