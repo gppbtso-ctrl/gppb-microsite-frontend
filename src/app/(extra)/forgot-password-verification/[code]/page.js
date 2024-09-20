@@ -143,7 +143,7 @@ const ForgotPassword = () => {
             {" "}
             <Typography variant="lead" className=" break-words text-center">
               Invalid / Expired session! Please try resetting your password
-              again by following the 'Forgot Password' process.
+              again by following the Forgot Password process.
             </Typography>
           </>
         ) : (
