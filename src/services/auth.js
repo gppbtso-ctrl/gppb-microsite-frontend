@@ -32,6 +32,24 @@ const changePassword = (params) => {
   return response;
 };
 
+const getEmailForgotPassword = (data) => {
+  const response = api.post(`${apiPrefix}/get_email_for_password`, data);
+  return response;
+};
+
+const getForgotPasswordVerification = (code) => {
+  const response = api.get(`${apiPrefix}/forgot-password-verification/${code}`);
+  return response;
+};
+
+const postNewPassword = (code, data) => {
+  const response = api.post(
+    `${apiPrefix}/forgot-password-verification/${code}`,
+    data
+  );
+  return response;
+};
+
 const logout = async () => {
   TokenService.removeUser();
 };
@@ -41,6 +59,8 @@ const getCurrentUser = () => {
 };
 
 const AuthService = {
+  postNewPassword,
+  getEmailForgotPassword,
   register,
   login,
   logout,
@@ -48,6 +68,7 @@ const AuthService = {
   validateEmail,
   verifyEmail,
   changePassword,
+  getForgotPasswordVerification,
 };
 
 export default AuthService;

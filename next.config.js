@@ -12,8 +12,8 @@ const nextConfig = {
     ],
   },
   env: {
-    // BASE_URL: "https://ngpa.gppb.gov.ph",
-    BASE_URL: "http://localhost",
+    BASE_URL: "https://ngpa.gppb.gov.ph",
+    // BASE_URL: "http://localhost",
   },
   reactStrictMode: false,
   output: "standalone",
