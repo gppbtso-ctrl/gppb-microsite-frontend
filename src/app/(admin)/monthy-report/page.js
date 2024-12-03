@@ -18,27 +18,14 @@ import {
   Spinner,
   Typography,
 } from "@material-tailwind/react";
-import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Moment from "react-moment";
 import useSWR, { useSWRConfig } from "swr";
-import { exportToExcel } from "react-json-to-excel";
-import formatData from "@/utils/formatData";
-import fileNameFormat from "@/utils/fileNameFormat";
-import DeleteReasonDialog from "@/components/admin/widgets/delete-reason-dialog";
 
 export default function MonthyReport() {
   const router = useRouter();
   const { mutate } = useSWRConfig();
   const { token, decodedToken, setToken, removeToken } = useAuthStore();
-  const [loaded, setLoaded] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState({});
-  const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
-  const [statusList, setStatusList] = useState("ALL");
-  const [openReason, setOpenReason] = useState(false);
-  const [info, setInfo] = useState({});
   const TABLE_HEAD = ["Month", "Com1", "Com2", "Com3", "Com4", "Com5"];
 
   useEffect(() => {
