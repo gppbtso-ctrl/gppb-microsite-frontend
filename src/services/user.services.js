@@ -43,6 +43,11 @@ const getUsers = (page, searchTerm, statusList, to_csv) => {
   return response;
 };
 
+const getMonthlyReport = () => {
+  const response = api.get(`${apiPrefix}/monthly_report`);
+  return response;
+};
+
 const postUserAction = (data) => {
   const response = api.post(`${apiPrefix}/user-action`, data);
 
@@ -122,6 +127,7 @@ const UserService = {
   search,
   getProfile,
   editProfile,
+  getMonthlyReport,
 };
 
 export default UserService;
