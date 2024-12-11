@@ -304,6 +304,23 @@ function NavListMenuAboutNGPA() {
                 </div>
               </MenuItem>
             </Link>
+              <Link href={'https://www.gppb.gov.ph/draft-irr-of-ra-12009/'} target="__blank">
+              <MenuItem className="flex items-center gap-3 rounded-lg">
+                <div>
+                  <Typography
+                    variant="h6"
+                    color="blue-gray"
+                    className="flex items-center text-sm font-bold w-full"
+                  >
+                  Draft IRR of RA 12009
+                  </Typography>
+                  <Typography
+                    variant="paragraph"
+                    className="text-xs !font-medium text-blue-gray-500"
+                  ></Typography>
+                </div>
+              </MenuItem>
+            </Link>
             </ul>
           </div>
         </MenuList>
