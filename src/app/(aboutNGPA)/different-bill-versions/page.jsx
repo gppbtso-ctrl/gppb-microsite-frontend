@@ -165,7 +165,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 176 Gawang Pilipino, Para sa Pilipino Act of 2022.pdf" target="_blank">
-        House Bill No. 176
+        Senate Bill No. 176
         </a>
       </>
     ),
