@@ -180,7 +180,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 618 Amending RA No 9184.pdf" target="_blank">
-        House Bill No. 618
+        Senate Bill No. 618
         </a>
       </>
     ),
@@ -195,7 +195,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 619 Amending Sec. 53 of RA No 9184.pdf" target="_blank">
-        House Bill No. 619
+        Senate Bill No. 619
         </a>
       </>
     ),
@@ -211,7 +211,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 1023 Amending RA No 9184 withdrawing from its application all references to the LGUs.pdf" target="_blank">
-        House Bill No. 1023
+        Senate Bill No. 1023
         </a>
       </>
     ),
@@ -227,7 +227,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 1803 Amending Sec 23 of RA No. 9184.pdf" target="_blank">
-        House Bill No. 1803
+        Senate Bill No. 1803
         </a>
       </>
     ),
@@ -243,7 +243,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 692 AFP Modernization Program, amending RA No. 9184.pdf" target="_blank">
-        House Bill No. 692
+        Senate Bill No. 692
         </a>
       </>
     ),
@@ -258,7 +258,7 @@ Procurement Reform Act </>
       <>
         {" "}
         <a href="/SB No. 2593 6March2024.pdf" target="_blank">
-        House Bill No. 2593
+        Senate Bill No. 2593
         </a>
       </>
     ),
