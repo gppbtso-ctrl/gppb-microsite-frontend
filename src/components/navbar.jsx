@@ -122,6 +122,26 @@ export const MainNavbar = ({ isHomePage = false }) => {
           <div className="hidden lg:inline-block">
             <AboutNGPANavMenu />
           </div>
+                 <Button
+            variant="text"
+            size="sm"
+            className={`hidden lg:inline-block rounded-none  hover:text-blue-400 drop-shadow-sm`}
+            onClick={() => router.push("/")}
+          >
+            <a href="https://ngpa1.gppb.gov.ph" target="_blank" rel="noopener noreferrer">
+            <span className={`font-sans`}>NGPA IRR</span>
+            </a>
+          </Button>
+                 <Button
+            variant="text"
+            size="sm"
+            className={`hidden lg:inline-block rounded-none  hover:text-blue-400 drop-shadow-sm`}
+            onClick={() => router.push("/")}
+          >
+            <a href="https://tinyurl.com/gppbtso-digital-gallery" target="_blank" rel="noopener noreferrer">
+              <span className={`font-sans`}>NGPA Knowledge Products</span>
+            </a>
+          </Button>
           {/* <div className="mr-4 hidden lg:block">{navList}</div> */}
 
           <IconButton
@@ -255,6 +275,26 @@ export const MainNavbar = ({ isHomePage = false }) => {
             </Button>
 
             <AboutNGPANavMenu />
+                      <Button
+              variant="text"
+              size="sm"
+              className=" rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
+              onClick={() => router.push("/")}
+            >
+              <a href="https://ngpa1.gppb.gov.ph" target="_blank" rel="noopener noreferrer">
+              <span className={`font-sans`}>NGPA IRR</span>
+              </a>
+            </Button>
+                      <Button
+              variant="text"
+              size="sm"
+              className=" rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
+              onClick={() => router.push("/")}
+            >
+              <a href="https://tinyurl.com/gppbtso-digital-gallery" target="_blank" rel="noopener noreferrer">
+              <span className={`font-sans`}>NGPA Knowledge Products</span>
+              </a>
+            </Button>
           </ul>
         </div>
         {loaded ? (
