@@ -281,7 +281,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
               className=" rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
               onClick={() => router.push("/")}
             >
-              <a href="https://ngpa1.gppb.gov.ph" target="_blank" rel="noopener noreferrer">
+              <a href="https://ngpa1.gppb.gov.ph" rel="noopener noreferrer">
               <span className={`font-sans`}>NGPA IRR</span>
               </a>
             </Button>
@@ -291,7 +291,7 @@ export const MainNavbar = ({ isHomePage = false }) => {
               className=" rounded-none hover:text-blue-400 px-2 w-fit drop-shadow-sm"
               onClick={() => router.push("/")}
             >
-              <a href="https://tinyurl.com/gppbtso-digital-gallery" target="_blank" rel="noopener noreferrer">
+              <a href="https://tinyurl.com/gppbtso-digital-gallery" rel="noopener noreferrer">
               <span className={`font-sans`}>NGPA Knowledge Products</span>
               </a>
             </Button>
